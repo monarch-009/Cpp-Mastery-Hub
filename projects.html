@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - C++ Mastery Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>C++ Mastery Hub</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Topics <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="basics.html">Basics</a>
+                        <a href="oop.html">OOP</a>
+                        <a href="advanced.html">Advanced</a>
+                        <a href="stl.html">STL</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="projects.html" class="nav-link active">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="quiz.html" class="nav-link">Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-container">
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <h3>Projects</h3>
+                <ul class="toc">
+                    <li><a href="#calculator">Simple Calculator</a></li>
+                    <li><a href="#banking-system">Banking System</a></li>
+                    <li><a href="#student-management">Student Management</a></li>
+                    <li><a href="#tic-tac-toe">Tic-Tac-Toe Game</a></li>
+                    <li><a href="#library-management">Library Management</a></li>
+                    <li><a href="#file-manager">File Manager</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-header">
+                <h1>Real-World C++ Projects</h1>
+                <p>Build practical applications to solidify your C++ knowledge</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="content-sections">
+                <!-- Simple Calculator -->
+                <section class="content-section" id="calculator">
+                    <div class="accordion-item">
+                        <div class="accordion-header" >
+                            <h2><i class="fas fa-calculator"></i> Simple Calculator</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Build a console-based calculator that performs basic arithmetic operations.</p>
+                                
+                                <div class="project-features">
+                                    <h3>Features:</h3>
+                                    <ul>
+                                        <li>Basic arithmetic operations (+, -, *, /)</li>
+                                        <li>Error handling for division by zero</li>
+                                        <li>Menu-driven interface</li>
+                                        <li>Input validation</li>
+                                    </ul>
+                                </div>
+
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">calculator.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+#include &lt;limits&gt;
+using namespace std;
+
+class Calculator {
+private:
+    double num1, num2;
+    char operation;
+    
+public:
+    void displayMenu() {
+        cout &lt;&lt; "\n========== CALCULATOR ==========" &lt;&lt; endl;
+        cout &lt;&lt; "1. Addition (+)" &lt;&lt; endl;
+        cout &lt;&lt; "2. Subtraction (-)" &lt;&lt; endl;
+        cout &lt;&lt; "3. Multiplication (*)" &lt;&lt; endl;
+        cout &lt;&lt; "4. Division (/)" &lt;&lt; endl;
+        cout &lt;&lt; "5. Exit" &lt;&lt; endl;
+        cout &lt;&lt; "===============================" &lt;&lt; endl;
+        cout &lt;&lt; "Enter your choice (1-5): ";
+    }
+    
+    bool getInput() {
+        cout &lt;&lt; "Enter first number: ";
+        while (!(cin &gt;&gt; num1)) {
+            cout &lt;&lt; "Invalid input! Please enter a number: ";
+            cin.clear();
+            cin.ignore(numeric_limits&lt;streamsize&gt;::max(), '\n');
+        }
+        
+        cout &lt;&lt; "Enter second number: ";
+        while (!(cin &gt;&gt; num2)) {
+            cout &lt;&lt; "Invalid input! Please enter a number: ";
+            cin.clear();
+            cin.ignore(numeric_limits&lt;streamsize&gt;::max(), '\n');
+        }
+        
+        return true;
+    }
+    
+    double add() {
+        return num1 + num2;
+    }
+    
+    double subtract() {
+        return num1 - num2;
+    }
+    
+    double multiply() {
+        return num1 * num2;
+    }
+    
+    double divide() {
+        if (num2 == 0) {
+            throw runtime_error("Division by zero is not allowed!");
+        }
+        return num1 / num2;
+    }
+    
+    void displayResult(double result, char op) {
+        cout &lt;&lt; fixed &lt;&lt; setprecision(2);
+        cout &lt;&lt; "\nResult: " &lt;&lt; num1 &lt;&lt; " " &lt;&lt; op &lt;&lt; " " &lt;&lt; num2 &lt;&lt; " = " &lt;&lt; result &lt;&lt; endl;
+    }
+    
+    void run() {
+        int choice;
+        bool continueCalculating = true;
+        
+        cout &lt;&lt; "Welcome to the C++ Calculator!" &lt;&lt; endl;
+        
+        while (continueCalculating) {
+            displayMenu();
+            
+            while (!(cin &gt;&gt; choice) || choice &lt; 1 || choice &gt; 5) {
+                cout &lt;&lt; "Invalid choice! Please enter a number between 1-5: ";
+                cin.clear();
+                cin.ignore(numeric_limits&lt;streamsize&gt;::max(), '\n');
+            }
+            
+            if (choice == 5) {
+                cout &lt;&lt; "Thank you for using the calculator!" &lt;&lt; endl;
+                continueCalculating = false;
+                continue;
+            }
+            
+            if (!getInput()) {
+                continue;
+            }
+            
+            try {
+                double result;
+                char op;
+                
+                switch (choice) {
+                    case 1:
+                        result = add();
+                        op = '+';
+                        break;
+                    case 2:
+                        result = subtract();
+                        op = '-';
+                        break;
+                    case 3:
+                        result = multiply();
+                        op = '*';
+                        break;
+                    case 4:
+                        result = divide();
+                        op = '/';
+                        break;
+                }
+                
+                displayResult(result, op);
+                
+            } catch (const exception& e) {
+                cout &lt;&lt; "Error: " &lt;&lt; e.what() &lt;&lt; endl;
+            }
+            
+            cout &lt;&lt; "\nPress Enter to continue...";
+            cin.ignore();
+            cin.get();
+        }
+    }
+};
+
+int main() {
+    Calculator calc;
+    calc.run();
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Banking System -->
+                <section class="content-section" id="banking-system">
+                    <div class="accordion-item">
+                        <div class="accordion-header" >
+                            <h2><i class="fas fa-university"></i> Banking System</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Create a comprehensive banking system with account management and transactions.</p>
+                                
+                                <div class="project-features">
+                                    <h3>Features:</h3>
+                                    <ul>
+                                        <li>Account creation and management</li>
+                                        <li>Deposit and withdrawal operations</li>
+                                        <li>Balance inquiry</li>
+                                        <li>Transaction history</li>
+                                        <li>File I/O for data persistence</li>
+                                    </ul>
+                                </div>
+
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">banking_system.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;iomanip&gt;
+#include &lt;algorithm&gt;
+#include &lt;ctime&gt;
+using namespace std;
+
+class Transaction {
+public:
+    string type;
+    double amount;
+    string date;
+    double balanceAfter;
+    
+    Transaction(string t, double a, double balance) : type(t), amount(a), balanceAfter(balance) {
+        time_t now = time(0);
+        date = ctime(&now);
+        date.pop_back(); // Remove newline
+    }
+};
+
+class BankAccount {
+private:
+    string accountNumber;
+    string accountHolder;
+    double balance;
+    vector&lt;Transaction&gt; transactions;
+    
+public:
+    BankAccount() : balance(0.0) {}
+    
+    BankAccount(string accNum, string holder, double initialBalance = 0.0) 
+        : accountNumber(accNum), accountHolder(holder), balance(initialBalance) {
+        if (initialBalance > 0) {
+            transactions.push_back(Transaction("Initial Deposit", initialBalance, balance));
+        }
+    }
+    
+    // Getters
+    string getAccountNumber() const { return accountNumber; }
+    string getAccountHolder() const { return accountHolder; }
+    double getBalance() const { return balance; }
+    
+    bool deposit(double amount) {
+        if (amount <= 0) {
+            cout &lt;&lt; "Invalid amount! Deposit amount must be positive." &lt;&lt; endl;
+            return false;
+        }
+        
+        balance += amount;
+        transactions.push_back(Transaction("Deposit", amount, balance));
+        cout &lt;&lt; "Successfully deposited $" &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; amount &lt;&lt; endl;
+        cout &lt;&lt; "New balance: $" &lt;&lt; balance &lt;&lt; endl;
+        return true;
+    }
+    
+    bool withdraw(double amount) {
+        if (amount <= 0) {
+            cout &lt;&lt; "Invalid amount! Withdrawal amount must be positive." &lt;&lt; endl;
+            return false;
+        }
+        
+        if (amount > balance) {
+            cout &lt;&lt; "Insufficient funds! Current balance: $" &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; balance &lt;&lt; endl;
+            return false;
+        }
+        
+        balance -= amount;
+        transactions.push_back(Transaction("Withdrawal", amount, balance));
+        cout &lt;&lt; "Successfully withdrew $" &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; amount &lt;&lt; endl;
+        cout &lt;&lt; "New balance: $" &lt;&lt; balance &lt;&lt; endl;
+        return true;
+    }
+    
+    void displayAccountInfo() const {
+        cout &lt;&lt; "\n========== ACCOUNT INFORMATION ==========" &lt;&lt; endl;
+        cout &lt;&lt; "Account Number: " &lt;&lt; accountNumber &lt;&lt; endl;
+        cout &lt;&lt; "Account Holder: " &lt;&lt; accountHolder &lt;&lt; endl;
+        cout &lt;&lt; "Current Balance: $" &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; balance &lt;&lt; endl;
+        cout &lt;&lt; "=========================================" &lt;&lt; endl;
+    }
+    
+    void displayTransactionHistory() const {
+        cout &lt;&lt; "\n========== TRANSACTION HISTORY ==========" &lt;&lt; endl;
+        if (transactions.empty()) {
+            cout &lt;&lt; "No transactions found." &lt;&lt; endl;
+            return;
+        }
+        
+        cout &lt;&lt; left &lt;&lt; setw(15) &lt;&lt; "Type" &lt;&lt; setw(12) &lt;&lt; "Amount" 
+             &lt;&lt; setw(12) &lt;&lt; "Balance" &lt;&lt; "Date" &lt;&lt; endl;
+        cout &lt;&lt; string(60, '-') &lt;&lt; endl;
+        
+        for (const auto& transaction : transactions) {
+            cout &lt;&lt; left &lt;&lt; setw(15) &lt;&lt; transaction.type 
+                 &lt;&lt; "$" &lt;&lt; setw(11) &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; transaction.amount
+                 &lt;&lt; "$" &lt;&lt; setw(11) &lt;&lt; transaction.balanceAfter
+                 &lt;&lt; transaction.date &lt;&lt; endl;
+        }
+        cout &lt;&lt; "=========================================" &lt;&lt; endl;
+    }
+    
+    // File I/O methods
+    void saveToFile() const {
+        ofstream file(accountNumber + ".txt");
+        if (file.is_open()) {
+            file &lt;&lt; accountNumber &lt;&lt; endl;
+            file &lt;&lt; accountHolder &lt;&lt; endl;
+            file &lt;&lt; balance &lt;&lt; endl;
+            file &lt;&lt; transactions.size() &lt;&lt; endl;
+            
+            for (const auto& transaction : transactions) {
+                file &lt;&lt; transaction.type &lt;&lt; "|" &lt;&lt; transaction.amount &lt;&lt; "|" 
+                     &lt;&lt; transaction.balanceAfter &lt;&lt; "|" &lt;&lt; transaction.date &lt;&lt; endl;
+            }
+            file.close();
+        }
+    }
+    
+    bool loadFromFile(const string& accNum) {
+        ifstream file(accNum + ".txt");
+        if (!file.is_open()) {
+            return false;
+        }
+        
+        string line;
+        getline(file, accountNumber);
+        getline(file, accountHolder);
+        file &gt;&gt; balance;
+        
+        int transactionCount;
+        file &gt;&gt; transactionCount;
+        file.ignore(); // Ignore newline
+        
+        transactions.clear();
+        for (int i = 0; i &lt; transactionCount; i++) {
+            getline(file, line);
+            // Parse transaction data (simplified)
+            size_t pos1 = line.find('|');
+            size_t pos2 = line.find('|', pos1 + 1);
+            size_t pos3 = line.find('|', pos2 + 1);
+            
+            if (pos1 != string::npos && pos2 != string::npos && pos3 != string::npos) {
+                string type = line.substr(0, pos1);
+                double amount = stod(line.substr(pos1 + 1, pos2 - pos1 - 1));
+                double balanceAfter = stod(line.substr(pos2 + 1, pos3 - pos2 - 1));
+                
+                Transaction trans(type, amount, balanceAfter);
+                trans.date = line.substr(pos3 + 1);
+                transactions.push_back(trans);
+            }
+        }
+        
+        file.close();
+        return true;
+    }
+};
+
+class BankingSystem {
+private:
+    vector&lt;BankAccount&gt; accounts;
+    
+public:
+    void displayMainMenu() {
+        cout &lt;&lt; "\n========== BANKING SYSTEM ==========" &lt;&lt; endl;
+        cout &lt;&lt; "1. Create New Account" &lt;&lt; endl;
+        cout &lt;&lt; "2. Login to Existing Account" &lt;&lt; endl;
+        cout &lt;&lt; "3. Exit" &lt;&lt; endl;
+        cout &lt;&lt; "====================================" &lt;&lt; endl;
+        cout &lt;&lt; "Enter your choice: ";
+    }
+    
+    void displayAccountMenu() {
+        cout &lt;&lt; "\n========== ACCOUNT MENU ==========" &lt;&lt; endl;
+        cout &lt;&lt; "1. Check Balance" &lt;&lt; endl;
+        cout &lt;&lt; "2. Deposit Money" &lt;&lt; endl;
+        cout &lt;&lt; "3. Withdraw Money" &lt;&lt; endl;
+        cout &lt;&lt; "4. Transaction History" &lt;&lt; endl;
+        cout &lt;&lt; "5. Logout" &lt;&lt; endl;
+        cout &lt;&lt; "==================================" &lt;&lt; endl;
+        cout &lt;&lt; "Enter your choice: ";
+    }
+    
+    void createAccount() {
+        string accountNumber, accountHolder;
+        double initialDeposit;
+        
+        cout &lt;&lt; "\n========== CREATE NEW ACCOUNT ==========" &lt;&lt; endl;
+        cout &lt;&lt; "Enter account number: ";
+        cin &gt;&gt; accountNumber;
+        cin.ignore();
+        
+        cout &lt;&lt; "Enter account holder name: ";
+        getline(cin, accountHolder);
+        
+        cout &lt;&lt; "Enter initial deposit amount: $";
+        cin &gt;&gt; initialDeposit;
+        
+        BankAccount newAccount(accountNumber, accountHolder, initialDeposit);
+        newAccount.saveToFile();
+        
+        cout &lt;&lt; "Account created successfully!" &lt;&lt; endl;
+        cout &lt;&lt; "Account Number: " &lt;&lt; accountNumber &lt;&lt; endl;
+        cout &lt;&lt; "Account Holder: " &lt;&lt; accountHolder &lt;&lt; endl;
+        cout &lt;&lt; "Initial Balance: $" &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; initialDeposit &lt;&lt; endl;
+    }
+    
+    void loginAccount() {
+        string accountNumber;
+        cout &lt;&lt; "\nEnter account number: ";
+        cin &gt;&gt; accountNumber;
+        
+        BankAccount account;
+        if (!account.loadFromFile(accountNumber)) {
+            cout &lt;&lt; "Account not found!" &lt;&lt; endl;
+            return;
+        }
+        
+        cout &lt;&lt; "Login successful!" &lt;&lt; endl;
+        account.displayAccountInfo();
+        
+        int choice;
+        bool loggedIn = true;
+        
+        while (loggedIn) {
+            displayAccountMenu();
+            cin &gt;&gt; choice;
+            
+            switch (choice) {
+                case 1:
+                    account.displayAccountInfo();
+                    break;
+                case 2: {
+                    double amount;
+                    cout &lt;&lt; "Enter deposit amount: $";
+                    cin &gt;&gt; amount;
+                    account.deposit(amount);
+                    account.saveToFile();
+                    break;
+                }
+                case 3: {
+                    double amount;
+                    cout &lt;&lt; "Enter withdrawal amount: $";
+                    cin &gt;&gt; amount;
+                    account.withdraw(amount);
+                    account.saveToFile();
+                    break;
+                }
+                case 4:
+                    account.displayTransactionHistory();
+                    break;
+                case 5:
+                    cout &lt;&lt; "Logged out successfully!" &lt;&lt; endl;
+                    loggedIn = false;
+                    break;
+                default:
+                    cout &lt;&lt; "Invalid choice! Please try again." &lt;&lt; endl;
+            }
+            
+            if (loggedIn && choice != 5) {
+                cout &lt;&lt; "\nPress Enter to continue...";
+                cin.ignore();
+                cin.get();
+            }
+        }
+    }
+    
+    void run() {
+        cout &lt;&lt; "Welcome to the Banking System!" &lt;&lt; endl;
+        
+        int choice;
+        bool running = true;
+        
+        while (running) {
+            displayMainMenu();
+            cin &gt;&gt; choice;
+            
+            switch (choice) {
+                case 1:
+                    createAccount();
+                    break;
+                case 2:
+                    loginAccount();
+                    break;
+                case 3:
+                    cout &lt;&lt; "Thank you for using our Banking System!" &lt;&lt; endl;
+                    running = false;
+                    break;
+                default:
+                    cout &lt;&lt; "Invalid choice! Please try again." &lt;&lt; endl;
+            }
+            
+            if (running && choice != 3) {
+                cout &lt;&lt; "\nPress Enter to continue...";
+                cin.ignore();
+                cin.get();
+            }
+        }
+    }
+};
+
+int main() {
+    BankingSystem bank;
+    bank.run();
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Student Management -->
+                <section class="content-section" id="student-management">
+                    <div class="accordion-item">
+                        <div class="accordion-header" >
+                            <h2><i class="fas fa-graduation-cap"></i> Student Management System</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Build a comprehensive student management system with grade tracking and reporting.</p>
+                                
+                                <div class="project-features">
+                                    <h3>Features:</h3>
+                                    <ul>
+                                        <li>Student registration and management</li>
+                                        <li>Grade entry and calculation</li>
+                                        <li>GPA calculation</li>
+                                        <li>Student search and filtering</li>
+                                        <li>Report generation</li>
+                                    </ul>
+                                </div>
+
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">student_management.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+#include &lt;iomanip&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+class Grade {
+public:
+    string subject;
+    double score;
+    int credits;
+    
+    Grade(string subj, double sc, int cr) : subject(subj), score(sc), credits(cr) {}
+    
+    char getLetterGrade() const {
+        if (score >= 90) return 'A';
+        else if (score >= 80) return 'B';
+        else if (score >= 70) return 'C';
+        else if (score >= 60) return 'D';
+        else return 'F';
+    }
+    
+    double getGradePoints() const {
+        char letter = getLetterGrade();
+        switch (letter) {
+            case 'A': return 4.0;
+            case 'B': return 3.0;
+            case 'C': return 2.0;
+            case 'D': return 1.0;
+            default: return 0.0;
+        }
+    }
+};
+
+class Student {
+private:
+    string studentId;
+    string firstName;
+    string lastName;
+    string email;
+    string phoneNumber;
+    vector&lt;Grade&gt; grades;
+    
+public:
+    Student() {}
+    
+    Student(string id, string fName, string lName, string mail, string phone)
+        : studentId(id), firstName(fName), lastName(lName), email(mail), phoneNumber(phone) {}
+    
+    // Getters
+    string getStudentId() const { return studentId; }
+    string getFirstName() const { return firstName; }
+    string getLastName() const { return lastName; }
+    string getFullName() const { return firstName + " " + lastName; }
+    string getEmail() const { return email; }
+    string getPhoneNumber() const { return phoneNumber; }
+    
+    // Setters
+    void setEmail(string mail) { email = mail; }
+    void setPhoneNumber(string phone) { phoneNumber = phone; }
+    
+    void addGrade(const Grade& grade) {
+        grades.push_back(grade);
+    }
+    
+    void removeGrade(const string& subject) {
+        grades.erase(remove_if(grades.begin(), grades.end(),
+                               [&subject](const Grade& g) { return g.subject == subject; }),
+                    grades.end());
+    }
+    
+    double calculateGPA() const {
+        if (grades.empty()) return 0.0;
+        
+        double totalPoints = 0.0;
+        int totalCredits = 0;
+        
+        for (const auto& grade : grades) {
+            totalPoints += grade.getGradePoints() * grade.credits;
+            totalCredits += grade.credits;
+        }
+        
+        return totalCredits > 0 ? totalPoints / totalCredits : 0.0;
+    }
+    
+    double calculateAverageScore() const {
+        if (grades.empty()) return 0.0;
+        
+        double total = 0.0;
+        for (const auto& grade : grades) {
+            total += grade.score;
+        }
+        return total / grades.size();
+    }
+    
+    void displayStudentInfo() const {
+        cout &lt;&lt; "\n========== STUDENT INFORMATION ==========" &lt;&lt; endl;
+        cout &lt;&lt; "Student ID: " &lt;&lt; studentId &lt;&lt; endl;
+        cout &lt;&lt; "Name: " &lt;&lt; getFullName() &lt;&lt; endl;
+        cout &lt;&lt; "Email: " &lt;&lt; email &lt;&lt; endl;
+        cout &lt;&lt; "Phone: " &lt;&lt; phoneNumber &lt;&lt; endl;
+        cout &lt;&lt; "GPA: " &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; calculateGPA() &lt;&lt; endl;
+        cout &lt;&lt; "Average Score: " &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; calculateAverageScore() &lt;&lt; "%" &lt;&lt; endl;
+        cout &lt;&lt; "=========================================" &lt;&lt; endl;
+    }
+    
+    void displayGrades() const {
+        cout &lt;&lt; "\n========== GRADES ==========" &lt;&lt; endl;
+        if (grades.empty()) {
+            cout &lt;&lt; "No grades recorded." &lt;&lt; endl;
+            return;
+        }
+        
+        cout &lt;&lt; left &lt;&lt; setw(20) &lt;&lt; "Subject" &lt;&lt; setw(8) &lt;&lt; "Score" 
+             &lt;&lt; setw(8) &lt;&lt; "Grade" &lt;&lt; setw(10) &lt;&lt; "Credits" &lt;&lt; "Points" &lt;&lt; endl;
+        cout &lt;&lt; string(55, '-') &lt;&lt; endl;
+        
+        for (const auto& grade : grades) {
+            cout &lt;&lt; left &lt;&lt; setw(20) &lt;&lt; grade.subject
+                 &lt;&lt; setw(8) &lt;&lt; fixed &lt;&lt; setprecision(1) &lt;&lt; grade.score
+                 &lt;&lt; setw(8) &lt;&lt; grade.getLetterGrade()
+                 &lt;&lt; setw(10) &lt;&lt; grade.credits
+                 &lt;&lt; fixed &lt;&lt; setprecision(1) &lt;&lt; grade.getGradePoints() &lt;&lt; endl;
+        }
+        
+        cout &lt;&lt; string(55, '-') &lt;&lt; endl;
+        cout &lt;&lt; "GPA: " &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; calculateGPA() &lt;&lt; endl;
+        cout &lt;&lt; "============================" &lt;&lt; endl;
+    }
+    
+    bool hasGrade(const string& subject) const {
+        return find_if(grades.begin(), grades.end(),
+                      [&subject](const Grade& g) { return g.subject == subject; }) != grades.end();
+    }
+    
+    // File I/O
+    void saveToFile(ofstream& file) const {
+        file &lt;&lt; studentId &lt;&lt; "|" &lt;&lt; firstName &lt;&lt; "|" &lt;&lt; lastName &lt;&lt; "|" 
+             &lt;&lt; email &lt;&lt; "|" &lt;&lt; phoneNumber &lt;&lt; "|" &lt;&lt; grades.size() &lt;&lt; endl;
+        
+        for (const auto& grade : grades) {
+            file &lt;&lt; grade.subject &lt;&lt; "|" &lt;&lt; grade.score &lt;&lt; "|" &lt;&lt; grade.credits &lt;&lt; endl;
+        }
+    }
+    
+    void loadFromFile(ifstream& file) {
+        string line;
+        getline(file, line);
+        
+        size_t pos = 0;
+        vector&lt;string&gt; tokens;
+        string token;
+        
+        while ((pos = line.find('|')) != string::npos) {
+            token = line.substr(0, pos);
+            tokens.push_back(token);
+            line.erase(0, pos + 1);
+        }
+        tokens.push_back(line); // Last token
+        
+        if (tokens.size() >= 6) {
+            studentId = tokens[0];
+            firstName = tokens[1];
+            lastName = tokens[2];
+            email = tokens[3];
+            phoneNumber = tokens[4];
+            int gradeCount = stoi(tokens[5]);
+            
+            grades.clear();
+            for (int i = 0; i &lt; gradeCount; i++) {
+                getline(file, line);
+                pos = 0;
+                tokens.clear();
+                
+                while ((pos = line.find('|')) != string::npos) {
+                    token = line.substr(0, pos);
+                    tokens.push_back(token);
+                    line.erase(0, pos + 1);
+                }
+                tokens.push_back(line);
+                
+                if (tokens.size() >= 3) {
+                    grades.emplace_back(tokens[0], stod(tokens[1]), stoi(tokens[2]));
+                }
+            }
+        }
+    }
+};
+
+class StudentManagementSystem {
+private:
+    vector&lt;Student&gt; students;
+    const string filename = "students.txt";
+    
+public:
+    StudentManagementSystem() {
+        loadFromFile();
+    }
+    
+    ~StudentManagementSystem() {
+        saveToFile();
+    }
+    
+    void displayMainMenu() {
+        cout &lt;&lt; "\n========== STUDENT MANAGEMENT SYSTEM ==========" &lt;&lt; endl;
+        cout &lt;&lt; "1. Add New Student" &lt;&lt; endl;
+        cout &lt;&lt; "2. Search Student" &lt;&lt; endl;
+        cout &lt;&lt; "3. Display All Students" &lt;&lt; endl;
+        cout &lt;&lt; "4. Add Grade to Student" &lt;&lt; endl;
+        cout &lt;&lt; "5. Display Student Grades" &lt;&lt; endl;
+        cout &lt;&lt; "6. Generate Class Report" &lt;&lt; endl;
+        cout &lt;&lt; "7. Remove Student" &lt;&lt; endl;
+        cout &lt;&lt; "8. Exit" &lt;&lt; endl;
+        cout &lt;&lt; "===============================================" &lt;&lt; endl;
+        cout &lt;&lt; "Enter your choice: ";
+    }
+    
+    void addStudent() {
+        string id, firstName, lastName, email, phone;
+        
+        cout &lt;&lt; "\n========== ADD NEW STUDENT ==========" &lt;&lt; endl;
+        cout &lt;&lt; "Enter Student ID: ";
+        cin &gt;&gt; id;
+        
+        // Check if student already exists
+        if (findStudent(id) != nullptr) {
+            cout &lt;&lt; "Student with ID " &lt;&lt; id &lt;&lt; " already exists!" &lt;&lt; endl;
+            return;
+        }
+        
+        cin.ignore();
+        cout &lt;&lt; "Enter First Name: ";
+        getline(cin, firstName);
+        cout &lt;&lt; "Enter Last Name: ";
+        getline(cin, lastName);
+        cout &lt;&lt; "Enter Email: ";
+        getline(cin, email);
+        cout &lt;&lt; "Enter Phone Number: ";
+        getline(cin, phone);
+        
+        students.emplace_back(id, firstName, lastName, email, phone);
+        cout &lt;&lt; "Student added successfully!" &lt;&lt; endl;
+    }
+    
+    Student* findStudent(const string& id) {
+        auto it = find_if(students.begin(), students.end(),
+                         [&id](const Student& s) { return s.getStudentId() == id; });
+        return it != students.end() ? &(*it) : nullptr;
+    }
+    
+    void searchStudent() {
+        string id;
+        cout &lt;&lt; "\nEnter Student ID to search: ";
+        cin &gt;&gt; id;
+        
+        Student* student = findStudent(id);
+        if (student) {
+            student-&gt;displayStudentInfo();
+        } else {
+            cout &lt;&lt; "Student not found!" &lt;&lt; endl;
+        }
+    }
+    
+    void displayAllStudents() {
+        cout &lt;&lt; "\n========== ALL STUDENTS ==========" &lt;&lt; endl;
+        if (students.empty()) {
+            cout &lt;&lt; "No students registered." &lt;&lt; endl;
+            return;
+        }
+        
+        cout &lt;&lt; left &lt;&lt; setw(12) &lt;&lt; "ID" &lt;&lt; setw(25) &lt;&lt; "Name" 
+             &lt;&lt; setw(8) &lt;&lt; "GPA" &lt;&lt; "Email" &lt;&lt; endl;
+        cout &lt;&lt; string(70, '-') &lt;&lt; endl;
+        
+        for (const auto& student : students) {
+            cout &lt;&lt; left &lt;&lt; setw(12) &lt;&lt; student.getStudentId()
+                 &lt;&lt; setw(25) &lt;&lt; student.getFullName()
+                 &lt;&lt; setw(8) &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; student.calculateGPA()
+                 &lt;&lt; student.getEmail() &lt;&lt; endl;
+        }
+        cout &lt;&lt; "==================================" &lt;&lt; endl;
+    }
+    
+    void addGrade() {
+        string id, subject;
+        double score;
+        int credits;
+        
+        cout &lt;&lt; "\nEnter Student ID: ";
+        cin &gt;&gt; id;
+        
+        Student* student = findStudent(id);
+        if (!student) {
+            cout &lt;&lt; "Student not found!" &lt;&lt; endl;
+            return;
+        }
+        
+        cin.ignore();
+        cout &lt;&lt; "Enter Subject: ";
+        getline(cin, subject);
+        
+        if (student-&gt;hasGrade(subject)) {
+            cout &lt;&lt; "Grade for " &lt;&lt; subject &lt;&lt; " already exists!" &lt;&lt; endl;
+            return;
+        }
+        
+        cout &lt;&lt; "Enter Score (0-100): ";
+        cin &gt;&gt; score;
+        cout &lt;&lt; "Enter Credits: ";
+        cin &gt;&gt; credits;
+        
+        if (score &lt; 0 || score > 100) {
+            cout &lt;&lt; "Invalid score! Score must be between 0 and 100." &lt;&lt; endl;
+            return;
+        }
+        
+        student-&gt;addGrade(Grade(subject, score, credits));
+        cout &lt;&lt; "Grade added successfully!" &lt;&lt; endl;
+    }
+    
+    void displayStudentGrades() {
+        string id;
+        cout &lt;&lt; "\nEnter Student ID: ";
+        cin &gt;&gt; id;
+        
+        Student* student = findStudent(id);
+        if (student) {
+            student-&gt;displayStudentInfo();
+            student-&gt;displayGrades();
+        } else {
+            cout &lt;&lt; "Student not found!" &lt;&lt; endl;
+        }
+    }
+    
+    void generateClassReport() {
+        cout &lt;&lt; "\n========== CLASS REPORT ==========" &lt;&lt; endl;
+        if (students.empty()) {
+            cout &lt;&lt; "No students registered." &lt;&lt; endl;
+            return;
+        }
+        
+        double totalGPA = 0.0;
+        double highestGPA = 0.0;
+        double lowestGPA = 4.0;
+        string topStudent, bottomStudent;
+        
+        for (const auto& student : students) {
+            double gpa = student.calculateGPA();
+            totalGPA += gpa;
+            
+            if (gpa > highestGPA) {
+                highestGPA = gpa;
+                topStudent = student.getFullName();
+            }
+            
+            if (gpa &lt; lowestGPA) {
+                lowestGPA = gpa;
+                bottomStudent = student.getFullName();
+            }
+        }
+        
+        cout &lt;&lt; "Total Students: " &lt;&lt; students.size() &lt;&lt; endl;
+        cout &lt;&lt; "Average Class GPA: " &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; totalGPA / students.size() &lt;&lt; endl;
+        cout &lt;&lt; "Highest GPA: " &lt;&lt; highestGPA &lt;&lt; " (" &lt;&lt; topStudent &lt;&lt; ")" &lt;&lt; endl;
+        cout &lt;&lt; "Lowest GPA: " &lt;&lt; lowestGPA &lt;&lt; " (" &lt;&lt; bottomStudent &lt;&lt; ")" &lt;&lt; endl;
+        cout &lt;&lt; "==================================" &lt;&lt; endl;
+    }
+    
+    void removeStudent() {
+        string id;
+        cout &lt;&lt; "\nEnter Student ID to remove: ";
+        cin &gt;&gt; id;
+        
+        auto it = find_if(students.begin(), students.end(),
+                         [&id](const Student& s) { return s.getStudentId() == id; });
+        
+        if (it != students.end()) {
+            cout &lt;&lt; "Removing student: " &lt;&lt; it-&gt;getFullName() &lt;&lt; endl;
+            students.erase(it);
+            cout &lt;&lt; "Student removed successfully!" &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "Student not found!" &lt;&lt; endl;
+        }
+    }
+    
+    void saveToFile() {
+        ofstream file(filename);
+        if (file.is_open()) {
+            file &lt;&lt; students.size() &lt;&lt; endl;
+            for (const auto& student : students) {
+                student.saveToFile(file);
+            }
+            file.close();
+        }
+    }
+    
+    void loadFromFile() {
+        ifstream file(filename);
+        if (file.is_open()) {
+            int studentCount;
+            file &gt;&gt; studentCount;
+            file.ignore();
+            
+            students.clear();
+            for (int i = 0; i &lt; studentCount; i++) {
+                Student student;
+                student.loadFromFile(file);
+                students.push_back(student);
+            }
+            file.close();
+        }
+    }
+    
+    void run() {
+        cout &lt;&lt; "Welcome to Student Management System!" &lt;&lt; endl;
+        
+        int choice;
+        bool running = true;
+        
+        while (running) {
+            displayMainMenu();
+            cin &gt;&gt; choice;
+            
+            switch (choice) {
+                case 1: addStudent(); break;
+                case 2: searchStudent(); break;
+                case 3: displayAllStudents(); break;
+                case 4: addGrade(); break;
+                case 5: displayStudentGrades(); break;
+                case 6: generateClassReport(); break;
+                case 7: removeStudent(); break;
+                case 8:
+                    cout &lt;&lt; "Thank you for using Student Management System!" &lt;&lt; endl;
+                    running = false;
+                    break;
+                default:
+                    cout &lt;&lt; "Invalid choice! Please try again." &lt;&lt; endl;
+            }
+            
+            if (running && choice != 8) {
+                cout &lt;&lt; "\nPress Enter to continue...";
+                cin.ignore();
+                cin.get();
+            }
+        }
+    }
+};
+
+int main() {
+    StudentManagementSystem sms;
+    sms.run();
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tic-Tac-Toe Game -->
+                <section class="content-section" id="tic-tac-toe">
+                    <div class="accordion-item">
+                        <div class="accordion-header" >
+                            <h2><i class="fas fa-gamepad"></i> Tic-Tac-Toe Game</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Create an interactive Tic-Tac-Toe game with AI opponent and game statistics.</p>
+                                
+                                <div class="project-features">
+                                    <h3>Features:</h3>
+                                    <ul>
+                                        <li>Two-player mode</li>
+                                        <li>AI opponent with different difficulty levels</li>
+                                        <li>Game statistics tracking</li>
+                                        <li>Input validation</li>
+                                        <li>Colorful console output</li>
+                                    </ul>
+                                </div>
+
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">tic_tac_toe.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;random&gt;
+#include &lt;algorithm&gt;
+#include &lt;limits&gt;
+using namespace std;
+
+class TicTacToe {
+private:
+    vector&lt;vector&lt;char&gt;&gt; board;
+    char currentPlayer;
+    bool gameOver;
+    char winner;
+    int playerXWins;
+    int playerOWins;
+    int draws;
+    bool vsAI;
+    int aiDifficulty; // 1: Easy, 2: Medium, 3: Hard
+    
+public:
+    TicTacToe() : board(3, vector&lt;char&gt;(3, ' ')), currentPlayer('X'), 
+                  gameOver(false), winner(' '), playerXWins(0), 
+                  playerOWins(0), draws(0), vsAI(false), aiDifficulty(1) {}
+    
+    void displayBoard() {
+        cout &lt;&lt; "\n   |   |   " &lt;&lt; endl;
+        cout &lt;&lt; " " &lt;&lt; board[0][0] &lt;&lt; " | " &lt;&lt; board[0][1] &lt;&lt; " | " &lt;&lt; board[0][2] &lt;&lt; endl;
+        cout &lt;&lt; "___|___|___" &lt;&lt; endl;
+        cout &lt;&lt; "   |   |   " &lt;&lt; endl;
+        cout &lt;&lt; " " &lt;&lt; board[1][0] &lt;&lt; " | " &lt;&lt; board[1][1] &lt;&lt; " | " &lt;&lt; board[1][2] &lt;&lt; endl;
+        cout &lt;&lt; "___|___|___" &lt;&lt; endl;
+        cout &lt;&lt; "   |   |   " &lt;&lt; endl;
+        cout &lt;&lt; " " &lt;&lt; board[2][0] &lt;&lt; " | " &lt;&lt; board[2][1] &lt;&lt; " | " &lt;&lt; board[2][2] &lt;&lt; endl;
+        cout &lt;&lt; "   |   |   " &lt;&lt; endl;
+        
+        cout &lt;&lt; "\nPositions:" &lt;&lt; endl;
+        cout &lt;&lt; " 1 | 2 | 3 " &lt;&lt; endl;
+        cout &lt;&lt; "___|___|___" &lt;&lt; endl;
+        cout &lt;&lt; " 4 | 5 | 6 " &lt;&lt; endl;
+        cout &lt;&lt; "___|___|___" &lt;&lt; endl;
+        cout &lt;&lt; " 7 | 8 | 9 " &lt;&lt; endl;
+    }
+    
+    bool isValidMove(int position) {
+        if (position &lt; 1 || position > 9) return false;
+        
+        int row = (position - 1) / 3;
+        int col = (position - 1) % 3;
+        
+        return board[row][col] == ' ';
+    }
+    
+    void makeMove(int position) {
+        int row = (position - 1) / 3;
+        int col = (position - 1) % 3;
+        board[row][col] = currentPlayer;
+    }
+    
+    bool checkWinner() {
+        // Check rows
+        for (int i = 0; i &lt; 3; i++) {
+            if (board[i][0] != ' ' && board[i][0] == board[i][1] && board[i][1] == board[i][2]) {
+                winner = board[i][0];
+                return true;
+            }
+        }
+        
+        // Check columns
+        for (int j = 0; j &lt; 3; j++) {
+            if (board[0][j] != ' ' && board[0][j] == board[1][j] && board[1][j] == board[2][j]) {
+                winner = board[0][j];
+                return true;
+            }
+        }
+        
+        // Check diagonals
+        if (board[0][0] != ' ' && board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
+            winner = board[0][0];
+            return true;
+        }
+        
+        if (board[0][2] != ' ' && board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
+            winner = board[0][2];
+            return true;
+        }
+        
+        return false;
+    }
+    
+    bool isBoardFull() {
+        for (int i = 0; i &lt; 3; i++) {
+            for (int j = 0; j &lt; 3; j++) {
+                if (board[i][j] == ' ') return false;
+            }
+        }
+        return true;
+    }
+    
+    vector&lt;int&gt; getAvailableMoves() {
+        vector&lt;int&gt; moves;
+        for (int i = 1; i &lt;= 9; i++) {
+            if (isValidMove(i)) {
+                moves.push_back(i);
+            }
+        }
+        return moves;
+    }
+    
+    int minimax(vector&lt;vector&lt;char&gt;&gt; tempBoard, bool isMaximizing, char aiPlayer, char humanPlayer) {
+        // Check for terminal states
+        char tempWinner = checkWinnerForBoard(tempBoard);
+        if (tempWinner == aiPlayer) return 1;
+        if (tempWinner == humanPlayer) return -1;
+        if (isBoardFullForBoard(tempBoard)) return 0;
+        
+        if (isMaximizing) {
+            int bestScore = -1000;
+            for (int i = 0; i &lt; 3; i++) {
+                for (int j = 0; j &lt; 3; j++) {
+                    if (tempBoard[i][j] == ' ') {
+                        tempBoard[i][j] = aiPlayer;
+                        int score = minimax(tempBoard, false, aiPlayer, humanPlayer);
+                        tempBoard[i][j] = ' ';
+                        bestScore = max(score, bestScore);
+                    }
+                }
+            }
+            return bestScore;
+        } else {
+            int bestScore = 1000;
+            for (int i = 0; i &lt; 3; i++) {
+                for (int j = 0; j &lt; 3; j++) {
+                    if (tempBoard[i][j] == ' ') {
+                        tempBoard[i][j] = humanPlayer;
+                        int score = minimax(tempBoard, true, aiPlayer, humanPlayer);
+                        tempBoard[i][j] = ' ';
+                        bestScore = min(score, bestScore);
+                    }
+                }
+            }
+            return bestScore;
+        }
+    }
+    
+    char checkWinnerForBoard(const vector&lt;vector&lt;char&gt;&gt;& tempBoard) {
+        // Check rows
+        for (int i = 0; i &lt; 3; i++) {
+            if (tempBoard[i][0] != ' ' && tempBoard[i][0] == tempBoard[i][1] && tempBoard[i][1] == tempBoard[i][2]) {
+                return tempBoard[i][0];
+            }
+        }
+        
+        // Check columns
+        for (int j = 0; j &lt; 3; j++) {
+            if (tempBoard[0][j] != ' ' && tempBoard[0][j] == tempBoard[1][j] && tempBoard[1][j] == tempBoard[2][j]) {
+                return tempBoard[0][j];
+            }
+        }
+        
+        // Check diagonals
+        if (tempBoard[0][0] != ' ' && tempBoard[0][0] == tempBoard[1][1] && tempBoard[1][1] == tempBoard[2][2]) {
+            return tempBoard[0][0];
+        }
+        
+        if (tempBoard[0][2] != ' ' && tempBoard[0][2] == tempBoard[1][1] && tempBoard[1][1] == tempBoard[2][0]) {
+            return tempBoard[0][2];
+        }
+        
+        return ' ';
+    }
+    
+    bool isBoardFullForBoard(const vector&lt;vector&lt;char&gt;&gt;& tempBoard) {
+        for (int i = 0; i &lt; 3; i++) {
+            for (int j = 0; j &lt; 3; j++) {
+                if (tempBoard[i][j] == ' ') return false;
+            }
+        }
+        return true;
+    }
+    
+    int getAIMove() {
+        vector&lt;int&gt; availableMoves = getAvailableMoves();
+        
+        if (aiDifficulty == 1) { // Easy - Random move
+            random_device rd;
+            mt19937 gen(rd());
+            uniform_int_distribution&lt;int&gt; dis(0, availableMoves.size() - 1);
+            return availableMoves[dis(gen)];
+        }
+        else if (aiDifficulty == 2) { // Medium - 70% optimal, 30% random
+            random_device rd;
+            mt19937 gen(rd());
+            uniform_int_distribution&lt;int&gt; dis(1, 10);
+            
+            if (dis(gen) &lt;= 7) {
+                // Make optimal move
+                return getBestMove();
+            } else {
+                // Make random move
+                uniform_int_distribution&lt;int&gt; randomDis(0, availableMoves.size() - 1);
+                return availableMoves[randomDis(gen)];
+            }
+        }
+        else { // Hard - Always optimal
+            return getBestMove();
+        }
+    }
+    
+    int getBestMove() {
+        int bestScore = -1000;
+        int bestMove = -1;
+        char aiPlayer = currentPlayer;
+        char humanPlayer = (aiPlayer == 'X') ? 'O' : 'X';
+        
+        for (int i = 0; i &lt; 3; i++) {
+            for (int j = 0; j &lt; 3; j++) {
+                if (board[i][j] == ' ') {
+                    board[i][j] = aiPlayer;
+                    int score = minimax(board, false, aiPlayer, humanPlayer);
+                    board[i][j] = ' ';
+                    
+                    if (score > bestScore) {
+                        bestScore = score;
+                        bestMove = i * 3 + j + 1;
+                    }
+                }
+            }
+        }
+        
+        return bestMove;
+    }
+    
+    void switchPlayer() {
+        currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+    }
+    
+    void resetGame() {
+        board = vector&lt;vector&lt;char&gt;&gt;(3, vector&lt;char&gt;(3, ' '));
+        currentPlayer = 'X';
+        gameOver = false;
+        winner = ' ';
+    }
+    
+    void displayStats() {
+        cout &lt;&lt; "\n========== GAME STATISTICS ==========" &lt;&lt; endl;
+        cout &lt;&lt; "Player X Wins: " &lt;&lt; playerXWins &lt;&lt; endl;
+        cout &lt;&lt; "Player O Wins: " &lt;&lt; playerOWins &lt;&lt; endl;
+        cout &lt;&lt; "Draws: " &lt;&lt; draws &lt;&lt; endl;
+        cout &lt;&lt; "Total Games: " &lt;&lt; (playerXWins + playerOWins + draws) &lt;&lt; endl;
+        cout &lt;&lt; "=====================================" &lt;&lt; endl;
+    }
+    
+    void displayMainMenu() {
+        cout &lt;&lt; "\n========== TIC-TAC-TOE GAME ==========" &lt;&lt; endl;
+        cout &lt;&lt; "1. Play vs Human" &lt;&lt; endl;
+        cout &lt;&lt; "2. Play vs AI" &lt;&lt; endl;
+        cout &lt;&lt; "3. View Statistics" &lt;&lt; endl;
+        cout &lt;&lt; "4. Reset Statistics" &lt;&lt; endl;
+        cout &lt;&lt; "5. Exit" &lt;&lt; endl;
+        cout &lt;&lt; "=====================================" &lt;&lt; endl;
+        cout &lt;&lt; "Enter your choice: ";
+    }
+    
+    void selectAIDifficulty() {
+        cout &lt;&lt; "\nSelect AI Difficulty:" &lt;&lt; endl;
+        cout &lt;&lt; "1. Easy (Random moves)" &lt;&lt; endl;
+        cout &lt;&lt; "2. Medium (Mixed strategy)" &lt;&lt; endl;
+        cout &lt;&lt; "3. Hard (Unbeatable)" &lt;&lt; endl;
+        cout &lt;&lt; "Enter difficulty (1-3): ";
+        
+        while (!(cin &gt;&gt; aiDifficulty) || aiDifficulty &lt; 1 || aiDifficulty > 3) {
+            cout &lt;&lt; "Invalid input! Please enter 1, 2, or 3: ";
+            cin.clear();
+            cin.ignore(numeric_limits&lt;streamsize&gt;::max(), '\n');
+        }
+    }
+    
+    void playGame() {
+        resetGame();
+        
+        cout &lt;&lt; "\nStarting new game!" &lt;&lt; endl;
+        if (vsAI) {
+            string difficulty[] = {"", "Easy", "Medium", "Hard"};
+            cout &lt;&lt; "Playing against AI (" &lt;&lt; difficulty[aiDifficulty] &lt;&lt; " difficulty)" &lt;&lt; endl;
+            cout &lt;&lt; "You are X, AI is O" &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "Two-player mode" &lt;&lt; endl;
+        }
+        
+        while (!gameOver) {
+            displayBoard();
+            cout &lt;&lt; "\nCurrent player: " &lt;&lt; currentPlayer &lt;&lt; endl;
+            
+            int position;
+            
+            if (vsAI && currentPlayer == 'O') {
+                cout &lt;&lt; "AI is thinking..." &lt;&lt; endl;
+                position = getAIMove();
+                cout &lt;&lt; "AI chooses position " &lt;&lt; position &lt;&lt; endl;
+            } else {
+                cout &lt;&lt; "Enter position (1-9): ";
+                while (!(cin &gt;&gt; position) || !isValidMove(position)) {
+                    if (cin.fail()) {
+                        cout &lt;&lt; "Invalid input! Please enter a number: ";
+                        cin.clear();
+                        cin.ignore(numeric_limits&lt;streamsize&gt;::max(), '\n');
+                    } else {
+                        cout &lt;&lt; "Invalid move! Position already taken or out of range. Try again: ";
+                    }
+                }
+            }
+            
+            makeMove(position);
+            
+            if (checkWinner()) {
+                displayBoard();
+                cout &lt;&lt; "\n🎉 Player " &lt;&lt; winner &lt;&lt; " wins! 🎉" &lt;&lt; endl;
+                if (winner == 'X') playerXWins++;
+                else playerOWins++;
+                gameOver = true;
+            } else if (isBoardFull()) {
+                displayBoard();
+                cout &lt;&lt; "\n🤝 It's a draw! 🤝" &lt;&lt; endl;
+                draws++;
+                gameOver = true;
+            } else {
+                switchPlayer();
+            }
+        }
+    }
+    
+    void run() {
+        cout &lt;&lt; "Welcome to Tic-Tac-Toe!" &lt;&lt; endl;
+        
+        int choice;
+        bool running = true;
+        
+        while (running) {
+            displayMainMenu();
+            
+            while (!(cin &gt;&gt; choice) || choice &lt; 1 || choice > 5) {
+                cout &lt;&lt; "Invalid choice! Please enter a number between 1-5: ";
+                cin.clear();
+                cin.ignore(numeric_limits&lt;streamsize&gt;::max(), '\n');
+            }
+            
+            switch (choice) {
+                case 1:
+                    vsAI = false;
+                    playGame();
+                    break;
+                case 2:
+                    vsAI = true;
+                    selectAIDifficulty();
+                    playGame();
+                    break;
+                case 3:
+                    displayStats();
+                    break;
+                case 4:
+                    playerXWins = playerOWins = draws = 0;
+                    cout &lt;&lt; "Statistics reset!" &lt;&lt; endl;
+                    break;
+                case 5:
+                    cout &lt;&lt; "Thanks for playing Tic-Tac-Toe!" &lt;&lt; endl;
+                    running = false;
+                    break;
+            }
+            
+            if (running && choice != 5) {
+                cout &lt;&lt; "\nPress Enter to continue...";
+                cin.ignore();
+                cin.get();
+            }
+        }
+    }
+};
+
+int main() {
+    TicTacToe game;
+    game.run();
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Library Management -->
+                <section class="content-section" id="library-management">
+                    <div class="accordion-item">
+                        <div class="accordion-header" >
+                            <h2><i class="fas fa-book"></i> Library Management System</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Build a comprehensive library management system with book tracking and member management.</p>
+                                
+                                <div class="project-features">
+                                    <h3>Features:</h3>
+                                    <ul>
+                                        <li>Book inventory management</li>
+                                        <li>Member registration and management</li>
+                                        <li>Book borrowing and returning</li>
+                                        <li>Search and filter functionality</li>
+                                        <li>Due date tracking and fines</li>
+                                        <li>Reports and statistics</li>
+                                    </ul>
+                                </div>
+
+                                <div class="info-box">
+                                    <i class="fas fa-info-circle"></i>
+                                    <p><strong>Note:</strong> This is a simplified version. The complete implementation would include more advanced features like database integration, user authentication, and a graphical interface.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- File Manager -->
+                <section class="content-section" id="file-manager">
+                    <div class="accordion-item">
+                        <div class="accordion-header" >
+                            <h2><i class="fas fa-folder"></i> Simple File Manager</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Create a console-based file manager with basic file operations.</p>
+                                
+                                <div class="project-features">
+                                    <h3>Features:</h3>
+                                    <ul>
+                                        <li>Directory navigation</li>
+                                        <li>File and folder listing</li>
+                                        <li>File creation, copying, and deletion</li>
+                                        <li>File size and date information</li>
+                                        <li>Search functionality</li>
+                                        <li>Text file viewing and editing</li>
+                                    </ul>
+                                </div>
+
+                                <div class="info-box">
+                                    <i class="fas fa-info-circle"></i>
+                                    <p><strong>Note:</strong> This project demonstrates file I/O operations, directory manipulation, and system programming concepts in C++.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="navigation-buttons">
+                <a href="stl.html" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Previous: STL
+                </a>
+                <a href="quiz.html" class="btn btn-primary">
+                    Next: Quiz <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

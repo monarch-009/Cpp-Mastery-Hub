@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Basics - C++ Mastery Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>C++ Mastery Hub</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link active">Topics <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="basics.html" class="active">Basics</a>
+                        <a href="oop.html">OOP</a>
+                        <a href="advanced.html">Advanced</a>
+                        <a href="stl.html">STL</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="projects.html" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="quiz.html" class="nav-link">Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-container">
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <h3>Table of Contents</h3>
+                <ul class="toc">
+                    <li><a href="#introduction">Introduction to C++</a></li>
+                    <li><a href="#hello-world">Hello World</a></li>
+                    <li><a href="#data-types">Data Types</a></li>
+                    <li><a href="#variables">Variables</a></li>
+                    <li><a href="#operators">Operators</a></li>
+                    <li><a href="#conditionals">Conditionals</a></li>
+                    <li><a href="#loops">Loops</a></li>
+                    <li><a href="#functions">Functions</a></li>
+                    <li><a href="#arrays">Arrays</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-header">
+                <h1>C++ Basics</h1>
+                <p>Master the fundamentals of C++ programming</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="content-sections">
+                <!-- Introduction to C++ -->
+                <section class="content-section" id="introduction">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-info-circle"></i> Introduction to C++</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>C++ is a powerful, general-purpose programming language that was developed by Bjarne Stroustrup at Bell Labs starting in 1979. It's an extension of the C programming language with object-oriented programming capabilities.</p>
+                                
+                                <h3>Key Features of C++:</h3>
+                                <ul>
+                                    <li><strong>Object-Oriented:</strong> Supports classes, objects, inheritance, and polymorphism</li>
+                                    <li><strong>Low-level Control:</strong> Direct memory management and hardware access</li>
+                                    <li><strong>High Performance:</strong> Compiled language with excellent runtime performance</li>
+                                    <li><strong>Rich Standard Library:</strong> Extensive collection of pre-built functions and classes</li>
+                                    <li><strong>Platform Independent:</strong> Code can run on multiple operating systems</li>
+                                </ul>
+
+                                <div class="info-box">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <p><strong>Did you know?</strong> C++ is used in system software, game development, embedded systems, and high-performance applications like web browsers and databases.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hello World -->
+                <section class="content-section" id="hello-world">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-play"></i> Hello World Program</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Let's start with the traditional "Hello World" program - your first step into C++ programming!</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">hello_world.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    cout &lt;&lt; "Hello, World!" &lt;&lt; endl;
+    return 0;
+}</code></pre>
+                                </div>
+
+                                <h3>Code Explanation:</h3>
+                                <ul>
+                                    <li><code>#include &lt;iostream&gt;</code> - Includes the input/output stream library</li>
+                                    <li><code>using namespace std;</code> - Allows us to use standard library functions without std:: prefix</li>
+                                    <li><code>int main()</code> - The main function where program execution begins</li>
+                                    <li><code>cout</code> - Output stream object for printing to console</li>
+                                    <li><code>&lt;&lt;</code> - Stream insertion operator</li>
+                                    <li><code>endl</code> - Inserts a newline and flushes the output buffer</li>
+                                    <li><code>return 0;</code> - Indicates successful program termination</li>
+                                </ul>
+
+                                <div class="output-box">
+                                    <h4>Output:</h4>
+                                    <pre>Hello, World!</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Data Types -->
+                <section class="content-section" id="data-types">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-database"></i> Data Types</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>C++ provides several built-in data types to store different kinds of information.</p>
+                                
+                                <div class="data-types-grid">
+                                    <div class="data-type-card">
+                                        <h4>Integer Types</h4>
+                                        <ul>
+                                            <li><code>int</code> - 4 bytes (32-bit)</li>
+                                            <li><code>short</code> - 2 bytes (16-bit)</li>
+                                            <li><code>long</code> - 8 bytes (64-bit)</li>
+                                            <li><code>long long</code> - 8 bytes (64-bit)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="data-type-card">
+                                        <h4>Floating Point</h4>
+                                        <ul>
+                                            <li><code>float</code> - 4 bytes (single precision)</li>
+                                            <li><code>double</code> - 8 bytes (double precision)</li>
+                                            <li><code>long double</code> - 12 bytes (extended precision)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="data-type-card">
+                                        <h4>Character & Boolean</h4>
+                                        <ul>
+                                            <li><code>char</code> - 1 byte (ASCII character)</li>
+                                            <li><code>wchar_t</code> - 2-4 bytes (wide character)</li>
+                                            <li><code>bool</code> - 1 byte (true/false)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">data_types_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    // Integer types
+    int age = 25;
+    short year = 2024;
+    long population = 7800000000L;
+    
+    // Floating point types
+    float height = 5.9f;
+    double pi = 3.14159265359;
+    
+    // Character and boolean
+    char grade = 'A';
+    bool isStudent = true;
+    
+    // Display values
+    cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+    cout &lt;&lt; "Height: " &lt;&lt; height &lt;&lt; endl;
+    cout &lt;&lt; "Pi: " &lt;&lt; pi &lt;&lt; endl;
+    cout &lt;&lt; "Grade: " &lt;&lt; grade &lt;&lt; endl;
+    cout &lt;&lt; "Is Student: " &lt;&lt; isStudent &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Variables -->
+                <section class="content-section" id="variables">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-box"></i> Variables</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Variables are containers that store data values. In C++, you must declare a variable with its data type before using it.</p>
+                                
+                                <h3>Variable Declaration Syntax:</h3>
+                                <div class="syntax-box">
+                                    <code>data_type variable_name = initial_value;</code>
+                                </div>
+
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">variables_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    // Variable declaration and initialization
+    int score = 95;
+    double temperature = 98.6;
+    char initial = 'J';
+    bool isPassed = true;
+    
+    // Multiple variable declaration
+    int x = 10, y = 20, z = 30;
+    
+    // Variable modification
+    score = score + 5;  // score is now 100
+    temperature *= 1.1; // temperature is now 108.46
+    
+    // Display variables
+    cout &lt;&lt; "Score: " &lt;&lt; score &lt;&lt; endl;
+    cout &lt;&lt; "Temperature: " &lt;&lt; temperature &lt;&lt; endl;
+    cout &lt;&lt; "Initial: " &lt;&lt; initial &lt;&lt; endl;
+    cout &lt;&lt; "Passed: " &lt;&lt; (isPassed ? "Yes" : "No") &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                                </div>
+
+                                <div class="info-box">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <p><strong>Important:</strong> Variable names must start with a letter or underscore, can contain letters, digits, and underscores, and are case-sensitive.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Operators -->
+                <section class="content-section" id="operators">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-calculator"></i> Operators</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Operators are symbols that perform operations on variables and values.</p>
+                                
+                                <div class="operators-grid">
+                                    <div class="operator-category">
+                                        <h4>Arithmetic Operators</h4>
+                                        <ul>
+                                            <li><code>+</code> Addition</li>
+                                            <li><code>-</code> Subtraction</li>
+                                            <li><code>*</code> Multiplication</li>
+                                            <li><code>/</code> Division</li>
+                                            <li><code>%</code> Modulus (remainder)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="operator-category">
+                                        <h4>Comparison Operators</h4>
+                                        <ul>
+                                            <li><code>==</code> Equal to</li>
+                                            <li><code>!=</code> Not equal to</li>
+                                            <li><code>&lt;</code> Less than</li>
+                                            <li><code>&gt;</code> Greater than</li>
+                                            <li><code>&lt;=</code> Less than or equal</li>
+                                            <li><code>&gt;=</code> Greater than or equal</li>
+                                        </ul>
+                                    </div>
+                                    <div class="operator-category">
+                                        <h4>Logical Operators</h4>
+                                        <ul>
+                                            <li><code>&&</code> Logical AND</li>
+                                            <li><code>||</code> Logical OR</li>
+                                            <li><code>!</code> Logical NOT</li>
+                                        </ul>
+                                    </div>
+                                    <div class="operator-category">
+                                        <h4>Assignment Operators</h4>
+                                        <ul>
+                                            <li><code>=</code> Assignment</li>
+                                            <li><code>+=</code> Add and assign</li>
+                                            <li><code>-=</code> Subtract and assign</li>
+                                            <li><code>*=</code> Multiply and assign</li>
+                                            <li><code>/=</code> Divide and assign</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">operators_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int a = 10, b = 3;
+    
+    // Arithmetic operations
+    cout &lt;&lt; "a + b = " &lt;&lt; (a + b) &lt;&lt; endl;  // 13
+    cout &lt;&lt; "a - b = " &lt;&lt; (a - b) &lt;&lt; endl;  // 7
+    cout &lt;&lt; "a * b = " &lt;&lt; (a * b) &lt;&lt; endl;  // 30
+    cout &lt;&lt; "a / b = " &lt;&lt; (a / b) &lt;&lt; endl;  // 3
+    cout &lt;&lt; "a % b = " &lt;&lt; (a % b) &lt;&lt; endl;  // 1
+    
+    // Comparison operations
+    cout &lt;&lt; "a == b: " &lt;&lt; (a == b) &lt;&lt; endl;  // 0 (false)
+    cout &lt;&lt; "a > b: " &lt;&lt; (a > b) &lt;&lt; endl;    // 1 (true)
+    
+    // Logical operations
+    bool x = true, y = false;
+    cout &lt;&lt; "x && y: " &lt;&lt; (x && y) &lt;&lt; endl;  // 0 (false)
+    cout &lt;&lt; "x || y: " &lt;&lt; (x || y) &lt;&lt; endl;  // 1 (true)
+    cout &lt;&lt; "!x: " &lt;&lt; (!x) &lt;&lt; endl;          // 0 (false)
+    
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Conditionals -->
+                <section class="content-section" id="conditionals">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-code-branch"></i> Conditionals</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Conditional statements allow you to execute different code blocks based on certain conditions.</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">conditionals_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int score = 85;
+    
+    // Simple if statement
+    if (score >= 90) {
+        cout &lt;&lt; "Excellent!" &lt;&lt; endl;
+    }
+    
+    // if-else statement
+    if (score >= 60) {
+        cout &lt;&lt; "You passed!" &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "You failed!" &lt;&lt; endl;
+    }
+    
+    // if-else if-else statement
+    if (score >= 90) {
+        cout &lt;&lt; "Grade: A" &lt;&lt; endl;
+    } else if (score >= 80) {
+        cout &lt;&lt; "Grade: B" &lt;&lt; endl;
+    } else if (score >= 70) {
+        cout &lt;&lt; "Grade: C" &lt;&lt; endl;
+    } else if (score >= 60) {
+        cout &lt;&lt; "Grade: D" &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "Grade: F" &lt;&lt; endl;
+    }
+    
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Loops -->
+                <section class="content-section" id="loops">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-sync-alt"></i> Loops</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Loops allow you to execute a block of code repeatedly based on a condition.</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">loops_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    // for loop example
+    cout &lt;&lt; "For loop (1 to 5):" &lt;&lt; endl;
+    for (int i = 1; i &lt;= 5; i++) {
+        cout &lt;&lt; i &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl &lt;&lt; endl;
+    
+    // while loop example
+    cout &lt;&lt; "While loop (countdown from 5):" &lt;&lt; endl;
+    int count = 5;
+    while (count > 0) {
+        cout &lt;&lt; count &lt;&lt; " ";
+        count--;
+    }
+    cout &lt;&lt; "Blast off!" &lt;&lt; endl &lt;&lt; endl;
+    
+    // do-while loop example
+    cout &lt;&lt; "Do-while loop:" &lt;&lt; endl;
+    int num = 1;
+    do {
+        cout &lt;&lt; "Number: " &lt;&lt; num &lt;&lt; endl;
+        num++;
+    } while (num &lt;= 3);
+    
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Functions -->
+                <section class="content-section" id="functions">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-cogs"></i> Functions</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Functions are reusable blocks of code that perform specific tasks.</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">functions_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+// Function declaration
+int add(int a, int b);
+void greet(string name);
+
+int main() {
+    // Function calls
+    int result = add(5, 3);
+    cout &lt;&lt; "5 + 3 = " &lt;&lt; result &lt;&lt; endl;
+    
+    greet("Alice");
+    
+    return 0;
+}
+
+// Function definitions
+int add(int a, int b) {
+    return a + b;
+}
+
+void greet(string name) {
+    cout &lt;&lt; "Hello, " &lt;&lt; name &lt;&lt; "!" &lt;&lt; endl;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Arrays -->
+                <section class="content-section" id="arrays">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-list"></i> Arrays</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Arrays are collections of elements of the same data type stored in contiguous memory locations.</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">arrays_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    // Array declaration and initialization
+    int numbers[5] = {10, 20, 30, 40, 50};
+    
+    // Accessing array elements
+    cout &lt;&lt; "First number: " &lt;&lt; numbers[0] &lt;&lt; endl;
+    cout &lt;&lt; "Third number: " &lt;&lt; numbers[2] &lt;&lt; endl;
+    
+    // Array traversal using for loop
+    cout &lt;&lt; "All numbers: ";
+    for (int i = 0; i &lt; 5; i++) {
+        cout &lt;&lt; numbers[i] &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="navigation-buttons">
+                <a href="index.html" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+                <a href="oop.html" class="btn btn-primary">
+                    Next: OOP <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

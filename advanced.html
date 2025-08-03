@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced C++ - C++ Mastery Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>C++ Mastery Hub</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link active">Topics <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="basics.html">Basics</a>
+                        <a href="oop.html">OOP</a>
+                        <a href="advanced.html" class="active">Advanced</a>
+                        <a href="stl.html">STL</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="projects.html" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="quiz.html" class="nav-link">Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-container">
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <h3>Table of Contents</h3>
+                <ul class="toc">
+                    <li><a href="#templates">Templates</a></li>
+                    <li><a href="#smart-pointers">Smart Pointers</a></li>
+                    <li><a href="#exception-handling">Exception Handling</a></li>
+                    <li><a href="#lambda-expressions">Lambda Expressions</a></li>
+                    <li><a href="#move-semantics">Move Semantics</a></li>
+                    <li><a href="#modern-cpp">Modern C++ Features</a></li>
+                    <li><a href="#multithreading">Multithreading</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-header">
+                <h1>Advanced C++</h1>
+                <p>Master advanced C++ concepts and modern features</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="content-sections">
+                <!-- Templates -->
+                <section class="content-section" id="templates">
+                    <div class="accordion-item">
+                        <div class="accordion-header" >
+                            <h2><i class="fas fa-layer-group"></i> Templates</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Templates allow you to write generic code that works with different data types.</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">templates_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+// Function template
+template&lt;typename T&gt;
+T getMax(T a, T b) {
+    return (a > b) ? a : b;
+}
+
+// Class template
+template&lt;typename T&gt;
+class Stack {
+private:
+    vector&lt;T&gt; elements;
+    
+public:
+    void push(const T& element) {
+        elements.push_back(element);
+    }
+    
+    void pop() {
+        if (!elements.empty()) {
+            elements.pop_back();
+        }
+    }
+    
+    T top() const {
+        if (!elements.empty()) {
+            return elements.back();
+        }
+        throw runtime_error("Stack is empty");
+    }
+    
+    bool empty() const {
+        return elements.empty();
+    }
+    
+    size_t size() const {
+        return elements.size();
+    }
+};
+
+int main() {
+    // Using function template
+    cout &lt;&lt; "Max of 10 and 20: " &lt;&lt; getMax(10, 20) &lt;&lt; endl;
+    cout &lt;&lt; "Max of 3.5 and 2.1: " &lt;&lt; getMax(3.5, 2.1) &lt;&lt; endl;
+    cout &lt;&lt; "Max of 'a' and 'z': " &lt;&lt; getMax('a', 'z') &lt;&lt; endl;
+    
+    // Using class template
+    Stack&lt;int&gt; intStack;
+    intStack.push(10);
+    intStack.push(20);
+    intStack.push(30);
+    
+    cout &lt;&lt; "Stack size: " &lt;&lt; intStack.size() &lt;&lt; endl;
+    cout &lt;&lt; "Top element: " &lt;&lt; intStack.top() &lt;&lt; endl;
+    
+    Stack&lt;string&gt; stringStack;
+    stringStack.push("Hello");
+    stringStack.push("World");
+    
+    cout &lt;&lt; "String stack top: " &lt;&lt; stringStack.top() &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Smart Pointers -->
+                <section class="content-section" id="smart-pointers">
+                    <div class="accordion-item">
+                        <div class="accordion-header" >
+                            <h2><i class="fas fa-brain"></i> Smart Pointers</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Smart pointers automatically manage memory and help prevent memory leaks.</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">smart_pointers_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;memory&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Person {
+private:
+    string name;
+    int age;
+    
+public:
+    Person(string n, int a) : name(n), age(a) {
+        cout &lt;&lt; "Person " &lt;&lt; name &lt;&lt; " created" &lt;&lt; endl;
+    }
+    
+    ~Person() {
+        cout &lt;&lt; "Person " &lt;&lt; name &lt;&lt; " destroyed" &lt;&lt; endl;
+    }
+    
+    void introduce() {
+        cout &lt;&lt; "Hi, I'm " &lt;&lt; name &lt;&lt; " and I'm " &lt;&lt; age &lt;&lt; " years old" &lt;&lt; endl;
+    }
+    
+    string getName() const { return name; }
+};
+
+int main() {
+    // unique_ptr - exclusive ownership
+    cout &lt;&lt; "=== unique_ptr example ===" &lt;&lt; endl;
+    {
+        unique_ptr&lt;Person&gt; person1 = make_unique&lt;Person&gt;("Alice", 25);
+        person1-&gt;introduce();
+        
+        // Transfer ownership
+        unique_ptr&lt;Person&gt; person2 = move(person1);
+        if (!person1) {
+            cout &lt;&lt; "person1 is now null" &lt;&lt; endl;
+        }
+        person2-&gt;introduce();
+    } // person2 automatically destroyed here
+    
+    // shared_ptr - shared ownership
+    cout &lt;&lt; "\n=== shared_ptr example ===" &lt;&lt; endl;
+    {
+        shared_ptr&lt;Person&gt; person3 = make_shared&lt;Person&gt;("Bob", 30);
+        cout &lt;&lt; "Reference count: " &lt;&lt; person3.use_count() &lt;&lt; endl;
+        
+        {
+            shared_ptr&lt;Person&gt; person4 = person3; // Shared ownership
+            cout &lt;&lt; "Reference count: " &lt;&lt; person3.use_count() &lt;&lt; endl;
+            person4-&gt;introduce();
+        } // person4 goes out of scope
+        
+        cout &lt;&lt; "Reference count: " &lt;&lt; person3.use_count() &lt;&lt; endl;
+        person3-&gt;introduce();
+    } // person3 destroyed here
+    
+    // weak_ptr - non-owning observer
+    cout &lt;&lt; "\n=== weak_ptr example ===" &lt;&lt; endl;
+    {
+        shared_ptr&lt;Person&gt; person5 = make_shared&lt;Person&gt;("Charlie", 35);
+        weak_ptr&lt;Person&gt; weakPerson = person5;
+        
+        cout &lt;&lt; "Reference count: " &lt;&lt; person5.use_count() &lt;&lt; endl;
+        
+        if (auto lockedPerson = weakPerson.lock()) {
+            lockedPerson-&gt;introduce();
+        }
+        
+        person5.reset(); // Release the shared_ptr
+        
+        if (weakPerson.expired()) {
+            cout &lt;&lt; "weak_ptr is expired" &lt;&lt; endl;
+        }
+    }
+    
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Exception Handling -->
+                <section class="content-section" id="exception-handling">
+                    <div class="accordion-item">
+                        <div class="accordion-header" >
+                            <h2><i class="fas fa-exclamation-triangle"></i> Exception Handling</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Exception handling provides a way to handle runtime errors gracefully.</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">exception_handling_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;stdexcept&gt;
+#include &lt;string&gt;
+using namespace std;
+
+// Custom exception class
+class DivisionByZeroException : public exception {
+public:
+    const char* what() const noexcept override {
+        return "Division by zero is not allowed!";
+    }
+};
+
+class Calculator {
+public:
+    static double divide(double a, double b) {
+        if (b == 0) {
+            throw DivisionByZeroException();
+        }
+        return a / b;
+    }
+    
+    static int factorial(int n) {
+        if (n &lt; 0) {
+            throw invalid_argument("Factorial is not defined for negative numbers");
+        }
+        if (n > 20) {
+            throw overflow_error("Factorial too large to compute");
+        }
+        
+        int result = 1;
+        for (int i = 1; i &lt;= n; i++) {
+            result *= i;
+        }
+        return result;
+    }
+};
+
+int main() {
+    // Basic try-catch
+    cout &lt;&lt; "=== Basic Exception Handling ===" &lt;&lt; endl;
+    try {
+        double result = Calculator::divide(10, 0);
+        cout &lt;&lt; "Result: " &lt;&lt; result &lt;&lt; endl;
+    }
+    catch (const DivisionByZeroException& e) {
+        cout &lt;&lt; "Custom Exception: " &lt;&lt; e.what() &lt;&lt; endl;
+    }
+    
+    // Multiple catch blocks
+    cout &lt;&lt; "\n=== Multiple Exception Types ===" &lt;&lt; endl;
+    try {
+        int fact = Calculator::factorial(-5);
+        cout &lt;&lt; "Factorial: " &lt;&lt; fact &lt;&lt; endl;
+    }
+    catch (const invalid_argument& e) {
+        cout &lt;&lt; "Invalid Argument: " &lt;&lt; e.what() &lt;&lt; endl;
+    }
+    catch (const overflow_error& e) {
+        cout &lt;&lt; "Overflow Error: " &lt;&lt; e.what() &lt;&lt; endl;
+    }
+    catch (const exception& e) {
+        cout &lt;&lt; "General Exception: " &lt;&lt; e.what() &lt;&lt; endl;
+    }
+    
+    // Try-catch with finally-like behavior using RAII
+    cout &lt;&lt; "\n=== RAII Pattern ===" &lt;&lt; endl;
+    try {
+        cout &lt;&lt; "Attempting risky operation..." &lt;&lt; endl;
+        int result = Calculator::factorial(5);
+        cout &lt;&lt; "Factorial of 5: " &lt;&lt; result &lt;&lt; endl;
+    }
+    catch (...) {
+        cout &lt;&lt; "Caught unknown exception" &lt;&lt; endl;
+    }
+    
+    cout &lt;&lt; "Program continues normally..." &lt;&lt; endl;
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Lambda Expressions -->
+                <section class="content-section" id="lambda-expressions">
+                    <div class="accordion-item">
+                        <div class="accordion-header" >
+                            <h2><i class="fas fa-function"></i> Lambda Expressions</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Lambda expressions provide a concise way to define anonymous functions.</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">lambda_expressions_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;functional&gt;
+using namespace std;
+
+int main() {
+    // Basic lambda
+    cout &lt;&lt; "=== Basic Lambda ===" &lt;&lt; endl;
+    auto greet = []() {
+        cout &lt;&lt; "Hello from lambda!" &lt;&lt; endl;
+    };
+    greet();
+    
+    // Lambda with parameters
+    auto add = [](int a, int b) {
+        return a + b;
+    };
+    cout &lt;&lt; "5 + 3 = " &lt;&lt; add(5, 3) &lt;&lt; endl;
+    
+    // Lambda with capture
+    cout &lt;&lt; "\n=== Lambda with Capture ===" &lt;&lt; endl;
+    int multiplier = 10;
+    
+    // Capture by value
+    auto multiplyByValue = [multiplier](int x) {
+        return x * multiplier;
+    };
+    
+    // Capture by reference
+    auto multiplyByRef = [&multiplier](int x) {
+        multiplier++; // Can modify the original variable
+        return x * multiplier;
+    };
+    
+    cout &lt;&lt; "Multiply 5 by value: " &lt;&lt; multiplyByValue(5) &lt;&lt; endl;
+    cout &lt;&lt; "Multiplier before ref call: " &lt;&lt; multiplier &lt;&lt; endl;
+    cout &lt;&lt; "Multiply 5 by ref: " &lt;&lt; multiplyByRef(5) &lt;&lt; endl;
+    cout &lt;&lt; "Multiplier after ref call: " &lt;&lt; multiplier &lt;&lt; endl;
+    
+    // Using lambdas with STL algorithms
+    cout &lt;&lt; "\n=== Lambda with STL Algorithms ===" &lt;&lt; endl;
+    vector&lt;int&gt; numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    
+    // Find even numbers
+    cout &lt;&lt; "Even numbers: ";
+    for_each(numbers.begin(), numbers.end(), [](int n) {
+        if (n % 2 == 0) {
+            cout &lt;&lt; n &lt;&lt; " ";
+        }
+    });
+    cout &lt;&lt; endl;
+    
+    // Transform elements
+    vector&lt;int&gt; squared;
+    transform(numbers.begin(), numbers.end(), back_inserter(squared),
+              [](int n) { return n * n; });
+    
+    cout &lt;&lt; "Squared numbers: ";
+    for (int n : squared) {
+        cout &lt;&lt; n &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    // Count elements with condition
+    int count = count_if(numbers.begin(), numbers.end(),
+                        [](int n) { return n > 5; });
+    cout &lt;&lt; "Numbers greater than 5: " &lt;&lt; count &lt;&lt; endl;
+    
+    // Generic lambda (C++14)
+    cout &lt;&lt; "\n=== Generic Lambda ===" &lt;&lt; endl;
+    auto genericAdd = [](auto a, auto b) {
+        return a + b;
+    };
+    
+    cout &lt;&lt; "Generic add (int): " &lt;&lt; genericAdd(5, 3) &lt;&lt; endl;
+    cout &lt;&lt; "Generic add (double): " &lt;&lt; genericAdd(5.5, 3.2) &lt;&lt; endl;
+    cout &lt;&lt; "Generic add (string): " &lt;&lt; genericAdd(string("Hello "), string("World")) &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Move Semantics -->
+                <section class="content-section" id="move-semantics">
+                    <div class="accordion-item">
+                        <div class="accordion-header" >
+                            <h2><i class="fas fa-arrows-alt"></i> Move Semantics</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Move semantics allow efficient transfer of resources from temporary objects.</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">move_semantics_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;utility&gt;
+using namespace std;
+
+class MyString {
+private:
+    char* data;
+    size_t length;
+    
+public:
+    // Constructor
+    MyString(const char* str = "") {
+        length = strlen(str);
+        data = new char[length + 1];
+        strcpy(data, str);
+        cout &lt;&lt; "Constructor: " &lt;&lt; data &lt;&lt; endl;
+    }
+    
+    // Copy constructor
+    MyString(const MyString& other) {
+        length = other.length;
+        data = new char[length + 1];
+        strcpy(data, other.data);
+        cout &lt;&lt; "Copy constructor: " &lt;&lt; data &lt;&lt; endl;
+    }
+    
+    // Move constructor
+    MyString(MyString&& other) noexcept {
+        data = other.data;
+        length = other.length;
+        other.data = nullptr;
+        other.length = 0;
+        cout &lt;&lt; "Move constructor: " &lt;&lt; data &lt;&lt; endl;
+    }
+    
+    // Copy assignment operator
+    MyString& operator=(const MyString& other) {
+        if (this != &other) {
+            delete[] data;
+            length = other.length;
+            data = new char[length + 1];
+            strcpy(data, other.data);
+            cout &lt;&lt; "Copy assignment: " &lt;&lt; data &lt;&lt; endl;
+        }
+        return *this;
+    }
+    
+    // Move assignment operator
+    MyString& operator=(MyString&& other) noexcept {
+        if (this != &other) {
+            delete[] data;
+            data = other.data;
+            length = other.length;
+            other.data = nullptr;
+            other.length = 0;
+            cout &lt;&lt; "Move assignment: " &lt;&lt; data &lt;&lt; endl;
+        }
+        return *this;
+    }
+    
+    // Destructor
+    ~MyString() {
+        if (data) {
+            cout &lt;&lt; "Destructor: " &lt;&lt; data &lt;&lt; endl;
+            delete[] data;
+        } else {
+            cout &lt;&lt; "Destructor: (moved object)" &lt;&lt; endl;
+        }
+    }
+    
+    const char* c_str() const { return data ? data : ""; }
+};
+
+MyString createString(const char* str) {
+    return MyString(str); // Return by value - move constructor called
+}
+
+int main() {
+    cout &lt;&lt; "=== Move Semantics Demo ===" &lt;&lt; endl;
+    
+    // Regular construction
+    MyString str1("Hello");
+    
+    // Copy construction
+    MyString str2 = str1;
+    
+    // Move construction
+    MyString str3 = move(str1); // str1 is now in moved-from state
+    
+    cout &lt;&lt; "str1 after move: '" &lt;&lt; str1.c_str() &lt;&lt; "'" &lt;&lt; endl;
+    cout &lt;&lt; "str3 after move: '" &lt;&lt; str3.c_str() &lt;&lt; "'" &lt;&lt; endl;
+    
+    // Function returning by value (move optimization)
+    cout &lt;&lt; "\n=== Function Return ===" &lt;&lt; endl;
+    MyString str4 = createString("World");
+    
+    // Using std::move with containers
+    cout &lt;&lt; "\n=== Container Move ===" &lt;&lt; endl;
+    vector&lt;MyString&gt; vec;
+    vec.push_back(MyString("First"));  // Move constructor
+    vec.push_back(MyString("Second")); // Move constructor
+    
+    MyString str5("Third");
+    vec.push_back(move(str5)); // Explicit move
+    
+    cout &lt;&lt; "str5 after move to vector: '" &lt;&lt; str5.c_str() &lt;&lt; "'" &lt;&lt; endl;
+    
+    // Perfect forwarding example
+    cout &lt;&lt; "\n=== Perfect Forwarding ===" &lt;&lt; endl;
+    auto makeString = [](auto&& str) {
+        return MyString(forward&lt;decltype(str)&gt;(str));
+    };
+    
+    MyString str6("Forwarded");
+    MyString str7 = makeString(move(str6));
+    
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Modern C++ Features -->
+                <section class="content-section" id="modern-cpp">
+                    <div class="accordion-item">
+                        <div class="accordion-header" >
+                            <h2><i class="fas fa-rocket"></i> Modern C++ Features</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Modern C++ (C++11/14/17/20) introduces many powerful features.</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">modern_cpp_features.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;map&gt;
+#include &lt;string&gt;
+#include &lt;optional&gt;
+#include &lt;variant&gt;
+#include &lt;any&gt;
+#include &lt;tuple&gt;
+using namespace std;
+
+int main() {
+    // Auto keyword
+    cout &lt;&lt; "=== Auto Keyword ===" &lt;&lt; endl;
+    auto x = 42;        // int
+    auto y = 3.14;      // double
+    auto z = "Hello";   // const char*
+    cout &lt;&lt; "x: " &lt;&lt; x &lt;&lt; ", y: " &lt;&lt; y &lt;&lt; ", z: " &lt;&lt; z &lt;&lt; endl;
+    
+    // Range-based for loops
+    cout &lt;&lt; "\n=== Range-based For Loop ===" &lt;&lt; endl;
+    vector&lt;int&gt; numbers = {1, 2, 3, 4, 5};
+    for (const auto& num : numbers) {
+        cout &lt;&lt; num &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    // Initializer lists
+    cout &lt;&lt; "\n=== Initializer Lists ===" &lt;&lt; endl;
+    vector&lt;string&gt; names{"Alice", "Bob", "Charlie"};
+    map&lt;string, int&gt; ages{{"Alice", 25}, {"Bob", 30}, {"Charlie", 35}};
+    
+    for (const auto& [name, age] : ages) { // Structured binding (C++17)
+        cout &lt;&lt; name &lt;&lt; " is " &lt;&lt; age &lt;&lt; " years old" &lt;&lt; endl;
+    }
+    
+    // nullptr
+    cout &lt;&lt; "\n=== nullptr ===" &lt;&lt; endl;
+    int* ptr = nullptr;
+    if (ptr == nullptr) {
+        cout &lt;&lt; "Pointer is null" &lt;&lt; endl;
+    }
+    
+    // Optional (C++17)
+    cout &lt;&lt; "\n=== std::optional ===" &lt;&lt; endl;
+    auto findValue = [](const vector&lt;int&gt;& vec, int target) -&gt; optional&lt;size_t&gt; {
+        for (size_t i = 0; i &lt; vec.size(); ++i) {
+            if (vec[i] == target) {
+                return i;
+            }
+        }
+        return nullopt;
+    };
+    
+    if (auto index = findValue(numbers, 3)) {
+        cout &lt;&lt; "Found 3 at index: " &lt;&lt; *index &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "Value not found" &lt;&lt; endl;
+    }
+    
+    // Variant (C++17)
+    cout &lt;&lt; "\n=== std::variant ===" &lt;&lt; endl;
+    variant&lt;int, string, double&gt; var;
+    var = 42;
+    cout &lt;&lt; "Variant holds int: " &lt;&lt; get&lt;int&gt;(var) &lt;&lt; endl;
+    
+    var = "Hello World";
+    cout &lt;&lt; "Variant holds string: " &lt;&lt; get&lt;string&gt;(var) &lt;&lt; endl;
+    
+    // Tuple and structured binding
+    cout &lt;&lt; "\n=== Tuple and Structured Binding ===" &lt;&lt; endl;
+    auto person = make_tuple("John", 28, 75000.0);
+    auto [name, age, salary] = person;
+    cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; ", Age: " &lt;&lt; age &lt;&lt; ", Salary: $" &lt;&lt; salary &lt;&lt; endl;
+    
+    // Constexpr
+    cout &lt;&lt; "\n=== constexpr ===" &lt;&lt; endl;
+    constexpr auto factorial = [](int n) {
+        return (n &lt;= 1) ? 1 : n * factorial(n - 1);
+    };
+    
+    constexpr int fact5 = factorial(5); // Computed at compile time
+    cout &lt;&lt; "5! = " &lt;&lt; fact5 &lt;&lt; endl;
+    
+    // if constexpr (C++17)
+    cout &lt;&lt; "\n=== if constexpr ===" &lt;&lt; endl;
+    auto processValue = []&lt;typename T&gt;(T value) {
+        if constexpr (is_integral_v&lt;T&gt;) {
+            cout &lt;&lt; "Processing integer: " &lt;&lt; value &lt;&lt; endl;
+        } else if constexpr (is_floating_point_v&lt;T&gt;) {
+            cout &lt;&lt; "Processing floating point: " &lt;&lt; value &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "Processing other type" &lt;&lt; endl;
+        }
+    };
+    
+    processValue(42);
+    processValue(3.14);
+    processValue("Hello");
+    
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Multithreading -->
+                <section class="content-section" id="multithreading">
+                    <div class="accordion-item">
+                        <div class="accordion-header" >
+                            <h2><i class="fas fa-tasks"></i> Multithreading</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>C++11 introduced built-in support for multithreading and concurrent programming.</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">multithreading_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+#include &lt;mutex&gt;
+#include &lt;condition_variable&gt;
+#include &lt;future&gt;
+#include &lt;vector&gt;
+#include &lt;chrono&gt;
+using namespace std;
+
+// Global variables for demonstration
+mutex mtx;
+condition_variable cv;
+bool ready = false;
+int counter = 0;
+
+// Simple thread function
+void printNumbers(int start, int end, const string& threadName) {
+    for (int i = start; i <= end; ++i) {
+        {
+            lock_guard&lt;mutex&gt; lock(mtx);
+            cout &lt;&lt; threadName &lt;&lt; ": " &lt;&lt; i &lt;&lt; endl;
+        }
+        this_thread::sleep_for(chrono::milliseconds(100));
+    }
+}
+
+// Thread-safe counter increment
+void incrementCounter(int times) {
+    for (int i = 0; i &lt; times; ++i) {
+        lock_guard&lt;mutex&gt; lock(mtx);
+        ++counter;
+    }
+}
+
+// Producer-Consumer example
+void producer() {
+    this_thread::sleep_for(chrono::seconds(1));
+    {
+        lock_guard&lt;mutex&gt; lock(mtx);
+        ready = true;
+        cout &lt;&lt; "Producer: Data is ready!" &lt;&lt; endl;
+    }
+    cv.notify_one();
+}
+
+void consumer() {
+    unique_lock&lt;mutex&gt; lock(mtx);
+    cv.wait(lock, [] { return ready; });
+    cout &lt;&lt; "Consumer: Processing data..." &lt;&lt; endl;
+}
+
+// Function for async/future example
+int calculateSum(int start, int end) {
+    int sum = 0;
+    for (int i = start; i <= end; ++i) {
+        sum += i;
+    }
+    this_thread::sleep_for(chrono::milliseconds(500)); // Simulate work
+    return sum;
+}
+
+int main() {
+    // Basic thread creation and joining
+    cout &lt;&lt; "=== Basic Threading ===" &lt;&lt; endl;
+    thread t1(printNumbers, 1, 5, "Thread1");
+    thread t2(printNumbers, 6, 10, "Thread2");
+    
+    t1.join();
+    t2.join();
+    
+    // Thread-safe operations
+    cout &lt;&lt; "\n=== Thread-Safe Counter ===" &lt;&lt; endl;
+    counter = 0; // Reset counter
+    
+    vector&lt;thread&gt; threads;
+    for (int i = 0; i &lt; 5; ++i) {
+        threads.emplace_back(incrementCounter, 1000);
+    }
+    
+    for (auto& t : threads) {
+        t.join();
+    }
+    
+    cout &lt;&lt; "Final counter value: " &lt;&lt; counter &lt;&lt; endl;
+    
+    // Producer-Consumer pattern
+    cout &lt;&lt; "\n=== Producer-Consumer ===" &lt;&lt; endl;
+    ready = false; // Reset
+    
+    thread producerThread(producer);
+    thread consumerThread(consumer);
+    
+    producerThread.join();
+    consumerThread.join();
+    
+    // Async and Future
+    cout &lt;&lt; "\n=== Async and Future ===" &lt;&lt; endl;
+    
+    // Launch async tasks
+    auto future1 = async(launch::async, calculateSum, 1, 1000);
+    auto future2 = async(launch::async, calculateSum, 1001, 2000);
+    auto future3 = async(launch::async, calculateSum, 2001, 3000);
+    
+    cout &lt;&lt; "Calculating sums asynchronously..." &lt;&lt; endl;
+    
+    // Get results
+    int sum1 = future1.get();
+    int sum2 = future2.get();
+    int sum3 = future3.get();
+    
+    cout &lt;&lt; "Sum 1-1000: " &lt;&lt; sum1 &lt;&lt; endl;
+    cout &lt;&lt; "Sum 1001-2000: " &lt;&lt; sum2 &lt;&lt; endl;
+    cout &lt;&lt; "Sum 2001-3000: " &lt;&lt; sum3 &lt;&lt; endl;
+    cout &lt;&lt; "Total sum: " &lt;&lt; (sum1 + sum2 + sum3) &lt;&lt; endl;
+    
+    // Thread with lambda
+    cout &lt;&lt; "\n=== Thread with Lambda ===" &lt;&lt; endl;
+    thread lambdaThread([]() {
+        for (int i = 0; i &lt; 3; ++i) {
+            cout &lt;&lt; "Lambda thread: " &lt;&lt; i &lt;&lt; endl;
+            this_thread::sleep_for(chrono::milliseconds(200));
+        }
+    });
+    
+    lambdaThread.join();
+    
+    cout &lt;&lt; "All threads completed!" &lt;&lt; endl;
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="navigation-buttons">
+                <a href="oop.html" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Previous: OOP
+                </a>
+                <a href="stl.html" class="btn btn-primary">
+                    Next: STL <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

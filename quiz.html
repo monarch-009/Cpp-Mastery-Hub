@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - C++ Mastery Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>C++ Mastery Hub</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Topics <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="basics.html">Basics</a>
+                        <a href="oop.html">OOP</a>
+                        <a href="advanced.html">Advanced</a>
+                        <a href="stl.html">STL</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="projects.html" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="quiz.html" class="nav-link active">Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h1>C++ Knowledge Quiz</h1>
+            <p>Test your C++ programming skills with our interactive quiz</p>
+        </div>
+
+        <div class="quiz-selection" id="quizSelection">
+            <h2>Choose Your Quiz Topic</h2>
+            <div class="quiz-topics">
+                <div class="quiz-topic-card" onclick="startQuiz('basics')">
+                    <div class="topic-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <h3>C++ Basics</h3>
+                    <p>Variables, data types, operators, and control structures</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-question-circle"></i> 10 Questions</span>
+                        <span><i class="fas fa-clock"></i> 15 minutes</span>
+                    </div>
+                </div>
+
+                <div class="quiz-topic-card" onclick="startQuiz('oop')">
+                    <div class="topic-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Object-Oriented Programming</h3>
+                    <p>Classes, objects, inheritance, and polymorphism</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-question-circle"></i> 12 Questions</span>
+                        <span><i class="fas fa-clock"></i> 20 minutes</span>
+                    </div>
+                </div>
+
+                <div class="quiz-topic-card" onclick="startQuiz('advanced')">
+                    <div class="topic-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Advanced C++</h3>
+                    <p>Templates, smart pointers, and modern C++ features</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-question-circle"></i> 15 Questions</span>
+                        <span><i class="fas fa-clock"></i> 25 minutes</span>
+                    </div>
+                </div>
+
+                <div class="quiz-topic-card" onclick="startQuiz('stl')">
+                    <div class="topic-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>Standard Template Library</h3>
+                    <p>Containers, algorithms, and iterators</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-question-circle"></i> 12 Questions</span>
+                        <span><i class="fas fa-clock"></i> 18 minutes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-content" id="quizContent" style="display: none;">
+            <div class="quiz-progress">
+                <div class="progress-info">
+                    <span id="questionNumber">Question 1 of 10</span>
+                    <span id="timer">15:00</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="quizProgressFill"></div>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <h2 id="questionText">Loading question...</h2>
+                <div class="code-snippet" id="codeSnippet" style="display: none;">
+                    <pre><code id="codeContent"></code></pre>
+                </div>
+                <div class="options-container" id="optionsContainer">
+                    <!-- Options will be dynamically generated -->
+                </div>
+            </div>
+
+            <div class="quiz-controls">
+                <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()" disabled>
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="btn btn-success" id="submitBtn" onclick="submitQuiz()" style="display: none;">
+                    Submit Quiz <i class="fas fa-check"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="quiz-results" id="quizResults" style="display: none;">
+            <div class="results-header">
+                <div class="score-circle">
+                    <div class="score-text">
+                        <span id="scorePercentage">0%</span>
+                        <small>Score</small>
+                    </div>
+                </div>
+                <h2>Quiz Complete!</h2>
+                <p id="scoreMessage">Great job on completing the quiz!</p>
+            </div>
+
+            <div class="results-stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="correctAnswers">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="incorrectAnswers">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="timeTaken">0:00</div>
+                    <div class="stat-label">Time</div>
+                </div>
+            </div>
+
+            <div class="results-breakdown" id="resultsBreakdown">
+                <!-- Detailed results will be shown here -->
+            </div>
+
+            <div class="results-actions">
+                <button class="btn btn-secondary" onclick="retakeQuiz()">
+                    <i class="fas fa-redo"></i> Retake Quiz
+                </button>
+                <button class="btn btn-primary" onclick="backToTopics()">
+                    <i class="fas fa-list"></i> Choose Another Topic
+                </button>
+                <button class="btn btn-success" onclick="shareResults()">
+                    <i class="fas fa-share"></i> Share Results
+                </button>
+            </div>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
+

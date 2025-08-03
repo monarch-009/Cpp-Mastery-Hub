@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STL - C++ Mastery Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>C++ Mastery Hub</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link active">Topics <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="basics.html">Basics</a>
+                        <a href="oop.html">OOP</a>
+                        <a href="advanced.html">Advanced</a>
+                        <a href="stl.html" class="active">STL</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="projects.html" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="quiz.html" class="nav-link">Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-container">
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <h3>Table of Contents</h3>
+                <ul class="toc">
+                    <li><a href="#introduction">Introduction to STL</a></li>
+                    <li><a href="#containers">Containers</a></li>
+                    <li><a href="#iterators">Iterators</a></li>
+                    <li><a href="#algorithms">Algorithms</a></li>
+                    <li><a href="#function-objects">Function Objects</a></li>
+                    <li><a href="#utilities">Utilities</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-header">
+                <h1>Standard Template Library (STL)</h1>
+                <p>Master the powerful STL containers, algorithms, and utilities</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="content-sections">
+                <!-- Introduction to STL -->
+                <section class="content-section" id="introduction">
+                    <div class="accordion-item">
+                        <div class="accordion-header" >
+                            <h2><i class="fas fa-book-open"></i> Introduction to STL</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>The Standard Template Library (STL) is a collection of template classes and functions that provide common data structures and algorithms.</p>
+                                
+                                <h3>STL Components:</h3>
+                                <div class="stl-components">
+                                    <div class="component-card">
+                                        <div class="component-icon">
+                                            <i class="fas fa-box"></i>
+                                        </div>
+                                        <h4>Containers</h4>
+                                        <p>Data structures like vector, list, map, set, etc.</p>
+                                    </div>
+                                    <div class="component-card">
+                                        <div class="component-icon">
+                                            <i class="fas fa-arrows-alt-h"></i>
+                                        </div>
+                                        <h4>Iterators</h4>
+                                        <p>Objects that point to elements in containers</p>
+                                    </div>
+                                    <div class="component-card">
+                                        <div class="component-icon">
+                                            <i class="fas fa-cogs"></i>
+                                        </div>
+                                        <h4>Algorithms</h4>
+                                        <p>Functions for searching, sorting, and manipulating data</p>
+                                    </div>
+                                    <div class="component-card">
+                                        <div class="component-icon">
+                                            <i class="fas fa-function"></i>
+                                        </div>
+                                        <h4>Function Objects</h4>
+                                        <p>Objects that can be called like functions</p>
+                                    </div>
+                                </div>
+
+                                <div class="info-box">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <p><strong>Benefits of STL:</strong> Reusable code, high performance, type safety, and extensive functionality tested by millions of developers.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Containers -->
+                <section class="content-section" id="containers">
+                    <div class="accordion-item">
+                        <div class="accordion-header" >
+                            <h2><i class="fas fa-box"></i> Containers</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>STL containers are template classes that store collections of objects.</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">containers_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;list&gt;
+#include &lt;deque&gt;
+#include &lt;set&gt;
+#include &lt;map&gt;
+#include &lt;unordered_map&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    // Vector - Dynamic array
+    cout &lt;&lt; "=== Vector ===" &lt;&lt; endl;
+    vector&lt;int&gt; vec = {1, 2, 3, 4, 5};
+    vec.push_back(6);
+    vec.insert(vec.begin() + 2, 10); // Insert 10 at index 2
+    
+    cout &lt;&lt; "Vector elements: ";
+    for (const auto& elem : vec) {
+        cout &lt;&lt; elem &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    cout &lt;&lt; "Vector size: " &lt;&lt; vec.size() &lt;&lt; ", capacity: " &lt;&lt; vec.capacity() &lt;&lt; endl;
+    
+    // List - Doubly linked list
+    cout &lt;&lt; "\n=== List ===" &lt;&lt; endl;
+    list&lt;string&gt; lst = {"apple", "banana", "cherry"};
+    lst.push_front("orange");
+    lst.push_back("grape");
+    lst.sort();
+    
+    cout &lt;&lt; "List elements: ";
+    for (const auto& elem : lst) {
+        cout &lt;&lt; elem &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    // Deque - Double-ended queue
+    cout &lt;&lt; "\n=== Deque ===" &lt;&lt; endl;
+    deque&lt;int&gt; dq = {3, 4, 5};
+    dq.push_front(2);
+    dq.push_back(6);
+    dq.push_front(1);
+    
+    cout &lt;&lt; "Deque elements: ";
+    for (const auto& elem : dq) {
+        cout &lt;&lt; elem &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    // Set - Ordered unique elements
+    cout &lt;&lt; "\n=== Set ===" &lt;&lt; endl;
+    set&lt;int&gt; s = {5, 2, 8, 2, 1, 9, 1}; // Duplicates automatically removed
+    s.insert(3);
+    s.insert(7);
+    
+    cout &lt;&lt; "Set elements: ";
+    for (const auto& elem : s) {
+        cout &lt;&lt; elem &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    // Map - Key-value pairs
+    cout &lt;&lt; "\n=== Map ===" &lt;&lt; endl;
+    map&lt;string, int&gt; ages;
+    ages["Alice"] = 25;
+    ages["Bob"] = 30;
+    ages["Charlie"] = 35;
+    ages.insert({"David", 28});
+    
+    cout &lt;&lt; "Map elements:" &lt;&lt; endl;
+    for (const auto& [name, age] : ages) {
+        cout &lt;&lt; name &lt;&lt; ": " &lt;&lt; age &lt;&lt; " years old" &lt;&lt; endl;
+    }
+    
+    // Unordered Map - Hash table
+    cout &lt;&lt; "\n=== Unordered Map ===" &lt;&lt; endl;
+    unordered_map&lt;string, double&gt; prices;
+    prices["apple"] = 1.50;
+    prices["banana"] = 0.75;
+    prices["orange"] = 2.00;
+    
+    cout &lt;&lt; "Prices:" &lt;&lt; endl;
+    for (const auto& [item, price] : prices) {
+        cout &lt;&lt; item &lt;&lt; ": $" &lt;&lt; price &lt;&lt; endl;
+    }
+    
+    // Stack - LIFO container
+    cout &lt;&lt; "\n=== Stack ===" &lt;&lt; endl;
+    stack&lt;int&gt; stk;
+    stk.push(10);
+    stk.push(20);
+    stk.push(30);
+    
+    cout &lt;&lt; "Stack elements (popping): ";
+    while (!stk.empty()) {
+        cout &lt;&lt; stk.top() &lt;&lt; " ";
+        stk.pop();
+    }
+    cout &lt;&lt; endl;
+    
+    // Queue - FIFO container
+    cout &lt;&lt; "\n=== Queue ===" &lt;&lt; endl;
+    queue&lt;string&gt; q;
+    q.push("first");
+    q.push("second");
+    q.push("third");
+    
+    cout &lt;&lt; "Queue elements (dequeuing): ";
+    while (!q.empty()) {
+        cout &lt;&lt; q.front() &lt;&lt; " ";
+        q.pop();
+    }
+    cout &lt;&lt; endl;
+    
+    // Priority Queue - Heap
+    cout &lt;&lt; "\n=== Priority Queue ===" &lt;&lt; endl;
+    priority_queue&lt;int&gt; pq;
+    pq.push(30);
+    pq.push(10);
+    pq.push(50);
+    pq.push(20);
+    
+    cout &lt;&lt; "Priority queue elements (max heap): ";
+    while (!pq.empty()) {
+        cout &lt;&lt; pq.top() &lt;&lt; " ";
+        pq.pop();
+    }
+    cout &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Iterators -->
+                <section class="content-section" id="iterators">
+                    <div class="accordion-item">
+                        <div class="accordion-header" >
+                            <h2><i class="fas fa-arrows-alt-h"></i> Iterators</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Iterators are objects that point to elements in containers and provide a way to traverse through them.</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">iterators_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;list&gt;
+#include &lt;set&gt;
+#include &lt;iterator&gt;
+using namespace std;
+
+int main() {
+    // Basic iterator usage with vector
+    cout &lt;&lt; "=== Basic Iterator Usage ===" &lt;&lt; endl;
+    vector&lt;int&gt; vec = {10, 20, 30, 40, 50};
+    
+    // Forward iteration
+    cout &lt;&lt; "Forward iteration: ";
+    for (auto it = vec.begin(); it != vec.end(); ++it) {
+        cout &lt;&lt; *it &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    // Reverse iteration
+    cout &lt;&lt; "Reverse iteration: ";
+    for (auto it = vec.rbegin(); it != vec.rend(); ++it) {
+        cout &lt;&lt; *it &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    // Iterator arithmetic (random access iterators)
+    cout &lt;&lt; "\n=== Iterator Arithmetic ===" &lt;&lt; endl;
+    auto it = vec.begin();
+    cout &lt;&lt; "First element: " &lt;&lt; *it &lt;&lt; endl;
+    cout &lt;&lt; "Third element: " &lt;&lt; *(it + 2) &lt;&lt; endl;
+    cout &lt;&lt; "Last element: " &lt;&lt; *(vec.end() - 1) &lt;&lt; endl;
+    
+    // Distance between iterators
+    cout &lt;&lt; "Distance from begin to end: " &lt;&lt; distance(vec.begin(), vec.end()) &lt;&lt; endl;
+    
+    // Modifying elements through iterators
+    cout &lt;&lt; "\n=== Modifying Elements ===" &lt;&lt; endl;
+    for (auto it = vec.begin(); it != vec.end(); ++it) {
+        *it *= 2; // Double each element
+    }
+    
+    cout &lt;&lt; "After doubling: ";
+    for (const auto& elem : vec) {
+        cout &lt;&lt; elem &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    // Different iterator types
+    cout &lt;&lt; "\n=== Iterator Types ===" &lt;&lt; endl;
+    
+    // Bidirectional iterator (list)
+    list&lt;string&gt; lst = {"apple", "banana", "cherry"};
+    cout &lt;&lt; "List forward: ";
+    for (auto it = lst.begin(); it != lst.end(); ++it) {
+        cout &lt;&lt; *it &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    cout &lt;&lt; "List backward: ";
+    for (auto it = lst.rbegin(); it != lst.rend(); ++it) {
+        cout &lt;&lt; *it &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    // Forward iterator (set)
+    set&lt;int&gt; s = {5, 2, 8, 1, 9};
+    cout &lt;&lt; "Set elements: ";
+    for (auto it = s.begin(); it != s.end(); ++it) {
+        cout &lt;&lt; *it &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    // Insert iterators
+    cout &lt;&lt; "\n=== Insert Iterators ===" &lt;&lt; endl;
+    vector&lt;int&gt; source = {1, 2, 3, 4, 5};
+    vector&lt;int&gt; dest;
+    
+    // Back insert iterator
+    copy(source.begin(), source.end(), back_inserter(dest));
+    cout &lt;&lt; "After back_inserter: ";
+    for (const auto& elem : dest) {
+        cout &lt;&lt; elem &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    // Front insert iterator (with list)
+    list&lt;int&gt; destList;
+    copy(source.begin(), source.end(), front_inserter(destList));
+    cout &lt;&lt; "After front_inserter: ";
+    for (const auto& elem : destList) {
+        cout &lt;&lt; elem &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    // Stream iterators
+    cout &lt;&lt; "\n=== Stream Iterators ===" &lt;&lt; endl;
+    vector&lt;int&gt; numbers = {1, 2, 3, 4, 5};
+    
+    cout &lt;&lt; "Using ostream_iterator: ";
+    copy(numbers.begin(), numbers.end(), ostream_iterator&lt;int&gt;(cout, " "));
+    cout &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Algorithms -->
+                <section class="content-section" id="algorithms">
+                    <div class="accordion-item">
+                        <div class="accordion-header" >
+                            <h2><i class="fas fa-cogs"></i> Algorithms</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>STL algorithms are template functions that perform operations on ranges of elements.</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">algorithms_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;numeric&gt;
+#include &lt;string&gt;
+#include &lt;functional&gt;
+using namespace std;
+
+int main() {
+    // Sorting algorithms
+    cout &lt;&lt; "=== Sorting Algorithms ===" &lt;&lt; endl;
+    vector&lt;int&gt; numbers = {5, 2, 8, 1, 9, 3};
+    
+    cout &lt;&lt; "Original: ";
+    for (const auto& n : numbers) cout &lt;&lt; n &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    
+    sort(numbers.begin(), numbers.end());
+    cout &lt;&lt; "Sorted ascending: ";
+    for (const auto& n : numbers) cout &lt;&lt; n &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    
+    sort(numbers.begin(), numbers.end(), greater&lt;int&gt;());
+    cout &lt;&lt; "Sorted descending: ";
+    for (const auto& n : numbers) cout &lt;&lt; n &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    
+    // Searching algorithms
+    cout &lt;&lt; "\n=== Searching Algorithms ===" &lt;&lt; endl;
+    vector&lt;int&gt; data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    
+    // Linear search
+    auto it = find(data.begin(), data.end(), 5);
+    if (it != data.end()) {
+        cout &lt;&lt; "Found 5 at position: " &lt;&lt; distance(data.begin(), it) &lt;&lt; endl;
+    }
+    
+    // Binary search (requires sorted data)
+    bool found = binary_search(data.begin(), data.end(), 7);
+    cout &lt;&lt; "Binary search for 7: " &lt;&lt; (found ? "Found" : "Not found") &lt;&lt; endl;
+    
+    // Lower and upper bound
+    auto lower = lower_bound(data.begin(), data.end(), 5);
+    auto upper = upper_bound(data.begin(), data.end(), 5);
+    cout &lt;&lt; "Lower bound of 5: " &lt;&lt; distance(data.begin(), lower) &lt;&lt; endl;
+    cout &lt;&lt; "Upper bound of 5: " &lt;&lt; distance(data.begin(), upper) &lt;&lt; endl;
+    
+    // Counting algorithms
+    cout &lt;&lt; "\n=== Counting Algorithms ===" &lt;&lt; endl;
+    vector&lt;int&gt; values = {1, 2, 3, 2, 4, 2, 5};
+    
+    int count2 = count(values.begin(), values.end(), 2);
+    cout &lt;&lt; "Count of 2: " &lt;&lt; count2 &lt;&lt; endl;
+    
+    int countEven = count_if(values.begin(), values.end(), [](int n) { return n % 2 == 0; });
+    cout &lt;&lt; "Count of even numbers: " &lt;&lt; countEven &lt;&lt; endl;
+    
+    // Transformation algorithms
+    cout &lt;&lt; "\n=== Transformation Algorithms ===" &lt;&lt; endl;
+    vector&lt;int&gt; source = {1, 2, 3, 4, 5};
+    vector&lt;int&gt; squares;
+    
+    transform(source.begin(), source.end(), back_inserter(squares),
+              [](int n) { return n * n; });
+    
+    cout &lt;&lt; "Original: ";
+    for (const auto& n : source) cout &lt;&lt; n &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    
+    cout &lt;&lt; "Squares: ";
+    for (const auto& n : squares) cout &lt;&lt; n &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    
+    // Numeric algorithms
+    cout &lt;&lt; "\n=== Numeric Algorithms ===" &lt;&lt; endl;
+    vector&lt;int&gt; nums = {1, 2, 3, 4, 5};
+    
+    int sum = accumulate(nums.begin(), nums.end(), 0);
+    cout &lt;&lt; "Sum: " &lt;&lt; sum &lt;&lt; endl;
+    
+    int product = accumulate(nums.begin(), nums.end(), 1, multiplies&lt;int&gt;());
+    cout &lt;&lt; "Product: " &lt;&lt; product &lt;&lt; endl;
+    
+    // Partial sum
+    vector&lt;int&gt; partialSums;
+    partial_sum(nums.begin(), nums.end(), back_inserter(partialSums));
+    cout &lt;&lt; "Partial sums: ";
+    for (const auto& n : partialSums) cout &lt;&lt; n &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    
+    // Min/Max algorithms
+    cout &lt;&lt; "\n=== Min/Max Algorithms ===" &lt;&lt; endl;
+    vector&lt;int&gt; elements = {3, 1, 4, 1, 5, 9, 2, 6};
+    
+    auto minIt = min_element(elements.begin(), elements.end());
+    auto maxIt = max_element(elements.begin(), elements.end());
+    auto minMaxPair = minmax_element(elements.begin(), elements.end());
+    
+    cout &lt;&lt; "Min element: " &lt;&lt; *minIt &lt;&lt; " at position " &lt;&lt; distance(elements.begin(), minIt) &lt;&lt; endl;
+    cout &lt;&lt; "Max element: " &lt;&lt; *maxIt &lt;&lt; " at position " &lt;&lt; distance(elements.begin(), maxIt) &lt;&lt; endl;
+    cout &lt;&lt; "MinMax: " &lt;&lt; *minMaxPair.first &lt;&lt; ", " &lt;&lt; *minMaxPair.second &lt;&lt; endl;
+    
+    // Permutation algorithms
+    cout &lt;&lt; "\n=== Permutation Algorithms ===" &lt;&lt; endl;
+    vector&lt;int&gt; perm = {1, 2, 3};
+    
+    cout &lt;&lt; "All permutations of {1, 2, 3}:" &lt;&lt; endl;
+    do {
+        for (const auto& n : perm) cout &lt;&lt; n &lt;&lt; " ";
+        cout &lt;&lt; endl;
+    } while (next_permutation(perm.begin(), perm.end()));
+    
+    // Set operations
+    cout &lt;&lt; "\n=== Set Operations ===" &lt;&lt; endl;
+    vector&lt;int&gt; set1 = {1, 2, 3, 4, 5};
+    vector&lt;int&gt; set2 = {3, 4, 5, 6, 7};
+    vector&lt;int&gt; result;
+    
+    // Union
+    set_union(set1.begin(), set1.end(), set2.begin(), set2.end(), back_inserter(result));
+    cout &lt;&lt; "Union: ";
+    for (const auto& n : result) cout &lt;&lt; n &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    
+    // Intersection
+    result.clear();
+    set_intersection(set1.begin(), set1.end(), set2.begin(), set2.end(), back_inserter(result));
+    cout &lt;&lt; "Intersection: ";
+    for (const auto& n : result) cout &lt;&lt; n &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Function Objects -->
+                <section class="content-section" id="function-objects">
+                    <div class="accordion-item">
+                        <div class="accordion-header" >
+                            <h2><i class="fas fa-function"></i> Function Objects</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Function objects (functors) are objects that can be called like functions.</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">function_objects_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;functional&gt;
+using namespace std;
+
+// Custom function object
+class Multiply {
+private:
+    int factor;
+    
+public:
+    Multiply(int f) : factor(f) {}
+    
+    int operator()(int x) const {
+        return x * factor;
+    }
+};
+
+// Function object with state
+class Counter {
+private:
+    mutable int count;
+    
+public:
+    Counter() : count(0) {}
+    
+    int operator()() const {
+        return ++count;
+    }
+    
+    int getCount() const { return count; }
+};
+
+int main() {
+    // Custom function object
+    cout &lt;&lt; "=== Custom Function Object ===" &lt;&lt; endl;
+    vector&lt;int&gt; numbers = {1, 2, 3, 4, 5};
+    vector&lt;int&gt; result;
+    
+    Multiply multiplyBy3(3);
+    transform(numbers.begin(), numbers.end(), back_inserter(result), multiplyBy3);
+    
+    cout &lt;&lt; "Original: ";
+    for (const auto& n : numbers) cout &lt;&lt; n &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    
+    cout &lt;&lt; "Multiplied by 3: ";
+    for (const auto& n : result) cout &lt;&lt; n &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    
+    // Function object with state
+    cout &lt;&lt; "\n=== Stateful Function Object ===" &lt;&lt; endl;
+    Counter counter;
+    
+    cout &lt;&lt; "Counter calls: ";
+    for (int i = 0; i &lt; 5; ++i) {
+        cout &lt;&lt; counter() &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    cout &lt;&lt; "Total count: " &lt;&lt; counter.getCount() &lt;&lt; endl;
+    
+    // Built-in function objects
+    cout &lt;&lt; "\n=== Built-in Function Objects ===" &lt;&lt; endl;
+    vector&lt;int&gt; data = {5, 2, 8, 1, 9, 3};
+    
+    // Sorting with different comparators
+    sort(data.begin(), data.end(), less&lt;int&gt;());
+    cout &lt;&lt; "Sorted ascending: ";
+    for (const auto& n : data) cout &lt;&lt; n &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    
+    sort(data.begin(), data.end(), greater&lt;int&gt;());
+    cout &lt;&lt; "Sorted descending: ";
+    for (const auto& n : data) cout &lt;&lt; n &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    
+    // Arithmetic function objects
+    cout &lt;&lt; "\n=== Arithmetic Function Objects ===" &lt;&lt; endl;
+    vector&lt;int&gt; values = {1, 2, 3, 4, 5};
+    
+    // Using plus function object
+    int sum = accumulate(values.begin(), values.end(), 0, plus&lt;int&gt;());
+    cout &lt;&lt; "Sum using plus&lt;&gt;: " &lt;&lt; sum &lt;&lt; endl;
+    
+    // Using multiplies function object
+    int product = accumulate(values.begin(), values.end(), 1, multiplies&lt;int&gt;());
+    cout &lt;&lt; "Product using multiplies&lt;&gt;: " &lt;&lt; product &lt;&lt; endl;
+    
+    // Logical function objects
+    cout &lt;&lt; "\n=== Logical Function Objects ===" &lt;&lt; endl;
+    vector&lt;bool&gt; boolValues = {true, false, true, true, false};
+    
+    bool allTrue = all_of(boolValues.begin(), boolValues.end(), logical_not&lt;bool&gt;());
+    cout &lt;&lt; "All values are false (using logical_not): " &lt;&lt; (allTrue ? "Yes" : "No") &lt;&lt; endl;
+    
+    // Using function objects with algorithms
+    cout &lt;&lt; "\n=== Function Objects with Algorithms ===" &lt;&lt; endl;
+    vector&lt;int&gt; nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    
+    // Count even numbers using modulus
+    int evenCount = count_if(nums.begin(), nums.end(), 
+                             [](int n) { return modulus&lt;int&gt;()(n, 2) == 0; });
+    cout &lt;&lt; "Even numbers count: " &lt;&lt; evenCount &lt;&lt; endl;
+    
+    // Find first element greater than 5
+    auto it = find_if(nums.begin(), nums.end(), 
+                      bind(greater&lt;int&gt;(), placeholders::_1, 5));
+    if (it != nums.end()) {
+        cout &lt;&lt; "First element > 5: " &lt;&lt; *it &lt;&lt; endl;
+    }
+    
+    // Using std::function
+    cout &lt;&lt; "\n=== std::function ===" &lt;&lt; endl;
+    function&lt;int(int)&gt; func;
+    
+    // Assign lambda
+    func = [](int x) { return x * x; };
+    cout &lt;&lt; "Lambda square of 5: " &lt;&lt; func(5) &lt;&lt; endl;
+    
+    // Assign function object
+    func = Multiply(4);
+    cout &lt;&lt; "Function object multiply 5 by 4: " &lt;&lt; func(5) &lt;&lt; endl;
+    
+    // Assign regular function
+    func = [](int x) { return x + 10; };
+    cout &lt;&lt; "Add 10 to 5: " &lt;&lt; func(5) &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Utilities -->
+                <section class="content-section" id="utilities">
+                    <div class="accordion-item">
+                        <div class="accordion-header" >
+                            <h2><i class="fas fa-tools"></i> Utilities</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>STL provides various utility classes and functions for common programming tasks.</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">utilities_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;utility&gt;
+#include &lt;tuple&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;chrono&gt;
+#include &lt;random&gt;
+using namespace std;
+
+int main() {
+    // Pair utility
+    cout &lt;&lt; "=== Pair Utility ===" &lt;&lt; endl;
+    pair&lt;string, int&gt; person("Alice", 25);
+    
+    cout &lt;&lt; "Name: " &lt;&lt; person.first &lt;&lt; ", Age: " &lt;&lt; person.second &lt;&lt; endl;
+    
+    // Make pair
+    auto coordinates = make_pair(10.5, 20.3);
+    cout &lt;&lt; "Coordinates: (" &lt;&lt; coordinates.first &lt;&lt; ", " &lt;&lt; coordinates.second &lt;&lt; ")" &lt;&lt; endl;
+    
+    // Pair comparison
+    pair&lt;int, int&gt; p1(1, 2);
+    pair&lt;int, int&gt; p2(1, 3);
+    cout &lt;&lt; "p1 &lt; p2: " &lt;&lt; (p1 &lt; p2) &lt;&lt; endl;
+    
+    // Tuple utility
+    cout &lt;&lt; "\n=== Tuple Utility ===" &lt;&lt; endl;
+    tuple&lt;string, int, double&gt; student("Bob", 22, 3.8);
+    
+    cout &lt;&lt; "Student: " &lt;&lt; get&lt;0&gt;(student) &lt;&lt; ", Age: " &lt;&lt; get&lt;1&gt;(student) 
+         &lt;&lt; ", GPA: " &lt;&lt; get&lt;2&gt;(student) &lt;&lt; endl;
+    
+    // Structured binding (C++17)
+    auto [name, age, gpa] = student;
+    cout &lt;&lt; "Using structured binding - Name: " &lt;&lt; name &lt;&lt; ", Age: " &lt;&lt; age &lt;&lt; ", GPA: " &lt;&lt; gpa &lt;&lt; endl;
+    
+    // Tuple operations
+    auto info = make_tuple("Charlie", 30, 85000.0);
+    cout &lt;&lt; "Tuple size: " &lt;&lt; tuple_size&lt;decltype(info)&gt;::value &lt;&lt; endl;
+    
+    // Swap utility
+    cout &lt;&lt; "\n=== Swap Utility ===" &lt;&lt; endl;
+    int a = 10, b = 20;
+    cout &lt;&lt; "Before swap: a = " &lt;&lt; a &lt;&lt; ", b = " &lt;&lt; b &lt;&lt; endl;
+    swap(a, b);
+    cout &lt;&lt; "After swap: a = " &lt;&lt; a &lt;&lt; ", b = " &lt;&lt; b &lt;&lt; endl;
+    
+    // Move utility
+    cout &lt;&lt; "\n=== Move Utility ===" &lt;&lt; endl;
+    vector&lt;string&gt; source = {"apple", "banana", "cherry"};
+    vector&lt;string&gt; destination;
+    
+    cout &lt;&lt; "Source size before move: " &lt;&lt; source.size() &lt;&lt; endl;
+    destination = move(source);
+    cout &lt;&lt; "Source size after move: " &lt;&lt; source.size() &lt;&lt; endl;
+    cout &lt;&lt; "Destination size: " &lt;&lt; destination.size() &lt;&lt; endl;
+    
+    // Forward utility (perfect forwarding)
+    cout &lt;&lt; "\n=== Forward Utility ===" &lt;&lt; endl;
+    auto forwardExample = []&lt;typename T&gt;(T&& value) {
+        // Perfect forwarding preserves value category
+        return forward&lt;T&gt;(value);
+    };
+    
+    string str = "Hello";
+    string result1 = forwardExample(str);        // lvalue
+    string result2 = forwardExample(move(str));  // rvalue
+    
+    cout &lt;&lt; "Forward result 1: " &lt;&lt; result1 &lt;&lt; endl;
+    cout &lt;&lt; "Forward result 2: " &lt;&lt; result2 &lt;&lt; endl;
+    
+    // Random number utilities
+    cout &lt;&lt; "\n=== Random Number Utilities ===" &lt;&lt; endl;
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution&lt;int&gt; intDist(1, 100);
+    uniform_real_distribution&lt;double&gt; realDist(0.0, 1.0);
+    
+    cout &lt;&lt; "Random integers (1-100): ";
+    for (int i = 0; i &lt; 5; ++i) {
+        cout &lt;&lt; intDist(gen) &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    cout &lt;&lt; "Random reals (0.0-1.0): ";
+    for (int i = 0; i &lt; 5; ++i) {
+        cout &lt;&lt; realDist(gen) &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    // Chrono utilities
+    cout &lt;&lt; "\n=== Chrono Utilities ===" &lt;&lt; endl;
+    auto start = chrono::high_resolution_clock::now();
+    
+    // Simulate some work
+    vector&lt;int&gt; largeVec(1000000);
+    iota(largeVec.begin(), largeVec.end(), 1);
+    sort(largeVec.begin(), largeVec.end());
+    
+    auto end = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast&lt;chrono::microseconds&gt;(end - start);
+    
+    cout &lt;&lt; "Sorting 1M elements took: " &lt;&lt; duration.count() &lt;&lt; " microseconds" &lt;&lt; endl;
+    
+    // Type traits utilities
+    cout &lt;&lt; "\n=== Type Traits ===" &lt;&lt; endl;
+    cout &lt;&lt; "is_integral&lt;int&gt;: " &lt;&lt; is_integral&lt;int&gt;::value &lt;&lt; endl;
+    cout &lt;&lt; "is_floating_point&lt;double&gt;: " &lt;&lt; is_floating_point&lt;double&gt;::value &lt;&lt; endl;
+    cout &lt;&lt; "is_same&lt;int, int&gt;: " &lt;&lt; is_same&lt;int, int&gt;::value &lt;&lt; endl;
+    cout &lt;&lt; "is_same&lt;int, double&gt;: " &lt;&lt; is_same&lt;int, double&gt;::value &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="navigation-buttons">
+                <a href="advanced.html" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Previous: Advanced
+                </a>
+                <a href="projects.html" class="btn btn-primary">
+                    Next: Projects <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

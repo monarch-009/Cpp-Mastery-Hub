@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Mastery Hub - Learn C++ Programming</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>C++ Mastery Hub</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Topics <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="basics.html">Basics</a>
+                        <a href="oop.html">OOP</a>
+                        <a href="advanced.html">Advanced</a>
+                        <a href="stl.html">STL</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="projects.html" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="quiz.html" class="nav-link">Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Master C++ Programming</h1>
+                    <p class="hero-subtitle">From basics to advanced concepts, learn C++ with interactive tutorials, real-world projects, and hands-on coding exercises.</p>
+                    <div class="hero-buttons">
+                        <a href="basics.html" class="btn btn-primary">Start Learning</a>
+                        <a href="projects.html" class="btn btn-secondary">View Projects</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="code-preview">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <span class="code-title">hello_world.cpp</span>
+                        </div>
+                        <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    cout &lt;&lt; "Hello, C++ World!" &lt;&lt; endl;
+    return 0;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning Path Section -->
+        <section class="learning-path">
+            <div class="container">
+                <h2 class="section-title">Your Learning Journey</h2>
+                <div class="path-container">
+                    <div class="path-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="path-number">1</div>
+                        <div class="path-content">
+                            <h3>Basics</h3>
+                            <p>Start with syntax, variables, operators, and control structures</p>
+                            <a href="basics.html" class="path-link">Begin Here <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="path-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="path-number">2</div>
+                        <div class="path-content">
+                            <h3>Object-Oriented Programming</h3>
+                            <p>Master classes, inheritance, polymorphism, and encapsulation</p>
+                            <a href="oop.html" class="path-link">Learn OOP <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="path-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="path-number">3</div>
+                        <div class="path-content">
+                            <h3>Advanced Concepts</h3>
+                            <p>Explore templates, smart pointers, and modern C++ features</p>
+                            <a href="advanced.html" class="path-link">Go Advanced <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="path-item" data-aos="fade-up" data-aos-delay="400">
+                        <div class="path-number">4</div>
+                        <div class="path-content">
+                            <h3>STL & Projects</h3>
+                            <p>Master Standard Template Library and build real applications</p>
+                            <a href="stl.html" class="path-link">Explore STL <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Start Section -->
+        <section class="quick-start">
+            <div class="container">
+                <h2 class="section-title">Quick Start Guide</h2>
+                <div class="quick-start-content">
+                    <div class="quick-start-text">
+                        <h3>Ready to dive in?</h3>
+                        <p>Get started with C++ programming in just a few minutes. Our interactive tutorials will guide you through your first program and beyond.</p>
+                        <ul class="quick-start-list">
+                            <li><i class="fas fa-check"></i> No prior programming experience required</li>
+                            <li><i class="fas fa-check"></i> Step-by-step explanations</li>
+                            <li><i class="fas fa-check"></i> Interactive code examples</li>
+                            <li><i class="fas fa-check"></i> Progress tracking</li>
+                        </ul>
+                        <a href="basics.html" class="btn btn-primary">Start Your Journey</a>
+                    </div>
+                    <div class="quick-start-demo">
+                        <div class="demo-card">
+                            <h4>Try it now!</h4>
+                            <div class="demo-code">
+                                <pre><code class="language-cpp">cout &lt;&lt; "Welcome to C++!" &lt;&lt; endl;</code></pre>
+                            </div>
+                            <div class="demo-output">
+                                <span class="output-label">Output:</span>
+                                <span class="output-text">Welcome to C++!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>C++ Mastery Hub</h3>
+                    <p>Your comprehensive guide to mastering C++ programming from basics to advanced concepts.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="basics.html">Basics</a></li>
+                        <li><a href="oop.html">OOP</a></li>
+                        <li><a href="advanced.html">Advanced</a></li>
+                        <li><a href="stl.html">STL</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> info@cppmastery.com</p>
+                    <p><i class="fas fa-globe"></i> www.cppmastery.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 C++ Mastery Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
