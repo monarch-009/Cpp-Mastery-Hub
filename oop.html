@@ -986,7 +986,713 @@ int main() {
                     </div>
                 </section>
 
-                <!-- Continue with remaining sections... -->
+                <!-- Encapsulation -->
+                <section class="content-section" id="encapsulation">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-box"></i> Encapsulation</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Encapsulation is the bundling of data and methods that operate on that data within a single unit, while restricting direct access to some of the object's components.</p>
+                                
+                                <h3>Benefits of Encapsulation:</h3>
+                                <ul>
+                                    <li><strong>Data Hiding:</strong> Internal representation is hidden from outside</li>
+                                    <li><strong>Increased Security:</strong> Prevents unauthorized access to data</li>
+                                    <li><strong>Easy Maintenance:</strong> Code changes don't affect other parts</li>
+                                    <li><strong>Flexibility:</strong> Can change implementation without affecting users</li>
+                                </ul>
+
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">encapsulation_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Employee {
+private:
+    // Encapsulated data members
+    int employeeId;
+    string name;
+    double salary;
+    string department;
+    bool isActive;
+
+public:
+    // Constructor
+    Employee(int id, string empName, double sal, string dept) {
+        employeeId = id;
+        name = empName;
+        salary = sal;
+        department = dept;
+        isActive = true;
+    }
+    
+    // Public methods to access private data (Getters)
+    int getEmployeeId() const { return employeeId; }
+    string getName() const { return name; }
+    double getSalary() const { return salary; }
+    string getDepartment() const { return department; }
+    bool getActiveStatus() const { return isActive; }
+    
+    // Public methods to modify private data (Setters) with validation
+    void setName(const string& empName) {
+        if (!empName.empty()) {
+            name = empName;
+        } else {
+            cout << "Error: Name cannot be empty!" << endl;
+        }
+    }
+    
+    void setSalary(double sal) {
+        if (sal >= 0) {
+            salary = sal;
+        } else {
+            cout << "Error: Salary cannot be negative!" << endl;
+        }
+    }
+    
+    void setDepartment(const string& dept) {
+        if (!dept.empty()) {
+            department = dept;
+        } else {
+            cout << "Error: Department cannot be empty!" << endl;
+        }
+    }
+    
+    // Method to deactivate employee
+    void deactivateEmployee() {
+        isActive = false;
+        cout << "Employee " << name << " has been deactivated." << endl;
+    }
+    
+    // Method to give raise with business logic
+    void giveRaise(double percentage) {
+        if (percentage > 0 && percentage <= 50) {
+            double oldSalary = salary;
+            salary += salary * (percentage / 100);
+            cout << name << "'s salary increased from $" << oldSalary 
+                 << " to $" << salary << " (" << percentage << "% raise)" << endl;
+        } else {
+            cout << "Error: Invalid raise percentage!" << endl;
+        }
+    }
+    
+    // Method to display employee information
+    void displayEmployeeInfo() const {
+        cout << "Employee ID: " << employeeId << endl;
+        cout << "Name: " << name << endl;
+        cout << "Department: " << department << endl;
+        cout << "Salary: $" << salary << endl;
+        cout << "Status: " << (isActive ? "Active" : "Inactive") << endl;
+        cout << "------------------------" << endl;
+    }
+};
+
+// Demonstration of encapsulation
+int main() {
+    cout << "=== Encapsulation Example ===" << endl;
+    
+    Employee emp1(101, "John Smith", 50000, "Engineering");
+    Employee emp2(102, "Jane Doe", 55000, "Marketing");
+    
+    // Display initial information
+    cout << "Initial Employee Information:" << endl;
+    emp1.displayEmployeeInfo();
+    emp2.displayEmployeeInfo();
+    
+    // Using public methods to access and modify data
+    cout << "Accessing data through public methods:" << endl;
+    cout << "Employee 1 Name: " << emp1.getName() << endl;
+    cout << "Employee 1 Salary: $" << emp1.getSalary() << endl;
+    
+    // Modifying data through setters (with validation)
+    cout << "\nModifying employee data:" << endl;
+    emp1.giveRaise(10);  // 10% raise
+    emp2.setDepartment("Sales");
+    
+    // Trying to set invalid data (validation in action)
+    cout << "\nTrying to set invalid data:" << endl;
+    emp1.setSalary(-1000);  // This should show an error
+    emp2.setName("");       // This should show an error
+    
+    // Final state
+    cout << "\nFinal Employee Information:" << endl;
+    emp1.displayEmployeeInfo();
+    emp2.displayEmployeeInfo();
+    
+    // The following would cause compilation errors (encapsulation in action):
+    // emp1.salary = 100000;        // Error: private member
+    // emp1.employeeId = 999;       // Error: private member
+    // cout << emp1.isActive;       // Error: private member
+    
+    return 0;
+}</code></pre>
+                                </div>
+
+                                <div class="info-box">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <p><strong>Best Practice:</strong> Always keep data members private and provide controlled access through public methods. This ensures data integrity and allows for validation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Abstraction -->
+                <section class="content-section" id="abstraction">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-eye-slash"></i> Abstraction</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Abstraction is the process of hiding complex implementation details while showing only the essential features of an object. It focuses on what an object does rather than how it does it.</p>
+                                
+                                <h3>Types of Abstraction:</h3>
+                                <div class="abstraction-types">
+                                    <div class="abstraction-type">
+                                        <h4>Data Abstraction</h4>
+                                        <p>Hiding the internal representation of data</p>
+                                    </div>
+                                    <div class="abstraction-type">
+                                        <h4>Control Abstraction</h4>
+                                        <p>Hiding the implementation details of functions</p>
+                                    </div>
+                                </div>
+
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">abstraction_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+using namespace std;
+
+// Abstract base class (interface)
+class DatabaseConnection {
+public:
+    // Pure virtual functions (abstract methods)
+    virtual bool connect(const string& connectionString) = 0;
+    virtual bool disconnect() = 0;
+    virtual bool executeQuery(const string& query) = 0;
+    virtual vector&lt;string&gt; fetchResults() = 0;
+    
+    // Virtual destructor
+    virtual ~DatabaseConnection() = default;
+    
+    // Common method with implementation
+    void showConnectionStatus() {
+        cout << "Database connection status checked." << endl;
+    }
+};
+
+// Concrete implementation for MySQL
+class MySQLConnection : public DatabaseConnection {
+private:
+    bool isConnected;
+    string serverAddress;
+    vector&lt;string&gt; queryResults;
+    
+    // Private helper method (hidden implementation detail)
+    bool validateConnectionString(const string& connStr) {
+        return !connStr.empty() && connStr.find("mysql://") == 0;
+    }
+
+public:
+    MySQLConnection() : isConnected(false) {}
+    
+    bool connect(const string& connectionString) override {
+        if (validateConnectionString(connectionString)) {
+            serverAddress = connectionString;
+            isConnected = true;
+            cout << "Connected to MySQL database: " << serverAddress << endl;
+            return true;
+        }
+        cout << "Failed to connect to MySQL database!" << endl;
+        return false;
+    }
+    
+    bool disconnect() override {
+        if (isConnected) {
+            isConnected = false;
+            cout << "Disconnected from MySQL database." << endl;
+            return true;
+        }
+        return false;
+    }
+    
+    bool executeQuery(const string& query) override {
+        if (!isConnected) {
+            cout << "Error: Not connected to database!" << endl;
+            return false;
+        }
+        
+        cout << "Executing MySQL query: " << query << endl;
+        
+        // Simulate query execution and results
+        queryResults.clear();
+        queryResults.push_back("Result 1: MySQL data");
+        queryResults.push_back("Result 2: MySQL data");
+        
+        return true;
+    }
+    
+    vector&lt;string&gt; fetchResults() override {
+        return queryResults;
+    }
+};
+
+// Concrete implementation for PostgreSQL
+class PostgreSQLConnection : public DatabaseConnection {
+private:
+    bool isConnected;
+    string serverAddress;
+    vector&lt;string&gt; queryResults;
+    
+    // Private helper method (different implementation)
+    bool establishConnection(const string& connStr) {
+        // PostgreSQL-specific connection logic
+        return !connStr.empty() && connStr.find("postgresql://") == 0;
+    }
+
+public:
+    PostgreSQLConnection() : isConnected(false) {}
+    
+    bool connect(const string& connectionString) override {
+        if (establishConnection(connectionString)) {
+            serverAddress = connectionString;
+            isConnected = true;
+            cout << "Connected to PostgreSQL database: " << serverAddress << endl;
+            return true;
+        }
+        cout << "Failed to connect to PostgreSQL database!" << endl;
+        return false;
+    }
+    
+    bool disconnect() override {
+        if (isConnected) {
+            isConnected = false;
+            cout << "Disconnected from PostgreSQL database." << endl;
+            return true;
+        }
+        return false;
+    }
+    
+    bool executeQuery(const string& query) override {
+        if (!isConnected) {
+            cout << "Error: Not connected to database!" << endl;
+            return false;
+        }
+        
+        cout << "Executing PostgreSQL query: " << query << endl;
+        
+        // Simulate query execution and results
+        queryResults.clear();
+        queryResults.push_back("Result 1: PostgreSQL data");
+        queryResults.push_back("Result 2: PostgreSQL data");
+        
+        return true;
+    }
+    
+    vector&lt;string&gt; fetchResults() override {
+        return queryResults;
+    }
+};
+
+// High-level database manager (uses abstraction)
+class DatabaseManager {
+private:
+    DatabaseConnection* dbConnection;
+
+public:
+    DatabaseManager(DatabaseConnection* connection) : dbConnection(connection) {}
+    
+    void performDatabaseOperations(const string& connectionString) {
+        // Client code doesn't need to know implementation details
+        if (dbConnection->connect(connectionString)) {
+            dbConnection->showConnectionStatus();
+            
+            // Execute a query
+            if (dbConnection->executeQuery("SELECT * FROM users")) {
+                vector&lt;string&gt; results = dbConnection->fetchResults();
+                cout << "Query results:" << endl;
+                for (const auto& result : results) {
+                    cout << "- " << result << endl;
+                }
+            }
+            
+            dbConnection->disconnect();
+        }
+    }
+    
+    ~DatabaseManager() {
+        delete dbConnection;
+    }
+};
+
+int main() {
+    cout << "=== Abstraction Example ===" << endl;
+    
+    // Using MySQL implementation
+    cout << "\n--- Using MySQL Database ---" << endl;
+    DatabaseManager mysqlManager(new MySQLConnection());
+    mysqlManager.performDatabaseOperations("mysql://localhost:3306/mydb");
+    
+    // Using PostgreSQL implementation
+    cout << "\n--- Using PostgreSQL Database ---" << endl;
+    DatabaseManager postgresManager(new PostgreSQLConnection());
+    postgresManager.performDatabaseOperations("postgresql://localhost:5432/mydb");
+    
+    // The client code (DatabaseManager) doesn't need to know
+    // the specific implementation details of MySQL or PostgreSQL
+    // It just works with the abstract interface
+    
+    return 0;
+}</code></pre>
+                                </div>
+
+                                <h3>Abstract Classes vs Interfaces:</h3>
+                                <div class="comparison-table">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Abstract Class</th>
+                                                <th>Interface (Pure Abstract Class)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Can have both abstract and concrete methods</td>
+                                                <td>All methods are pure virtual (abstract)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Can have member variables</td>
+                                                <td>Usually no member variables</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Can have constructors</td>
+                                                <td>Usually no constructors</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Supports single inheritance in C++</td>
+                                                <td>Can simulate multiple inheritance</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="info-box">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <p><strong>Remember:</strong> Abstraction helps in reducing complexity by hiding unnecessary details and showing only the relevant features to the user.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Virtual Functions -->
+                <section class="content-section" id="virtual-functions">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-code-branch"></i> Virtual Functions</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Virtual functions enable runtime polymorphism in C++. They allow a program to call the appropriate function based on the actual type of the object, not the type of the pointer or reference.</p>
+                                
+                                <h3>Types of Virtual Functions:</h3>
+                                <ul>
+                                    <li><strong>Virtual Function:</strong> Can be overridden in derived classes</li>
+                                    <li><strong>Pure Virtual Function:</strong> Must be overridden in derived classes</li>
+                                    <li><strong>Virtual Destructor:</strong> Ensures proper cleanup in inheritance hierarchies</li>
+                                </ul>
+
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">virtual_functions_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;memory&gt;
+using namespace std;
+
+// Base class with virtual functions
+class Animal {
+protected:
+    string name;
+    int age;
+
+public:
+    Animal(const string& animalName, int animalAge) : name(animalName), age(animalAge) {
+        cout << "Animal constructor: " << name << endl;
+    }
+    
+    // Virtual function - can be overridden
+    virtual void makeSound() {
+        cout << name << " makes a generic animal sound." << endl;
+    }
+    
+    // Virtual function with default implementation
+    virtual void move() {
+        cout << name << " moves around." << endl;
+    }
+    
+    // Pure virtual function - must be overridden
+    virtual void eat() = 0;
+    
+    // Virtual function for displaying information
+    virtual void displayInfo() {
+        cout << "Name: " << name << ", Age: " << age << " years" << endl;
+    }
+    
+    // Virtual destructor - important for proper cleanup
+    virtual ~Animal() {
+        cout << "Animal destructor: " << name << endl;
+    }
+};
+
+class Dog : public Animal {
+private:
+    string breed;
+
+public:
+    Dog(const string& dogName, int dogAge, const string& dogBreed) 
+        : Animal(dogName, dogAge), breed(dogBreed) {
+        cout << "Dog constructor: " << name << endl;
+    }
+    
+    // Override virtual function
+    void makeSound() override {
+        cout << name << " barks: Woof! Woof!" << endl;
+    }
+    
+    // Override virtual function
+    void move() override {
+        cout << name << " runs around wagging its tail." << endl;
+    }
+    
+    // Implement pure virtual function
+    void eat() override {
+        cout << name << " eats dog food and treats." << endl;
+    }
+    
+    // Override and extend displayInfo
+    void displayInfo() override {
+        Animal::displayInfo();  // Call base class version
+        cout << "Breed: " << breed << endl;
+    }
+    
+    // Dog-specific method
+    void fetch() {
+        cout << name << " fetches the ball!" << endl;
+    }
+    
+    ~Dog() {
+        cout << "Dog destructor: " << name << endl;
+    }
+};
+
+class Cat : public Animal {
+private:
+    bool isIndoor;
+
+public:
+    Cat(const string& catName, int catAge, bool indoor) 
+        : Animal(catName, catAge), isIndoor(indoor) {
+        cout << "Cat constructor: " << name << endl;
+    }
+    
+    // Override virtual function
+    void makeSound() override {
+        cout << name << " meows: Meow! Meow!" << endl;
+    }
+    
+    // Override virtual function
+    void move() override {
+        cout << name << " gracefully jumps and climbs." << endl;
+    }
+    
+    // Implement pure virtual function
+    void eat() override {
+        cout << name << " eats cat food and fish." << endl;
+    }
+    
+    // Override and extend displayInfo
+    void displayInfo() override {
+        Animal::displayInfo();
+        cout << "Indoor cat: " << (isIndoor ? "Yes" : "No") << endl;
+    }
+    
+    // Cat-specific method
+    void purr() {
+        cout << name << " purrs contentedly." << endl;
+    }
+    
+    ~Cat() {
+        cout << "Cat destructor: " << name << endl;
+    }
+};
+
+class Bird : public Animal {
+private:
+    bool canFly;
+
+public:
+    Bird(const string& birdName, int birdAge, bool flying) 
+        : Animal(birdName, birdAge), canFly(flying) {
+        cout << "Bird constructor: " << name << endl;
+    }
+    
+    // Override virtual function
+    void makeSound() override {
+        cout << name << " chirps: Tweet! Tweet!" << endl;
+    }
+    
+    // Override virtual function
+    void move() override {
+        if (canFly) {
+            cout << name << " flies through the sky." << endl;
+        } else {
+            cout << name << " hops around on the ground." << endl;
+        }
+    }
+    
+    // Implement pure virtual function
+    void eat() override {
+        cout << name << " eats seeds and insects." << endl;
+    }
+    
+    // Override and extend displayInfo
+    void displayInfo() override {
+        Animal::displayInfo();
+        cout << "Can fly: " << (canFly ? "Yes" : "No") << endl;
+    }
+    
+    // Bird-specific method
+    void buildNest() {
+        cout << name << " builds a cozy nest." << endl;
+    }
+    
+    ~Bird() {
+        cout << "Bird destructor: " << name << endl;
+    }
+};
+
+// Function demonstrating polymorphism with virtual functions
+void animalActions(Animal* animal) {
+    cout << "\n--- Animal Actions ---" << endl;
+    animal->displayInfo();
+    animal->makeSound();
+    animal->move();
+    animal->eat();
+    cout << "----------------------" << endl;
+}
+
+// Demonstrating virtual function table (vtable) concept
+void demonstrateVirtualFunctions() {
+    cout << "\n=== Virtual Functions Demonstration ===" << endl;
+    
+    // Create animals using base class pointers
+    vector<unique_ptr<Animal>> animals;
+    animals.push_back(make_unique<Dog>("Buddy", 3, "Golden Retriever"));
+    animals.push_back(make_unique<Cat>("Whiskers", 2, true));
+    animals.push_back(make_unique<Bird>("Robin", 1, true));
+    
+    // Polymorphic behavior - calls the appropriate derived class methods
+    for (auto& animal : animals) {
+        animalActions(animal.get());
+    }
+}
+
+// Function without virtual functions (static binding)
+class NonVirtualBase {
+public:
+    void show() {
+        cout << "NonVirtualBase::show()" << endl;
+    }
+};
+
+class NonVirtualDerived : public NonVirtualBase {
+public:
+    void show() {
+        cout << "NonVirtualDerived::show()" << endl;
+    }
+};
+
+void demonstrateNonVirtual() {
+    cout << "\n=== Non-Virtual Functions (Static Binding) ===" << endl;
+    
+    NonVirtualBase* ptr = new NonVirtualDerived();
+    ptr->show();  // Calls NonVirtualBase::show() - not what we might expect!
+    
+    delete ptr;
+}
+
+int main() {
+    cout << "=== Virtual Functions Example ===" << endl;
+    
+    // Demonstrate virtual functions
+    demonstrateVirtualFunctions();
+    
+    // Show the difference with non-virtual functions
+    demonstrateNonVirtual();
+    
+    cout << "\n=== Program ending - destructors will be called ===" << endl;
+    return 0;
+}</code></pre>
+                                </div>
+
+                                <h3>Virtual Function Table (vtable):</h3>
+                                <div class="vtable-explanation">
+                                    <p>Each class with virtual functions has a virtual function table (vtable) that contains pointers to the virtual functions. When a virtual function is called, the program looks up the correct function in the vtable.</p>
+                                    
+                                    <div class="vtable-diagram">
+                                        <h4>How vtable works:</h4>
+                                        <ol>
+                                            <li>Each object has a pointer to its class's vtable</li>
+                                            <li>Virtual function calls are resolved at runtime</li>
+                                            <li>The correct function is called based on the object's actual type</li>
+                                        </ol>
+                                    </div>
+                                </div>
+
+                                <h3>Rules for Virtual Functions:</h3>
+                                <div class="virtual-rules">
+                                    <ul>
+                                        <li>Virtual functions cannot be static</li>
+                                        <li>Virtual functions cannot be inline</li>
+                                        <li>Constructors cannot be virtual</li>
+                                        <li>Destructors should be virtual in base classes</li>
+                                        <li>Pure virtual functions make the class abstract</li>
+                                    </ul>
+                                </div>
+
+                                <div class="info-box">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <p><strong>Important:</strong> Always declare destructors as virtual in base classes to ensure proper cleanup when deleting objects through base class pointers.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <div class="navigation-buttons">
                     <a href="basics.html" class="btn btn-secondary">
                         <i class="fas fa-arrow-left"></i> Previous: Basics
