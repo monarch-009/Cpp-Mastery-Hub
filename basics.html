@@ -1,210 +1,811 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>C++ Basics - C++ Mastery Hub</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>"
+    />
+  </head>
+  <body>
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <i class="fas fa-code"></i>
-                <span>C++ Mastery Hub</span>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link active">Topics <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="basics.html" class="active">Basics</a>
-                        <a href="oop.html">OOP</a>
-                        <a href="advanced.html">Advanced</a>
-                        <a href="stl.html">STL</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="projects.html" class="nav-link">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a href="quiz.html" class="nav-link">Quiz</a>
-                </li>
-                <li class="nav-item">
-                    <button class="theme-toggle" id="themeToggle">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                </li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
+      <div class="nav-container">
+        <div class="nav-logo">
+          <i class="fas fa-code"></i>
+          <span>C++ Mastery Hub</span>
         </div>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link active"
+              >Topics <i class="fas fa-chevron-down"></i
+            ></a>
+            <div class="dropdown-content">
+              <a href="basics.html" class="active">Basics</a>
+              <a href="oop.html">OOP</a>
+              <a href="advanced.html">Advanced</a>
+              <a href="stl.html">STL</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="projects.html" class="nav-link">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a href="quiz.html" class="nav-link">Quiz</a>
+          </li>
+          <li class="nav-item">
+            <button class="theme-toggle" id="themeToggle">
+              <i class="fas fa-moon"></i>
+            </button>
+          </li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
     </nav>
 
     <div class="page-container">
-        <aside class="sidebar">
-            <div class="sidebar-content">
-                <h3>Table of Contents</h3>
-                <ul class="toc">
-                    <li><a href="#introduction">Introduction to C++</a></li>
-                    <li><a href="#hello-world">Hello World</a></li>
-                    <li><a href="#data-types">Data Types</a></li>
-                    <li><a href="#variables">Variables</a></li>
-                    <li><a href="#input-output">Input & Output</a></li>
-                    <li><a href="#operators">Operators</a></li>
-                    <li><a href="#conditionals">Conditionals</a></li>
-                    <li><a href="#loops">Loops</a></li>
-                    <li><a href="#functions">Functions</a></li>
-                    <li><a href="#arrays">Arrays</a></li>
-                    <li><a href="#strings">Strings</a></li>
-                    <li><a href="#pointers">Pointers Basics</a></li>
-                    <li><a href="#constants">Constants</a></li>
-                </ul>
-            </div>
-        </aside>
+      <aside class="sidebar">
+        <div class="sidebar-content">
+          <h3>Table of Contents</h3>
+          <ul class="toc">
+            <li><a href="#introduction">Introduction to C++</a></li>
+            <li><a href="#setup">Setting Up C++</a></li>
+            <li><a href="#hello-world">Hello World</a></li>
+            <li><a href="#compilation">Compilation Process</a></li>
+            <li><a href="#data-types">Data Types & Type System</a></li>
+            <li><a href="#variables">Variables & Memory</a></li>
+            <li><a href="#input-output">Input & Output</a></li>
+            <li><a href="#operators">Operators & Expressions</a></li>
+            <li><a href="#conditionals">Control Flow</a></li>
+            <li><a href="#loops">Loops & Iteration</a></li>
+            <li><a href="#functions">Functions & Scope</a></li>
+            <li><a href="#arrays">Arrays & Basic Collections</a></li>
+            <li><a href="#strings">Strings & Text Processing</a></li>
+            <li><a href="#pointers">Pointers & References</a></li>
+            <li><a href="#constants">Constants & Preprocessor</a></li>
+            <li><a href="#structures">Structures (Basics)</a></li>
+            <li><a href="#debugging">Debugging Basics</a></li>
+            <li><a href="#best-practices">Best Practices</a></li>
+          </ul>
+        </div>
+      </aside>
 
-        <main class="main-content">
-            <div class="content-header">
-                <h1>C++ Basics</h1>
-                <p>Master the fundamentals of C++ programming</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill"></div>
-                </div>
-            </div>
+      <main class="main-content">
+        <div class="content-header">
+          <h1>C++ Basics</h1>
+          <p>Master the fundamentals of C++ programming</p>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
 
-            <div class="content-sections">
-                <!-- Introduction to C++ -->
-                <section class="content-section" id="introduction">
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2><i class="fas fa-info-circle"></i> Introduction to C++</h2>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="topic-content">
-                                <p>C++ is a powerful, general-purpose programming language that was developed by Bjarne Stroustrup at Bell Labs starting in 1979. It's an extension of the C programming language with object-oriented programming capabilities.</p>
-                                
-                                <h3>Key Features of C++:</h3>
-                                <ul>
-                                    <li><strong>Object-Oriented:</strong> Supports classes, objects, inheritance, and polymorphism</li>
-                                    <li><strong>Low-level Control:</strong> Direct memory management and hardware access</li>
-                                    <li><strong>High Performance:</strong> Compiled language with excellent runtime performance</li>
-                                    <li><strong>Rich Standard Library:</strong> Extensive collection of pre-built functions and classes</li>
-                                    <li><strong>Platform Independent:</strong> Code can run on multiple operating systems</li>
-                                </ul>
+        <div class="content-sections">
+          <!-- Introduction to C++ -->
+          <section class="content-section" id="introduction">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h2><i class="fas fa-info-circle"></i> Introduction to C++</h2>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="accordion-content">
+                <div class="topic-content">
+                  <p>
+                    C++ is a powerful, general-purpose programming language that
+                    was developed by Bjarne Stroustrup at Bell Labs starting in
+                    1979. It's an extension of the C programming language with
+                    object-oriented programming capabilities.
+                  </p>
 
-                                <div class="info-box">
-                                    <i class="fas fa-lightbulb"></i>
-                                    <p><strong>Did you know?</strong> C++ is used in system software, game development, embedded systems, and high-performance applications like web browsers and databases.</p>
-                                </div>
-                            </div>
-                        </div>
+                  <h3>Why Learn C++?</h3>
+                  <div class="why-cpp-grid">
+                    <div class="reason-card">
+                      <i class="fas fa-rocket"></i>
+                      <h4>High Performance</h4>
+                      <p>
+                        C++ compiles to native machine code, providing excellent
+                        runtime performance for system-critical applications.
+                      </p>
                     </div>
-                </section>
+                    <div class="reason-card">
+                      <i class="fas fa-cogs"></i>
+                      <h4>System Control</h4>
+                      <p>
+                        Direct memory management and hardware access make it
+                        ideal for operating systems and embedded systems.
+                      </p>
+                    </div>
+                    <div class="reason-card">
+                      <i class="fas fa-puzzle-piece"></i>
+                      <h4>Versatile</h4>
+                      <p>
+                        Used in game development, web servers, databases, AI,
+                        and scientific computing.
+                      </p>
+                    </div>
+                    <div class="reason-card">
+                      <i class="fas fa-graduation-cap"></i>
+                      <h4>Foundation</h4>
+                      <p>
+                        Learning C++ provides a strong foundation for
+                        understanding other programming languages.
+                      </p>
+                    </div>
+                  </div>
 
-                <!-- Hello World -->
-                <section class="content-section" id="hello-world">
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2><i class="fas fa-play"></i> Hello World Program</h2>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="topic-content">
-                                <p>Let's start with the traditional "Hello World" program - your first step into C++ programming!</p>
-                                
-                                <div class="code-block">
-                                    <div class="code-header">
-                                        <span class="code-title">hello_world.cpp</span>
-                                        <button class="copy-btn" onclick="copyCode(this)">
-                                            <i class="fas fa-copy"></i> Copy
-                                        </button>
-                                    </div>
-                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+                  <h3>Key Features of C++:</h3>
+                  <ul class="feature-list">
+                    <li>
+                      <strong>Object-Oriented:</strong> Supports classes,
+                      objects, inheritance, polymorphism, and encapsulation
+                    </li>
+                    <li>
+                      <strong>Low-level Control:</strong> Direct memory
+                      management and hardware access
+                    </li>
+                    <li>
+                      <strong>High Performance:</strong> Compiled language with
+                      excellent runtime performance
+                    </li>
+                    <li>
+                      <strong>Rich Standard Library:</strong> Extensive
+                      collection of pre-built functions and classes (STL)
+                    </li>
+                    <li>
+                      <strong>Platform Independent:</strong> Code can run on
+                      multiple operating systems
+                    </li>
+                    <li>
+                      <strong>Template System:</strong> Generic programming
+                      capabilities for reusable code
+                    </li>
+                    <li>
+                      <strong>RAII:</strong> Resource Acquisition Is
+                      Initialization for automatic resource management
+                    </li>
+                    <li>
+                      <strong>Multiple Paradigms:</strong> Supports procedural,
+                      object-oriented, and generic programming
+                    </li>
+                  </ul>
+
+                  <h3>C++ Evolution Timeline:</h3>
+                  <div class="timeline">
+                    <div class="timeline-item">
+                      <div class="timeline-date">1979</div>
+                      <div class="timeline-content">
+                        <h4>C with Classes</h4>
+                        <p>Bjarne Stroustrup begins work on "C with Classes"</p>
+                      </div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-date">1985</div>
+                      <div class="timeline-content">
+                        <h4>C++ 1.0</h4>
+                        <p>First commercial release of C++</p>
+                      </div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-date">1998</div>
+                      <div class="timeline-content">
+                        <h4>C++98</h4>
+                        <p>First ISO standard, introduced STL</p>
+                      </div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-date">2011</div>
+                      <div class="timeline-content">
+                        <h4>C++11</h4>
+                        <p>Major revision: auto, lambdas, smart pointers</p>
+                      </div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-date">2020</div>
+                      <div class="timeline-content">
+                        <h4>C++20</h4>
+                        <p>Latest standard: modules, concepts, coroutines</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h3>Applications of C++:</h3>
+                  <div class="applications-grid">
+                    <div class="app-category">
+                      <i class="fas fa-desktop"></i>
+                      <h4>System Software</h4>
+                      <ul>
+                        <li>Operating Systems (Windows, Linux)</li>
+                        <li>Device Drivers</li>
+                        <li>Compilers & Interpreters</li>
+                      </ul>
+                    </div>
+                    <div class="app-category">
+                      <i class="fas fa-gamepad"></i>
+                      <h4>Game Development</h4>
+                      <ul>
+                        <li>Game Engines (Unreal Engine)</li>
+                        <li>Graphics Programming</li>
+                        <li>Real-time Systems</li>
+                      </ul>
+                    </div>
+                    <div class="app-category">
+                      <i class="fas fa-database"></i>
+                      <h4>Enterprise Software</h4>
+                      <ul>
+                        <li>Database Systems (MySQL, MongoDB)</li>
+                        <li>Web Servers</li>
+                        <li>Financial Systems</li>
+                      </ul>
+                    </div>
+                    <div class="app-category">
+                      <i class="fas fa-microchip"></i>
+                      <h4>Embedded Systems</h4>
+                      <ul>
+                        <li>IoT Devices</li>
+                        <li>Automotive Software</li>
+                        <li>Robotics</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="info-box">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>
+                      <strong>Did you know?</strong> C++ powers many
+                      technologies you use daily: your web browser, video games,
+                      smartphones, and even the software that runs in modern
+                      cars!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Setting Up C++ -->
+          <section class="content-section" id="setup">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h2><i class="fas fa-tools"></i> Setting Up C++</h2>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="accordion-content">
+                <div class="topic-content">
+                  <p>
+                    Before you can start programming in C++, you need to set up
+                    your development environment. This involves installing a
+                    compiler and choosing an IDE or text editor.
+                  </p>
+
+                  <h3>What You Need:</h3>
+                  <div class="setup-requirements">
+                    <div class="requirement-card">
+                      <h4><i class="fas fa-microchip"></i> C++ Compiler</h4>
+                      <p>
+                        A compiler translates your C++ code into machine code
+                        that your computer can execute.
+                      </p>
+                      <ul>
+                        <li>
+                          <strong>GCC:</strong> GNU Compiler Collection
+                          (Linux/Mac/Windows)
+                        </li>
+                        <li>
+                          <strong>Clang:</strong> Modern compiler with excellent
+                          error messages
+                        </li>
+                        <li>
+                          <strong>MSVC:</strong> Microsoft Visual C++ Compiler
+                          (Windows)
+                        </li>
+                        <li><strong>MinGW:</strong> GCC for Windows</li>
+                      </ul>
+                    </div>
+                    <div class="requirement-card">
+                      <h4><i class="fas fa-code"></i> IDE or Text Editor</h4>
+                      <p>
+                        An Integrated Development Environment or text editor for
+                        writing and managing your code.
+                      </p>
+                      <ul>
+                        <li>
+                          <strong>Visual Studio Code:</strong> Free,
+                          lightweight, extensible
+                        </li>
+                        <li>
+                          <strong>Visual Studio:</strong> Full-featured IDE
+                          (Windows)
+                        </li>
+                        <li>
+                          <strong>Code::Blocks:</strong> Cross-platform,
+                          beginner-friendly
+                        </li>
+                        <li>
+                          <strong>CLion:</strong> Professional IDE by JetBrains
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="requirement-card">
+                      <h4><i class="fas fa-bug"></i> Debugger</h4>
+                      <p>Tools to help find and fix errors in your code.</p>
+                      <ul>
+                        <li><strong>GDB:</strong> GNU Debugger</li>
+                        <li><strong>LLDB:</strong> LLVM Debugger</li>
+                        <li>
+                          <strong>Built-in debuggers:</strong> In most IDEs
+                        </li>
+                        <li>
+                          <strong>Valgrind:</strong> Memory debugging
+                          (Linux/Mac)
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <h3>Step-by-Step Setup:</h3>
+                  <div class="setup-steps">
+                    <div class="step-card">
+                      <div class="step-number">1</div>
+                      <h4>Install a C++ Compiler</h4>
+                      <p>
+                        <strong>Windows:</strong> Download MinGW-w64 or install
+                        Visual Studio with C++ support
+                      </p>
+                      <p>
+                        <strong>Mac:</strong> Install Xcode Command Line Tools:
+                        <code>xcode-select --install</code>
+                      </p>
+                      <p>
+                        <strong>Linux:</strong> Install GCC:
+                        <code>sudo apt install build-essential</code>
+                        (Ubuntu/Debian)
+                      </p>
+                    </div>
+                    <div class="step-card">
+                      <div class="step-number">2</div>
+                      <h4>Choose and Install an IDE</h4>
+                      <p>
+                        For beginners, we recommend
+                        <strong>Visual Studio Code</strong> (free) or
+                        <strong>Code::Blocks</strong>.
+                      </p>
+                      <p>
+                        Download from their official websites and follow the
+                        installation instructions.
+                      </p>
+                    </div>
+                    <div class="step-card">
+                      <div class="step-number">3</div>
+                      <h4>Configure Your Environment</h4>
+                      <p>
+                        Set up your PATH environment variable to include the
+                        compiler location.
+                      </p>
+                      <p>Configure your IDE to use the installed compiler.</p>
+                    </div>
+                    <div class="step-card">
+                      <div class="step-number">4</div>
+                      <h4>Test Your Setup</h4>
+                      <p>
+                        Create a simple "Hello World" program to verify
+                        everything is working correctly.
+                      </p>
+                      <p>
+                        Compile and run the program to ensure your environment
+                        is properly configured.
+                      </p>
+                    </div>
+                  </div>
+
+                  <h3>Online Alternatives:</h3>
+                  <p>
+                    If you want to start coding immediately without installing
+                    anything, try these online compilers:
+                  </p>
+                  <div class="online-compilers">
+                    <ul>
+                      <li>
+                        <strong>OnlineGDB:</strong> Full-featured online IDE
+                        with debugging
+                      </li>
+                      <li>
+                        <strong>Compiler Explorer:</strong> See assembly output
+                        and compare compilers
+                      </li>
+                      <li>
+                        <strong>Replit:</strong> Collaborative online coding
+                        environment
+                      </li>
+                      <li>
+                        <strong>CodePen:</strong> Quick prototyping and sharing
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="info-box">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>
+                      <strong>Tip:</strong> Start with an online compiler if
+                      you're just beginning, then set up a local environment as
+                      you become more comfortable with C++ programming.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Hello World -->
+          <section class="content-section" id="hello-world">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h2><i class="fas fa-play"></i> Hello World Program</h2>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="accordion-content">
+                <div class="topic-content">
+                  <p>
+                    Let's start with the traditional "Hello World" program -
+                    your first step into C++ programming!
+                  </p>
+
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">hello_world.cpp</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 int main() {
     cout &lt;&lt; "Hello, World!" &lt;&lt; endl;
     return 0;
 }</code></pre>
-                                </div>
+                  </div>
 
-                                <h3>Code Explanation:</h3>
-                                <ul>
-                                    <li><code>#include &lt;iostream&gt;</code> - Includes the input/output stream library</li>
-                                    <li><code>using namespace std;</code> - Allows us to use standard library functions without std:: prefix</li>
-                                    <li><code>int main()</code> - The main function where program execution begins</li>
-                                    <li><code>cout</code> - Output stream object for printing to console</li>
-                                    <li><code>&lt;&lt;</code> - Stream insertion operator</li>
-                                    <li><code>endl</code> - Inserts a newline and flushes the output buffer</li>
-                                    <li><code>return 0;</code> - Indicates successful program termination</li>
-                                </ul>
+                  <h3>Code Explanation:</h3>
+                  <ul>
+                    <li>
+                      <code>#include &lt;iostream&gt;</code> - Includes the
+                      input/output stream library
+                    </li>
+                    <li>
+                      <code>using namespace std;</code> - Allows us to use
+                      standard library functions without std:: prefix
+                    </li>
+                    <li>
+                      <code>int main()</code> - The main function where program
+                      execution begins
+                    </li>
+                    <li>
+                      <code>cout</code> - Output stream object for printing to
+                      console
+                    </li>
+                    <li><code>&lt;&lt;</code> - Stream insertion operator</li>
+                    <li>
+                      <code>endl</code> - Inserts a newline and flushes the
+                      output buffer
+                    </li>
+                    <li>
+                      <code>return 0;</code> - Indicates successful program
+                      termination
+                    </li>
+                  </ul>
 
-                                <div class="output-box">
-                                    <h4>Output:</h4>
-                                    <pre>Hello, World!</pre>
-                                </div>
-                            </div>
-                        </div>
+                  <div class="output-box">
+                    <h4>Output:</h4>
+                    <pre>Hello, World!</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Compilation Process -->
+          <section class="content-section" id="compilation">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h2>
+                  <i class="fas fa-cogs"></i> How C++ Code Becomes Executable
+                </h2>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="accordion-content">
+                <div class="topic-content">
+                  <p>
+                    Understanding how your C++ source code becomes an executable
+                    program is crucial for effective development. This process
+                    involves several stages that transform human-readable code
+                    into machine code.
+                  </p>
+
+                  <h3>The Compilation Pipeline:</h3>
+                  <div class="compilation-pipeline">
+                    <div class="pipeline-step">
+                      <div class="step-icon">
+                        <i class="fas fa-file-code"></i>
+                      </div>
+                      <h4>1. Source Code (.cpp)</h4>
+                      <p>
+                        Your human-readable C++ code written in text files with
+                        .cpp extension.
+                      </p>
+                      <div class="code-block">
+                        <pre><code class="language-cpp">#include &lt;iostream&gt;
+int main() {
+    std::cout &lt;&lt; "Hello World!";
+    return 0;
+}</code></pre>
+                      </div>
                     </div>
-                </section>
 
-                <!-- Data Types -->
-                <section class="content-section" id="data-types">
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2><i class="fas fa-database"></i> Data Types</h2>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="topic-content">
-                                <p>C++ provides several built-in data types to store different kinds of information.</p>
-                                
-                                <div class="data-types-grid">
-                                    <div class="data-type-card">
-                                        <h4>Integer Types</h4>
-                                        <ul>
-                                            <li><code>int</code> - 4 bytes (32-bit)</li>
-                                            <li><code>short</code> - 2 bytes (16-bit)</li>
-                                            <li><code>long</code> - 8 bytes (64-bit)</li>
-                                            <li><code>long long</code> - 8 bytes (64-bit)</li>
-                                        </ul>
-                                    </div>
-                                    <div class="data-type-card">
-                                        <h4>Floating Point</h4>
-                                        <ul>
-                                            <li><code>float</code> - 4 bytes (single precision)</li>
-                                            <li><code>double</code> - 8 bytes (double precision)</li>
-                                            <li><code>long double</code> - 12 bytes (extended precision)</li>
-                                        </ul>
-                                    </div>
-                                    <div class="data-type-card">
-                                        <h4>Character & Boolean</h4>
-                                        <ul>
-                                            <li><code>char</code> - 1 byte (ASCII character)</li>
-                                            <li><code>wchar_t</code> - 2-4 bytes (wide character)</li>
-                                            <li><code>bool</code> - 1 byte (true/false)</li>
-                                        </ul>
-                                    </div>
-                                </div>
+                    <div class="pipeline-arrow">↓</div>
 
-                                <div class="code-block">
-                                    <div class="code-header">
-                                        <span class="code-title">data_types_example.cpp</span>
-                                        <button class="copy-btn" onclick="copyCode(this)">
-                                            <i class="fas fa-copy"></i> Copy
-                                        </button>
-                                    </div>
-                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+                    <div class="pipeline-step">
+                      <div class="step-icon"><i class="fas fa-search"></i></div>
+                      <h4>2. Preprocessing</h4>
+                      <p>
+                        The preprocessor handles #include directives, #define
+                        macros, and conditional compilation.
+                      </p>
+                      <ul>
+                        <li>Includes header files</li>
+                        <li>Expands macros</li>
+                        <li>Removes comments</li>
+                        <li>Handles conditional compilation</li>
+                      </ul>
+                    </div>
+
+                    <div class="pipeline-arrow">↓</div>
+
+                    <div class="pipeline-step">
+                      <div class="step-icon">
+                        <i class="fas fa-microchip"></i>
+                      </div>
+                      <h4>3. Compilation</h4>
+                      <p>
+                        The compiler translates preprocessed C++ code into
+                        assembly language.
+                      </p>
+                      <ul>
+                        <li>Syntax checking</li>
+                        <li>Type checking</li>
+                        <li>Code optimization</li>
+                        <li>Assembly generation</li>
+                      </ul>
+                    </div>
+
+                    <div class="pipeline-arrow">↓</div>
+
+                    <div class="pipeline-step">
+                      <div class="step-icon"><i class="fas fa-cube"></i></div>
+                      <h4>4. Assembly</h4>
+                      <p>
+                        The assembler converts assembly code into machine code
+                        object files (.o or .obj).
+                      </p>
+                      <ul>
+                        <li>Binary machine code</li>
+                        <li>Symbol tables</li>
+                        <li>Relocation information</li>
+                        <li>Debug information</li>
+                      </ul>
+                    </div>
+
+                    <div class="pipeline-arrow">↓</div>
+
+                    <div class="pipeline-step">
+                      <div class="step-icon"><i class="fas fa-link"></i></div>
+                      <h4>5. Linking</h4>
+                      <p>
+                        The linker combines object files and libraries into a
+                        final executable.
+                      </p>
+                      <ul>
+                        <li>Resolves function calls</li>
+                        <li>Links libraries</li>
+                        <li>Creates executable file</li>
+                        <li>Final memory layout</li>
+                      </ul>
+                    </div>
+
+                    <div class="pipeline-arrow">↓</div>
+
+                    <div class="pipeline-step final">
+                      <div class="step-icon"><i class="fas fa-play"></i></div>
+                      <h4>6. Executable Program</h4>
+                      <p>
+                        Ready-to-run program that can be executed by the
+                        operating system.
+                      </p>
+                    </div>
+                  </div>
+
+                  <h3>Compilation Commands:</h3>
+                  <div class="compilation-commands">
+                    <h4>Basic Compilation:</h4>
+                    <div class="code-block">
+                      <span class="code-title">Command Line</span>
+                      <pre><code class="language-bash"># GCC/G++ Compilation
+g++ hello.cpp -o hello
+
+# Clang Compilation  
+clang++ hello.cpp -o hello
+
+# Microsoft Visual C++ (Windows)
+cl hello.cpp</code></pre>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                      </button>
+                    </div>
+
+                    <h4>Step-by-Step Compilation:</h4>
+                    <div class="code-block">
+                      <span class="code-title">Detailed Process</span>
+                      <pre><code class="language-bash"># 1. Preprocessing only
+g++ -E hello.cpp -o hello.i
+
+# 2. Compilation to assembly
+g++ -S hello.cpp -o hello.s
+
+# 3. Assembly to object file
+g++ -c hello.cpp -o hello.o
+
+# 4. Linking to executable
+g++ hello.o -o hello</code></pre>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                      </button>
+                    </div>
+
+                    <h4>Common Compiler Flags:</h4>
+                    <div class="compiler-flags">
+                      <ul>
+                        <li><code>-g</code> - Include debug information</li>
+                        <li><code>-O2</code> - Enable optimization level 2</li>
+                        <li><code>-Wall</code> - Enable all warnings</li>
+                        <li><code>-Werror</code> - Treat warnings as errors</li>
+                        <li><code>-std=c++17</code> - Use C++17 standard</li>
+                        <li>
+                          <code>-I&lt;dir&gt;</code> - Add include directory
+                        </li>
+                        <li>
+                          <code>-L&lt;dir&gt;</code> - Add library directory
+                        </li>
+                        <li><code>-l&lt;lib&gt;</code> - Link with library</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <h3>Build Systems:</h3>
+                  <p>
+                    For larger projects, manual compilation becomes complex.
+                    Build systems automate this process:
+                  </p>
+                  <div class="build-systems">
+                    <div class="build-system-card">
+                      <h4><i class="fas fa-hammer"></i> Make</h4>
+                      <p>Traditional Unix build tool using Makefiles</p>
+                      <div class="code-block">
+                        <pre><code class="language-makefile"># Simple Makefile
+hello: hello.cpp
+    g++ hello.cpp -o hello</code></pre>
+                      </div>
+                    </div>
+                    <div class="build-system-card">
+                      <h4><i class="fas fa-cube"></i> CMake</h4>
+                      <p>Cross-platform build system generator</p>
+                      <div class="code-block">
+                        <pre><code class="language-cmake"># CMakeLists.txt
+cmake_minimum_required(VERSION 3.10)
+project(HelloWorld)
+add_executable(hello hello.cpp)</code></pre>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>
+                      <strong>Important:</strong> Always compile with warnings
+                      enabled (-Wall) and fix all warnings. Warnings often
+                      indicate potential bugs or unclear code.
+                    </p>
+                  </div>
+
+                  <div class="info-box">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>
+                      <strong>Tip:</strong> Understanding compilation helps you
+                      debug errors, optimize performance, and work with larger
+                      codebases effectively.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Data Types -->
+          <section class="content-section" id="data-types">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h2><i class="fas fa-database"></i> Data Types</h2>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="accordion-content">
+                <div class="topic-content">
+                  <p>
+                    C++ provides several built-in data types to store different
+                    kinds of information.
+                  </p>
+
+                  <div class="data-types-grid">
+                    <div class="data-type-card">
+                      <h4>Integer Types</h4>
+                      <ul>
+                        <li><code>int</code> - 4 bytes (32-bit)</li>
+                        <li><code>short</code> - 2 bytes (16-bit)</li>
+                        <li><code>long</code> - 8 bytes (64-bit)</li>
+                        <li><code>long long</code> - 8 bytes (64-bit)</li>
+                      </ul>
+                    </div>
+                    <div class="data-type-card">
+                      <h4>Floating Point</h4>
+                      <ul>
+                        <li><code>float</code> - 4 bytes (single precision)</li>
+                        <li>
+                          <code>double</code> - 8 bytes (double precision)
+                        </li>
+                        <li>
+                          <code>long double</code> - 12 bytes (extended
+                          precision)
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="data-type-card">
+                      <h4>Character & Boolean</h4>
+                      <ul>
+                        <li><code>char</code> - 1 byte (ASCII character)</li>
+                        <li>
+                          <code>wchar_t</code> - 2-4 bytes (wide character)
+                        </li>
+                        <li><code>bool</code> - 1 byte (true/false)</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">data_types_example.cpp</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 int main() {
@@ -230,47 +831,54 @@ int main() {
     
     return 0;
 }</code></pre>
-                                </div>
-                            </div>
-                        </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Variables -->
+          <section class="content-section" id="variables">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h2><i class="fas fa-box"></i> Variables</h2>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="accordion-content">
+                <div class="topic-content">
+                  <p>
+                    Variables are containers that store data values. In C++, you
+                    must declare a variable with its data type before using it.
+                  </p>
+
+                  <h3>Variable Declaration Syntax:</h3>
+                  <div class="syntax-box">
+                    <code>data_type variable_name = initial_value;</code>
+                  </div>
+
+                  <h3>Naming Rules:</h3>
+                  <div class="rules-list">
+                    <ul>
+                      <li>
+                        Must start with a letter (a-z, A-Z) or underscore (_)
+                      </li>
+                      <li>
+                        Can contain letters, digits (0-9), and underscores
+                      </li>
+                      <li>Cannot contain spaces or special characters</li>
+                      <li>Case-sensitive (age and Age are different)</li>
+                      <li>Cannot use C++ keywords (int, class, for, etc.)</li>
+                    </ul>
+                  </div>
+
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">variables_example.cpp</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
                     </div>
-                </section>
-
-                <!-- Variables -->
-                <section class="content-section" id="variables">
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2><i class="fas fa-box"></i> Variables</h2>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="topic-content">
-                                <p>Variables are containers that store data values. In C++, you must declare a variable with its data type before using it.</p>
-                                
-                                <h3>Variable Declaration Syntax:</h3>
-                                <div class="syntax-box">
-                                    <code>data_type variable_name = initial_value;</code>
-                                </div>
-
-                                <h3>Naming Rules:</h3>
-                                <div class="rules-list">
-                                    <ul>
-                                        <li>Must start with a letter (a-z, A-Z) or underscore (_)</li>
-                                        <li>Can contain letters, digits (0-9), and underscores</li>
-                                        <li>Cannot contain spaces or special characters</li>
-                                        <li>Case-sensitive (age and Age are different)</li>
-                                        <li>Cannot use C++ keywords (int, class, for, etc.)</li>
-                                    </ul>
-                                </div>
-
-                                <div class="code-block">
-                                    <div class="code-header">
-                                        <span class="code-title">variables_example.cpp</span>
-                                        <button class="copy-btn" onclick="copyCode(this)">
-                                            <i class="fas fa-copy"></i> Copy
-                                        </button>
-                                    </div>
-                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 int main() {
@@ -295,39 +903,49 @@ int main() {
     
     return 0;
 }</code></pre>
-                                </div>
+                  </div>
 
-                                <div class="info-box">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                    <p><strong>Important:</strong> Variable names must start with a letter or underscore, can contain letters, digits, and underscores, and are case-sensitive.</p>
-                                </div>
-                            </div>
-                        </div>
+                  <div class="info-box">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>
+                      <strong>Important:</strong> Variable names must start with
+                      a letter or underscore, can contain letters, digits, and
+                      underscores, and are case-sensitive.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Input & Output -->
+          <section class="content-section" id="input-output">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h2><i class="fas fa-exchange-alt"></i> Input & Output</h2>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="accordion-content">
+                <div class="topic-content">
+                  <p>
+                    Learn how to interact with users by reading input and
+                    displaying output in C++.
+                  </p>
+
+                  <h3>Output with cout:</h3>
+                  <p>
+                    The <code>cout</code> object is used to display output to
+                    the console.
+                  </p>
+
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">output_example.cpp</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
                     </div>
-                </section>
-
-                <!-- Input & Output -->
-                <section class="content-section" id="input-output">
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2><i class="fas fa-exchange-alt"></i> Input & Output</h2>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="topic-content">
-                                <p>Learn how to interact with users by reading input and displaying output in C++.</p>
-                                
-                                <h3>Output with cout:</h3>
-                                <p>The <code>cout</code> object is used to display output to the console.</p>
-                                
-                                <div class="code-block">
-                                    <div class="code-header">
-                                        <span class="code-title">output_example.cpp</span>
-                                        <button class="copy-btn" onclick="copyCode(this)">
-                                            <i class="fas fa-copy"></i> Copy
-                                        </button>
-                                    </div>
-                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 int main() {
@@ -349,19 +967,22 @@ int main() {
     
     return 0;
 }</code></pre>
-                                </div>
+                  </div>
 
-                                <h3>Input with cin:</h3>
-                                <p>The <code>cin</code> object is used to read input from the user.</p>
-                                
-                                <div class="code-block">
-                                    <div class="code-header">
-                                        <span class="code-title">input_example.cpp</span>
-                                        <button class="copy-btn" onclick="copyCode(this)">
-                                            <i class="fas fa-copy"></i> Copy
-                                        </button>
-                                    </div>
-                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+                  <h3>Input with cin:</h3>
+                  <p>
+                    The <code>cin</code> object is used to read input from the
+                    user.
+                  </p>
+
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">input_example.cpp</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;string&gt;
 using namespace std;
 
@@ -389,22 +1010,27 @@ int main() {
     
     return 0;
 }</code></pre>
-                                </div>
+                  </div>
 
-                                <div class="info-box">
-                                    <i class="fas fa-lightbulb"></i>
-                                    <p><strong>Tip:</strong> Use <code>getline(cin, variable)</code> to read strings that contain spaces. Use <code>cin &gt;&gt; variable</code> for single words and numbers.</p>
-                                </div>
+                  <div class="info-box">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>
+                      <strong>Tip:</strong> Use
+                      <code>getline(cin, variable)</code> to read strings that
+                      contain spaces. Use <code>cin &gt;&gt; variable</code> for
+                      single words and numbers.
+                    </p>
+                  </div>
 
-                                <h3>Simple Calculator Example:</h3>
-                                <div class="code-block">
-                                    <div class="code-header">
-                                        <span class="code-title">calculator.cpp</span>
-                                        <button class="copy-btn" onclick="copyCode(this)">
-                                            <i class="fas fa-copy"></i> Copy
-                                        </button>
-                                    </div>
-                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+                  <h3>Simple Calculator Example:</h3>
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">calculator.cpp</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 int main() {
@@ -446,73 +1072,76 @@ int main() {
     
     return 0;
 }</code></pre>
-                                </div>
-                            </div>
-                        </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Operators -->
+          <section class="content-section" id="operators">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h2><i class="fas fa-calculator"></i> Operators</h2>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="accordion-content">
+                <div class="topic-content">
+                  <p>
+                    Operators are symbols that perform operations on variables
+                    and values.
+                  </p>
+
+                  <div class="operators-grid">
+                    <div class="operator-category">
+                      <h4>Arithmetic Operators</h4>
+                      <ul>
+                        <li><code>+</code> Addition</li>
+                        <li><code>-</code> Subtraction</li>
+                        <li><code>*</code> Multiplication</li>
+                        <li><code>/</code> Division</li>
+                        <li><code>%</code> Modulus (remainder)</li>
+                      </ul>
                     </div>
-                </section>
+                    <div class="operator-category">
+                      <h4>Comparison Operators</h4>
+                      <ul>
+                        <li><code>==</code> Equal to</li>
+                        <li><code>!=</code> Not equal to</li>
+                        <li><code>&lt;</code> Less than</li>
+                        <li><code>&gt;</code> Greater than</li>
+                        <li><code>&lt;=</code> Less than or equal</li>
+                        <li><code>&gt;=</code> Greater than or equal</li>
+                      </ul>
+                    </div>
+                    <div class="operator-category">
+                      <h4>Logical Operators</h4>
+                      <ul>
+                        <li><code>&&</code> Logical AND</li>
+                        <li><code>||</code> Logical OR</li>
+                        <li><code>!</code> Logical NOT</li>
+                      </ul>
+                    </div>
+                    <div class="operator-category">
+                      <h4>Assignment Operators</h4>
+                      <ul>
+                        <li><code>=</code> Assignment</li>
+                        <li><code>+=</code> Add and assign</li>
+                        <li><code>-=</code> Subtract and assign</li>
+                        <li><code>*=</code> Multiply and assign</li>
+                        <li><code>/=</code> Divide and assign</li>
+                      </ul>
+                    </div>
+                  </div>
 
-                <!-- Operators -->
-                <section class="content-section" id="operators">
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2><i class="fas fa-calculator"></i> Operators</h2>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="topic-content">
-                                <p>Operators are symbols that perform operations on variables and values.</p>
-                                
-                                <div class="operators-grid">
-                                    <div class="operator-category">
-                                        <h4>Arithmetic Operators</h4>
-                                        <ul>
-                                            <li><code>+</code> Addition</li>
-                                            <li><code>-</code> Subtraction</li>
-                                            <li><code>*</code> Multiplication</li>
-                                            <li><code>/</code> Division</li>
-                                            <li><code>%</code> Modulus (remainder)</li>
-                                        </ul>
-                                    </div>
-                                    <div class="operator-category">
-                                        <h4>Comparison Operators</h4>
-                                        <ul>
-                                            <li><code>==</code> Equal to</li>
-                                            <li><code>!=</code> Not equal to</li>
-                                            <li><code>&lt;</code> Less than</li>
-                                            <li><code>&gt;</code> Greater than</li>
-                                            <li><code>&lt;=</code> Less than or equal</li>
-                                            <li><code>&gt;=</code> Greater than or equal</li>
-                                        </ul>
-                                    </div>
-                                    <div class="operator-category">
-                                        <h4>Logical Operators</h4>
-                                        <ul>
-                                            <li><code>&&</code> Logical AND</li>
-                                            <li><code>||</code> Logical OR</li>
-                                            <li><code>!</code> Logical NOT</li>
-                                        </ul>
-                                    </div>
-                                    <div class="operator-category">
-                                        <h4>Assignment Operators</h4>
-                                        <ul>
-                                            <li><code>=</code> Assignment</li>
-                                            <li><code>+=</code> Add and assign</li>
-                                            <li><code>-=</code> Subtract and assign</li>
-                                            <li><code>*=</code> Multiply and assign</li>
-                                            <li><code>/=</code> Divide and assign</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="code-block">
-                                    <div class="code-header">
-                                        <span class="code-title">operators_example.cpp</span>
-                                        <button class="copy-btn" onclick="copyCode(this)">
-                                            <i class="fas fa-copy"></i> Copy
-                                        </button>
-                                    </div>
-                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">operators_example.cpp</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 int main() {
@@ -537,31 +1166,34 @@ int main() {
     
     return 0;
 }</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
-                <!-- Conditionals -->
-                <section class="content-section" id="conditionals">
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2><i class="fas fa-code-branch"></i> Conditionals</h2>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="topic-content">
-                                <p>Conditional statements allow you to execute different code blocks based on certain conditions.</p>
-                                
-                                <div class="code-block">
-                                    <div class="code-header">
-                                        <span class="code-title">conditionals_example.cpp</span>
-                                        <button class="copy-btn" onclick="copyCode(this)">
-                                            <i class="fas fa-copy"></i> Copy
-                                        </button>
-                                    </div>
-                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+          <!-- Conditionals -->
+          <section class="content-section" id="conditionals">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h2><i class="fas fa-code-branch"></i> Conditionals</h2>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="accordion-content">
+                <div class="topic-content">
+                  <p>
+                    Conditional statements allow you to execute different code
+                    blocks based on certain conditions.
+                  </p>
+
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">conditionals_example.cpp</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 int main() {
@@ -594,19 +1226,22 @@ int main() {
     
     return 0;
 }</code></pre>
-                                </div>
+                  </div>
 
-                                <h3>Switch Statement:</h3>
-                                <p>The switch statement provides an efficient way to execute different code blocks based on the value of a variable.</p>
-                                
-                                <div class="code-block">
-                                    <div class="code-header">
-                                        <span class="code-title">switch_example.cpp</span>
-                                        <button class="copy-btn" onclick="copyCode(this)">
-                                            <i class="fas fa-copy"></i> Copy
-                                        </button>
-                                    </div>
-                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+                  <h3>Switch Statement:</h3>
+                  <p>
+                    The switch statement provides an efficient way to execute
+                    different code blocks based on the value of a variable.
+                  </p>
+
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">switch_example.cpp</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 int main() {
@@ -641,52 +1276,62 @@ int main() {
     
     return 0;
 }</code></pre>
-                                </div>
+                  </div>
 
-                                <div class="info-box">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                    <p><strong>Important:</strong> Always use <code>break</code> statements in switch cases to prevent fall-through behavior, unless intentionally desired.</p>
-                                </div>
-                            </div>
-                        </div>
+                  <div class="info-box">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>
+                      <strong>Important:</strong> Always use
+                      <code>break</code> statements in switch cases to prevent
+                      fall-through behavior, unless intentionally desired.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Loops -->
+          <section class="content-section" id="loops">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h2><i class="fas fa-sync-alt"></i> Loops</h2>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="accordion-content">
+                <div class="topic-content">
+                  <p>
+                    Loops allow you to execute a block of code repeatedly based
+                    on a condition.
+                  </p>
+
+                  <h3>Types of Loops in C++:</h3>
+                  <div class="loop-types-grid">
+                    <div class="loop-type-card">
+                      <h4><i class="fas fa-repeat"></i> For Loop</h4>
+                      <p>Used when you know the exact number of iterations</p>
                     </div>
-                </section>
+                    <div class="loop-type-card">
+                      <h4><i class="fas fa-clock"></i> While Loop</h4>
+                      <p>
+                        Used when the number of iterations depends on a
+                        condition
+                      </p>
+                    </div>
+                    <div class="loop-type-card">
+                      <h4><i class="fas fa-play-circle"></i> Do-While Loop</h4>
+                      <p>Executes at least once, then checks the condition</p>
+                    </div>
+                  </div>
 
-                <!-- Loops -->
-                <section class="content-section" id="loops">
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2><i class="fas fa-sync-alt"></i> Loops</h2>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="topic-content">
-                                <p>Loops allow you to execute a block of code repeatedly based on a condition.</p>
-                                
-                                <h3>Types of Loops in C++:</h3>
-                                <div class="loop-types-grid">
-                                    <div class="loop-type-card">
-                                        <h4><i class="fas fa-repeat"></i> For Loop</h4>
-                                        <p>Used when you know the exact number of iterations</p>
-                                    </div>
-                                    <div class="loop-type-card">
-                                        <h4><i class="fas fa-clock"></i> While Loop</h4>
-                                        <p>Used when the number of iterations depends on a condition</p>
-                                    </div>
-                                    <div class="loop-type-card">
-                                        <h4><i class="fas fa-play-circle"></i> Do-While Loop</h4>
-                                        <p>Executes at least once, then checks the condition</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="code-block">
-                                    <div class="code-header">
-                                        <span class="code-title">loops_example.cpp</span>
-                                        <button class="copy-btn" onclick="copyCode(this)">
-                                            <i class="fas fa-copy"></i> Copy
-                                        </button>
-                                    </div>
-                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">loops_example.cpp</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 int main() {
@@ -716,28 +1361,28 @@ int main() {
     
     return 0;
 }</code></pre>
-                                </div>
+                  </div>
 
-                                <h3>Loop Control Statements:</h3>
-                                <div class="control-statements">
-                                    <div class="control-item">
-                                        <h4><code>break</code></h4>
-                                        <p>Exits the loop immediately</p>
-                                    </div>
-                                    <div class="control-item">
-                                        <h4><code>continue</code></h4>
-                                        <p>Skips the current iteration and moves to the next</p>
-                                    </div>
-                                </div>
+                  <h3>Loop Control Statements:</h3>
+                  <div class="control-statements">
+                    <div class="control-item">
+                      <h4><code>break</code></h4>
+                      <p>Exits the loop immediately</p>
+                    </div>
+                    <div class="control-item">
+                      <h4><code>continue</code></h4>
+                      <p>Skips the current iteration and moves to the next</p>
+                    </div>
+                  </div>
 
-                                <div class="code-block">
-                                    <div class="code-header">
-                                        <span class="code-title">loop_control_example.cpp</span>
-                                        <button class="copy-btn" onclick="copyCode(this)">
-                                            <i class="fas fa-copy"></i> Copy
-                                        </button>
-                                    </div>
-                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">loop_control_example.cpp</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 int main() {
@@ -772,39 +1417,45 @@ int main() {
     
     return 0;
 }</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
-                <!-- Functions -->
-                <section class="content-section" id="functions">
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2><i class="fas fa-cogs"></i> Functions</h2>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="topic-content">
-                                <p>Functions are reusable blocks of code that perform specific tasks. They help organize code and avoid repetition.</p>
-                                
-                                <h3>Function Structure:</h3>
-                                <div class="syntax-box">
-                                    <code>return_type function_name(parameter_list) {<br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;// function body<br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;return value; // if return_type is not void<br>
-                                    }</code>
-                                </div>
-                                
-                                <div class="code-block">
-                                    <div class="code-header">
-                                        <span class="code-title">functions_example.cpp</span>
-                                        <button class="copy-btn" onclick="copyCode(this)">
-                                            <i class="fas fa-copy"></i> Copy
-                                        </button>
-                                    </div>
-                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+          <!-- Functions -->
+          <section class="content-section" id="functions">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h2><i class="fas fa-cogs"></i> Functions</h2>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="accordion-content">
+                <div class="topic-content">
+                  <p>
+                    Functions are reusable blocks of code that perform specific
+                    tasks. They help organize code and avoid repetition.
+                  </p>
+
+                  <h3>Function Structure:</h3>
+                  <div class="syntax-box">
+                    <code
+                      >return_type function_name(parameter_list) {<br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;// function body<br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;return value; // if return_type is
+                      not void<br />
+                      }</code
+                    >
+                  </div>
+
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">functions_example.cpp</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;string&gt;
 using namespace std;
 
@@ -850,28 +1501,28 @@ int factorial(int n) {
     }
     return n * factorial(n - 1);  // Recursive function
 }</code></pre>
-                                </div>
+                  </div>
 
-                                <h3>Function Parameters:</h3>
-                                <div class="parameters-info">
-                                    <div class="param-type">
-                                        <h4>Pass by Value</h4>
-                                        <p>A copy of the argument is passed to the function</p>
-                                    </div>
-                                    <div class="param-type">
-                                        <h4>Pass by Reference</h4>
-                                        <p>The actual variable is passed to the function</p>
-                                    </div>
-                                </div>
+                  <h3>Function Parameters:</h3>
+                  <div class="parameters-info">
+                    <div class="param-type">
+                      <h4>Pass by Value</h4>
+                      <p>A copy of the argument is passed to the function</p>
+                    </div>
+                    <div class="param-type">
+                      <h4>Pass by Reference</h4>
+                      <p>The actual variable is passed to the function</p>
+                    </div>
+                  </div>
 
-                                <div class="code-block">
-                                    <div class="code-header">
-                                        <span class="code-title">function_parameters.cpp</span>
-                                        <button class="copy-btn" onclick="copyCode(this)">
-                                            <i class="fas fa-copy"></i> Copy
-                                        </button>
-                                    </div>
-                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">function_parameters.cpp</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 // Pass by value
@@ -909,36 +1560,42 @@ int main() {
     
     return 0;
 }</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
-                <!-- Arrays -->
-                <section class="content-section" id="arrays">
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2><i class="fas fa-list"></i> Arrays</h2>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="topic-content">
-                                <p>Arrays are collections of elements of the same data type stored in contiguous memory locations.</p>
-                                
-                                <h3>Array Declaration Syntax:</h3>
-                                <div class="syntax-box">
-                                    <code>data_type array_name[size] = {element1, element2, ...};</code>
-                                </div>
-                                
-                                <div class="code-block">
-                                    <div class="code-header">
-                                        <span class="code-title">arrays_example.cpp</span>
-                                        <button class="copy-btn" onclick="copyCode(this)">
-                                            <i class="fas fa-copy"></i> Copy
-                                        </button>
-                                    </div>
-                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+          <!-- Arrays -->
+          <section class="content-section" id="arrays">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h2><i class="fas fa-list"></i> Arrays</h2>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="accordion-content">
+                <div class="topic-content">
+                  <p>
+                    Arrays are collections of elements of the same data type
+                    stored in contiguous memory locations.
+                  </p>
+
+                  <h3>Array Declaration Syntax:</h3>
+                  <div class="syntax-box">
+                    <code
+                      >data_type array_name[size] = {element1, element2,
+                      ...};</code
+                    >
+                  </div>
+
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">arrays_example.cpp</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 int main() {
@@ -958,32 +1615,35 @@ int main() {
     
     return 0;
 }</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
-                <!-- Strings -->
-                <section class="content-section" id="strings">
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2><i class="fas fa-quote-right"></i> Strings</h2>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="topic-content">
-                                <p>Strings are sequences of characters used to represent text in C++.</p>
-                                
-                                <h3>String Declaration and Initialization:</h3>
-                                <div class="code-block">
-                                    <div class="code-header">
-                                        <span class="code-title">strings_example.cpp</span>
-                                        <button class="copy-btn" onclick="copyCode(this)">
-                                            <i class="fas fa-copy"></i> Copy
-                                        </button>
-                                    </div>
-                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+          <!-- Strings -->
+          <section class="content-section" id="strings">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h2><i class="fas fa-quote-right"></i> Strings</h2>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="accordion-content">
+                <div class="topic-content">
+                  <p>
+                    Strings are sequences of characters used to represent text
+                    in C++.
+                  </p>
+
+                  <h3>String Declaration and Initialization:</h3>
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">strings_example.cpp</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;string&gt;
 using namespace std;
 
@@ -1020,62 +1680,71 @@ int main() {
     
     return 0;
 }</code></pre>
-                                </div>
+                  </div>
 
-                                <h3>Common String Operations:</h3>
-                                <div class="string-operations">
-                                    <div class="operation-item">
-                                        <code>.length()</code> or <code>.size()</code>
-                                        <p>Returns the number of characters</p>
-                                    </div>
-                                    <div class="operation-item">
-                                        <code>.substr(pos, len)</code>
-                                        <p>Returns a substring</p>
-                                    </div>
-                                    <div class="operation-item">
-                                        <code>.find(str)</code>
-                                        <p>Finds the position of a substring</p>
-                                    </div>
-                                    <div class="operation-item">
-                                        <code>.append(str)</code>
-                                        <p>Appends a string to the end</p>
-                                    </div>
-                                </div>
-
-                                <div class="info-box">
-                                    <i class="fas fa-lightbulb"></i>
-                                    <p><strong>Tip:</strong> Always include <code>#include &lt;string&gt;</code> when working with string objects in C++.</p>
-                                </div>
-                            </div>
-                        </div>
+                  <h3>Common String Operations:</h3>
+                  <div class="string-operations">
+                    <div class="operation-item">
+                      <code>.length()</code> or <code>.size()</code>
+                      <p>Returns the number of characters</p>
                     </div>
-                </section>
+                    <div class="operation-item">
+                      <code>.substr(pos, len)</code>
+                      <p>Returns a substring</p>
+                    </div>
+                    <div class="operation-item">
+                      <code>.find(str)</code>
+                      <p>Finds the position of a substring</p>
+                    </div>
+                    <div class="operation-item">
+                      <code>.append(str)</code>
+                      <p>Appends a string to the end</p>
+                    </div>
+                  </div>
 
-                <!-- Pointers Basics -->
-                <section class="content-section" id="pointers">
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2><i class="fas fa-link"></i> Pointers Basics</h2>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="topic-content">
-                                <p>Pointers are variables that store memory addresses of other variables.</p>
-                                
-                                <h3>Pointer Declaration and Usage:</h3>
-                                <div class="syntax-box">
-                                    <code>data_type* pointer_name;<br>
-                                    data_type* pointer_name = &amp;variable;</code>
-                                </div>
+                  <div class="info-box">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>
+                      <strong>Tip:</strong> Always include
+                      <code>#include &lt;string&gt;</code> when working with
+                      string objects in C++.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
-                                <div class="code-block">
-                                    <div class="code-header">
-                                        <span class="code-title">pointers_example.cpp</span>
-                                        <button class="copy-btn" onclick="copyCode(this)">
-                                            <i class="fas fa-copy"></i> Copy
-                                        </button>
-                                    </div>
-                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+          <!-- Pointers Basics -->
+          <section class="content-section" id="pointers">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h2><i class="fas fa-link"></i> Pointers Basics</h2>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="accordion-content">
+                <div class="topic-content">
+                  <p>
+                    Pointers are variables that store memory addresses of other
+                    variables.
+                  </p>
+
+                  <h3>Pointer Declaration and Usage:</h3>
+                  <div class="syntax-box">
+                    <code
+                      >data_type* pointer_name;<br />
+                      data_type* pointer_name = &amp;variable;</code
+                    >
+                  </div>
+
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">pointers_example.cpp</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 int main() {
@@ -1107,49 +1776,56 @@ int main() {
     
     return 0;
 }</code></pre>
-                                </div>
+                  </div>
 
-                                <h3>Pointer Operators:</h3>
-                                <div class="pointer-operators">
-                                    <div class="operator-item">
-                                        <code>&amp;</code>
-                                        <p>Address-of operator (gets address of a variable)</p>
-                                    </div>
-                                    <div class="operator-item">
-                                        <code>*</code>
-                                        <p>Dereference operator (accesses value at address)</p>
-                                    </div>
-                                </div>
-
-                                <div class="info-box">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                    <p><strong>Warning:</strong> Always initialize pointers before using them. Dereferencing uninitialized pointers can cause program crashes.</p>
-                                </div>
-                            </div>
-                        </div>
+                  <h3>Pointer Operators:</h3>
+                  <div class="pointer-operators">
+                    <div class="operator-item">
+                      <code>&amp;</code>
+                      <p>Address-of operator (gets address of a variable)</p>
                     </div>
-                </section>
+                    <div class="operator-item">
+                      <code>*</code>
+                      <p>Dereference operator (accesses value at address)</p>
+                    </div>
+                  </div>
 
-                <!-- Constants -->
-                <section class="content-section" id="constants">
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2><i class="fas fa-lock"></i> Constants</h2>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="topic-content">
-                                <p>Constants are values that cannot be changed during program execution.</p>
-                                
-                                <h3>Types of Constants:</h3>
-                                <div class="code-block">
-                                    <div class="code-header">
-                                        <span class="code-title">constants_example.cpp</span>
-                                        <button class="copy-btn" onclick="copyCode(this)">
-                                            <i class="fas fa-copy"></i> Copy
-                                        </button>
-                                    </div>
-                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+                  <div class="info-box">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>
+                      <strong>Warning:</strong> Always initialize pointers
+                      before using them. Dereferencing uninitialized pointers
+                      can cause program crashes.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Constants -->
+          <section class="content-section" id="constants">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h2><i class="fas fa-lock"></i> Constants</h2>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="accordion-content">
+                <div class="topic-content">
+                  <p>
+                    Constants are values that cannot be changed during program
+                    execution.
+                  </p>
+
+                  <h3>Types of Constants:</h3>
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">constants_example.cpp</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 // Global constant
@@ -1183,39 +1859,625 @@ int main() {
     
     return 0;
 }</code></pre>
-                                </div>
+                  </div>
 
-                                <h3>Benefits of Using Constants:</h3>
-                                <ul class="benefits-list">
-                                    <li><strong>Code Clarity:</strong> Makes the code more readable and self-documenting</li>
-                                    <li><strong>Error Prevention:</strong> Prevents accidental modification of important values</li>
-                                    <li><strong>Easy Maintenance:</strong> Changes need to be made in only one place</li>
-                                    <li><strong>Optimization:</strong> Compiler can optimize constant values better</li>
-                                </ul>
+                  <h3>Benefits of Using Constants:</h3>
+                  <ul class="benefits-list">
+                    <li>
+                      <strong>Code Clarity:</strong> Makes the code more
+                      readable and self-documenting
+                    </li>
+                    <li>
+                      <strong>Error Prevention:</strong> Prevents accidental
+                      modification of important values
+                    </li>
+                    <li>
+                      <strong>Easy Maintenance:</strong> Changes need to be made
+                      in only one place
+                    </li>
+                    <li>
+                      <strong>Optimization:</strong> Compiler can optimize
+                      constant values better
+                    </li>
+                  </ul>
 
-                                <div class="info-box">
-                                    <i class="fas fa-lightbulb"></i>
-                                    <p><strong>Convention:</strong> Use uppercase letters with underscores for constant names (e.g., MAX_SIZE, PI_VALUE).</p>
-                                </div>
-                            </div>
-                        </div>
+                  <div class="info-box">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>
+                      <strong>Convention:</strong> Use uppercase letters with
+                      underscores for constant names (e.g., MAX_SIZE, PI_VALUE).
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Structures (Basics) -->
+          <section class="content-section" id="structures">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h2><i class="fas fa-building"></i> Structures (Basics)</h2>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="accordion-content">
+                <div class="topic-content">
+                  <p>
+                    Structures allow you to group related variables of different
+                    data types under a single name. They're the foundation for
+                    understanding object-oriented programming concepts.
+                  </p>
+
+                  <h3>Structure Declaration Syntax:</h3>
+                  <div class="syntax-box">
+                    <code
+                      >struct StructureName {<br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;data_type member1;<br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;data_type member2;<br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;// more members...<br />
+                      };</code
+                    >
+                  </div>
+
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">structures_example.cpp</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
                     </div>
-                </section>
-            </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
 
-            <div class="navigation-buttons">
-                <a href="index.html" class="btn btn-secondary">
-                    <i class="fas fa-arrow-left"></i> Back to Home
-                </a>
-                <a href="oop.html" class="btn btn-primary">
-                    Next: OOP <i class="fas fa-arrow-right"></i>
-                </a>
+// Structure definition
+struct Student {
+    string name;
+    int age;
+    double gpa;
+    char grade;
+};
+
+// Structure for representing a point
+struct Point {
+    double x;
+    double y;
+};
+
+int main() {
+    // Creating and initializing structure variables
+    Student student1;
+    student1.name = "Alice Johnson";
+    student1.age = 20;
+    student1.gpa = 3.85;
+    student1.grade = 'A';
+    
+    // Alternative initialization
+    Student student2 = {"Bob Smith", 19, 3.45, 'B'};
+    
+    // Creating point structures
+    Point p1 = {10.5, 20.3};
+    Point p2 = {15.0, 25.7};
+    
+    // Accessing structure members
+    cout &lt;&lt; "=== Student Information ===" &lt;&lt; endl;
+    cout &lt;&lt; "Student 1:" &lt;&lt; endl;
+    cout &lt;&lt; "  Name: " &lt;&lt; student1.name &lt;&lt; endl;
+    cout &lt;&lt; "  Age: " &lt;&lt; student1.age &lt;&lt; " years" &lt;&lt; endl;
+    cout &lt;&lt; "  GPA: " &lt;&lt; student1.gpa &lt;&lt; endl;
+    cout &lt;&lt; "  Grade: " &lt;&lt; student1.grade &lt;&lt; endl &lt;&lt; endl;
+    
+    cout &lt;&lt; "Student 2:" &lt;&lt; endl;
+    cout &lt;&lt; "  Name: " &lt;&lt; student2.name &lt;&lt; endl;
+    cout &lt;&lt; "  Age: " &lt;&lt; student2.age &lt;&lt; " years" &lt;&lt; endl;
+    cout &lt;&lt; "  GPA: " &lt;&lt; student2.gpa &lt;&lt; endl;
+    cout &lt;&lt; "  Grade: " &lt;&lt; student2.grade &lt;&lt; endl &lt;&lt; endl;
+    
+    // Working with point structures
+    cout &lt;&lt; "=== Point Coordinates ===" &lt;&lt; endl;
+    cout &lt;&lt; "Point 1: (" &lt;&lt; p1.x &lt;&lt; ", " &lt;&lt; p1.y &lt;&lt; ")" &lt;&lt; endl;
+    cout &lt;&lt; "Point 2: (" &lt;&lt; p2.x &lt;&lt; ", " &lt;&lt; p2.y &lt;&lt; ")" &lt;&lt; endl;
+    
+    // Calculate distance between points
+    double dx = p2.x - p1.x;
+    double dy = p2.y - p1.y;
+    double distance = sqrt(dx*dx + dy*dy);
+    cout &lt;&lt; "Distance between points: " &lt;&lt; distance &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                  </div>
+
+                  <h3>Key Concepts:</h3>
+                  <div class="concept-cards">
+                    <div class="concept-card">
+                      <h4><i class="fas fa-dot-circle"></i> Member Access</h4>
+                      <p>
+                        Use the dot operator (.) to access structure members
+                      </p>
+                      <code>structure_variable.member_name</code>
+                    </div>
+                    <div class="concept-card">
+                      <h4><i class="fas fa-memory"></i> Memory Layout</h4>
+                      <p>
+                        Structure members are stored consecutively in memory
+                      </p>
+                      <code>sizeof(structure) >= sum of member sizes</code>
+                    </div>
+                    <div class="concept-card">
+                      <h4><i class="fas fa-copy"></i> Assignment</h4>
+                      <p>Structures can be assigned to each other directly</p>
+                      <code>struct1 = struct2; // copies all members</code>
+                    </div>
+                  </div>
+
+                  <div class="info-box">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>
+                      <strong>Foundation:</strong> Structures are the building
+                      blocks for classes in C++. Understanding structures helps
+                      you grasp object-oriented programming concepts.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-        </main>
+          </section>
+
+          <!-- Debugging Basics -->
+          <section class="content-section" id="debugging">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h2><i class="fas fa-bug"></i> Debugging Basics</h2>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="accordion-content">
+                <div class="topic-content">
+                  <p>
+                    Debugging is the process of finding and fixing errors in
+                    your code. Learning effective debugging techniques early
+                    will save you countless hours of frustration.
+                  </p>
+
+                  <h3>Common Types of Errors:</h3>
+                  <div class="error-types">
+                    <div class="error-card">
+                      <h4>
+                        <i class="fas fa-exclamation-triangle"></i> Compilation
+                        Errors
+                      </h4>
+                      <p>
+                        Syntax errors caught by the compiler before the program
+                        runs
+                      </p>
+                      <ul>
+                        <li>Missing semicolons</li>
+                        <li>Undeclared variables</li>
+                        <li>Type mismatches</li>
+                        <li>Missing headers</li>
+                      </ul>
+                    </div>
+                    <div class="error-card">
+                      <h4>
+                        <i class="fas fa-times-circle"></i> Runtime Errors
+                      </h4>
+                      <p>Errors that occur while the program is running</p>
+                      <ul>
+                        <li>Division by zero</li>
+                        <li>Array out of bounds</li>
+                        <li>Null pointer access</li>
+                        <li>Infinite loops</li>
+                      </ul>
+                    </div>
+                    <div class="error-card">
+                      <h4>
+                        <i class="fas fa-question-circle"></i> Logic Errors
+                      </h4>
+                      <p>Program runs but produces incorrect results</p>
+                      <ul>
+                        <li>Wrong algorithm</li>
+                        <li>Incorrect conditions</li>
+                        <li>Off-by-one errors</li>
+                        <li>Variable mix-ups</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <h3>Debugging Techniques:</h3>
+                  <div class="debug-techniques">
+                    <div class="technique-item">
+                      <h4><i class="fas fa-print"></i> Print Debugging</h4>
+                      <p>
+                        Add cout statements to track variable values and program
+                        flow
+                      </p>
+                      <div class="code-block">
+                        <pre><code class="language-cpp">int x = 10;
+cout &lt;&lt; "Debug: x = " &lt;&lt; x &lt;&lt; endl;  // Check value
+x = x * 2;
+cout &lt;&lt; "Debug: after multiplication, x = " &lt;&lt; x &lt;&lt; endl;</code></pre>
+                      </div>
+                    </div>
+
+                    <div class="technique-item">
+                      <h4>
+                        <i class="fas fa-step-forward"></i> Step-by-Step
+                        Analysis
+                      </h4>
+                      <p>
+                        Trace through your code line by line mentally or on
+                        paper
+                      </p>
+                      <ul>
+                        <li>What should each line do?</li>
+                        <li>What are the variable values at each step?</li>
+                        <li>Does the logic match your intention?</li>
+                      </ul>
+                    </div>
+
+                    <div class="technique-item">
+                      <h4><i class="fas fa-cut"></i> Divide and Conquer</h4>
+                      <p>Comment out sections of code to isolate the problem</p>
+                      <div class="code-block">
+                        <pre><code class="language-cpp">// Comment out suspicious code sections
+// function1();  // Test without this
+function2();
+// function3();  // Test without this</code></pre>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h3>Debugging Tools:</h3>
+                  <div class="debug-tools">
+                    <div class="tool-card">
+                      <h4><i class="fas fa-terminal"></i> Compiler Warnings</h4>
+                      <p>Enable all warnings to catch potential issues</p>
+                      <code>g++ -Wall -Wextra program.cpp</code>
+                    </div>
+                    <div class="tool-card">
+                      <h4><i class="fas fa-search"></i> IDE Debugger</h4>
+                      <p>
+                        Use built-in debuggers in VS Code, Visual Studio, etc.
+                      </p>
+                      <ul>
+                        <li>Set breakpoints</li>
+                        <li>Step through code</li>
+                        <li>Watch variables</li>
+                      </ul>
+                    </div>
+                    <div class="tool-card">
+                      <h4><i class="fas fa-shield-alt"></i> Static Analysis</h4>
+                      <p>Tools that analyze code without running it</p>
+                      <ul>
+                        <li>Cppcheck</li>
+                        <li>Clang Static Analyzer</li>
+                        <li>PC-lint</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="debugging-tips">
+                    <h3>Pro Debugging Tips:</h3>
+                    <ul>
+                      <li>
+                        <strong>Read error messages carefully</strong> - They
+                        often tell you exactly what's wrong
+                      </li>
+                      <li>
+                        <strong>Start simple</strong> - Create minimal test
+                        cases to reproduce the bug
+                      </li>
+                      <li>
+                        <strong>Use version control</strong> - Compare working
+                        vs. broken code
+                      </li>
+                      <li>
+                        <strong>Take breaks</strong> - Sometimes stepping away
+                        helps you see the solution
+                      </li>
+                      <li>
+                        <strong>Explain to someone else</strong> - Rubber duck
+                        debugging really works!
+                      </li>
+                      <li>
+                        <strong>Check assumptions</strong> - Verify that
+                        variables contain what you think they do
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>
+                      <strong>Remember:</strong> Debugging is a skill that
+                      improves with practice. Don't get discouraged - even
+                      experienced programmers spend significant time debugging!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Best Practices -->
+          <section class="content-section" id="best-practices">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h2><i class="fas fa-star"></i> Best Practices</h2>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="accordion-content">
+                <div class="topic-content">
+                  <p>
+                    Following best practices from the beginning will help you
+                    write cleaner, more maintainable, and more professional C++
+                    code.
+                  </p>
+
+                  <h3>Code Style and Formatting:</h3>
+                  <div class="best-practice-section">
+                    <h4>
+                      <i class="fas fa-align-left"></i> Consistent Indentation
+                    </h4>
+                    <p>
+                      Use consistent indentation (2 or 4 spaces, or tabs)
+                      throughout your code
+                    </p>
+                    <div class="code-comparison">
+                      <div class="good-code">
+                        <h5>✅ Good</h5>
+                        <div class="code-block">
+                          <pre><code class="language-cpp">if (x > 0) {
+    cout &lt;&lt; "Positive" &lt;&lt; endl;
+    if (x > 10) {
+        cout &lt;&lt; "Greater than 10" &lt;&lt; endl;
+    }
+}</code></pre>
+                        </div>
+                      </div>
+                      <div class="bad-code">
+                        <h5>❌ Bad</h5>
+                        <div class="code-block">
+                          <pre><code class="language-cpp">if(x>0){
+cout&lt;&lt;"Positive"&lt;&lt;endl;
+if(x>10){
+cout&lt;&lt;"Greater than 10"&lt;&lt;endl;
+}
+}</code></pre>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="best-practice-section">
+                    <h4>
+                      <i class="fas fa-tag"></i> Meaningful Variable Names
+                    </h4>
+                    <p>
+                      Choose descriptive names that explain the purpose of the
+                      variable
+                    </p>
+                    <div class="code-comparison">
+                      <div class="good-code">
+                        <h5>✅ Good</h5>
+                        <div class="code-block">
+                          <pre><code class="language-cpp">int studentAge = 20;
+double accountBalance = 1250.75;
+string customerName = "John Doe";
+bool isFileOpen = true;</code></pre>
+                        </div>
+                      </div>
+                      <div class="bad-code">
+                        <h5>❌ Bad</h5>
+                        <div class="code-block">
+                          <pre><code class="language-cpp">int a = 20;
+double x = 1250.75;
+string s = "John Doe";
+bool flag = true;</code></pre>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h3>Programming Principles:</h3>
+                  <div class="principles-grid">
+                    <div class="principle-card">
+                      <h4><i class="fas fa-cube"></i> DRY Principle</h4>
+                      <p><strong>Don't Repeat Yourself</strong></p>
+                      <p>
+                        If you find yourself writing the same code multiple
+                        times, create a function instead.
+                      </p>
+                    </div>
+                    <div class="principle-card">
+                      <h4><i class="fas fa-eye"></i> KISS Principle</h4>
+                      <p><strong>Keep It Simple, Stupid</strong></p>
+                      <p>
+                        Write simple, readable code. Avoid unnecessary
+                        complexity.
+                      </p>
+                    </div>
+                    <div class="principle-card">
+                      <h4>
+                        <i class="fas fa-comment"></i> Self-Documenting Code
+                      </h4>
+                      <p><strong>Code Should Explain Itself</strong></p>
+                      <p>
+                        Good variable names and structure make comments less
+                        necessary.
+                      </p>
+                    </div>
+                    <div class="principle-card">
+                      <h4><i class="fas fa-shield-alt"></i> Error Handling</h4>
+                      <p><strong>Plan for Failure</strong></p>
+                      <p>
+                        Always consider what could go wrong and handle edge
+                        cases.
+                      </p>
+                    </div>
+                  </div>
+
+                  <h3>Code Organization:</h3>
+                  <div class="organization-tips">
+                    <div class="tip-item">
+                      <h4>
+                        <i class="fas fa-file-code"></i> File Organization
+                      </h4>
+                      <ul>
+                        <li>One class or major function group per file</li>
+                        <li>Use descriptive file names</li>
+                        <li>
+                          Separate header files (.h) from implementation files
+                          (.cpp)
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="tip-item">
+                      <h4><i class="fas fa-comments"></i> Comments</h4>
+                      <ul>
+                        <li>Explain <em>why</em>, not <em>what</em></li>
+                        <li>Update comments when you change code</li>
+                        <li>Use comments to explain complex algorithms</li>
+                      </ul>
+                    </div>
+                    <div class="tip-item">
+                      <h4><i class="fas fa-puzzle-piece"></i> Functions</h4>
+                      <ul>
+                        <li>Keep functions small and focused</li>
+                        <li>A function should do one thing well</li>
+                        <li>Use descriptive function names</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <h3>Performance and Safety:</h3>
+                  <div class="safety-tips">
+                    <div class="safety-card">
+                      <h4><i class="fas fa-bolt"></i> Performance Tips</h4>
+                      <ul>
+                        <li>Avoid premature optimization</li>
+                        <li>Use appropriate data types</li>
+                        <li>
+                          Prefer pre-increment (++i) over post-increment (i++)
+                          in loops
+                        </li>
+                        <li>Pass large objects by reference, not by value</li>
+                      </ul>
+                    </div>
+                    <div class="safety-card">
+                      <h4><i class="fas fa-lock"></i> Memory Safety</h4>
+                      <ul>
+                        <li>Initialize all variables before use</li>
+                        <li>Check array bounds</li>
+                        <li>Avoid memory leaks with proper cleanup</li>
+                        <li>Use nullptr instead of NULL for pointers</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="code-example">
+                    <h3>Example: Well-Written C++ Code</h3>
+                    <div class="code-block">
+                      <div class="code-header">
+                        <span class="code-title"
+                          >best_practices_example.cpp</span
+                        >
+                        <button class="copy-btn" onclick="copyCode(this)">
+                          <i class="fas fa-copy"></i> Copy
+                        </button>
+                      </div>
+                      <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+// Function to calculate average grade
+double calculateAverage(const vector&lt;double&gt;&amp; grades) {
+    if (grades.empty()) {
+        return 0.0;  // Handle edge case
+    }
+    
+    double sum = 0.0;
+    for (double grade : grades) {
+        sum += grade;
+    }
+    
+    return sum / grades.size();
+}
+
+// Function to determine letter grade
+char getLetterGrade(double average) {
+    if (average >= 90.0) return 'A';
+    if (average >= 80.0) return 'B';
+    if (average >= 70.0) return 'C';
+    if (average >= 60.0) return 'D';
+    return 'F';
+}
+
+int main() {
+    const int MAX_STUDENTS = 5;  // Use constants for magic numbers
+    vector&lt;double&gt; studentGrades;
+    
+    cout &lt;&lt; "=== Grade Calculator ===" &lt;&lt; endl;
+    cout &lt;&lt; "Enter grades for " &lt;&lt; MAX_STUDENTS &lt;&lt; " students:" &lt;&lt; endl;
+    
+    // Collect grades with input validation
+    for (int i = 0; i &lt; MAX_STUDENTS; ++i) {
+        double grade;
+        cout &lt;&lt; "Student " &lt;&lt; (i + 1) &lt;&lt; " grade: ";
+        cin &gt;&gt; grade;
+        
+        // Basic input validation
+        if (grade &lt; 0.0 || grade &gt; 100.0) {
+            cout &lt;&lt; "Invalid grade! Please enter a value between 0 and 100." &lt;&lt; endl;
+            --i;  // Retry this student
+            continue;
+        }
+        
+        studentGrades.push_back(grade);
+    }
+    
+    // Calculate and display results
+    double classAverage = calculateAverage(studentGrades);
+    char letterGrade = getLetterGrade(classAverage);
+    
+    cout &lt;&lt; "\n=== Results ===" &lt;&lt; endl;
+    cout &lt;&lt; "Class Average: " &lt;&lt; classAverage &lt;&lt; endl;
+    cout &lt;&lt; "Letter Grade: " &lt;&lt; letterGrade &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                    </div>
+                  </div>
+
+                  <div class="success-box">
+                    <i class="fas fa-trophy"></i>
+                    <p>
+                      <strong>Congratulations!</strong> You've completed the C++
+                      basics! These fundamentals will serve as the foundation
+                      for more advanced topics. Keep practicing and building
+                      projects to solidify your understanding.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="navigation-buttons">
+          <a href="index.html" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back to Home
+          </a>
+          <a href="oop.html" class="btn btn-primary">
+            Next: OOP <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </main>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

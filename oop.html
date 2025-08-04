@@ -59,11 +59,17 @@
                     <li><a href="#classes-objects">Classes & Objects</a></li>
                     <li><a href="#constructors">Constructors & Destructors</a></li>
                     <li><a href="#access-modifiers">Access Modifiers</a></li>
+                    <li><a href="#member-functions">Member Functions</a></li>
+                    <li><a href="#static-members">Static Members</a></li>
                     <li><a href="#inheritance">Inheritance</a></li>
                     <li><a href="#polymorphism">Polymorphism</a></li>
+                    <li><a href="#virtual-functions">Virtual Functions</a></li>
                     <li><a href="#encapsulation">Encapsulation</a></li>
                     <li><a href="#abstraction">Abstraction</a></li>
-                    <li><a href="#virtual-functions">Virtual Functions</a></li>
+                    <li><a href="#operator-overloading">Operator Overloading</a></li>
+                    <li><a href="#friend-functions">Friend Functions</a></li>
+                    <li><a href="#composition">Composition & Aggregation</a></li>
+                    <li><a href="#oop-design">OOP Design Principles</a></li>
                 </ul>
             </div>
         </aside>
@@ -81,14 +87,38 @@
                 <!-- Introduction to OOP -->
                 <section class="content-section" id="introduction">
                     <div class="accordion-item">
-                        <div class="accordion-header" >
+                        <div class="accordion-header">
                             <h2><i class="fas fa-cube"></i> Introduction to OOP</h2>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="accordion-content">
                             <div class="topic-content">
-                                <p>Object-Oriented Programming (OOP) is a programming paradigm that organizes code around objects and classes rather than functions and logic.</p>
+                                <p>Object-Oriented Programming (OOP) is a programming paradigm that organizes code around objects and classes rather than functions and logic. It models real-world entities as software objects that contain both data (attributes) and functions (methods) that operate on that data.</p>
                                 
+                                <h3>Why Object-Oriented Programming?</h3>
+                                <div class="why-oop-grid">
+                                    <div class="reason-card">
+                                        <i class="fas fa-recycle"></i>
+                                        <h4>Code Reusability</h4>
+                                        <p>Write once, use many times. Classes can be reused across different parts of your application and even in different projects.</p>
+                                    </div>
+                                    <div class="reason-card">
+                                        <i class="fas fa-puzzle-piece"></i>
+                                        <h4>Modularity</h4>
+                                        <p>Break complex problems into smaller, manageable pieces. Each class handles a specific responsibility.</p>
+                                    </div>
+                                    <div class="reason-card">
+                                        <i class="fas fa-tools"></i>
+                                        <h4>Maintainability</h4>
+                                        <p>Easier to modify and update code. Changes in one class don't affect others when properly designed.</p>
+                                    </div>
+                                    <div class="reason-card">
+                                        <i class="fas fa-globe"></i>
+                                        <h4>Real-World Modeling</h4>
+                                        <p>Map real-world entities directly to code structures, making programs more intuitive and natural.</p>
+                                    </div>
+                                </div>
+
                                 <h3>Four Pillars of OOP:</h3>
                                 <div class="oop-pillars">
                                     <div class="pillar-card">
@@ -96,34 +126,130 @@
                                             <i class="fas fa-box"></i>
                                         </div>
                                         <h4>Encapsulation</h4>
-                                        <p>Bundling data and methods that operate on that data within a single unit (class)</p>
+                                        <p>Bundling data and methods that operate on that data within a single unit (class). It also involves data hiding - keeping internal details private.</p>
+                                        <div class="pillar-example">
+                                            <strong>Example:</strong> A car's engine is encapsulated - you don't need to know how it works internally, just how to start it.
+                                        </div>
                                     </div>
                                     <div class="pillar-card">
                                         <div class="pillar-icon">
                                             <i class="fas fa-sitemap"></i>
                                         </div>
                                         <h4>Inheritance</h4>
-                                        <p>Creating new classes based on existing classes, inheriting their properties and methods</p>
+                                        <p>Creating new classes based on existing classes, inheriting their properties and methods. Enables the "IS-A" relationship.</p>
+                                        <div class="pillar-example">
+                                            <strong>Example:</strong> A "Car" class can inherit from a "Vehicle" class, getting all vehicle properties plus car-specific features.
+                                        </div>
                                     </div>
                                     <div class="pillar-card">
                                         <div class="pillar-icon">
                                             <i class="fas fa-shapes"></i>
                                         </div>
                                         <h4>Polymorphism</h4>
-                                        <p>The ability of objects to take multiple forms and behave differently based on context</p>
+                                        <p>The ability of objects to take multiple forms and behave differently based on context. "Many forms, one interface."</p>
+                                        <div class="pillar-example">
+                                            <strong>Example:</strong> Different animals make different sounds, but all respond to a "makeSound()" method call.
+                                        </div>
                                     </div>
                                     <div class="pillar-card">
                                         <div class="pillar-icon">
                                             <i class="fas fa-eye-slash"></i>
                                         </div>
                                         <h4>Abstraction</h4>
-                                        <p>Hiding complex implementation details while showing only essential features</p>
+                                        <p>Hiding complex implementation details while showing only essential features. Focus on what an object does, not how it does it.</p>
+                                        <div class="pillar-example">
+                                            <strong>Example:</strong> When you use a TV remote, you don't need to know the electronics inside - just which buttons to press.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3>OOP vs Procedural Programming:</h3>
+                                <div class="comparison-table">
+                                    <div class="comparison-header">
+                                        <div class="comparison-title">Object-Oriented Programming</div>
+                                        <div class="comparison-title">Procedural Programming</div>
+                                    </div>
+                                    <div class="comparison-row">
+                                        <div class="comparison-item">
+                                            <i class="fas fa-check text-success"></i>
+                                            <span>Data and functions bundled together</span>
+                                        </div>
+                                        <div class="comparison-item">
+                                            <i class="fas fa-times text-error"></i>
+                                            <span>Data and functions are separate</span>
+                                        </div>
+                                    </div>
+                                    <div class="comparison-row">
+                                        <div class="comparison-item">
+                                            <i class="fas fa-check text-success"></i>
+                                            <span>Data hiding through encapsulation</span>
+                                        </div>
+                                        <div class="comparison-item">
+                                            <i class="fas fa-times text-error"></i>
+                                            <span>Global data accessible everywhere</span>
+                                        </div>
+                                    </div>
+                                    <div class="comparison-row">
+                                        <div class="comparison-item">
+                                            <i class="fas fa-check text-success"></i>
+                                            <span>Easy to maintain and extend</span>
+                                        </div>
+                                        <div class="comparison-item">
+                                            <i class="fas fa-times text-error"></i>
+                                            <span>Difficult to maintain large programs</span>
+                                        </div>
+                                    </div>
+                                    <div class="comparison-row">
+                                        <div class="comparison-item">
+                                            <i class="fas fa-check text-success"></i>
+                                            <span>Code reusability through inheritance</span>
+                                        </div>
+                                        <div class="comparison-item">
+                                            <i class="fas fa-times text-error"></i>
+                                            <span>Limited code reusability</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3>Real-World OOP Examples:</h3>
+                                <div class="real-world-examples">
+                                    <div class="example-card">
+                                        <h4><i class="fas fa-university"></i> School Management System</h4>
+                                        <ul>
+                                            <li><strong>Classes:</strong> Student, Teacher, Course, Classroom</li>
+                                            <li><strong>Inheritance:</strong> Person → Student, Teacher</li>
+                                            <li><strong>Encapsulation:</strong> Student grades are private</li>
+                                            <li><strong>Polymorphism:</strong> Different types of courses</li>
+                                        </ul>
+                                    </div>
+                                    <div class="example-card">
+                                        <h4><i class="fas fa-gamepad"></i> Game Development</h4>
+                                        <ul>
+                                            <li><strong>Classes:</strong> Player, Enemy, Weapon, GameObject</li>
+                                            <li><strong>Inheritance:</strong> GameObject → Player, Enemy</li>
+                                            <li><strong>Encapsulation:</strong> Player health and stats</li>
+                                            <li><strong>Polymorphism:</strong> Different enemy behaviors</li>
+                                        </ul>
+                                    </div>
+                                    <div class="example-card">
+                                        <h4><i class="fas fa-shopping-cart"></i> E-Commerce Platform</h4>
+                                        <ul>
+                                            <li><strong>Classes:</strong> Product, Customer, Order, Payment</li>
+                                            <li><strong>Inheritance:</strong> Payment → CreditCard, PayPal</li>
+                                            <li><strong>Encapsulation:</strong> Customer personal data</li>
+                                            <li><strong>Polymorphism:</strong> Different payment methods</li>
+                                        </ul>
                                     </div>
                                 </div>
 
                                 <div class="info-box">
                                     <i class="fas fa-lightbulb"></i>
-                                    <p><strong>Benefits of OOP:</strong> Code reusability, modularity, easier maintenance, better organization, and real-world modeling.</p>
+                                    <p><strong>Key Insight:</strong> OOP is not just about syntax - it's a way of thinking about problems. Start by identifying the "things" (objects) in your problem domain, then determine their properties and behaviors.</p>
+                                </div>
+
+                                <div class="success-box">
+                                    <i class="fas fa-rocket"></i>
+                                    <p><strong>Ready to Begin:</strong> You've learned the basics of C++, now it's time to organize your code using Object-Oriented principles. Let's start building classes and objects!</p>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +259,7 @@
                 <!-- Classes & Objects -->
                 <section class="content-section" id="classes-objects">
                     <div class="accordion-item">
-                        <div class="accordion-header" >
+                        <div class="accordion-header">
                             <h2><i class="fas fa-building"></i> Classes & Objects</h2>
                             <i class="fas fa-chevron-down"></i>
                         </div>
@@ -240,7 +366,7 @@ int main() {
                 <!-- Constructors & Destructors -->
                 <section class="content-section" id="constructors">
                     <div class="accordion-item">
-                        <div class="accordion-header" >
+                        <div class="accordion-header">
                             <h2><i class="fas fa-hammer"></i> Constructors & Destructors</h2>
                             <i class="fas fa-chevron-down"></i>
                         </div>
@@ -388,7 +514,7 @@ int main() {
                 <!-- Access Modifiers -->
                 <section class="content-section" id="access-modifiers">
                     <div class="accordion-item">
-                        <div class="accordion-header" >
+                        <div class="accordion-header">
                             <h2><i class="fas fa-lock"></i> Access Modifiers</h2>
                             <i class="fas fa-chevron-down"></i>
                         </div>
@@ -552,10 +678,264 @@ int main() {
                     </div>
                 </section>
 
+                 <!-- Member Functions -->
+                <section class="content-section" id="member-functions">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-cog"></i> Member Functions</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Member functions are functions that belong to a class and operate on the class's data members. They define the behavior of objects.</p>
+                                
+                                <h3>Types of Member Functions:</h3>
+                                <div class="member-function-types">
+                                    <div class="function-type-card">
+                                        <h4><i class="fas fa-eye"></i> Accessor Functions (Getters)</h4>
+                                        <p>Functions that return the value of private data members</p>
+                                        <div class="code-block">
+                                            <pre><code class="language-cpp">int getAge() const {
+    return age;  // Return private member
+}</code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="function-type-card">
+                                        <h4><i class="fas fa-edit"></i> Mutator Functions (Setters)</h4>
+                                        <p>Functions that modify the value of private data members</p>
+                                        <div class="code-block">
+                                            <pre><code class="language-cpp">void setAge(int newAge) {
+    if (newAge >= 0) {
+        age = newAge;
+    }
+}</code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="function-type-card">
+                                        <h4><i class="fas fa-tools"></i> Utility Functions</h4>
+                                        <p>Functions that perform operations on the object's data</p>
+                                        <div class="code-block">
+                                            <pre><code class="language-cpp">double calculateBMI() {
+    return weight / (height * height);
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3>Const Member Functions:</h3>
+                                <p>Functions that promise not to modify the object's state</p>
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">const_functions.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Circle {
+private:
+    double radius;
+    
+public:
+    Circle(double r) : radius(r) {}
+    
+    // Const member function - doesn't modify the object
+    double getArea() const {
+        return 3.14159 * radius * radius;
+    }
+    
+    // Const member function
+    double getRadius() const {
+        return radius;
+    }
+    
+    // Non-const member function - can modify the object
+    void setRadius(double r) {
+        radius = r;
+    }
+    
+    // Const member function that displays info
+    void display() const {
+        cout &lt;&lt; "Circle with radius: " &lt;&lt; radius 
+             &lt;&lt; ", Area: " &lt;&lt; getArea() &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Circle circle(5.0);
+    
+    // Calling const member functions
+    cout &lt;&lt; "Radius: " &lt;&lt; circle.getRadius() &lt;&lt; endl;
+    cout &lt;&lt; "Area: " &lt;&lt; circle.getArea() &lt;&lt; endl;
+    circle.display();
+    
+    // Modifying the object
+    circle.setRadius(7.0);
+    circle.display();
+    
+    // Const object can only call const member functions
+    const Circle constCircle(3.0);
+    cout &lt;&lt; "Const circle area: " &lt;&lt; constCircle.getArea() &lt;&lt; endl;
+    // constCircle.setRadius(4.0);  // Error! Cannot call non-const function
+    
+    return 0;
+}</code></pre>
+                                </div>
+
+                                <div class="info-box">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <p><strong>Best Practice:</strong> Mark member functions as const whenever they don't modify the object's state. This enables better optimization and allows const objects to use these functions.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Static Members -->
+                <section class="content-section" id="static-members">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-share-alt"></i> Static Members</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Static members belong to the class itself rather than to any specific object. They are shared among all instances of the class.</p>
+                                
+                                <h3>Static Data Members:</h3>
+                                <p>Class-level variables shared by all objects of the class</p>
+                                
+                                <h3>Static Member Functions:</h3>
+                                <p>Functions that can be called without creating an object of the class</p>
+
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">static_members.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Student {
+private:
+    string name;
+    int id;
+    static int nextId;        // Static data member
+    static int studentCount;  // Static data member
+    
+public:
+    // Constructor
+    Student(string n) : name(n) {
+        id = nextId++;
+        studentCount++;
+        cout &lt;&lt; "Student " &lt;&lt; name &lt;&lt; " created with ID: " &lt;&lt; id &lt;&lt; endl;
+    }
+    
+    // Destructor
+    ~Student() {
+        studentCount--;
+        cout &lt;&lt; "Student " &lt;&lt; name &lt;&lt; " destroyed" &lt;&lt; endl;
+    }
+    
+    // Regular member function
+    void displayInfo() const {
+        cout &lt;&lt; "Student: " &lt;&lt; name &lt;&lt; " (ID: " &lt;&lt; id &lt;&lt; ")" &lt;&lt; endl;
+    }
+    
+    // Static member function
+    static int getStudentCount() {
+        return studentCount;
+    }
+    
+    // Static member function
+    static int getNextId() {
+        return nextId;
+    }
+    
+    // Static member function to display class info
+    static void displayClassInfo() {
+        cout &lt;&lt; "Total students created: " &lt;&lt; studentCount &lt;&lt; endl;
+        cout &lt;&lt; "Next ID will be: " &lt;&lt; nextId &lt;&lt; endl;
+    }
+};
+
+// Initialize static members outside the class
+int Student::nextId = 1001;
+int Student::studentCount = 0;
+
+int main() {
+    // Call static function without creating object
+    cout &lt;&lt; "Initial student count: " &lt;&lt; Student::getStudentCount() &lt;&lt; endl;
+    Student::displayClassInfo();
+    cout &lt;&lt; endl;
+    
+    // Create objects
+    Student s1("Alice");
+    Student s2("Bob");
+    Student s3("Charlie");
+    
+    cout &lt;&lt; "\nAfter creating students:" &lt;&lt; endl;
+    Student::displayClassInfo();
+    cout &lt;&lt; "Current student count: " &lt;&lt; Student::getStudentCount() &lt;&lt; endl;
+    
+    // Display individual student info
+    cout &lt;&lt; "\nStudent Information:" &lt;&lt; endl;
+    s1.displayInfo();
+    s2.displayInfo();
+    s3.displayInfo();
+    
+    {
+        Student s4("David");
+        cout &lt;&lt; "\nAfter creating David:" &lt;&lt; endl;
+        cout &lt;&lt; "Current student count: " &lt;&lt; Student::getStudentCount() &lt;&lt; endl;
+    } // s4 goes out of scope here
+    
+    cout &lt;&lt; "\nAfter David goes out of scope:" &lt;&lt; endl;
+    cout &lt;&lt; "Current student count: " &lt;&lt; Student::getStudentCount() &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                                </div>
+
+                                <h3>Key Points about Static Members:</h3>
+                                <div class="static-points">
+                                    <div class="point-card">
+                                        <h4><i class="fas fa-share"></i> Shared Data</h4>
+                                        <p>Static data members are shared among all objects of the class</p>
+                                    </div>
+                                    <div class="point-card">
+                                        <h4><i class="fas fa-memory"></i> Single Copy</h4>
+                                        <p>Only one copy exists in memory regardless of object count</p>
+                                    </div>
+                                    <div class="point-card">
+                                        <h4><i class="fas fa-code"></i> Class Scope</h4>
+                                        <p>Static functions can only access static members directly</p>
+                                    </div>
+                                    <div class="point-card">
+                                        <h4><i class="fas fa-external-link-alt"></i> External Access</h4>
+                                        <p>Can be accessed using class name without object instance</p>
+                                    </div>
+                                </div>
+
+                                <div class="warning-box">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <p><strong>Important:</strong> Static data members must be defined outside the class and initialized before use. Static functions cannot access non-static members directly.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Inheritance -->
                 <section class="content-section" id="inheritance">
                     <div class="accordion-item">
-                        <div class="accordion-header" >
+                        <div class="accordion-header">
                             <h2><i class="fas fa-sitemap"></i> Inheritance</h2>
                             <i class="fas fa-chevron-down"></i>
                         </div>
@@ -783,7 +1163,7 @@ int main() {
                 <!-- Polymorphism -->
                 <section class="content-section" id="polymorphism">
                     <div class="accordion-item">
-                        <div class="accordion-header" >
+                        <div class="accordion-header">
                             <h2><i class="fas fa-shapes"></i> Polymorphism</h2>
                             <i class="fas fa-chevron-down"></i>
                         </div>
@@ -980,6 +1360,297 @@ int main() {
                                 <div class="info-box">
                                     <i class="fas fa-lightbulb"></i>
                                     <p><strong>Key Point:</strong> Virtual functions enable runtime polymorphism, allowing the correct function to be called based on the actual object type, not the pointer type.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                
+                <!-- Virtual Functions -->
+                <section class="content-section" id="virtual-functions">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-code-branch"></i> Virtual Functions</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Virtual functions enable runtime polymorphism in C++. They allow a program to call the appropriate function based on the actual type of the object, not the type of the pointer or reference.</p>
+                                
+                                <h3>Types of Virtual Functions:</h3>
+                                <ul>
+                                    <li><strong>Virtual Function:</strong> Can be overridden in derived classes</li>
+                                    <li><strong>Pure Virtual Function:</strong> Must be overridden in derived classes</li>
+                                    <li><strong>Virtual Destructor:</strong> Ensures proper cleanup in inheritance hierarchies</li>
+                                </ul>
+
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">virtual_functions_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;memory&gt;
+using namespace std;
+
+// Base class with virtual functions
+class Animal {
+protected:
+    string name;
+    int age;
+
+public:
+    Animal(const string& animalName, int animalAge) : name(animalName), age(animalAge) {
+        cout << "Animal constructor: " << name << endl;
+    }
+    
+    // Virtual function - can be overridden
+    virtual void makeSound() {
+        cout << name << " makes a generic animal sound." << endl;
+    }
+    
+    // Virtual function with default implementation
+    virtual void move() {
+        cout << name << " moves around." << endl;
+    }
+    
+    // Pure virtual function - must be overridden
+    virtual void eat() = 0;
+    
+    // Virtual function for displaying information
+    virtual void displayInfo() {
+        cout << "Name: " << name << ", Age: " << age << " years" << endl;
+    }
+    
+    // Virtual destructor - important for proper cleanup
+    virtual ~Animal() {
+        cout << "Animal destructor: " << name << endl;
+    }
+};
+
+class Dog : public Animal {
+private:
+    string breed;
+
+public:
+    Dog(const string& dogName, int dogAge, const string& dogBreed) 
+        : Animal(dogName, dogAge), breed(dogBreed) {
+        cout << "Dog constructor: " << name << endl;
+    }
+    
+    // Override virtual function
+    void makeSound() override {
+        cout << name << " barks: Woof! Woof!" << endl;
+    }
+    
+    // Override virtual function
+    void move() override {
+        cout << name << " runs around wagging its tail." << endl;
+    }
+    
+    // Implement pure virtual function
+    void eat() override {
+        cout << name << " eats dog food and treats." << endl;
+    }
+    
+    // Override and extend displayInfo
+    void displayInfo() override {
+        Animal::displayInfo();  // Call base class version
+        cout << "Breed: " << breed << endl;
+    }
+    
+    // Dog-specific method
+    void fetch() {
+        cout << name << " fetches the ball!" << endl;
+    }
+    
+    ~Dog() {
+        cout << "Dog destructor: " << name << endl;
+    }
+};
+
+class Cat : public Animal {
+private:
+    bool isIndoor;
+
+public:
+    Cat(const string& catName, int catAge, bool indoor) 
+        : Animal(catName, catAge), isIndoor(indoor) {
+        cout << "Cat constructor: " << name << endl;
+    }
+    
+    // Override virtual function
+    void makeSound() override {
+        cout << name << " meows: Meow! Meow!" << endl;
+    }
+    
+    // Override virtual function
+    void move() override {
+        cout << name << " gracefully jumps and climbs." << endl;
+    }
+    
+    // Implement pure virtual function
+    void eat() override {
+        cout << name << " eats cat food and fish." << endl;
+    }
+    
+    // Override and extend displayInfo
+    void displayInfo() override {
+        Animal::displayInfo();
+        cout << "Indoor cat: " << (isIndoor ? "Yes" : "No") << endl;
+    }
+    
+    // Cat-specific method
+    void purr() {
+        cout << name << " purrs contentedly." << endl;
+    }
+    
+    ~Cat() {
+        cout << "Cat destructor: " << name << endl;
+    }
+};
+
+class Bird : public Animal {
+private:
+    bool canFly;
+
+public:
+    Bird(const string& birdName, int birdAge, bool flying) 
+        : Animal(birdName, birdAge), canFly(flying) {
+        cout << "Bird constructor: " << name << endl;
+    }
+    
+    // Override virtual function
+    void makeSound() override {
+        cout << name << " chirps: Tweet! Tweet!" << endl;
+    }
+    
+    // Override virtual function
+    void move() override {
+        if (canFly) {
+            cout << name << " flies through the sky." << endl;
+        } else {
+            cout << name << " hops around on the ground." << endl;
+        }
+    }
+    
+    // Implement pure virtual function
+    void eat() override {
+        cout << name << " eats seeds and insects." << endl;
+    }
+    
+    // Override and extend displayInfo
+    void displayInfo() override {
+        Animal::displayInfo();
+        cout << "Can fly: " << (canFly ? "Yes" : "No") << endl;
+    }
+    
+    // Bird-specific method
+    void buildNest() {
+        cout << name << " builds a cozy nest." << endl;
+    }
+    
+    ~Bird() {
+        cout << "Bird destructor: " << name << endl;
+    }
+};
+
+// Function demonstrating polymorphism with virtual functions
+void animalActions(Animal* animal) {
+    cout << "\n--- Animal Actions ---" << endl;
+    animal->displayInfo();
+    animal->makeSound();
+    animal->move();
+    animal->eat();
+    cout << "----------------------" << endl;
+}
+
+// Demonstrating virtual function table (vtable) concept
+void demonstrateVirtualFunctions() {
+    cout << "\n=== Virtual Functions Demonstration ===" << endl;
+    
+    // Create animals using base class pointers
+    vector<unique_ptr<Animal>> animals;
+    animals.push_back(make_unique<Dog>("Buddy", 3, "Golden Retriever"));
+    animals.push_back(make_unique<Cat>("Whiskers", 2, true));
+    animals.push_back(make_unique<Bird>("Robin", 1, true));
+    
+    // Polymorphic behavior - calls the appropriate derived class methods
+    for (auto& animal : animals) {
+        animalActions(animal.get());
+    }
+}
+
+// Function without virtual functions (static binding)
+class NonVirtualBase {
+public:
+    void show() {
+        cout << "NonVirtualBase::show()" << endl;
+    }
+};
+
+class NonVirtualDerived : public NonVirtualBase {
+public:
+    void show() {
+        cout << "NonVirtualDerived::show()" << endl;
+    }
+};
+
+void demonstrateNonVirtual() {
+    cout << "\n=== Non-Virtual Functions (Static Binding) ===" << endl;
+    
+    NonVirtualBase* ptr = new NonVirtualDerived();
+    ptr->show();  // Calls NonVirtualBase::show() - not what we might expect!
+    
+    delete ptr;
+}
+
+int main() {
+    cout << "=== Virtual Functions Example ===" << endl;
+    
+    // Demonstrate virtual functions
+    demonstrateVirtualFunctions();
+    
+    // Show the difference with non-virtual functions
+    demonstrateNonVirtual();
+    
+    cout << "\n=== Program ending - destructors will be called ===" << endl;
+    return 0;
+}</code></pre>
+                                </div>
+
+                                <h3>Virtual Function Table (vtable):</h3>
+                                <div class="vtable-explanation">
+                                    <p>Each class with virtual functions has a virtual function table (vtable) that contains pointers to the virtual functions. When a virtual function is called, the program looks up the correct function in the vtable.</p>
+                                    
+                                    <div class="vtable-diagram">
+                                        <h4>How vtable works:</h4>
+                                        <ol>
+                                            <li>Each object has a pointer to its class's vtable</li>
+                                            <li>Virtual function calls are resolved at runtime</li>
+                                            <li>The correct function is called based on the object's actual type</li>
+                                        </ol>
+                                    </div>
+                                </div>
+
+                                <h3>Rules for Virtual Functions:</h3>
+                                <div class="virtual-rules">
+                                    <ul>
+                                        <li>Virtual functions cannot be static</li>
+                                        <li>Virtual functions cannot be inline</li>
+                                        <li>Constructors cannot be virtual</li>
+                                        <li>Destructors should be virtual in base classes</li>
+                                        <li>Pure virtual functions make the class abstract</li>
+                                    </ul>
+                                </div>
+
+                                <div class="info-box">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <p><strong>Important:</strong> Always declare destructors as virtual in base classes to ensure proper cleanup when deleting objects through base class pointers.</p>
                                 </div>
                             </div>
                         </div>
@@ -1403,290 +2074,824 @@ int main() {
                     </div>
                 </section>
 
-                <!-- Virtual Functions -->
-                <section class="content-section" id="virtual-functions">
+
+               
+
+                <!-- Operator Overloading -->
+                <section class="content-section" id="operator-overloading">
                     <div class="accordion-item">
                         <div class="accordion-header">
-                            <h2><i class="fas fa-code-branch"></i> Virtual Functions</h2>
+                            <h2><i class="fas fa-plus"></i> Operator Overloading</h2>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="accordion-content">
                             <div class="topic-content">
-                                <p>Virtual functions enable runtime polymorphism in C++. They allow a program to call the appropriate function based on the actual type of the object, not the type of the pointer or reference.</p>
+                                <p>Operator overloading allows you to define custom behavior for operators when used with user-defined classes.</p>
                                 
-                                <h3>Types of Virtual Functions:</h3>
-                                <ul>
-                                    <li><strong>Virtual Function:</strong> Can be overridden in derived classes</li>
-                                    <li><strong>Pure Virtual Function:</strong> Must be overridden in derived classes</li>
-                                    <li><strong>Virtual Destructor:</strong> Ensures proper cleanup in inheritance hierarchies</li>
-                                </ul>
+                                <h3>Why Operator Overloading?</h3>
+                                <p>It makes code more intuitive and readable. For example, adding two complex numbers with <code>c1 + c2</code> instead of <code>c1.add(c2)</code>.</p>
 
                                 <div class="code-block">
                                     <div class="code-header">
-                                        <span class="code-title">virtual_functions_example.cpp</span>
+                                        <span class="code-title">operator_overloading.cpp</span>
                                         <button class="copy-btn" onclick="copyCode(this)">
                                             <i class="fas fa-copy"></i> Copy
                                         </button>
                                     </div>
                                     <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;memory&gt;
+#include &lt;string&gt;
 using namespace std;
 
-// Base class with virtual functions
-class Animal {
-protected:
-    string name;
-    int age;
-
-public:
-    Animal(const string& animalName, int animalAge) : name(animalName), age(animalAge) {
-        cout << "Animal constructor: " << name << endl;
-    }
-    
-    // Virtual function - can be overridden
-    virtual void makeSound() {
-        cout << name << " makes a generic animal sound." << endl;
-    }
-    
-    // Virtual function with default implementation
-    virtual void move() {
-        cout << name << " moves around." << endl;
-    }
-    
-    // Pure virtual function - must be overridden
-    virtual void eat() = 0;
-    
-    // Virtual function for displaying information
-    virtual void displayInfo() {
-        cout << "Name: " << name << ", Age: " << age << " years" << endl;
-    }
-    
-    // Virtual destructor - important for proper cleanup
-    virtual ~Animal() {
-        cout << "Animal destructor: " << name << endl;
-    }
-};
-
-class Dog : public Animal {
+class Complex {
 private:
-    string breed;
-
+    double real;
+    double imaginary;
+    
 public:
-    Dog(const string& dogName, int dogAge, const string& dogBreed) 
-        : Animal(dogName, dogAge), breed(dogBreed) {
-        cout << "Dog constructor: " << name << endl;
+    // Constructor
+    Complex(double r = 0.0, double i = 0.0) : real(r), imaginary(i) {}
+    
+    // Addition operator overloading
+    Complex operator+(const Complex& other) const {
+        return Complex(real + other.real, imaginary + other.imaginary);
     }
     
-    // Override virtual function
-    void makeSound() override {
-        cout << name << " barks: Woof! Woof!" << endl;
+    // Subtraction operator overloading
+    Complex operator-(const Complex& other) const {
+        return Complex(real - other.real, imaginary - other.imaginary);
     }
     
-    // Override virtual function
-    void move() override {
-        cout << name << " runs around wagging its tail." << endl;
+    // Multiplication operator overloading
+    Complex operator*(const Complex& other) const {
+        double r = real * other.real - imaginary * other.imaginary;
+        double i = real * other.imaginary + imaginary * other.real;
+        return Complex(r, i);
     }
     
-    // Implement pure virtual function
-    void eat() override {
-        cout << name << " eats dog food and treats." << endl;
-    }
-    
-    // Override and extend displayInfo
-    void displayInfo() override {
-        Animal::displayInfo();  // Call base class version
-        cout << "Breed: " << breed << endl;
-    }
-    
-    // Dog-specific method
-    void fetch() {
-        cout << name << " fetches the ball!" << endl;
-    }
-    
-    ~Dog() {
-        cout << "Dog destructor: " << name << endl;
-    }
-};
-
-class Cat : public Animal {
-private:
-    bool isIndoor;
-
-public:
-    Cat(const string& catName, int catAge, bool indoor) 
-        : Animal(catName, catAge), isIndoor(indoor) {
-        cout << "Cat constructor: " << name << endl;
-    }
-    
-    // Override virtual function
-    void makeSound() override {
-        cout << name << " meows: Meow! Meow!" << endl;
-    }
-    
-    // Override virtual function
-    void move() override {
-        cout << name << " gracefully jumps and climbs." << endl;
-    }
-    
-    // Implement pure virtual function
-    void eat() override {
-        cout << name << " eats cat food and fish." << endl;
-    }
-    
-    // Override and extend displayInfo
-    void displayInfo() override {
-        Animal::displayInfo();
-        cout << "Indoor cat: " << (isIndoor ? "Yes" : "No") << endl;
-    }
-    
-    // Cat-specific method
-    void purr() {
-        cout << name << " purrs contentedly." << endl;
-    }
-    
-    ~Cat() {
-        cout << "Cat destructor: " << name << endl;
-    }
-};
-
-class Bird : public Animal {
-private:
-    bool canFly;
-
-public:
-    Bird(const string& birdName, int birdAge, bool flying) 
-        : Animal(birdName, birdAge), canFly(flying) {
-        cout << "Bird constructor: " << name << endl;
-    }
-    
-    // Override virtual function
-    void makeSound() override {
-        cout << name << " chirps: Tweet! Tweet!" << endl;
-    }
-    
-    // Override virtual function
-    void move() override {
-        if (canFly) {
-            cout << name << " flies through the sky." << endl;
-        } else {
-            cout << name << " hops around on the ground." << endl;
+    // Assignment operator overloading
+    Complex& operator=(const Complex& other) {
+        if (this != &other) {  // Self-assignment check
+            real = other.real;
+            imaginary = other.imaginary;
         }
+        return *this;
     }
     
-    // Implement pure virtual function
-    void eat() override {
-        cout << name << " eats seeds and insects." << endl;
+    // Equality operator overloading
+    bool operator==(const Complex& other) const {
+        return (real == other.real) && (imaginary == other.imaginary);
     }
     
-    // Override and extend displayInfo
-    void displayInfo() override {
-        Animal::displayInfo();
-        cout << "Can fly: " << (canFly ? "Yes" : "No") << endl;
+    // Inequality operator overloading
+    bool operator!=(const Complex& other) const {
+        return !(*this == other);
     }
     
-    // Bird-specific method
-    void buildNest() {
-        cout << name << " builds a cozy nest." << endl;
+    // Unary minus operator
+    Complex operator-() const {
+        return Complex(-real, -imaginary);
     }
     
-    ~Bird() {
-        cout << "Bird destructor: " << name << endl;
+    // Pre-increment operator
+    Complex& operator++() {
+        real++;
+        imaginary++;
+        return *this;
     }
+    
+    // Post-increment operator
+    Complex operator++(int) {
+        Complex temp = *this;
+        real++;
+        imaginary++;
+        return temp;
+    }
+    
+    // Friend function for output stream operator
+    friend ostream& operator<<(ostream& os, const Complex& c) {
+        os << c.real;
+        if (c.imaginary >= 0) {
+            os << " + " << c.imaginary << "i";
+        } else {
+            os << " - " << (-c.imaginary) << "i";
+        }
+        return os;
+    }
+    
+    // Friend function for input stream operator
+    friend istream& operator>>(istream& is, Complex& c) {
+        cout << "Enter real part: ";
+        is >> c.real;
+        cout << "Enter imaginary part: ";
+        is >> c.imaginary;
+        return is;
+    }
+    
+    // Accessor methods
+    double getReal() const { return real; }
+    double getImaginary() const { return imaginary; }
 };
-
-// Function demonstrating polymorphism with virtual functions
-void animalActions(Animal* animal) {
-    cout << "\n--- Animal Actions ---" << endl;
-    animal->displayInfo();
-    animal->makeSound();
-    animal->move();
-    animal->eat();
-    cout << "----------------------" << endl;
-}
-
-// Demonstrating virtual function table (vtable) concept
-void demonstrateVirtualFunctions() {
-    cout << "\n=== Virtual Functions Demonstration ===" << endl;
-    
-    // Create animals using base class pointers
-    vector<unique_ptr<Animal>> animals;
-    animals.push_back(make_unique<Dog>("Buddy", 3, "Golden Retriever"));
-    animals.push_back(make_unique<Cat>("Whiskers", 2, true));
-    animals.push_back(make_unique<Bird>("Robin", 1, true));
-    
-    // Polymorphic behavior - calls the appropriate derived class methods
-    for (auto& animal : animals) {
-        animalActions(animal.get());
-    }
-}
-
-// Function without virtual functions (static binding)
-class NonVirtualBase {
-public:
-    void show() {
-        cout << "NonVirtualBase::show()" << endl;
-    }
-};
-
-class NonVirtualDerived : public NonVirtualBase {
-public:
-    void show() {
-        cout << "NonVirtualDerived::show()" << endl;
-    }
-};
-
-void demonstrateNonVirtual() {
-    cout << "\n=== Non-Virtual Functions (Static Binding) ===" << endl;
-    
-    NonVirtualBase* ptr = new NonVirtualDerived();
-    ptr->show();  // Calls NonVirtualBase::show() - not what we might expect!
-    
-    delete ptr;
-}
 
 int main() {
-    cout << "=== Virtual Functions Example ===" << endl;
+    Complex c1(3.0, 4.0);
+    Complex c2(1.0, 2.0);
     
-    // Demonstrate virtual functions
-    demonstrateVirtualFunctions();
+    cout << "c1 = " << c1 << endl;
+    cout << "c2 = " << c2 << endl;
     
-    // Show the difference with non-virtual functions
-    demonstrateNonVirtual();
+    // Using overloaded operators
+    Complex c3 = c1 + c2;
+    cout << "c1 + c2 = " << c3 << endl;
     
-    cout << "\n=== Program ending - destructors will be called ===" << endl;
+    Complex c4 = c1 - c2;
+    cout << "c1 - c2 = " << c4 << endl;
+    
+    Complex c5 = c1 * c2;
+    cout << "c1 * c2 = " << c5 << endl;
+    
+    // Unary operators
+    Complex c6 = -c1;
+    cout << "-c1 = " << c6 << endl;
+    
+    // Increment operators
+    cout << "c1 before pre-increment: " << c1 << endl;
+    ++c1;
+    cout << "c1 after pre-increment: " << c1 << endl;
+    
+    Complex c7 = c2++;
+    cout << "c2 after post-increment: " << c2 << endl;
+    cout << "c7 (old value of c2): " << c7 << endl;
+    
+    // Comparison operators
+    if (c1 == c2) {
+        cout << "c1 and c2 are equal" << endl;
+    } else {
+        cout << "c1 and c2 are not equal" << endl;
+    }
+    
+    // Input operator (commented out for automatic execution)
+    // Complex userComplex;
+    // cout << "Enter a complex number:" << endl;
+    // cin >> userComplex;
+    // cout << "You entered: " << userComplex << endl;
+    
     return 0;
 }</code></pre>
                                 </div>
 
-                                <h3>Virtual Function Table (vtable):</h3>
-                                <div class="vtable-explanation">
-                                    <p>Each class with virtual functions has a virtual function table (vtable) that contains pointers to the virtual functions. When a virtual function is called, the program looks up the correct function in the vtable.</p>
-                                    
-                                    <div class="vtable-diagram">
-                                        <h4>How vtable works:</h4>
-                                        <ol>
-                                            <li>Each object has a pointer to its class's vtable</li>
-                                            <li>Virtual function calls are resolved at runtime</li>
-                                            <li>The correct function is called based on the object's actual type</li>
-                                        </ol>
+                                <h3>Types of Operator Overloading:</h3>
+                                <div class="operator-types">
+                                    <div class="operator-category">
+                                        <h4>Member Functions</h4>
+                                        <ul>
+                                            <li>Binary operators: +, -, *, /, ==, !=</li>
+                                            <li>Unary operators: ++, --, -, !</li>
+                                            <li>Assignment operators: =, +=, -=</li>
+                                        </ul>
+                                    </div>
+                                    <div class="operator-category">
+                                        <h4>Friend Functions</h4>
+                                        <ul>
+                                            <li>Stream operators: &lt;&lt;, &gt;&gt;</li>
+                                            <li>When left operand is not of class type</li>
+                                            <li>When you need access to private members</li>
+                                        </ul>
                                     </div>
                                 </div>
 
-                                <h3>Rules for Virtual Functions:</h3>
-                                <div class="virtual-rules">
-                                    <ul>
-                                        <li>Virtual functions cannot be static</li>
-                                        <li>Virtual functions cannot be inline</li>
-                                        <li>Constructors cannot be virtual</li>
-                                        <li>Destructors should be virtual in base classes</li>
-                                        <li>Pure virtual functions make the class abstract</li>
-                                    </ul>
+                                <div class="warning-box">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <p><strong>Note:</strong> Some operators cannot be overloaded: ::, ., .*, ?:, sizeof, typeid</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Friend Functions -->
+                <section class="content-section" id="friend-functions">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-handshake"></i> Friend Functions</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Friend functions are non-member functions that have access to the private and protected members of a class.</p>
+                                
+                                <h3>When to Use Friend Functions:</h3>
+                                <div class="friend-usage">
+                                    <div class="usage-item">
+                                        <i class="fas fa-exchange-alt"></i>
+                                        <h4>Operator Overloading</h4>
+                                        <p>When the left operand is not of the class type</p>
+                                    </div>
+                                    <div class="usage-item">
+                                        <i class="fas fa-bridge"></i>
+                                        <h4>Bridge Functions</h4>
+                                        <p>Functions that need to access private data of multiple classes</p>
+                                    </div>
+                                    <div class="usage-item">
+                                        <i class="fas fa-stream"></i>
+                                        <h4>Stream Operations</h4>
+                                        <p>Input/output stream operators (&lt;&lt;, &gt;&gt;)</p>
+                                    </div>
+                                </div>
+
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">friend_functions.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Rectangle; // Forward declaration
+
+class Point {
+private:
+    int x, y;
+    
+public:
+    Point(int xPos = 0, int yPos = 0) : x(xPos), y(yPos) {}
+    
+    // Friend function declaration
+    friend void displayPoint(const Point& p);
+    friend double distance(const Point& p1, const Point& p2);
+    friend bool isInsideRectangle(const Point& p, const Rectangle& r);
+    
+    // Getters for demonstration
+    int getX() const { return x; }
+    int getY() const { return y; }
+};
+
+class Rectangle {
+private:
+    Point topLeft;
+    Point bottomRight;
+    
+public:
+    Rectangle(Point tl, Point br) : topLeft(tl), bottomRight(br) {}
+    
+    // Friend function declaration
+    friend bool isInsideRectangle(const Point& p, const Rectangle& r);
+    friend void displayRectangle(const Rectangle& r);
+    
+    // Regular member function
+    int getWidth() const {
+        return bottomRight.getX() - topLeft.getX();
+    }
+    
+    int getHeight() const {
+        return bottomRight.getY() - topLeft.getY();
+    }
+};
+
+// Friend function implementations
+void displayPoint(const Point& p) {
+    // Can access private members directly
+    cout << "Point(" << p.x << ", " << p.y << ")" << endl;
+}
+
+double distance(const Point& p1, const Point& p2) {
+    // Can access private members of both points
+    int dx = p1.x - p2.x;
+    int dy = p1.y - p2.y;
+    return sqrt(dx*dx + dy*dy);
+}
+
+bool isInsideRectangle(const Point& p, const Rectangle& r) {
+    // Can access private members of both classes
+    return (p.x >= r.topLeft.x && p.x <= r.bottomRight.x &&
+            p.y >= r.topLeft.y && p.y <= r.bottomRight.y);
+}
+
+void displayRectangle(const Rectangle& r) {
+    // Can access private members
+    cout << "Rectangle: TopLeft";
+    displayPoint(r.topLeft);
+    cout << "           BottomRight";
+    displayPoint(r.bottomRight);
+    cout << "           Width: " << r.bottomRight.x - r.topLeft.x
+         << ", Height: " << r.bottomRight.y - r.topLeft.y << endl;
+}
+
+// Global friend function for demonstration
+class Temperature {
+private:
+    double celsius;
+    
+public:
+    Temperature(double c = 0.0) : celsius(c) {}
+    
+    // Friend function for conversion
+    friend Temperature fahrenheitToCelsius(double f);
+    friend double celsiusToFahrenheit(const Temperature& t);
+    
+    void display() const {
+        cout << celsius << "°C" << endl;
+    }
+};
+
+Temperature fahrenheitToCelsius(double f) {
+    Temperature temp;
+    temp.celsius = (f - 32.0) * 5.0 / 9.0;
+    return temp;
+}
+
+double celsiusToFahrenheit(const Temperature& t) {
+    return (t.celsius * 9.0 / 5.0) + 32.0;
+}
+
+int main() {
+    // Using friend functions with Point and Rectangle
+    Point p1(5, 10);
+    Point p2(8, 15);
+    
+    cout << "=== Point Operations ===" << endl;
+    cout << "Point 1: ";
+    displayPoint(p1);
+    cout << "Point 2: ";
+    displayPoint(p2);
+    cout << "Distance between points: " << distance(p1, p2) << endl;
+    
+    // Rectangle operations
+    Point topLeft(0, 0);
+    Point bottomRight(10, 20);
+    Rectangle rect(topLeft, bottomRight);
+    
+    cout << "\n=== Rectangle Operations ===" << endl;
+    displayRectangle(rect);
+    
+    // Check if points are inside rectangle
+    cout << "\nPoint inside rectangle check:" << endl;
+    cout << "Point 1 inside rectangle: " 
+         << (isInsideRectangle(p1, rect) ? "Yes" : "No") << endl;
+    cout << "Point 2 inside rectangle: " 
+         << (isInsideRectangle(p2, rect) ? "Yes" : "No") << endl;
+    
+    // Temperature conversion example
+    cout << "\n=== Temperature Conversion ===" << endl;
+    Temperature temp1(25.0);
+    cout << "Temperature 1: ";
+    temp1.display();
+    cout << "In Fahrenheit: " << celsiusToFahrenheit(temp1) << "°F" << endl;
+    
+    Temperature temp2 = fahrenheitToCelsius(98.6);
+    cout << "98.6°F in Celsius: ";
+    temp2.display();
+    
+    return 0;
+}</code></pre>
+                                </div>
+
+                                <h3>Friend Classes:</h3>
+                                <p>A class can also be declared as a friend, giving all its member functions access to private members.</p>
+                                
+                                <div class="code-block">
+                                    <pre><code class="language-cpp">class ClassA {
+    friend class ClassB;  // ClassB is a friend of ClassA
+private:
+    int privateData;
+public:
+    ClassA(int data) : privateData(data) {}
+};
+
+class ClassB {
+public:
+    void accessPrivateData(ClassA& a) {
+        // Can access private members of ClassA
+        cout << "Private data: " << a.privateData << endl;
+    }
+};</code></pre>
+                                </div>
+
+                                <div class="warning-box">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <p><strong>Important:</strong> Friendship is not mutual, inherited, or transitive. If A is a friend of B, B is not automatically a friend of A.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Composition & Aggregation -->
+                <section class="content-section" id="composition">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-puzzle-piece"></i> Composition & Aggregation</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Composition and Aggregation are ways to combine objects to create more complex structures. They represent "HAS-A" relationships.</p>
+                                
+                                <h3>Composition vs Aggregation:</h3>
+                                <div class="relationship-comparison">
+                                    <div class="relationship-card">
+                                        <h4><i class="fas fa-link"></i> Composition (Strong "Has-A")</h4>
+                                        <p><strong>Ownership:</strong> Parent owns child completely</p>
+                                        <p><strong>Lifetime:</strong> Child cannot exist without parent</p>
+                                        <p><strong>Example:</strong> House has Rooms - rooms don't exist without the house</p>
+                                    </div>
+                                    <div class="relationship-card">
+                                        <h4><i class="fas fa-handshake"></i> Aggregation (Weak "Has-A")</h4>
+                                        <p><strong>Ownership:</strong> Parent uses child but doesn't own it</p>
+                                        <p><strong>Lifetime:</strong> Child can exist independently</p>
+                                        <p><strong>Example:</strong> University has Students - students exist without university</p>
+                                    </div>
+                                </div>
+
+                                <h3>Composition Example:</h3>
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">composition_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+// Composition Example: Engine belongs to Car
+class Engine {
+private:
+    string type;
+    int horsepower;
+    
+public:
+    Engine(string t, int hp) : type(t), horsepower(hp) {
+        cout << "Engine created: " << type << " (" << horsepower << " HP)" << endl;
+    }
+    
+    ~Engine() {
+        cout << "Engine destroyed: " << type << endl;
+    }
+    
+    void start() {
+        cout << type << " engine started!" << endl;
+    }
+    
+    void stop() {
+        cout << type << " engine stopped!" << endl;
+    }
+    
+    void displayInfo() const {
+        cout << "Engine: " << type << " - " << horsepower << " HP" << endl;
+    }
+};
+
+class Tire {
+private:
+    string brand;
+    int size;
+    
+public:
+    Tire(string b, int s) : brand(b), size(s) {
+        cout << "Tire created: " << brand << " (Size " << size << ")" << endl;
+    }
+    
+    ~Tire() {
+        cout << "Tire destroyed: " << brand << endl;
+    }
+    
+    void displayInfo() const {
+        cout << "Tire: " << brand << " - Size " << size << endl;
+    }
+};
+
+class Car {
+private:
+    string model;
+    Engine engine;           // Composition: Car owns Engine
+    vector&lt;Tire&gt; tires;      // Composition: Car owns Tires
+    
+public:
+    // Constructor creates engine and tires
+    Car(string m, string engineType, int hp) 
+        : model(m), engine(engineType, hp) {
+        // Create 4 tires
+        for (int i = 0; i < 4; ++i) {
+            tires.emplace_back("Michelin", 18);
+        }
+        cout << "Car created: " << model << endl;
+    }
+    
+    ~Car() {
+        cout << "Car destroyed: " << model << endl;
+        // Engine and tires are automatically destroyed
+    }
+    
+    void start() {
+        cout << "Starting " << model << "..." << endl;
+        engine.start();
+    }
+    
+    void stop() {
+        cout << "Stopping " << model << "..." << endl;
+        engine.stop();
+    }
+    
+    void displayInfo() const {
+        cout << "\n=== Car Information ===" << endl;
+        cout << "Model: " << model << endl;
+        engine.displayInfo();
+        cout << "Tires (" << tires.size() << "):" << endl;
+        for (const auto& tire : tires) {
+            tire.displayInfo();
+        }
+    }
+};
+
+int main() {
+    cout << "=== Composition Example ===" << endl;
+    {
+        Car myCar("Honda Civic", "VTEC", 180);
+        myCar.displayInfo();
+        myCar.start();
+        myCar.stop();
+    } // Car, engine, and tires are all destroyed here
+    
+    return 0;
+}</code></pre>
+                                </div>
+
+                                <h3>Aggregation Example:</h3>
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">aggregation_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+// Aggregation Example: Students exist independently of University
+class Student {
+private:
+    string name;
+    int id;
+    string major;
+    
+public:
+    Student(string n, int i, string m) : name(n), id(i), major(m) {
+        cout << "Student created: " << name << " (ID: " << id << ")" << endl;
+    }
+    
+    ~Student() {
+        cout << "Student destroyed: " << name << endl;
+    }
+    
+    void displayInfo() const {
+        cout << "Student: " << name << " (ID: " << id << ") - Major: " << major << endl;
+    }
+    
+    string getName() const { return name; }
+    int getId() const { return id; }
+    string getMajor() const { return major; }
+};
+
+class Professor {
+private:
+    string name;
+    string department;
+    
+public:
+    Professor(string n, string d) : name(n), department(d) {
+        cout << "Professor created: " << name << " (" << department << ")" << endl;
+    }
+    
+    ~Professor() {
+        cout << "Professor destroyed: " << name << endl;
+    }
+    
+    void displayInfo() const {
+        cout << "Professor: " << name << " - Department: " << department << endl;
+    }
+    
+    string getName() const { return name; }
+    string getDepartment() const { return department; }
+};
+
+class University {
+private:
+    string name;
+    vector&lt;Student*&gt; students;    // Aggregation: University uses Students
+    vector&lt;Professor*&gt; professors; // Aggregation: University uses Professors
+    
+public:
+    University(string n) : name(n) {
+        cout << "University created: " << name << endl;
+    }
+    
+    ~University() {
+        cout << "University destroyed: " << name << endl;
+        // Note: We don't delete students/professors - they exist independently
+    }
+    
+    void addStudent(Student* student) {
+        students.push_back(student);
+        cout << "Student " << student->getName() << " enrolled in " << name << endl;
+    }
+    
+    void addProfessor(Professor* professor) {
+        professors.push_back(professor);
+        cout << "Professor " << professor->getName() << " joined " << name << endl;
+    }
+    
+    void removeStudent(int studentId) {
+        for (auto it = students.begin(); it != students.end(); ++it) {
+            if ((*it)->getId() == studentId) {
+                cout << "Student " << (*it)->getName() << " left " << name << endl;
+                students.erase(it);
+                break;
+            }
+        }
+    }
+    
+    void displayInfo() const {
+        cout << "\n=== " << name << " Information ===" << endl;
+        cout << "Students (" << students.size() << "):" << endl;
+        for (const auto& student : students) {
+            student->displayInfo();
+        }
+        
+        cout << "\nProfessors (" << professors.size() << "):" << endl;
+        for (const auto& professor : professors) {
+            professor->displayInfo();
+        }
+    }
+};
+
+int main() {
+    cout << "=== Aggregation Example ===" << endl;
+    
+    // Create students and professors independently
+    Student* alice = new Student("Alice Johnson", 1001, "Computer Science");
+    Student* bob = new Student("Bob Smith", 1002, "Mathematics");
+    Professor* drJones = new Professor("Dr. Jones", "Computer Science");
+    Professor* drBrown = new Professor("Dr. Brown", "Mathematics");
+    
+    {
+        // Create university and add existing students/professors
+        University myUniversity("Tech University");
+        myUniversity.addStudent(alice);
+        myUniversity.addStudent(bob);
+        myUniversity.addProfessor(drJones);
+        myUniversity.addProfessor(drBrown);
+        
+        myUniversity.displayInfo();
+        
+        // Remove a student
+        myUniversity.removeStudent(1002);
+        
+    } // University is destroyed, but students and professors still exist
+    
+    cout << "\nAfter university destruction:" << endl;
+    alice->displayInfo();  // Alice still exists
+    drJones->displayInfo(); // Dr. Jones still exists
+    
+    // Clean up (in real applications, use smart pointers)
+    delete alice;
+    delete bob;
+    delete drJones;
+    delete drBrown;
+    
+    return 0;
+}</code></pre>
                                 </div>
 
                                 <div class="info-box">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                    <p><strong>Important:</strong> Always declare destructors as virtual in base classes to ensure proper cleanup when deleting objects through base class pointers.</p>
+                                    <i class="fas fa-lightbulb"></i>
+                                    <p><strong>Key Difference:</strong> In composition, the parent manages the lifecycle of child objects. In aggregation, child objects exist independently and can outlive the parent.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- OOP Design Principles -->
+                <section class="content-section" id="oop-design">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-drafting-compass"></i> OOP Design Principles</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Good object-oriented design follows established principles that lead to maintainable, flexible, and robust software.</p>
+                                
+                                <h3>SOLID Principles:</h3>
+                                <div class="solid-principles">
+                                    <div class="principle-card">
+                                        <div class="principle-letter">S</div>
+                                        <h4>Single Responsibility Principle</h4>
+                                        <p>A class should have only one reason to change - it should have only one job or responsibility.</p>
+                                        <div class="principle-example">
+                                            <strong>Example:</strong> A User class should only handle user data, not email sending or database operations.
+                                        </div>
+                                    </div>
+                                    <div class="principle-card">
+                                        <div class="principle-letter">O</div>
+                                        <h4>Open/Closed Principle</h4>
+                                        <p>Classes should be open for extension but closed for modification. Use inheritance and polymorphism.</p>
+                                        <div class="principle-example">
+                                            <strong>Example:</strong> Add new shapes without modifying existing shape classes.
+                                        </div>
+                                    </div>
+                                    <div class="principle-card">
+                                        <div class="principle-letter">L</div>
+                                        <h4>Liskov Substitution Principle</h4>
+                                        <p>Objects of derived classes should be substitutable for objects of base classes without breaking functionality.</p>
+                                        <div class="principle-example">
+                                            <strong>Example:</strong> Any Bird object should work wherever an Animal object is expected.
+                                        </div>
+                                    </div>
+                                    <div class="principle-card">
+                                        <div class="principle-letter">I</div>
+                                        <h4>Interface Segregation Principle</h4>
+                                        <p>Clients shouldn't depend on interfaces they don't use. Keep interfaces small and specific.</p>
+                                        <div class="principle-example">
+                                            <strong>Example:</strong> Separate interfaces for different capabilities (Flyable, Swimmable).
+                                        </div>
+                                    </div>
+                                    <div class="principle-card">
+                                        <div class="principle-letter">D</div>
+                                        <h4>Dependency Inversion Principle</h4>
+                                        <p>High-level modules shouldn't depend on low-level modules. Both should depend on abstractions.</p>
+                                        <div class="principle-example">
+                                            <strong>Example:</strong> Use abstract classes or interfaces instead of concrete implementations.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3>Design Patterns Preview:</h3>
+                                <div class="design-patterns">
+                                    <div class="pattern-card">
+                                        <h4><i class="fas fa-industry"></i> Factory Pattern</h4>
+                                        <p>Create objects without specifying exact classes</p>
+                                    </div>
+                                    <div class="pattern-card">
+                                        <h4><i class="fas fa-eye"></i> Observer Pattern</h4>
+                                        <p>Notify multiple objects about state changes</p>
+                                    </div>
+                                    <div class="pattern-card">
+                                        <h4><i class="fas fa-crown"></i> Singleton Pattern</h4>
+                                        <p>Ensure only one instance of a class exists</p>
+                                    </div>
+                                    <div class="pattern-card">
+                                        <h4><i class="fas fa-cogs"></i> Strategy Pattern</h4>
+                                        <p>Encapsulate algorithms and make them interchangeable</p>
+                                    </div>
+                                </div>
+
+                                <h3>Best Practices Summary:</h3>
+                                <div class="best-practices-grid">
+                                    <div class="practice-item">
+                                        <h4><i class="fas fa-shield-alt"></i> Encapsulation</h4>
+                                        <ul>
+                                            <li>Keep data members private</li>
+                                            <li>Provide public getters/setters with validation</li>
+                                            <li>Hide implementation details</li>
+                                        </ul>
+                                    </div>
+                                    <div class="practice-item">
+                                        <h4><i class="fas fa-sitemap"></i> Inheritance</h4>
+                                        <ul>
+                                            <li>Use "IS-A" relationship only</li>
+                                            <li>Prefer composition over inheritance when possible</li>
+                                            <li>Make destructors virtual in base classes</li>
+                                        </ul>
+                                    </div>
+                                    <div class="practice-item">
+                                        <h4><i class="fas fa-shapes"></i> Polymorphism</h4>
+                                        <ul>
+                                            <li>Use virtual functions for runtime polymorphism</li>
+                                            <li>Implement pure virtual functions in abstract classes</li>
+                                            <li>Override functions properly with override keyword</li>
+                                        </ul>
+                                    </div>
+                                    <div class="practice-item">
+                                        <h4><i class="fas fa-code"></i> General</h4>
+                                        <ul>
+                                            <li>Keep classes focused and cohesive</li>
+                                            <li>Use meaningful names for classes and methods</li>
+                                            <li>Write self-documenting code</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="success-box">
+                                    <i class="fas fa-trophy"></i>
+                                    <p><strong>Congratulations!</strong> You've mastered Object-Oriented Programming in C++! You can now design and implement complex software systems using OOP principles. Next, explore advanced C++ features to take your skills even further.</p>
                                 </div>
                             </div>
                         </div>

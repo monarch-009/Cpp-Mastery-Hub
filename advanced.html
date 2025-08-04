@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master advanced C++ concepts including templates, smart pointers, move semantics, multithreading, and modern C++ features. Comprehensive tutorials with practical examples.">
+    <meta name="keywords" content="C++, advanced programming, templates, smart pointers, move semantics, multithreading, modern C++">
     <title>Advanced C++ - C++ Mastery Hub</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
@@ -55,18 +57,23 @@
             <div class="sidebar-content">
                 <h3>Table of Contents</h3>
                 <ul class="toc">
-                    <li><a href="#templates">Templates</a></li>
-                    <li><a href="#smart-pointers">Smart Pointers</a></li>
+                    <li><a href="#introduction">Introduction to Advanced C++</a></li>
+                    <li><a href="#templates">Templates & Generic Programming</a></li>
+                    <li><a href="#smart-pointers">Smart Pointers & Memory Management</a></li>
                     <li><a href="#exception-handling">Exception Handling</a></li>
-                    <li><a href="#lambda-expressions">Lambda Expressions</a></li>
-                    <li><a href="#move-semantics">Move Semantics</a></li>
-                    <li><a href="#modern-cpp">Modern C++ Features</a></li>
-                    <li><a href="#multithreading">Multithreading</a></li>
+                    <li><a href="#lambda-expressions">Lambda Expressions & Functional Programming</a></li>
+                    <li><a href="#move-semantics">Move Semantics & Perfect Forwarding</a></li>
+                    <li><a href="#modern-cpp">Modern C++ Features (C++11/14/17/20)</a></li>
+                    <li><a href="#multithreading">Multithreading & Concurrency</a></li>
+                    <li><a href="#metaprogramming">Template Metaprogramming</a></li>
+                    <li><a href="#design-patterns">Advanced Design Patterns</a></li>
+                    <li><a href="#performance">Performance Optimization</a></li>
+                    <li><a href="#best-practices">Advanced Best Practices</a></li>
                 </ul>
             </div>
         </aside>
 
-        <main class="main-content">
+        <main class="main-content" id="main-content">
             <div class="content-header">
                 <h1>Advanced C++</h1>
                 <p>Master advanced C++ concepts and modern features</p>
@@ -76,192 +83,1068 @@
             </div>
 
             <div class="content-sections">
-                <!-- Templates -->
-                <section class="content-section" id="templates">
+                <!-- Introduction to Advanced C++ -->
+                <section class="content-section" id="introduction">
                     <div class="accordion-item">
-                        <div class="accordion-header" >
-                            <h2><i class="fas fa-layer-group"></i> Templates</h2>
+                        <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                            <h2><i class="fas fa-rocket"></i> Introduction to Advanced C++</h2>
                             <i class="fas fa-chevron-down"></i>
                         </div>
-                        <div class="accordion-content">
+                        <div class="accordion-content" aria-hidden="true">
                             <div class="topic-content">
-                                <p>Templates allow you to write generic code that works with different data types.</p>
+                                <p>Welcome to Advanced C++! You've mastered the fundamentals and Object-Oriented Programming. Now it's time to explore the powerful features that make C++ a high-performance, versatile programming language used in system programming, game development, embedded systems, and high-frequency trading.</p>
                                 
-                                <div class="code-block">
-                                    <div class="code-header">
-                                        <span class="code-title">templates_example.cpp</span>
-                                        <button class="copy-btn" onclick="copyCode(this)">
-                                            <i class="fas fa-copy"></i> Copy
-                                        </button>
+                                <h3>What Makes C++ Advanced?</h3>
+                                <div class="advanced-features-grid">
+                                    <div class="feature-card">
+                                        <i class="fas fa-bolt"></i>
+                                        <h4>Zero-Cost Abstractions</h4>
+                                        <p>Write high-level code that compiles to efficient machine code with no runtime overhead.</p>
                                     </div>
-                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
+                                    <div class="feature-card">
+                                        <i class="fas fa-brain"></i>
+                                        <h4>Template Metaprogramming</h4>
+                                        <p>Perform computations at compile-time, generating optimized code automatically.</p>
+                                    </div>
+                                    <div class="feature-card">
+                                        <i class="fas fa-memory"></i>
+                                        <h4>Manual Memory Control</h4>
+                                        <p>Fine-grained control over memory allocation and deallocation for maximum performance.</p>
+                                    </div>
+                                    <div class="feature-card">
+                                        <i class="fas fa-sync-alt"></i>
+                                        <h4>Concurrency & Parallelism</h4>
+                                        <p>Built-in support for multithreading, async programming, and parallel algorithms.</p>
+                                    </div>
+                                </div>
 
-// Function template
-template&lt;typename T&gt;
-T getMax(T a, T b) {
-    return (a > b) ? a : b;
-}
+                                <h3>C++ Evolution Timeline:</h3>
+                                <div class="cpp-timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-year">C++98/03</div>
+                                        <div class="timeline-content">
+                                            <h4>Foundation</h4>
+                                            <p>STL, templates, exceptions, RAII</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-year">C++11</div>
+                                        <div class="timeline-content">
+                                            <h4>Modern C++ Birth</h4>
+                                            <p>Auto, lambdas, smart pointers, move semantics, threads</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-year">C++14</div>
+                                        <div class="timeline-content">
+                                            <h4>Refinement</h4>
+                                            <p>Generic lambdas, auto return types, binary literals</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-year">C++17</div>
+                                        <div class="timeline-content">
+                                            <h4>Major Update</h4>
+                                            <p>Structured bindings, if constexpr, parallel algorithms, std::optional</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-year">C++20</div>
+                                        <div class="timeline-content">
+                                            <h4>Revolution</h4>
+                                            <p>Concepts, modules, coroutines, ranges, format library</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-year">C++23</div>
+                                        <div class="timeline-content">
+                                            <h4>Latest</h4>
+                                            <p>std::expected, std::mdspan, more ranges improvements</p>
+                                        </div>
+                                    </div>
+                                </div>
 
-// Class template
-template&lt;typename T&gt;
-class Stack {
-private:
-    vector&lt;T&gt; elements;
-    
-public:
-    void push(const T& element) {
-        elements.push_back(element);
-    }
-    
-    void pop() {
-        if (!elements.empty()) {
-            elements.pop_back();
-        }
-    }
-    
-    T top() const {
-        if (!elements.empty()) {
-            return elements.back();
-        }
-        throw runtime_error("Stack is empty");
-    }
-    
-    bool empty() const {
-        return elements.empty();
-    }
-    
-    size_t size() const {
-        return elements.size();
-    }
-};
+                                <h3>Prerequisites & Skills You'll Gain:</h3>
+                                <div class="skills-comparison">
+                                    <div class="prerequisite-column">
+                                        <h4><i class="fas fa-check-circle"></i> Prerequisites</h4>
+                                        <ul>
+                                            <li>C++ Basics (variables, control structures, functions)</li>
+                                            <li>Object-Oriented Programming (classes, inheritance, polymorphism)</li>
+                                            <li>Basic understanding of memory (stack vs heap)</li>
+                                            <li>Familiarity with compilers and build systems</li>
+                                            <li>Basic debugging skills</li>
+                                        </ul>
+                                    </div>
+                                    <div class="skills-column">
+                                        <h4><i class="fas fa-trophy"></i> Skills You'll Master</h4>
+                                        <ul>
+                                            <li>Generic programming with templates</li>
+                                            <li>Modern memory management techniques</li>
+                                            <li>Functional programming with lambdas</li>
+                                            <li>Performance optimization strategies</li>
+                                            <li>Concurrent and parallel programming</li>
+                                            <li>Advanced design patterns</li>
+                                            <li>Template metaprogramming</li>
+                                            <li>Modern C++ best practices</li>
+                                        </ul>
+                                    </div>
+                                </div>
 
-int main() {
-    // Using function template
-    cout &lt;&lt; "Max of 10 and 20: " &lt;&lt; getMax(10, 20) &lt;&lt; endl;
-    cout &lt;&lt; "Max of 3.5 and 2.1: " &lt;&lt; getMax(3.5, 2.1) &lt;&lt; endl;
-    cout &lt;&lt; "Max of 'a' and 'z': " &lt;&lt; getMax('a', 'z') &lt;&lt; endl;
-    
-    // Using class template
-    Stack&lt;int&gt; intStack;
-    intStack.push(10);
-    intStack.push(20);
-    intStack.push(30);
-    
-    cout &lt;&lt; "Stack size: " &lt;&lt; intStack.size() &lt;&lt; endl;
-    cout &lt;&lt; "Top element: " &lt;&lt; intStack.top() &lt;&lt; endl;
-    
-    Stack&lt;string&gt; stringStack;
-    stringStack.push("Hello");
-    stringStack.push("World");
-    
-    cout &lt;&lt; "String stack top: " &lt;&lt; stringStack.top() &lt;&lt; endl;
-    
-    return 0;
-}</code></pre>
+                                <h3>Real-World Applications:</h3>
+                                <div class="applications-grid">
+                                    <div class="application-card">
+                                        <i class="fas fa-gamepad"></i>
+                                        <h4>Game Development</h4>
+                                        <p>Unreal Engine, Unity backend, custom game engines</p>
+                                    </div>
+                                    <div class="application-card">
+                                        <i class="fas fa-server"></i>
+                                        <h4>System Programming</h4>
+                                        <p>Operating systems, device drivers, embedded systems</p>
+                                    </div>
+                                    <div class="application-card">
+                                        <i class="fas fa-chart-line"></i>
+                                        <h4>High-Frequency Trading</h4>
+                                        <p>Low-latency financial systems, quantitative analysis</p>
+                                    </div>
+                                    <div class="application-card">
+                                        <i class="fas fa-desktop"></i>
+                                        <h4>Desktop Applications</h4>
+                                        <p>Adobe Creative Suite, Microsoft Office, Qt applications</p>
+                                    </div>
+                                    <div class="application-card">
+                                        <i class="fas fa-database"></i>
+                                        <h4>Database Systems</h4>
+                                        <p>MySQL, PostgreSQL, MongoDB storage engines</p>
+                                    </div>
+                                    <div class="application-card">
+                                        <i class="fas fa-globe"></i>
+                                        <h4>Web Browsers</h4>
+                                        <p>Chrome V8 engine, Firefox SpiderMonkey, WebKit</p>
+                                    </div>
+                                </div>
+
+                                <div class="info-box">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <p><strong>Learning Approach:</strong> Advanced C++ is best learned through practical examples and real-world scenarios. Each section includes production-ready code, performance considerations, and common pitfalls to avoid.</p>
+                                </div>
+
+                                <div class="success-box">
+                                    <i class="fas fa-flag-checkered"></i>
+                                    <p><strong>Ready to Level Up:</strong> You're about to explore features that separate C++ from other languages. These concepts will transform you from a C++ programmer into a C++ expert capable of writing high-performance, maintainable, and elegant code.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Smart Pointers -->
-                <section class="content-section" id="smart-pointers">
+                <!-- Templates & Generic Programming -->
+                <section class="content-section" id="templates">
                     <div class="accordion-item">
-                        <div class="accordion-header" >
-                            <h2><i class="fas fa-brain"></i> Smart Pointers</h2>
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-layer-group"></i> Templates & Generic Programming</h2>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="accordion-content">
                             <div class="topic-content">
-                                <p>Smart pointers automatically manage memory and help prevent memory leaks.</p>
+                                <p>Templates are C++'s powerful feature for generic programming, allowing you to write code that works with multiple types while maintaining type safety and performance. They enable compile-time polymorphism and are the foundation of the Standard Template Library (STL).</p>
                                 
+                                <h3>Why Templates Matter:</h3>
+                                <div class="template-benefits">
+                                    <div class="benefit-card">
+                                        <i class="fas fa-code"></i>
+                                        <h4>Code Reusability</h4>
+                                        <p>Write once, use with any type. No code duplication needed.</p>
+                                    </div>
+                                    <div class="benefit-card">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                        <h4>Zero Runtime Cost</h4>
+                                        <p>Template instantiation happens at compile-time with no performance penalty.</p>
+                                    </div>
+                                    <div class="benefit-card">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <h4>Type Safety</h4>
+                                        <p>Compile-time type checking prevents runtime errors.</p>
+                                    </div>
+                                    <div class="benefit-card">
+                                        <i class="fas fa-magic"></i>
+                                        <h4>Compile-time Computation</h4>
+                                        <p>Enable template metaprogramming for advanced optimizations.</p>
+                                    </div>
+                                </div>
+
+                                <h3>Function Templates:</h3>
                                 <div class="code-block">
                                     <div class="code-header">
-                                        <span class="code-title">smart_pointers_example.cpp</span>
+                                        <span class="code-title">function_templates.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;type_traits&gt;
+using namespace std;
+
+// Basic function template
+template&lt;typename T&gt;
+T maximum(T a, T b) {
+    return (a > b) ? a : b;
+}
+
+// Function template with multiple parameters
+template&lt;typename T, typename U&gt;
+auto add(T a, U b) -> decltype(a + b) {
+    return a + b;
+}
+
+// Function template with default template parameter
+template&lt;typename T = int&gt;
+T square(T value) {
+    return value * value;
+}
+
+// Variadic function template (C++11)
+template&lt;typename T&gt;
+T sum(T value) {
+    return value;
+}
+
+template&lt;typename T, typename... Args&gt;
+T sum(T first, Args... args) {
+    return first + sum(args...);
+}
+
+// Template with SFINAE (Substitution Failure Is Not An Error)
+template&lt;typename T&gt;
+typename enable_if&lt;is_arithmetic&lt;T&gt;::value, T&gt;::type
+safeAdd(T a, T b) {
+    return a + b;
+}
+
+// Template specialization
+template&lt;&gt;
+const char* maximum&lt;const char*&gt;(const char* a, const char* b) {
+    return (strcmp(a, b) > 0) ? a : b;
+}
+
+// Function template with concept (C++20)
+#if __cplusplus >= 202002L
+#include &lt;concepts&gt;
+
+template&lt;std::integral T&gt;
+T gcd(T a, T b) {
+    while (b != 0) {
+        T temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+#endif
+
+int main() {
+    // Basic usage
+    cout &lt;&lt; "Maximum of 10, 20: " &lt;&lt; maximum(10, 20) &lt;&lt; endl;
+    cout &lt;&lt; "Maximum of 3.14, 2.71: " &lt;&lt; maximum(3.14, 2.71) &lt;&lt; endl;
+    
+    // Multiple parameter types
+    cout &lt;&lt; "Add 5 + 3.14: " &lt;&lt; add(5, 3.14) &lt;&lt; endl;
+    
+    // Default template parameter
+    cout &lt;&lt; "Square of 5: " &lt;&lt; square(5) &lt;&lt; endl;
+    cout &lt;&lt; "Square of 3.14: " &lt;&lt; square(3.14) &lt;&lt; endl;
+    
+    // Variadic templates
+    cout &lt;&lt; "Sum of 1,2,3,4,5: " &lt;&lt; sum(1, 2, 3, 4, 5) &lt;&lt; endl;
+    cout &lt;&lt; "Sum of 1.1,2.2,3.3: " &lt;&lt; sum(1.1, 2.2, 3.3) &lt;&lt; endl;
+    
+    // SFINAE example
+    cout &lt;&lt; "Safe add 10 + 20: " &lt;&lt; safeAdd(10, 20) &lt;&lt; endl;
+    
+    // Template specialization
+    cout &lt;&lt; "Max string: " &lt;&lt; maximum("apple", "banana") &lt;&lt; endl;
+    
+#if __cplusplus >= 202002L
+    // Concepts (C++20)
+    cout &lt;&lt; "GCD of 48, 18: " &lt;&lt; gcd(48, 18) &lt;&lt; endl;
+#endif
+    
+    return 0;
+}</code></pre>
+                                </div>
+
+                                <h3>Class Templates:</h3>
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">class_templates.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;memory&gt;
+#include &lt;stdexcept&gt;
+using namespace std;
+
+// Basic class template
+template&lt;typename T&gt;
+class Container {
+private:
+    vector&lt;T&gt; data;
+    
+public:
+    void add(const T& item) { data.push_back(item); }
+    T& get(size_t index) { return data.at(index); }
+    size_t size() const { return data.size(); }
+    bool empty() const { return data.empty(); }
+    
+    // Template member function
+    template&lt;typename U&gt;
+    void addConverted(const U& item) {
+        data.push_back(static_cast&lt;T&gt;(item));
+    }
+};
+
+// Template with multiple parameters and default values
+template&lt;typename T, size_t Size = 10&gt;
+class FixedArray {
+private:
+    T data[Size];
+    size_t currentSize = 0;
+    
+public:
+    void push_back(const T& value) {
+        if (currentSize >= Size) {
+            throw overflow_error("Array is full");
+        }
+        data[currentSize++] = value;
+    }
+    
+    T& operator[](size_t index) {
+        if (index >= currentSize) {
+            throw out_of_range("Index out of range");
+        }
+        return data[index];
+    }
+    
+    size_t size() const { return currentSize; }
+    size_t capacity() const { return Size; }
+};
+
+// Template specialization for bool (space optimization)
+template&lt;size_t Size&gt;
+class FixedArray&lt;bool, Size&gt; {
+private:
+    vector&lt;bool&gt; data;  // std::vector&lt;bool&gt; is specialized for space efficiency
+    
+public:
+    FixedArray() : data(Size, false) {}
+    
+    void set(size_t index, bool value) {
+        if (index >= Size) throw out_of_range("Index out of range");
+        data[index] = value;
+    }
+    
+    bool get(size_t index) const {
+        if (index >= Size) throw out_of_range("Index out of range");
+        return data[index];
+    }
+    
+    size_t size() const { return Size; }
+};
+
+// Advanced: Smart pointer-like template
+template&lt;typename T&gt;
+class UniquePtr {
+private:
+    T* ptr;
+    
+public:
+    explicit UniquePtr(T* p = nullptr) : ptr(p) {}
+    
+    ~UniquePtr() { delete ptr; }
+    
+    // Move constructor
+    UniquePtr(UniquePtr&& other) noexcept : ptr(other.ptr) {
+        other.ptr = nullptr;
+    }
+    
+    // Move assignment
+    UniquePtr& operator=(UniquePtr&& other) noexcept {
+        if (this != &other) {
+            delete ptr;
+            ptr = other.ptr;
+            other.ptr = nullptr;
+        }
+        return *this;
+    }
+    
+    // Disable copy
+    UniquePtr(const UniquePtr&) = delete;
+    UniquePtr& operator=(const UniquePtr&) = delete;
+    
+    T& operator*() const { return *ptr; }
+    T* operator->() const { return ptr; }
+    T* get() const { return ptr; }
+    bool operator!() const { return !ptr; }
+    explicit operator bool() const { return ptr != nullptr; }
+    
+    T* release() {
+        T* temp = ptr;
+        ptr = nullptr;
+        return temp;
+    }
+    
+    void reset(T* p = nullptr) {
+        delete ptr;
+        ptr = p;
+    }
+};
+
+// Template template parameter
+template&lt;typename T, template&lt;typename&gt; class Container&gt;
+class Stack {
+private:
+    Container&lt;T&gt; container;
+    
+public:
+    void push(const T& item) { container.add(item); }
+    T pop() {
+        if (container.empty()) {
+            throw runtime_error("Stack is empty");
+        }
+        T item = container.get(container.size() - 1);
+        // Note: This is simplified - real implementation would need pop_back
+        return item;
+    }
+    bool empty() const { return container.empty(); }
+    size_t size() const { return container.size(); }
+};
+
+int main() {
+    // Basic class template usage
+    Container&lt;int&gt; intContainer;
+    intContainer.add(10);
+    intContainer.add(20);
+    intContainer.addConverted(3.14);  // Template member function
+    
+    cout &lt;&lt; "Container size: " &lt;&lt; intContainer.size() &lt;&lt; endl;
+    cout &lt;&lt; "First element: " &lt;&lt; intContainer.get(0) &lt;&lt; endl;
+    
+    // Fixed array template
+    FixedArray&lt;string, 5&gt; names;
+    names.push_back("Alice");
+    names.push_back("Bob");
+    names.push_back("Charlie");
+    
+    cout &lt;&lt; "Names array size: " &lt;&lt; names.size() &lt;&lt; endl;
+    cout &lt;&lt; "First name: " &lt;&lt; names[0] &lt;&lt; endl;
+    
+    // Template specialization for bool
+    FixedArray&lt;bool, 8&gt; flags;
+    flags.set(0, true);
+    flags.set(3, true);
+    flags.set(7, true);
+    
+    cout &lt;&lt; "Flag at index 0: " &lt;&lt; flags.get(0) &lt;&lt; endl;
+    cout &lt;&lt; "Flag at index 1: " &lt;&lt; flags.get(1) &lt;&lt; endl;
+    
+    // Smart pointer template
+    UniquePtr&lt;int&gt; smartPtr(new int(42));
+    cout &lt;&lt; "Smart pointer value: " &lt;&lt; *smartPtr &lt;&lt; endl;
+    
+    // Move semantics
+    UniquePtr&lt;string&gt; ptr1(new string("Hello"));
+    UniquePtr&lt;string&gt; ptr2 = move(ptr1);
+    cout &lt;&lt; "Moved string: " &lt;&lt; *ptr2 &lt;&lt; endl;
+    
+    // Template template parameter
+    Stack&lt;int, Container&gt; stack;
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+    
+    cout &lt;&lt; "Stack size: " &lt;&lt; stack.size() &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                                </div>
+
+                                <h3>Template Concepts (C++20):</h3>
+                                <div class="concept-explanation">
+                                    <p>Concepts provide a way to specify constraints on template parameters, making template code more readable and providing better error messages.</p>
+                                </div>
+
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">concepts_example.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">// C++20 Concepts Example
+#include &lt;iostream&gt;
+#include &lt;concepts&gt;
+#include &lt;type_traits&gt;
+
+// Define custom concepts
+template&lt;typename T&gt;
+concept Numeric = std::integral&lt;T&gt; || std::floating_point&lt;T&gt;;
+
+template&lt;typename T&gt;
+concept Printable = requires(T t) {
+    std::cout &lt;&lt; t;
+};
+
+template&lt;typename T&gt;
+concept Comparable = requires(T a, T b) {
+    { a &lt; b } -> std::convertible_to&lt;bool&gt;;
+    { a > b } -> std::convertible_to&lt;bool&gt;;
+    { a == b } -> std::convertible_to&lt;bool&gt;;
+};
+
+// Using concepts with functions
+template&lt;Numeric T&gt;
+T multiply(T a, T b) {
+    return a * b;
+}
+
+template&lt;Printable T&gt;
+void print(const T& value) {
+    std::cout &lt;&lt; value &lt;&lt; std::endl;
+}
+
+template&lt;Comparable T&gt;
+T findMax(T a, T b, T c) {
+    T max = a;
+    if (b > max) max = b;
+    if (c > max) max = c;
+    return max;
+}
+
+// Concepts with classes
+template&lt;Numeric T&gt;
+class Calculator {
+public:
+    T add(T a, T b) { return a + b; }
+    T subtract(T a, T b) { return a - b; }
+    T multiply(T a, T b) { return a * b; }
+    T divide(T a, T b) {
+        static_assert(std::floating_point&lt;T&gt;, "Division requires floating point type");
+        return a / b;
+    }
+};
+
+// Abbreviated function template syntax (C++20)
+auto quickAdd(Numeric auto a, Numeric auto b) {
+    return a + b;
+}
+
+int main() {
+    // Valid uses with concepts
+    std::cout &lt;&lt; multiply(5, 3) &lt;&lt; std::endl;        // int
+    std::cout &lt;&lt; multiply(2.5, 1.5) &lt;&lt; std::endl;    // double
+    
+    print("Hello World");   // string literal
+    print(42);              // int
+    print(3.14);            // double
+    
+    std::cout &lt;&lt; findMax(10, 5, 8) &lt;&lt; std::endl;
+    std::cout &lt;&lt; findMax(3.14, 2.71, 1.41) &lt;&lt; std::endl;
+    
+    Calculator&lt;double&gt; calc;
+    std::cout &lt;&lt; calc.add(10.5, 5.5) &lt;&lt; std::endl;
+    std::cout &lt;&lt; calc.divide(10.0, 3.0) &lt;&lt; std::endl;
+    
+    // Abbreviated syntax
+    std::cout &lt;&lt; quickAdd(100, 200) &lt;&lt; std::endl;
+    std::cout &lt;&lt; quickAdd(1.1, 2.2) &lt;&lt; std::endl;
+    
+    // The following would cause compilation errors:
+    // multiply("hello", "world");  // string is not Numeric
+    // Calculator&lt;std::string&gt; calc; // string is not Numeric
+    
+    return 0;
+}</code></pre>
+                                </div>
+
+                                <h3>Template Best Practices:</h3>
+                                <div class="best-practices-grid">
+                                    <div class="practice-card">
+                                        <h4><i class="fas fa-check-circle"></i> Do's</h4>
+                                        <ul>
+                                            <li>Use meaningful template parameter names</li>
+                                            <li>Provide default template arguments when appropriate</li>
+                                            <li>Use SFINAE or concepts for constraints</li>
+                                            <li>Specialize templates for specific types when needed</li>
+                                            <li>Use auto for return type deduction</li>
+                                            <li>Prefer variadic templates over overloading</li>
+                                        </ul>
+                                    </div>
+                                    <div class="practice-card avoid">
+                                        <h4><i class="fas fa-times-circle"></i> Don'ts</h4>
+                                        <ul>
+                                            <li>Don't use templates when simple functions suffice</li>
+                                            <li>Avoid deep template instantiation hierarchies</li>
+                                            <li>Don't ignore compilation time impact</li>
+                                            <li>Avoid exposing template internals in headers</li>
+                                            <li>Don't use templates for every small function</li>
+                                            <li>Avoid complex SFINAE when concepts are available</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="info-box">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <p><strong>Pro Tip:</strong> Templates are evaluated at compile-time, so complex template code can significantly increase compilation time. Use explicit instantiation and precompiled headers for frequently used templates.</p>
+                                </div>
+
+                                <div class="performance-box">
+                                    <i class="fas fa-rocket"></i>
+                                    <p><strong>Performance:</strong> Well-designed templates can produce code that's as fast as hand-written specialized code, sometimes even faster due to compiler optimizations enabled by template instantiation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Smart Pointers & Memory Management -->
+                <section class="content-section" id="smart-pointers">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-brain"></i> Smart Pointers & Memory Management</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Smart pointers are modern C++ objects that automatically manage memory, providing exception safety and preventing common memory-related bugs like memory leaks, double deletion, and dangling pointers. They represent ownership semantics and are fundamental to RAII (Resource Acquisition Is Initialization).</p>
+                                
+                                <h3>Memory Management Evolution:</h3>
+                                <div class="memory-evolution">
+                                    <div class="evolution-step">
+                                        <h4>❌ C-style (Dangerous)</h4>
+                                        <code>int* ptr = malloc(sizeof(int));</code>
+                                        <p>Manual memory management, prone to leaks</p>
+                                    </div>
+                                    <div class="evolution-step">
+                                        <h4>⚠️ Raw Pointers (Error-prone)</h4>
+                                        <code>int* ptr = new int(42);</code>
+                                        <p>Must remember to delete, exception-unsafe</p>
+                                    </div>
+                                    <div class="evolution-step">
+                                        <h4>✅ Smart Pointers (Modern)</h4>
+                                        <code>auto ptr = std::make_unique&lt;int&gt;(42);</code>
+                                        <p>Automatic cleanup, exception-safe, expressive</p>
+                                    </div>
+                                </div>
+
+                                <h3>Types of Smart Pointers:</h3>
+                                <div class="smart-pointer-types">
+                                    <div class="pointer-type-card">
+                                        <div class="pointer-icon">🔒</div>
+                                        <h4>unique_ptr</h4>
+                                        <p><strong>Exclusive Ownership</strong></p>
+                                        <ul>
+                                            <li>Single owner of the resource</li>
+                                            <li>Move-only semantics</li>
+                                            <li>Zero overhead when optimized</li>
+                                            <li>Automatic deletion when destroyed</li>
+                                        </ul>
+                                    </div>
+                                    <div class="pointer-type-card">
+                                        <div class="pointer-icon">🤝</div>
+                                        <h4>shared_ptr</h4>
+                                        <p><strong>Shared Ownership</strong></p>
+                                        <ul>
+                                            <li>Multiple owners allowed</li>
+                                            <li>Reference counting</li>
+                                            <li>Thread-safe reference counting</li>
+                                            <li>Deleted when last owner is destroyed</li>
+                                        </ul>
+                                    </div>
+                                    <div class="pointer-type-card">
+                                        <div class="pointer-icon">👁️</div>
+                                        <h4>weak_ptr</h4>
+                                        <p><strong>Non-owning Observer</strong></p>
+                                        <ul>
+                                            <li>Observes shared_ptr without owning</li>
+                                            <li>Breaks circular references</li>
+                                            <li>Can check if resource still exists</li>
+                                            <li>Converts to shared_ptr when needed</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <h3>Comprehensive Smart Pointer Examples:</h3>
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">comprehensive_smart_pointers.cpp</span>
                                         <button class="copy-btn" onclick="copyCode(this)">
                                             <i class="fas fa-copy"></i> Copy
                                         </button>
                                     </div>
                                     <pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;memory&gt;
+#include &lt;vector&gt;
 #include &lt;string&gt;
+#include &lt;cassert&gt;
 using namespace std;
 
-class Person {
+// Resource class for demonstration
+class Resource {
 private:
     string name;
-    int age;
+    static int counter;
+    int id;
     
 public:
-    Person(string n, int a) : name(n), age(a) {
-        cout &lt;&lt; "Person " &lt;&lt; name &lt;&lt; " created" &lt;&lt; endl;
+    Resource(const string& n) : name(n), id(++counter) {
+        cout &lt;&lt; "Resource [" &lt;&lt; id &lt;&lt; "] '" &lt;&lt; name &lt;&lt; "' created" &lt;&lt; endl;
     }
     
-    ~Person() {
-        cout &lt;&lt; "Person " &lt;&lt; name &lt;&lt; " destroyed" &lt;&lt; endl;
+    ~Resource() {
+        cout &lt;&lt; "Resource [" &lt;&lt; id &lt;&lt; "] '" &lt;&lt; name &lt;&lt; "' destroyed" &lt;&lt; endl;
     }
     
-    void introduce() {
-        cout &lt;&lt; "Hi, I'm " &lt;&lt; name &lt;&lt; " and I'm " &lt;&lt; age &lt;&lt; " years old" &lt;&lt; endl;
+    void use() const {
+        cout &lt;&lt; "Using resource [" &lt;&lt; id &lt;&lt; "] '" &lt;&lt; name &lt;&lt; "'" &lt;&lt; endl;
     }
     
-    string getName() const { return name; }
+    const string& getName() const { return name; }
+    int getId() const { return id; }
 };
 
+int Resource::counter = 0;
+
+// Factory function using unique_ptr
+unique_ptr&lt;Resource&gt; createResource(const string& name) {
+    return make_unique&lt;Resource&gt;(name);
+}
+
+// Function that takes ownership
+void processResource(unique_ptr&lt;Resource&gt; resource) {
+    if (resource) {
+        resource-&gt;use();
+        cout &lt;&lt; "Processing completed for " &lt;&lt; resource-&gt;getName() &lt;&lt; endl;
+    }
+    // resource automatically destroyed when function ends
+}
+
+// Function that observes without taking ownership
+void observeResource(const Resource* resource) {
+    if (resource) {
+        cout &lt;&lt; "Observing resource: " &lt;&lt; resource-&gt;getName() &lt;&lt; endl;
+    }
+}
+
+// Example class using shared_ptr for aggregation
+class ResourceManager {
+private:
+    vector&lt;shared_ptr&lt;Resource&gt;&gt; resources;
+    
+public:
+    void addResource(shared_ptr&lt;Resource&gt; resource) {
+        resources.push_back(resource);
+        cout &lt;&lt; "Added resource to manager. Total: " &lt;&lt; resources.size() &lt;&lt; endl;
+    }
+    
+    void useAllResources() const {
+        cout &lt;&lt; "Using all managed resources:" &lt;&lt; endl;
+        for (const auto& resource : resources) {
+            if (resource) {
+                resource-&gt;use();
+            }
+        }
+    }
+    
+    shared_ptr&lt;Resource&gt; getResource(int index) const {
+        if (index >= 0 && index &lt; resources.size()) {
+            return resources[index];
+        }
+        return nullptr;
+    }
+    
+    size_t size() const { return resources.size(); }
+};
+
+// Example of circular reference problem and solution
+class Parent;
+class Child;
+
+class Parent {
+public:
+    string name;
+    vector&lt;shared_ptr&lt;Child&gt;&gt; children;
+    
+    Parent(const string& n) : name(n) {
+        cout &lt;&lt; "Parent " &lt;&lt; name &lt;&lt; " created" &lt;&lt; endl;
+    }
+    
+    ~Parent() {
+        cout &lt;&lt; "Parent " &lt;&lt; name &lt;&lt; " destroyed" &lt;&lt; endl;
+    }
+    
+    void addChild(shared_ptr&lt;Child&gt; child);
+};
+
+class Child {
+public:
+    string name;
+    weak_ptr&lt;Parent&gt; parent;  // Use weak_ptr to break circular reference
+    
+    Child(const string& n) : name(n) {
+        cout &lt;&lt; "Child " &lt;&lt; name &lt;&lt; " created" &lt;&lt; endl;
+    }
+    
+    ~Child() {
+        cout &lt;&lt; "Child " &lt;&lt; name &lt;&lt; " destroyed" &lt;&lt; endl;
+    }
+    
+    void setParent(shared_ptr&lt;Parent&gt; p) {
+        parent = p;
+    }
+    
+    void visitParent() {
+        if (auto p = parent.lock()) {  // Convert weak_ptr to shared_ptr
+            cout &lt;&lt; "Child " &lt;&lt; name &lt;&lt; " visiting parent " &lt;&lt; p-&gt;name &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "Child " &lt;&lt; name &lt;&lt; "'s parent is no longer available" &lt;&lt; endl;
+        }
+    }
+};
+
+void Parent::addChild(shared_ptr&lt;Child&gt; child) {
+    children.push_back(child);
+    child-&gt;setParent(shared_from_this());  // This requires Parent to inherit from enable_shared_from_this
+}
+
+// Custom deleter example
+void customDeleter(Resource* ptr) {
+    cout &lt;&lt; "Custom deleter called for " &lt;&lt; ptr-&gt;getName() &lt;&lt; endl;
+    delete ptr;
+}
+
 int main() {
-    // unique_ptr - exclusive ownership
-    cout &lt;&lt; "=== unique_ptr example ===" &lt;&lt; endl;
+    cout &lt;&lt; "=== UNIQUE_PTR EXAMPLES ===" &lt;&lt; endl;
+    
+    // Basic unique_ptr usage
     {
-        unique_ptr&lt;Person&gt; person1 = make_unique&lt;Person&gt;("Alice", 25);
-        person1-&gt;introduce();
+        cout &lt;&lt; "\n--- Basic Usage ---" &lt;&lt; endl;
+        auto resource1 = make_unique&lt;Resource&gt;("Database Connection");
+        resource1-&gt;use();
         
         // Transfer ownership
-        unique_ptr&lt;Person&gt; person2 = move(person1);
-        if (!person1) {
-            cout &lt;&lt; "person1 is now null" &lt;&lt; endl;
+        auto resource2 = move(resource1);
+        assert(resource1 == nullptr);  // resource1 is now null
+        
+        if (resource2) {
+            resource2-&gt;use();
         }
-        person2-&gt;introduce();
-    } // person2 automatically destroyed here
+        
+        // Factory function
+        auto resource3 = createResource("Network Socket");
+        processResource(move(resource3));  // Transfer ownership to function
+        assert(resource3 == nullptr);  // resource3 is now null
+    }
     
-    // shared_ptr - shared ownership
-    cout &lt;&lt; "\n=== shared_ptr example ===" &lt;&lt; endl;
+    cout &lt;&lt; "\n=== SHARED_PTR EXAMPLES ===" &lt;&lt; endl;
+    
+    // Basic shared_ptr usage
     {
-        shared_ptr&lt;Person&gt; person3 = make_shared&lt;Person&gt;("Bob", 30);
-        cout &lt;&lt; "Reference count: " &lt;&lt; person3.use_count() &lt;&lt; endl;
+        cout &lt;&lt; "\n--- Shared Ownership ---" &lt;&lt; endl;
+        auto resource = make_shared&lt;Resource&gt;("Shared File Handle");
+        cout &lt;&lt; "Reference count: " &lt;&lt; resource.use_count() &lt;&lt; endl;
+        
+        ResourceManager manager;
+        manager.addResource(resource);  // Manager shares ownership
+        cout &lt;&lt; "Reference count after adding to manager: " &lt;&lt; resource.use_count() &lt;&lt; endl;
         
         {
-            shared_ptr&lt;Person&gt; person4 = person3; // Shared ownership
-            cout &lt;&lt; "Reference count: " &lt;&lt; person3.use_count() &lt;&lt; endl;
-            person4-&gt;introduce();
-        } // person4 goes out of scope
+            auto anotherRef = resource;  // Another shared reference
+            cout &lt;&lt; "Reference count with additional ref: " &lt;&lt; resource.use_count() &lt;&lt; endl;
+            anotherRef-&gt;use();
+        }  // anotherRef goes out of scope
         
-        cout &lt;&lt; "Reference count: " &lt;&lt; person3.use_count() &lt;&lt; endl;
-        person3-&gt;introduce();
-    } // person3 destroyed here
+        cout &lt;&lt; "Reference count after scope exit: " &lt;&lt; resource.use_count() &lt;&lt; endl;
+        manager.useAllResources();
+    }
     
-    // weak_ptr - non-owning observer
-    cout &lt;&lt; "\n=== weak_ptr example ===" &lt;&lt; endl;
+    cout &lt;&lt; "\n=== WEAK_PTR EXAMPLES ===" &lt;&lt; endl;
+    
+    // Circular reference prevention
     {
-        shared_ptr&lt;Person&gt; person5 = make_shared&lt;Person&gt;("Charlie", 35);
-        weak_ptr&lt;Person&gt; weakPerson = person5;
+        cout &lt;&lt; "\n--- Breaking Circular References ---" &lt;&lt; endl;
         
-        cout &lt;&lt; "Reference count: " &lt;&lt; person5.use_count() &lt;&lt; endl;
+        auto parent = make_shared&lt;Parent&gt;("Alice");
+        auto child1 = make_shared&lt;Child&gt;("Bob");
+        auto child2 = make_shared&lt;Child&gt;("Carol");
         
-        if (auto lockedPerson = weakPerson.lock()) {
-            lockedPerson-&gt;introduce();
+        // Note: This simplified example doesn't use enable_shared_from_this
+        // In real code, Parent should inherit from enable_shared_from_this&lt;Parent&gt;
+        parent-&gt;children.push_back(child1);
+        parent-&gt;children.push_back(child2);
+        child1-&gt;setParent(parent);
+        child2-&gt;setParent(parent);
+        
+        cout &lt;&lt; "Parent reference count: " &lt;&lt; parent.use_count() &lt;&lt; endl;
+        cout &lt;&lt; "Child1 reference count: " &lt;&lt; child1.use_count() &lt;&lt; endl;
+        
+        child1-&gt;visitParent();
+        child2-&gt;visitParent();
+        
+        // When parent goes out of scope, children can still check if parent exists
+        {
+            auto tempChild = child1;
+            parent.reset();  // Release parent
+            tempChild-&gt;visitParent();  // Should show parent is no longer available
+        }
+    }
+    
+    cout &lt;&lt; "\n=== ADVANCED FEATURES ===" &lt;&lt; endl;
+    
+    // Custom deleter
+    {
+        cout &lt;&lt; "\n--- Custom Deleter ---" &lt;&lt; endl;
+        unique_ptr&lt;Resource, decltype(&customDeleter)&gt; customPtr(
+            new Resource("Custom Managed"), customDeleter);
+        customPtr-&gt;use();
+    }
+    
+    // Array handling
+    {
+        cout &lt;&lt; "\n--- Array Handling ---" &lt;&lt; endl;
+        auto intArray = make_unique&lt;int[]&gt;(5);
+        for (int i = 0; i &lt; 5; ++i) {
+            intArray[i] = i * i;
         }
         
-        person5.reset(); // Release the shared_ptr
-        
-        if (weakPerson.expired()) {
-            cout &lt;&lt; "weak_ptr is expired" &lt;&lt; endl;
+        cout &lt;&lt; "Array values: ";
+        for (int i = 0; i &lt; 5; ++i) {
+            cout &lt;&lt; intArray[i] &lt;&lt; " ";
         }
+        cout &lt;&lt; endl;
+    }
+    
+    // Performance comparison
+    {
+        cout &lt;&lt; "\n--- Performance Notes ---" &lt;&lt; endl;
+        cout &lt;&lt; "unique_ptr size: " &lt;&lt; sizeof(unique_ptr&lt;Resource&gt;) &lt;&lt; " bytes" &lt;&lt; endl;
+        cout &lt;&lt; "shared_ptr size: " &lt;&lt; sizeof(shared_ptr&lt;Resource&gt;) &lt;&lt; " bytes" &lt;&lt; endl;
+        cout &lt;&lt; "weak_ptr size: " &lt;&lt; sizeof(weak_ptr&lt;Resource&gt;) &lt;&lt; " bytes" &lt;&lt; endl;
+        cout &lt;&lt; "raw pointer size: " &lt;&lt; sizeof(Resource*) &lt;&lt; " bytes" &lt;&lt; endl;
     }
     
     return 0;
 }</code></pre>
+                                </div>
+
+                                <h3>Smart Pointer Decision Tree:</h3>
+                                <div class="decision-tree">
+                                    <div class="decision-node">
+                                        <h4>🤔 Which Smart Pointer to Use?</h4>
+                                        <div class="decision-branches">
+                                            <div class="decision-branch">
+                                                <div class="condition">Single Owner?</div>
+                                                <div class="arrow">↓</div>
+                                                <div class="result">Use <code>unique_ptr</code></div>
+                                                <div class="example">File handles, network connections</div>
+                                            </div>
+                                            <div class="decision-branch">
+                                                <div class="condition">Multiple Owners?</div>
+                                                <div class="arrow">↓</div>
+                                                <div class="result">Use <code>shared_ptr</code></div>
+                                                <div class="example">Cached objects, shared resources</div>
+                                            </div>
+                                            <div class="decision-branch">
+                                                <div class="condition">Observer Only?</div>
+                                                <div class="arrow">↓</div>
+                                                <div class="result">Use <code>weak_ptr</code></div>
+                                                <div class="example">Callbacks, cache observers</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3>Common Patterns & Best Practices:</h3>
+                                <div class="smart-pointer-patterns">
+                                    <div class="pattern-card">
+                                        <h4><i class="fas fa-factory"></i> Factory Pattern</h4>
+                                        <code>return make_unique&lt;T&gt;(args...);</code>
+                                        <p>Return unique_ptr from factory functions</p>
+                                    </div>
+                                    <div class="pattern-card">
+                                        <h4><i class="fas fa-exchange-alt"></i> Ownership Transfer</h4>
+                                        <code>processData(std::move(ptr));</code>
+                                        <p>Use std::move to transfer unique_ptr ownership</p>
+                                    </div>
+                                    <div class="pattern-card">
+                                        <h4><i class="fas fa-eye"></i> Safe Observation</h4>
+                                        <code>if (auto p = weak_ptr.lock()) { ... }</code>
+                                        <p>Always check weak_ptr before using</p>
+                                    </div>
+                                    <div class="pattern-card">
+                                        <h4><i class="fas fa-shield-alt"></i> Exception Safety</h4>
+                                        <code>auto ptr = make_unique&lt;T&gt;();</code>
+                                        <p>Prefer make_unique/make_shared over new</p>
+                                    </div>
+                                </div>
+
+                                <h3>Performance Considerations:</h3>
+                                <div class="performance-comparison">
+                                    <table class="comparison-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Pointer Type</th>
+                                                <th>Memory Overhead</th>
+                                                <th>Performance</th>
+                                                <th>Thread Safety</th>
+                                                <th>Use Case</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>unique_ptr</strong></td>
+                                                <td>Zero overhead</td>
+                                                <td>Same as raw pointer</td>
+                                                <td>Not thread-safe</td>
+                                                <td>Exclusive ownership</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>shared_ptr</strong></td>
+                                                <td>2 pointers + ref count</td>
+                                                <td>Atomic operations</td>
+                                                <td>Reference counting is thread-safe</td>
+                                                <td>Shared ownership</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>weak_ptr</strong></td>
+                                                <td>2 pointers</td>
+                                                <td>Lock operation overhead</td>
+                                                <td>Thread-safe observation</td>
+                                                <td>Non-owning observation</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="warning-box">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <p><strong>Avoid These Mistakes:</strong></p>
+                                    <ul>
+                                        <li>Don't use <code>shared_ptr</code> when <code>unique_ptr</code> suffices</li>
+                                        <li>Never store <code>shared_ptr</code> in member variables without considering cycles</li>
+                                        <li>Don't convert raw pointers to smart pointers randomly</li>
+                                        <li>Avoid <code>get()</code> unless interfacing with C APIs</li>
+                                    </ul>
+                                </div>
+
+                                <div class="success-box">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <p><strong>Memory Safety Achievement:</strong> With smart pointers, you've eliminated manual memory management. Your code is now exception-safe, leak-free, and expresses ownership semantics clearly!</p>
                                 </div>
                             </div>
                         </div>
@@ -271,17 +1154,53 @@ int main() {
                 <!-- Exception Handling -->
                 <section class="content-section" id="exception-handling">
                     <div class="accordion-item">
-                        <div class="accordion-header" >
+                        <div class="accordion-header">
                             <h2><i class="fas fa-exclamation-triangle"></i> Exception Handling</h2>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="accordion-content">
                             <div class="topic-content">
-                                <p>Exception handling provides a way to handle runtime errors gracefully.</p>
+                                <p>Exception handling in C++ provides a structured way to handle runtime errors and exceptional conditions. It separates error handling code from normal program logic, making code more readable and maintainable while ensuring program stability.</p>
                                 
+                                <h3>Exception Handling Philosophy:</h3>
+                                <div class="exception-principles">
+                                    <div class="principle-card">
+                                        <h4>🎯 Separation of Concerns</h4>
+                                        <p>Error handling logic is separated from business logic</p>
+                                    </div>
+                                    <div class="principle-card">
+                                        <h4>🔄 Stack Unwinding</h4>
+                                        <p>Automatic cleanup of local objects when exceptions occur</p>
+                                    </div>
+                                    <div class="principle-card">
+                                        <h4>🛡️ Exception Safety</h4>
+                                        <p>Guarantees about program state when exceptions are thrown</p>
+                                    </div>
+                                    <div class="principle-card">
+                                        <h4>⚡ Performance</h4>
+                                        <p>Zero-cost when no exceptions are thrown</p>
+                                    </div>
+                                </div>
+
+                                <h3>Exception Safety Levels:</h3>
+                                <div class="safety-levels">
+                                    <div class="safety-level basic">
+                                        <h4>Basic Guarantee</h4>
+                                        <p>No resource leaks, objects remain in valid state</p>
+                                    </div>
+                                    <div class="safety-level strong">
+                                        <h4>Strong Guarantee</h4>
+                                        <p>Operation succeeds completely or has no effect</p>
+                                    </div>
+                                    <div class="safety-level nothrow">
+                                        <h4>No-throw Guarantee</h4>
+                                        <p>Operation never throws exceptions</p>
+                                    </div>
+                                </div>
+
                                 <div class="code-block">
                                     <div class="code-header">
-                                        <span class="code-title">exception_handling_example.cpp</span>
+                                        <span class="code-title">comprehensive_exception_handling.cpp</span>
                                         <button class="copy-btn" onclick="copyCode(this)">
                                             <i class="fas fa-copy"></i> Copy
                                         </button>
@@ -289,98 +1208,377 @@ int main() {
                                     <pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;stdexcept&gt;
 #include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;memory&gt;
+#include &lt;fstream&gt;
+#include &lt;system_error&gt;
 using namespace std;
 
-// Custom exception class
-class DivisionByZeroException : public exception {
+// Custom exception hierarchy
+class MathException : public std::exception {
+protected:
+    string message;
 public:
-    const char* what() const noexcept override {
-        return "Division by zero is not allowed!";
+    MathException(const string& msg) : message(msg) {}
+    const char* what() const noexcept override { return message.c_str(); }
+};
+
+class DivisionByZeroException : public MathException {
+public:
+    DivisionByZeroException() : MathException("Division by zero is not allowed!") {}
+};
+
+class NegativeArgumentException : public MathException {
+public:
+    NegativeArgumentException(const string& operation) 
+        : MathException(operation + " is not defined for negative numbers") {}
+};
+
+class OverflowException : public MathException {
+public:
+    OverflowException(const string& operation)
+        : MathException(operation + " result is too large to compute") {}
+};
+
+// RAII resource management class
+class FileManager {
+private:
+    string filename;
+    unique_ptr&lt;ofstream&gt; file;
+    
+public:
+    FileManager(const string& fname) : filename(fname) {
+        file = make_unique&lt;ofstream&gt;(filename);
+        if (!file-&gt;is_open()) {
+            throw runtime_error("Failed to open file: " + filename);
+        }
+        cout &lt;&lt; "File opened: " &lt;&lt; filename &lt;&lt; endl;
+    }
+    
+    ~FileManager() {
+        if (file && file-&gt;is_open()) {
+            file-&gt;close();
+            cout &lt;&lt; "File closed: " &lt;&lt; filename &lt;&lt; endl;
+        }
+    }
+    
+    void write(const string& data) {
+        if (!file || !file-&gt;is_open()) {
+            throw runtime_error("File is not open for writing");
+        }
+        *file &lt;&lt; data &lt;&lt; endl;
+        if (file-&gt;fail()) {
+            throw runtime_error("Failed to write to file");
+        }
     }
 };
 
-class Calculator {
+// Exception-safe calculator class
+class SafeCalculator {
 public:
+    // Strong exception safety guarantee
     static double divide(double a, double b) {
-        if (b == 0) {
+        if (b == 0.0) {
             throw DivisionByZeroException();
         }
         return a / b;
     }
     
-    static int factorial(int n) {
+    // Strong exception safety guarantee  
+    static long long factorial(int n) {
         if (n &lt; 0) {
-            throw invalid_argument("Factorial is not defined for negative numbers");
+            throw NegativeArgumentException("Factorial");
         }
         if (n > 20) {
-            throw overflow_error("Factorial too large to compute");
+            throw OverflowException("Factorial");
         }
         
-        int result = 1;
+        long long result = 1;
         for (int i = 1; i &lt;= n; i++) {
             result *= i;
         }
         return result;
     }
+    
+    // Function with multiple exception types
+    static double power(double base, int exponent) {
+        if (base == 0.0 && exponent &lt; 0) {
+            throw DivisionByZeroException();
+        }
+        if (exponent &lt; 0) {
+            throw NegativeArgumentException("Negative exponent");
+        }
+        
+        double result = 1.0;
+        for (int i = 0; i &lt; exponent; i++) {
+            result *= base;
+            if (result > 1e100) {  // Simple overflow check
+                throw OverflowException("Power");
+            }
+        }
+        return result;
+    }
+};
+
+// Container with exception safety
+class SafeVector {
+private:
+    vector&lt;int&gt; data;
+    
+public:
+    // Strong exception safety
+    void push_back_safe(int value) {
+        data.push_back(value);  // If this throws, object state unchanged
+    }
+    
+    // Basic exception safety
+    void reserve_space(size_t size) {
+        try {
+            data.reserve(size);
+        } catch (const bad_alloc& e) {
+            cout &lt;&lt; "Memory allocation failed: " &lt;&lt; e.what() &lt;&lt; endl;
+            throw;  // Re-throw to caller
+        }
+    }
+    
+    // No-throw guarantee
+    size_t size() const noexcept {
+        return data.size();
+    }
+    
+    // Strong exception safety with rollback
+    void batch_insert(const vector&lt;int&gt;& values) {
+        size_t original_size = data.size();
+        try {
+            for (int value : values) {
+                data.push_back(value);
+            }
+        } catch (...) {
+            // Rollback to original state
+            data.resize(original_size);
+            throw;
+        }
+    }
+    
+    void print() const {
+        cout &lt;&lt; "Vector contents: ";
+        for (int val : data) {
+            cout &lt;&lt; val &lt;&lt; " ";
+        }
+        cout &lt;&lt; endl;
+    }
+};
+
+// Function demonstrating exception specifications (C++11)
+void noThrowFunction() noexcept {
+    cout &lt;&lt; "This function guarantees not to throw" &lt;&lt; endl;
+    // If an exception is thrown here, std::terminate is called
+}
+
+// Modern exception handling patterns
+class ModernExceptionExample {
+public:
+    // Using std::optional instead of exceptions for expected failures
+    static optional&lt;double&gt; safe_divide_optional(double a, double b) {
+        if (b == 0.0) {
+            return nullopt;  // No exception, just empty optional
+        }
+        return a / b;
+    }
+    
+    // Using expected-like pattern (C++23 will have std::expected)
+    struct Result {
+        bool success;
+        double value;
+        string error_message;
+        
+        static Result success_result(double val) {
+            return {true, val, ""};
+        }
+        
+        static Result error_result(const string& msg) {
+            return {false, 0.0, msg};
+        }
+    };
+    
+    static Result safe_divide_result(double a, double b) {
+        if (b == 0.0) {
+            return Result::error_result("Division by zero");
+        }
+        return Result::success_result(a / b);
+    }
 };
 
 int main() {
-    // Basic try-catch
-    cout &lt;&lt; "=== Basic Exception Handling ===" &lt;&lt; endl;
+    cout &lt;&lt; "=== COMPREHENSIVE EXCEPTION HANDLING ===" &lt;&lt; endl;
+    
+    // Basic exception handling with custom hierarchy
+    cout &lt;&lt; "\n--- Custom Exception Hierarchy ---" &lt;&lt; endl;
     try {
-        double result = Calculator::divide(10, 0);
+        double result = SafeCalculator::divide(10, 0);
         cout &lt;&lt; "Result: " &lt;&lt; result &lt;&lt; endl;
     }
     catch (const DivisionByZeroException& e) {
-        cout &lt;&lt; "Custom Exception: " &lt;&lt; e.what() &lt;&lt; endl;
+        cout &lt;&lt; "Division by zero: " &lt;&lt; e.what() &lt;&lt; endl;
     }
-    
-    // Multiple catch blocks
-    cout &lt;&lt; "\n=== Multiple Exception Types ===" &lt;&lt; endl;
-    try {
-        int fact = Calculator::factorial(-5);
-        cout &lt;&lt; "Factorial: " &lt;&lt; fact &lt;&lt; endl;
-    }
-    catch (const invalid_argument& e) {
-        cout &lt;&lt; "Invalid Argument: " &lt;&lt; e.what() &lt;&lt; endl;
-    }
-    catch (const overflow_error& e) {
-        cout &lt;&lt; "Overflow Error: " &lt;&lt; e.what() &lt;&lt; endl;
+    catch (const MathException& e) {
+        cout &lt;&lt; "Math error: " &lt;&lt; e.what() &lt;&lt; endl;
     }
     catch (const exception& e) {
-        cout &lt;&lt; "General Exception: " &lt;&lt; e.what() &lt;&lt; endl;
+        cout &lt;&lt; "General exception: " &lt;&lt; e.what() &lt;&lt; endl;
     }
     
-    // Try-catch with finally-like behavior using RAII
-    cout &lt;&lt; "\n=== RAII Pattern ===" &lt;&lt; endl;
+    // Exception safety with RAII
+    cout &lt;&lt; "\n--- RAII and Exception Safety ---" &lt;&lt; endl;
     try {
-        cout &lt;&lt; "Attempting risky operation..." &lt;&lt; endl;
-        int result = Calculator::factorial(5);
-        cout &lt;&lt; "Factorial of 5: " &lt;&lt; result &lt;&lt; endl;
+        FileManager file("test.txt");
+        file.write("Hello, World!");
+        file.write("This is a test file.");
+        
+        // Simulate an error
+        throw runtime_error("Simulated error after file operations");
+    }
+    catch (const runtime_error& e) {
+        cout &lt;&lt; "Runtime error: " &lt;&lt; e.what() &lt;&lt; endl;
+        cout &lt;&lt; "Note: File was automatically closed due to RAII" &lt;&lt; endl;
+    }
+    
+    // Multiple exception types from single function
+    cout &lt;&lt; "\n--- Multiple Exception Types ---" &lt;&lt; endl;
+    vector&lt;pair&lt;double, int&gt;&gt; test_cases = {{2.0, 10}, {0.0, -1}, {2.0, 50}};
+    
+    for (const auto& [base, exp] : test_cases) {
+        try {
+            double result = SafeCalculator::power(base, exp);
+            cout &lt;&lt; base &lt;&lt; "^" &lt;&lt; exp &lt;&lt; " = " &lt;&lt; result &lt;&lt; endl;
+        }
+        catch (const DivisionByZeroException& e) {
+            cout &lt;&lt; "Division by zero in power calculation: " &lt;&lt; e.what() &lt;&lt; endl;
+        }
+        catch (const NegativeArgumentException& e) {
+            cout &lt;&lt; "Negative argument: " &lt;&lt; e.what() &lt;&lt; endl;
+        }
+        catch (const OverflowException& e) {
+            cout &lt;&lt; "Overflow: " &lt;&lt; e.what() &lt;&lt; endl;
+        }
+    }
+    
+    // Exception safety levels
+    cout &lt;&lt; "\n--- Exception Safety Guarantees ---" &lt;&lt; endl;
+    SafeVector vec;
+    try {
+        vec.push_back_safe(1);
+        vec.push_back_safe(2);
+        vec.push_back_safe(3);
+        vec.print();
+        
+        // This might throw, but will rollback
+        vector&lt;int&gt; large_batch(1000000, 42);  // Very large batch
+        vec.batch_insert(large_batch);
+    }
+    catch (const bad_alloc& e) {
+        cout &lt;&lt; "Memory allocation failed, but vector state preserved" &lt;&lt; endl;
+        vec.print();  // Should show original content
     }
     catch (...) {
-        cout &lt;&lt; "Caught unknown exception" &lt;&lt; endl;
+        cout &lt;&lt; "Unknown exception caught" &lt;&lt; endl;
     }
     
-    cout &lt;&lt; "Program continues normally..." &lt;&lt; endl;
+    // Modern alternatives to exceptions
+    cout &lt;&lt; "\n--- Modern Alternatives ---" &lt;&lt; endl;
+    
+    // Using optional
+    if (auto result = ModernExceptionExample::safe_divide_optional(10, 2)) {
+        cout &lt;&lt; "Division result: " &lt;&lt; *result &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "Division failed (returned empty optional)" &lt;&lt; endl;
+    }
+    
+    // Using result pattern
+    auto result = ModernExceptionExample::safe_divide_result(10, 0);
+    if (result.success) {
+        cout &lt;&lt; "Division result: " &lt;&lt; result.value &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "Division failed: " &lt;&lt; result.error_message &lt;&lt; endl;
+    }
+    
+    // Nested try-catch
+    cout &lt;&lt; "\n--- Nested Exception Handling ---" &lt;&lt; endl;
+    try {
+        try {
+            long long fact = SafeCalculator::factorial(-1);
+            cout &lt;&lt; "Factorial: " &lt;&lt; fact &lt;&lt; endl;
+        }
+        catch (const NegativeArgumentException& e) {
+            cout &lt;&lt; "Caught negative argument, retrying with positive..." &lt;&lt; endl;
+            long long fact = SafeCalculator::factorial(5);
+            cout &lt;&lt; "Factorial of 5: " &lt;&lt; fact &lt;&lt; endl;
+        }
+    }
+    catch (const exception& e) {
+        cout &lt;&lt; "Final catch: " &lt;&lt; e.what() &lt;&lt; endl;
+    }
+    
+    // No-throw function
+    noThrowFunction();
+    
+    cout &lt;&lt; "\n=== Exception handling demonstration complete ===" &lt;&lt; endl;
     return 0;
 }</code></pre>
+                                </div>
+
+                                <h3>Exception Handling Best Practices:</h3>
+                                <div class="exception-best-practices">
+                                    <div class="practice-category do">
+                                        <h4><i class="fas fa-check-circle"></i> Do's</h4>
+                                        <ul>
+                                            <li>Use RAII for automatic resource cleanup</li>
+                                            <li>Catch exceptions by const reference</li>
+                                            <li>Create meaningful exception hierarchies</li>
+                                            <li>Provide strong exception safety guarantees</li>
+                                            <li>Use noexcept for functions that don't throw</li>
+                                            <li>Consider alternatives like std::optional</li>
+                                        </ul>
+                                    </div>
+                                    <div class="practice-category dont">
+                                        <h4><i class="fas fa-times-circle"></i> Don'ts</h4>
+                                        <ul>
+                                            <li>Don't use exceptions for normal control flow</li>
+                                            <li>Don't throw exceptions from destructors</li>
+                                            <li>Don't catch exceptions you can't handle</li>
+                                            <li>Don't use raw pointers with exceptions</li>
+                                            <li>Don't ignore exception safety guarantees</li>
+                                            <li>Don't use exceptions in performance-critical code</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="warning-box">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <p><strong>Performance Note:</strong> Exceptions have zero cost when not thrown, but throwing and catching exceptions can be expensive. Use them for exceptional conditions, not regular program flow.</p>
+                                </div>
+
+                                <div class="info-box">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <p><strong>Modern Trend:</strong> Many modern C++ codebases are moving toward alternatives like std::optional, std::expected (C++23), and error codes for better performance and explicit error handling.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Lambda Expressions -->
+                <!-- Lambda Expressions & Functional Programming -->
                 <section class="content-section" id="lambda-expressions">
                     <div class="accordion-item">
-                        <div class="accordion-header" >
-                            <h2><i class="fas fa-function"></i> Lambda Expressions</h2>
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-function"></i> Lambda Expressions & Functional Programming</h2>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="accordion-content">
                             <div class="topic-content">
-                                <p>Lambda expressions provide a concise way to define anonymous functions.</p>
+                                <p>Lambda expressions provide a concise way to define anonymous functions, forming the foundation of functional programming in C++.</p>
+                                
+                                <h3>Lambda Expressions</h3>
                                 
                                 <div class="code-block">
                                     <div class="code-header">
@@ -471,21 +1669,393 @@ int main() {
     return 0;
 }</code></pre>
                                 </div>
+                                
+                                <h3>Functional Programming Concepts</h3>
+                                <p>Functional programming is a programming paradigm that treats computation as the evaluation of mathematical functions, avoiding state and mutable data.</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">functional_programming.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;functional&gt;
+#include &lt;numeric&gt;
+#include &lt;optional&gt;
+#include &lt;string&gt;
+#include &lt;map&gt;
+using namespace std;
+
+// ===== HIGHER-ORDER FUNCTIONS =====
+// Functions that take other functions as parameters or return functions
+
+// Function that takes a function as parameter
+template&lt;typename Func&gt;
+void applyToRange(int start, int end, Func func) {
+    for (int i = start; i &lt;= end; ++i) {
+        func(i);
+    }
+}
+
+// Function that returns a function
+auto createMultiplier(int factor) {
+    return [factor](int x) { return x * factor; };
+}
+
+// Curry function - transforms function with multiple arguments into chain of functions
+auto curry_add = [](int x) {
+    return [x](int y) {
+        return x + y;
+    };
+};
+
+// ===== PURE FUNCTIONS =====
+// Functions with no side effects - same input always produces same output
+
+int pure_add(int a, int b) {
+    return a + b; // No side effects, deterministic
+}
+
+// Not pure - has side effects
+int counter = 0;
+int impure_add(int a, int b) {
+    counter++; // Side effect - modifies global state
+    return a + b;
+}
+
+// ===== IMMUTABLE DATA STRUCTURES =====
+class ImmutableVector {
+private:
+    vector&lt;int&gt; data;
+    
+public:
+    ImmutableVector(const vector&lt;int&gt;& vec) : data(vec) {}
+    
+    // Returns new vector instead of modifying existing one
+    ImmutableVector append(int value) const {
+        vector&lt;int&gt; newData = data;
+        newData.push_back(value);
+        return ImmutableVector(newData);
+    }
+    
+    ImmutableVector filter(function&lt;bool(int)&gt; predicate) const {
+        vector&lt;int&gt; result;
+        copy_if(data.begin(), data.end(), back_inserter(result), predicate);
+        return ImmutableVector(result);
+    }
+    
+    template&lt;typename Func&gt;
+    auto map(Func transformer) const {
+        vector&lt;decltype(transformer(data[0]))&gt; result;
+        transform(data.begin(), data.end(), back_inserter(result), transformer);
+        return result;
+    }
+    
+    int reduce(function&lt;int(int, int)&gt; reducer, int initial = 0) const {
+        return accumulate(data.begin(), data.end(), initial, reducer);
+    }
+    
+    void print() const {
+        for (int val : data) {
+            cout &lt;&lt; val &lt;&lt; " ";
+        }
+        cout &lt;&lt; endl;
+    }
+    
+    size_t size() const { return data.size(); }
+    int operator[](size_t index) const { return data[index]; }
+};
+
+// ===== MONADS (Optional as example) =====
+template&lt;typename T&gt;
+class Maybe {
+private:
+    optional&lt;T&gt; value;
+    
+public:
+    Maybe() : value(nullopt) {}
+    Maybe(T val) : value(val) {}
+    
+    bool hasValue() const { return value.has_value(); }
+    T getValue() const { return value.value(); }
+    
+    // Bind operation (flatMap)
+    template&lt;typename Func&gt;
+    auto bind(Func func) const {
+        if (hasValue()) {
+            return func(getValue());
+        } else {
+            return Maybe&lt;decltype(func(getValue()).getValue())&gt;();
+        }
+    }
+    
+    // Map operation
+    template&lt;typename Func&gt;
+    auto map(Func func) const {
+        if (hasValue()) {
+            return Maybe&lt;decltype(func(getValue()))&gt;(func(getValue()));
+        } else {
+            return Maybe&lt;decltype(func(getValue()))&gt;();
+        }
+    }
+};
+
+// Helper function to create Maybe
+template&lt;typename T&gt;
+Maybe&lt;T&gt; some(T value) {
+    return Maybe&lt;T&gt;(value);
+}
+
+template&lt;typename T&gt;
+Maybe&lt;T&gt; none() {
+    return Maybe&lt;T&gt;();
+}
+
+// Safe division that returns Maybe
+Maybe&lt;double&gt; safeDivide(double a, double b) {
+    if (b != 0) {
+        return some(a / b);
+    } else {
+        return none&lt;double&gt;();
+    }
+}
+
+// ===== FUNCTION COMPOSITION =====
+template&lt;typename F, typename G&gt;
+auto compose(F f, G g) {
+    return [f, g](auto x) {
+        return f(g(x));
+    };
+}
+
+// Pipe operator simulation
+template&lt;typename T, typename Func&gt;
+auto operator|(T&& value, Func func) {
+    return func(forward&lt;T&gt;(value));
+}
+
+int main() {
+    cout &lt;&lt; "=== Functional Programming in C++ ===" &lt;&lt; endl;
+    
+    // ===== HIGHER-ORDER FUNCTIONS =====
+    cout &lt;&lt; "\n1. Higher-Order Functions:" &lt;&lt; endl;
+    
+    // Function as parameter
+    cout &lt;&lt; "Numbers 1-5: ";
+    applyToRange(1, 5, [](int x) { cout &lt;&lt; x &lt;&lt; " "; });
+    cout &lt;&lt; endl;
+    
+    // Function returning function
+    auto multiplyBy3 = createMultiplier(3);
+    cout &lt;&lt; "5 * 3 = " &lt;&lt; multiplyBy3(5) &lt;&lt; endl;
+    
+    // Currying
+    auto add5 = curry_add(5);
+    cout &lt;&lt; "Curried add: 5 + 10 = " &lt;&lt; add5(10) &lt;&lt; endl;
+    
+    // ===== MAP, FILTER, REDUCE =====
+    cout &lt;&lt; "\n2. Map, Filter, Reduce:" &lt;&lt; endl;
+    
+    vector&lt;int&gt; numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    
+    // Map: Transform each element
+    vector&lt;int&gt; squares;
+    transform(numbers.begin(), numbers.end(), back_inserter(squares),
+              [](int x) { return x * x; });
+    
+    cout &lt;&lt; "Squares: ";
+    for (int sq : squares) cout &lt;&lt; sq &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    
+    // Filter: Select elements based on condition
+    vector&lt;int&gt; evens;
+    copy_if(numbers.begin(), numbers.end(), back_inserter(evens),
+            [](int x) { return x % 2 == 0; });
+    
+    cout &lt;&lt; "Even numbers: ";
+    for (int even : evens) cout &lt;&lt; even &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    
+    // Reduce: Combine all elements into single value
+    int sum = accumulate(numbers.begin(), numbers.end(), 0);
+    int product = accumulate(numbers.begin(), numbers.end(), 1,
+                           [](int acc, int x) { return acc * x; });
+    
+    cout &lt;&lt; "Sum: " &lt;&lt; sum &lt;&lt; ", Product: " &lt;&lt; product &lt;&lt; endl;
+    
+    // ===== IMMUTABLE DATA STRUCTURES =====
+    cout &lt;&lt; "\n3. Immutable Data Structures:" &lt;&lt; endl;
+    
+    ImmutableVector vec({1, 2, 3, 4, 5});
+    cout &lt;&lt; "Original vector: ";
+    vec.print();
+    
+    auto vec2 = vec.append(6).append(7);
+    cout &lt;&lt; "After append (original unchanged): ";
+    vec.print();
+    cout &lt;&lt; "New vector: ";
+    vec2.print();
+    
+    auto evenVec = vec2.filter([](int x) { return x % 2 == 0; });
+    cout &lt;&lt; "Even numbers: ";
+    evenVec.print();
+    
+    auto doubled = vec.map([](int x) { return x * 2; });
+    cout &lt;&lt; "Doubled: ";
+    for (int val : doubled) cout &lt;&lt; val &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    
+    int totalSum = vec2.reduce([](int acc, int x) { return acc + x; });
+    cout &lt;&lt; "Sum using reduce: " &lt;&lt; totalSum &lt;&lt; endl;
+    
+    // ===== MONADS (Maybe) =====
+    cout &lt;&lt; "\n4. Monads (Maybe/Optional):" &lt;&lt; endl;
+    
+    auto result1 = safeDivide(10, 2);
+    auto result2 = safeDivide(10, 0);
+    
+    if (result1.hasValue()) {
+        cout &lt;&lt; "10 / 2 = " &lt;&lt; result1.getValue() &lt;&lt; endl;
+    }
+    
+    if (!result2.hasValue()) {
+        cout &lt;&lt; "10 / 0 = undefined (safely handled)" &lt;&lt; endl;
+    }
+    
+    // Chaining operations with Maybe
+    auto chainedResult = some(20.0)
+        .bind([](double x) { return safeDivide(x, 4); })
+        .bind([](double x) { return safeDivide(x, 2.5); })
+        .map([](double x) { return x * 2; });
+    
+    if (chainedResult.hasValue()) {
+        cout &lt;&lt; "Chained operations result: " &lt;&lt; chainedResult.getValue() &lt;&lt; endl;
+    }
+    
+    // ===== FUNCTION COMPOSITION =====
+    cout &lt;&lt; "\n5. Function Composition:" &lt;&lt; endl;
+    
+    auto addOne = [](int x) { return x + 1; };
+    auto multiplyBy2 = [](int x) { return x * 2; };
+    auto toString = [](int x) { return to_string(x); };
+    
+    // Compose functions
+    auto addOneAndDouble = compose(multiplyBy2, addOne);
+    cout &lt;&lt; "addOneAndDouble(5): " &lt;&lt; addOneAndDouble(5) &lt;&lt; endl;
+    
+    // Pipeline-style composition
+    string result = 5 
+        | addOne 
+        | multiplyBy2 
+        | toString;
+    cout &lt;&lt; "Pipeline result: " &lt;&lt; result &lt;&lt; endl;
+    
+    // ===== RECURSION vs ITERATION =====
+    cout &lt;&lt; "\n6. Functional Recursion:" &lt;&lt; endl;
+    
+    // Functional factorial
+    function&lt;int(int)&gt; factorial = [&factorial](int n) {
+        return (n &lt;= 1) ? 1 : n * factorial(n - 1);
+    };
+    
+    cout &lt;&lt; "Factorial of 5: " &lt;&lt; factorial(5) &lt;&lt; endl;
+    
+    // Tail-recursive version (more efficient)
+    function&lt;int(int, int)&gt; tailFactorial = [&tailFactorial](int n, int acc) {
+        return (n &lt;= 1) ? acc : tailFactorial(n - 1, n * acc);
+    };
+    
+    cout &lt;&lt; "Tail recursive factorial of 5: " &lt;&lt; tailFactorial(5, 1) &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                                </div>
+                                
+                                <h3>Functional Programming Principles</h3>
+                                <div class="concept-grid">
+                                    <div class="concept-item">
+                                        <h4><i class="fas fa-lock"></i> Immutability</h4>
+                                        <p>Data structures that cannot be modified after creation, reducing bugs and enabling safe concurrent programming.</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4><i class="fas fa-leaf"></i> Pure Functions</h4>
+                                        <p>Functions with no side effects that always return the same output for the same input, making code predictable and testable.</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4><i class="fas fa-layer-group"></i> Higher-Order Functions</h4>
+                                        <p>Functions that accept other functions as parameters or return functions, enabling powerful abstraction patterns.</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4><i class="fas fa-link"></i> Function Composition</h4>
+                                        <p>Combining simple functions to build more complex operations, promoting code reuse and modularity.</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4><i class="fas fa-recycle"></i> Recursion</h4>
+                                        <p>Solving problems by breaking them into smaller subproblems, often more elegant than iterative solutions.</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4><i class="fas fa-box"></i> Monads</h4>
+                                        <p>Design patterns for handling computations with context (like null values, errors) in a composable way.</p>
+                                    </div>
+                                </div>
+                                
+                                <h3>Common Functional Algorithms</h3>
+                                <div class="algorithm-list">
+                                    <div class="algorithm-item">
+                                        <h4>Map</h4>
+                                        <p>Transform each element in a collection using a function</p>
+                                        <code>transform(begin, end, result, function)</code>
+                                    </div>
+                                    <div class="algorithm-item">
+                                        <h4>Filter</h4>
+                                        <p>Select elements from a collection based on a predicate</p>
+                                        <code>copy_if(begin, end, result, predicate)</code>
+                                    </div>
+                                    <div class="algorithm-item">
+                                        <h4>Reduce/Fold</h4>
+                                        <p>Combine all elements into a single value using an accumulator</p>
+                                        <code>accumulate(begin, end, initial, binary_op)</code>
+                                    </div>
+                                    <div class="algorithm-item">
+                                        <h4>Zip</h4>
+                                        <p>Combine elements from multiple collections pairwise</p>
+                                        <code>transform(begin1, end1, begin2, result, binary_op)</code>
+                                    </div>
+                                </div>
+                                
+                                <div class="best-practices">
+                                    <h3>Functional Programming Best Practices:</h3>
+                                    <ul>
+                                        <li><strong>Prefer Pure Functions:</strong> Write functions without side effects when possible</li>
+                                        <li><strong>Use Immutable Data:</strong> Create new objects instead of modifying existing ones</li>
+                                        <li><strong>Compose Functions:</strong> Build complex operations from simple, reusable functions</li>
+                                        <li><strong>Avoid Shared Mutable State:</strong> Minimize global variables and shared data</li>
+                                        <li><strong>Use STL Algorithms:</strong> Leverage existing functional algorithms in &lt;algorithm&gt;</li>
+                                        <li><strong>Consider Performance:</strong> Be aware of the overhead of functional approaches</li>
+                                        <li><strong>Mix Paradigms:</strong> Combine functional and object-oriented approaches as appropriate</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Move Semantics -->
+                <!-- Move Semantics & Perfect Forwarding -->
                 <section class="content-section" id="move-semantics">
                     <div class="accordion-item">
-                        <div class="accordion-header" >
-                            <h2><i class="fas fa-arrows-alt"></i> Move Semantics</h2>
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-arrows-alt"></i> Move Semantics & Perfect Forwarding</h2>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="accordion-content">
                             <div class="topic-content">
-                                <p>Move semantics allow efficient transfer of resources from temporary objects.</p>
+                                <p>Move semantics allow efficient transfer of resources from temporary objects, while perfect forwarding preserves the value category of function arguments.</p>
+                                
+                                <h3>Move Semantics</h3>
                                 
                                 <div class="code-block">
                                     <div class="code-header">
@@ -498,6 +2068,7 @@ int main() {
 #include &lt;vector&gt;
 #include &lt;string&gt;
 #include &lt;utility&gt;
+#include &lt;cstring&gt;
 using namespace std;
 
 class MyString {
@@ -603,17 +2174,288 @@ int main() {
     
     cout &lt;&lt; "str5 after move to vector: '" &lt;&lt; str5.c_str() &lt;&lt; "'" &lt;&lt; endl;
     
-    // Perfect forwarding example
-    cout &lt;&lt; "\n=== Perfect Forwarding ===" &lt;&lt; endl;
-    auto makeString = [](auto&& str) {
-        return MyString(forward&lt;decltype(str)&gt;(str));
+    return 0;
+}</code></pre>
+                                </div>
+                                
+                                <h3>Perfect Forwarding</h3>
+                                <p>Perfect forwarding allows template functions to pass arguments to another function while preserving their value category (lvalue or rvalue). This is essential for writing efficient generic code.</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">perfect_forwarding.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;utility&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;memory&gt;
+using namespace std;
+
+// ===== DEMONSTRATION CLASS =====
+class Resource {
+private:
+    string name;
+    
+public:
+    // Constructor
+    Resource(const string& n) : name(n) {
+        cout &lt;&lt; "Resource created: " &lt;&lt; name &lt;&lt; endl;
+    }
+    
+    // Copy constructor
+    Resource(const Resource& other) : name(other.name + "_copy") {
+        cout &lt;&lt; "Resource copied: " &lt;&lt; name &lt;&lt; endl;
+    }
+    
+    // Move constructor
+    Resource(Resource&& other) noexcept : name(move(other.name)) {
+        cout &lt;&lt; "Resource moved: " &lt;&lt; name &lt;&lt; endl;
+        other.name = "moved_from";
+    }
+    
+    // Destructor
+    ~Resource() {
+        cout &lt;&lt; "Resource destroyed: " &lt;&lt; name &lt;&lt; endl;
+    }
+    
+    const string& getName() const { return name; }
+};
+
+// ===== WITHOUT PERFECT FORWARDING (PROBLEMATIC) =====
+void processResource(const Resource& res) {
+    cout &lt;&lt; "Processing const Resource: " &lt;&lt; res.getName() &lt;&lt; endl;
+}
+
+void processResource(Resource&& res) {
+    cout &lt;&lt; "Processing moved Resource: " &lt;&lt; res.getName() &lt;&lt; endl;
+}
+
+// Bad wrapper - doesn't preserve value category
+template&lt;typename T&gt;
+void badWrapper(T arg) {  // Always copies!
+    processResource(arg);
+}
+
+// Better wrapper but still not perfect
+template&lt;typename T&gt;
+void betterWrapper(T& arg) {  // Only works with lvalues
+    processResource(arg);
+}
+
+// ===== PERFECT FORWARDING SOLUTION =====
+template&lt;typename T&gt;
+void perfectWrapper(T&& arg) {  // Universal/Forwarding reference
+    processResource(forward&lt;T&gt;(arg));  // Perfect forwarding!
+}
+
+// ===== UNIVERSAL REFERENCES IN ACTION =====
+template&lt;typename T&gt;
+void analyzeType(T&& param) {
+    cout &lt;&lt; "Parameter type analysis:" &lt;&lt; endl;
+    
+    if constexpr (is_lvalue_reference_v&lt;T&gt;) {
+        cout &lt;&lt; "  - T is lvalue reference" &lt;&lt; endl;
+        cout &lt;&lt; "  - param is lvalue" &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "  - T is rvalue reference or value type" &lt;&lt; endl;
+        cout &lt;&lt; "  - param is rvalue" &lt;&lt; endl;
+    }
+}
+
+// ===== PERFECT FORWARDING IN CONSTRUCTORS =====
+template&lt;typename T&gt;
+class Wrapper {
+private:
+    T wrapped;
+    
+public:
+    // Perfect forwarding constructor
+    template&lt;typename U&gt;
+    Wrapper(U&& value) : wrapped(forward&lt;U&gt;(value)) {
+        cout &lt;&lt; "Wrapper constructed with perfect forwarding" &lt;&lt; endl;
+    }
+    
+    T& get() { return wrapped; }
+    const T& get() const { return wrapped; }
+};
+
+// ===== FACTORY FUNCTION WITH PERFECT FORWARDING =====
+template&lt;typename T, typename... Args&gt;
+unique_ptr&lt;T&gt; make_unique_perfect(Args&&... args) {
+    return unique_ptr&lt;T&gt;(new T(forward&lt;Args&gt;(args)...));
+}
+
+// Class for factory demonstration
+class ComplexObject {
+private:
+    string name;
+    int value;
+    Resource resource;
+    
+public:
+    ComplexObject(const string& n, int v, Resource r) 
+        : name(n), value(v), resource(move(r)) {
+        cout &lt;&lt; "ComplexObject created: " &lt;&lt; name &lt;&lt; endl;
+    }
+    
+    ~ComplexObject() {
+        cout &lt;&lt; "ComplexObject destroyed: " &lt;&lt; name &lt;&lt; endl;
+    }
+    
+    void display() const {
+        cout &lt;&lt; "ComplexObject: " &lt;&lt; name &lt;&lt; ", value: " &lt;&lt; value 
+             &lt;&lt; ", resource: " &lt;&lt; resource.getName() &lt;&lt; endl;
+    }
+};
+
+// ===== VARIADIC TEMPLATE WITH PERFECT FORWARDING =====
+template&lt;typename Func, typename... Args&gt;
+auto invokeFunction(Func&& func, Args&&... args) 
+    -&gt; decltype(func(forward&lt;Args&gt;(args)...)) {
+    cout &lt;&lt; "Invoking function with " &lt;&lt; sizeof...(args) &lt;&lt; " arguments" &lt;&lt; endl;
+    return func(forward&lt;Args&gt;(args)...);
+}
+
+// Function to be invoked
+int multiply(int a, int b, int c) {
+    return a * b * c;
+}
+
+string concatenate(const string& a, const string& b, const string& c) {
+    return a + " " + b + " " + c;
+}
+
+int main() {
+    cout &lt;&lt; "=== Perfect Forwarding Demonstration ===" &lt;&lt; endl;
+    
+    // ===== BASIC PERFECT FORWARDING =====
+    cout &lt;&lt; "\n1. Basic Perfect Forwarding:" &lt;&lt; endl;
+    
+    Resource res1("original");
+    
+    cout &lt;&lt; "\nUsing bad wrapper (always copies):" &lt;&lt; endl;
+    badWrapper(res1);  // Copies even though we pass lvalue
+    
+    cout &lt;&lt; "\nUsing perfect wrapper:" &lt;&lt; endl;
+    perfectWrapper(res1);  // Correctly identifies as lvalue
+    perfectWrapper(Resource("temporary"));  // Correctly identifies as rvalue
+    
+    // ===== TYPE ANALYSIS =====
+    cout &lt;&lt; "\n2. Type Analysis with Universal References:" &lt;&lt; endl;
+    
+    Resource res2("analysis_test");
+    cout &lt;&lt; "\nPassing lvalue:" &lt;&lt; endl;
+    analyzeType(res2);
+    
+    cout &lt;&lt; "\nPassing rvalue:" &lt;&lt; endl;
+    analyzeType(Resource("temp_for_analysis"));
+    
+    // ===== PERFECT FORWARDING IN CONSTRUCTORS =====
+    cout &lt;&lt; "\n3. Perfect Forwarding in Constructors:" &lt;&lt; endl;
+    
+    Resource res3("for_wrapper");
+    cout &lt;&lt; "\nCreating wrapper with lvalue:" &lt;&lt; endl;
+    Wrapper&lt;Resource&gt; wrapper1(res3);  // Should copy
+    
+    cout &lt;&lt; "\nCreating wrapper with rvalue:" &lt;&lt; endl;
+    Wrapper&lt;Resource&gt; wrapper2(Resource("for_wrapper_move"));  // Should move
+    
+    // ===== FACTORY FUNCTION =====
+    cout &lt;&lt; "\n4. Factory Function with Perfect Forwarding:" &lt;&lt; endl;
+    
+    Resource factoryRes("factory_resource");
+    cout &lt;&lt; "\nCreating ComplexObject via factory:" &lt;&lt; endl;
+    auto complexObj = make_unique_perfect&lt;ComplexObject&gt;(
+        "MyObject", 
+        42, 
+        move(factoryRes)  // Perfect forwarding preserves move
+    );
+    
+    complexObj-&gt;display();
+    
+    // ===== VARIADIC TEMPLATES WITH PERFECT FORWARDING =====
+    cout &lt;&lt; "\n5. Variadic Templates with Perfect Forwarding:" &lt;&lt; endl;
+    
+    // Invoke function with different argument types
+    int a = 2, b = 3, c = 4;
+    int result1 = invokeFunction(multiply, a, b, c);  // lvalues
+    cout &lt;&lt; "Multiply result: " &lt;&lt; result1 &lt;&lt; endl;
+    
+    string result2 = invokeFunction(concatenate, 
+        string("Hello"), 
+        string("Perfect"), 
+        string("Forwarding"));  // rvalues
+    cout &lt;&lt; "Concatenate result: " &lt;&lt; result2 &lt;&lt; endl;
+    
+    // ===== PERFECT FORWARDING WITH LAMBDAS =====
+    cout &lt;&lt; "\n6. Perfect Forwarding with Lambdas:" &lt;&lt; endl;
+    
+    auto perfectLambda = [](auto&& func, auto&&... args) {
+        cout &lt;&lt; "Lambda perfect forwarding" &lt;&lt; endl;
+        return func(forward&lt;decltype(args)&gt;(args)...);
     };
     
-    MyString str6("Forwarded");
-    MyString str7 = makeString(move(str6));
+    int lambdaResult = perfectLambda(
+        [](int x, int y) { return x + y; }, 
+        10, 
+        20
+    );
+    cout &lt;&lt; "Lambda result: " &lt;&lt; lambdaResult &lt;&lt; endl;
+    
+    // ===== REFERENCE COLLAPSING DEMONSTRATION =====
+    cout &lt;&lt; "\n7. Reference Collapsing Rules:" &lt;&lt; endl;
+    cout &lt;&lt; "T&  + &   = T&   (lvalue ref)" &lt;&lt; endl;
+    cout &lt;&lt; "T&  + &&  = T&   (lvalue ref)" &lt;&lt; endl;
+    cout &lt;&lt; "T&& + &   = T&   (lvalue ref)" &lt;&lt; endl;
+    cout &lt;&lt; "T&& + &&  = T&&  (rvalue ref)" &lt;&lt; endl;
     
     return 0;
 }</code></pre>
+                                </div>
+                                
+                                <h3>Key Perfect Forwarding Concepts</h3>
+                                <div class="concept-grid">
+                                    <div class="concept-item">
+                                        <h4><i class="fas fa-exchange-alt"></i> Universal References</h4>
+                                        <p>Template parameters with && that can bind to both lvalues and rvalues, enabling perfect forwarding.</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4><i class="fas fa-forward"></i> std::forward</h4>
+                                        <p>Conditionally casts arguments to preserve their original value category when forwarding.</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4><i class="fas fa-compress"></i> Reference Collapsing</h4>
+                                        <p>Rules that determine the final reference type when combining multiple reference types.</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4><i class="fas fa-magic"></i> Template Argument Deduction</h4>
+                                        <p>Compiler automatically deduces template types based on the arguments passed to the function.</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4><i class="fas fa-cogs"></i> Factory Functions</h4>
+                                        <p>Functions that create objects while perfectly forwarding constructor arguments.</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4><i class="fas fa-ellipsis-h"></i> Variadic Templates</h4>
+                                        <p>Templates that accept variable numbers of arguments, often used with perfect forwarding.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="best-practices">
+                                    <h3>Perfect Forwarding Best Practices:</h3>
+                                    <ul>
+                                        <li><strong>Use Universal References:</strong> Template parameter T&& for forwarding references</li>
+                                        <li><strong>Always Use std::forward:</strong> Don't forward without std::forward&lt;T&gt;</li>
+                                        <li><strong>Understand Reference Collapsing:</strong> Know how && + & = & works</li>
+                                        <li><strong>Template Constructors:</strong> Use perfect forwarding in constructors for efficiency</li>
+                                        <li><strong>Factory Functions:</strong> Perfect forwarding essential for make_unique, emplace_back, etc.</li>
+                                        <li><strong>Combine with Move Semantics:</strong> Perfect forwarding and move semantics work together</li>
+                                        <li><strong>Watch Out for Overloads:</strong> Perfect forwarding can interfere with overload resolution</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -623,7 +2465,7 @@ int main() {
                 <!-- Modern C++ Features -->
                 <section class="content-section" id="modern-cpp">
                     <div class="accordion-item">
-                        <div class="accordion-header" >
+                        <div class="accordion-header">
                             <h2><i class="fas fa-rocket"></i> Modern C++ Features</h2>
                             <i class="fas fa-chevron-down"></i>
                         </div>
@@ -745,16 +2587,19 @@ int main() {
                     </div>
                 </section>
 
-                <!-- Multithreading -->
+                <!-- Multithreading & Concurrency -->
                 <section class="content-section" id="multithreading">
                     <div class="accordion-item">
-                        <div class="accordion-header" >
-                            <h2><i class="fas fa-tasks"></i> Multithreading</h2>
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-tasks"></i> Multithreading & Concurrency</h2>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="accordion-content">
                             <div class="topic-content">
                                 <p>C++11 introduced built-in support for multithreading and concurrent programming.</p>
+                                
+                                <h3>Multithreading Basics</h3>
+                                <p>Multithreading allows programs to execute multiple threads concurrently, improving performance on multi-core systems.</p>
                                 
                                 <div class="code-block">
                                     <div class="code-header">
@@ -893,6 +2738,1928 @@ int main() {
     return 0;
 }</code></pre>
                                 </div>
+                                
+                                <h3>Concurrency Concepts</h3>
+                                <p>Concurrency is about dealing with multiple tasks at once, while parallelism is about executing multiple tasks simultaneously. C++ provides various tools for concurrent programming.</p>
+                                
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">concurrency_patterns.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+#include &lt;mutex&gt;
+#include &lt;condition_variable&gt;
+#include &lt;atomic&gt;
+#include &lt;queue&gt;
+#include &lt;memory&gt;
+#include &lt;future&gt;
+#include &lt;chrono&gt;
+#include &lt;random&gt;
+using namespace std;
+
+// ===== ATOMIC OPERATIONS =====
+atomic&lt;int&gt; atomicCounter{0};
+int regularCounter = 0;
+mutex counterMutex;
+
+void atomicIncrement(int iterations) {
+    for (int i = 0; i &lt; iterations; ++i) {
+        atomicCounter.fetch_add(1, memory_order_relaxed);
+    }
+}
+
+void regularIncrement(int iterations) {
+    for (int i = 0; i &lt; iterations; ++i) {
+        lock_guard&lt;mutex&gt; lock(counterMutex);
+        ++regularCounter;
+    }
+}
+
+// ===== THREAD-SAFE QUEUE =====
+template&lt;typename T&gt;
+class ThreadSafeQueue {
+private:
+    queue&lt;T&gt; queue_;
+    mutable mutex mutex_;
+    condition_variable condition_;
+
+public:
+    void push(T item) {
+        lock_guard&lt;mutex&gt; lock(mutex_);
+        queue_.push(item);
+        condition_.notify_one();
+    }
+
+    bool tryPop(T& item) {
+        lock_guard&lt;mutex&gt; lock(mutex_);
+        if (queue_.empty()) {
+            return false;
+        }
+        item = queue_.front();
+        queue_.pop();
+        return true;
+    }
+
+    void waitAndPop(T& item) {
+        unique_lock&lt;mutex&gt; lock(mutex_);
+        condition_.wait(lock, [this] { return !queue_.empty(); });
+        item = queue_.front();
+        queue_.pop();
+    }
+
+    bool empty() const {
+        lock_guard&lt;mutex&gt; lock(mutex_);
+        return queue_.empty();
+    }
+};
+
+// ===== WORKER THREAD POOL SIMULATION =====
+class SimpleTask {
+public:
+    int id;
+    string description;
+    
+    SimpleTask(int id, const string& desc) : id(id), description(desc) {}
+    
+    void execute() {
+        cout &lt;&lt; "Executing task " &lt;&lt; id &lt;&lt; ": " &lt;&lt; description &lt;&lt; endl;
+        // Simulate work
+        this_thread::sleep_for(chrono::milliseconds(100 + rand() % 200));
+        cout &lt;&lt; "Task " &lt;&lt; id &lt;&lt; " completed!" &lt;&lt; endl;
+    }
+};
+
+ThreadSafeQueue&lt;shared_ptr&lt;SimpleTask&gt;&gt; taskQueue;
+atomic&lt;bool&gt; stopWorkers{false};
+
+void worker(int workerId) {
+    cout &lt;&lt; "Worker " &lt;&lt; workerId &lt;&lt; " started" &lt;&lt; endl;
+    
+    while (!stopWorkers) {
+        shared_ptr&lt;SimpleTask&gt; task;
+        if (taskQueue.tryPop(task)) {
+            cout &lt;&lt; "Worker " &lt;&lt; workerId &lt;&lt; " picked up task" &lt;&lt; endl;
+            task-&gt;execute();
+        } else {
+            this_thread::sleep_for(chrono::milliseconds(10));
+        }
+    }
+    
+    cout &lt;&lt; "Worker " &lt;&lt; workerId &lt;&lt; " stopped" &lt;&lt; endl;
+}
+
+// ===== LOCK-FREE PROGRAMMING =====
+class LockFreeCounter {
+private:
+    atomic&lt;int&gt; count{0};
+    
+public:
+    void increment() {
+        count.fetch_add(1, memory_order_relaxed);
+    }
+    
+    void decrement() {
+        count.fetch_sub(1, memory_order_relaxed);
+    }
+    
+    int get() const {
+        return count.load(memory_order_relaxed);
+    }
+    
+    // Compare and swap operation
+    bool compareAndSwap(int expected, int desired) {
+        return count.compare_exchange_weak(expected, desired, memory_order_relaxed);
+    }
+};
+
+// ===== SHARED STATE WITH READER-WRITER LOCKS =====
+class SharedResource {
+private:
+    mutable shared_mutex rwMutex;
+    vector&lt;int&gt; data;
+    
+public:
+    void write(int value) {
+        unique_lock&lt;shared_mutex&gt; lock(rwMutex);
+        data.push_back(value);
+        cout &lt;&lt; "Written: " &lt;&lt; value &lt;&lt; " (size: " &lt;&lt; data.size() &lt;&lt; ")" &lt;&lt; endl;
+    }
+    
+    vector&lt;int&gt; read() const {
+        shared_lock&lt;shared_mutex&gt; lock(rwMutex);
+        cout &lt;&lt; "Reading data (size: " &lt;&lt; data.size() &lt;&lt; ")" &lt;&lt; endl;
+        return data;
+    }
+    
+    size_t size() const {
+        shared_lock&lt;shared_mutex&gt; lock(rwMutex);
+        return data.size();
+    }
+};
+
+int main() {
+    cout &lt;&lt; "=== Concurrency Patterns Demo ===" &lt;&lt; endl;
+    
+    // ===== ATOMIC OPERATIONS DEMO =====
+    cout &lt;&lt; "\n1. Atomic vs Regular Operations:" &lt;&lt; endl;
+    
+    const int iterations = 10000;
+    const int numThreads = 4;
+    
+    // Test atomic operations
+    vector&lt;thread&gt; atomicThreads;
+    auto start = chrono::high_resolution_clock::now();
+    
+    for (int i = 0; i &lt; numThreads; ++i) {
+        atomicThreads.emplace_back(atomicIncrement, iterations);
+    }
+    
+    for (auto& t : atomicThreads) {
+        t.join();
+    }
+    
+    auto atomicDuration = chrono::high_resolution_clock::now() - start;
+    cout &lt;&lt; "Atomic counter result: " &lt;&lt; atomicCounter.load() &lt;&lt; endl;
+    
+    // Test regular operations with mutex
+    vector&lt;thread&gt; regularThreads;
+    start = chrono::high_resolution_clock::now();
+    
+    for (int i = 0; i &lt; numThreads; ++i) {
+        regularThreads.emplace_back(regularIncrement, iterations);
+    }
+    
+    for (auto& t : regularThreads) {
+        t.join();
+    }
+    
+    auto regularDuration = chrono::high_resolution_clock::now() - start;
+    cout &lt;&lt; "Regular counter result: " &lt;&lt; regularCounter &lt;&lt; endl;
+    
+    // ===== WORKER THREAD POOL DEMO =====
+    cout &lt;&lt; "\n2. Worker Thread Pool:" &lt;&lt; endl;
+    
+    // Start worker threads
+    vector&lt;thread&gt; workers;
+    for (int i = 0; i &lt; 3; ++i) {
+        workers.emplace_back(worker, i + 1);
+    }
+    
+    // Add tasks to queue
+    for (int i = 1; i &lt;= 8; ++i) {
+        auto task = make_shared&lt;SimpleTask&gt;(i, "Process data batch " + to_string(i));
+        taskQueue.push(task);
+    }
+    
+    // Let workers process tasks
+    this_thread::sleep_for(chrono::seconds(3));
+    
+    // Stop workers
+    stopWorkers = true;
+    for (auto& w : workers) {
+        w.join();
+    }
+    
+    // ===== LOCK-FREE PROGRAMMING DEMO =====
+    cout &lt;&lt; "\n3. Lock-Free Programming:" &lt;&lt; endl;
+    
+    LockFreeCounter lockFreeCounter;
+    
+    vector&lt;thread&gt; lockFreeThreads;
+    for (int i = 0; i &lt; 4; ++i) {
+        lockFreeThreads.emplace_back([&lockFreeCounter]() {
+            for (int j = 0; j &lt; 1000; ++j) {
+                lockFreeCounter.increment();
+            }
+        });
+    }
+    
+    for (auto& t : lockFreeThreads) {
+        t.join();
+    }
+    
+    cout &lt;&lt; "Lock-free counter final value: " &lt;&lt; lockFreeCounter.get() &lt;&lt; endl;
+    
+    // ===== READER-WRITER DEMO =====
+    cout &lt;&lt; "\n4. Reader-Writer Shared Resource:" &lt;&lt; endl;
+    
+    SharedResource sharedResource;
+    
+    // Writer threads
+    vector&lt;thread&gt; writers;
+    for (int i = 0; i &lt; 2; ++i) {
+        writers.emplace_back([&sharedResource, i]() {
+            for (int j = 1; j &lt;= 5; ++j) {
+                sharedResource.write(i * 10 + j);
+                this_thread::sleep_for(chrono::milliseconds(50));
+            }
+        });
+    }
+    
+    // Reader threads
+    vector&lt;thread&gt; readers;
+    for (int i = 0; i &lt; 3; ++i) {
+        readers.emplace_back([&sharedResource, i]() {
+            for (int j = 0; j &lt; 3; ++j) {
+                auto data = sharedResource.read();
+                this_thread::sleep_for(chrono::milliseconds(30));
+            }
+        });
+    }
+    
+    // Wait for all threads
+    for (auto& w : writers) {
+        w.join();
+    }
+    for (auto& r : readers) {
+        r.join();
+    }
+    
+    cout &lt;&lt; "\n=== Concurrency Demo Completed ===" &lt;&lt; endl;
+    cout &lt;&lt; "Final shared resource size: " &lt;&lt; sharedResource.size() &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                                </div>
+                                
+                                <h3>Key Concurrency Concepts:</h3>
+                                <div class="concept-grid">
+                                    <div class="concept-item">
+                                        <h4><i class="fas fa-atom"></i> Atomic Operations</h4>
+                                        <p>Lock-free operations that are guaranteed to be performed atomically without race conditions.</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4><i class="fas fa-users"></i> Thread Pools</h4>
+                                        <p>Pre-created threads that wait for tasks, improving performance by avoiding thread creation overhead.</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4><i class="fas fa-share-alt"></i> Shared Memory</h4>
+                                        <p>Memory accessible by multiple threads, requiring synchronization to prevent data races.</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4><i class="fas fa-lock"></i> Lock-Free Programming</h4>
+                                        <p>Programming without traditional locks, using atomic operations and memory ordering.</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4><i class="fas fa-eye"></i> Reader-Writer Locks</h4>
+                                        <p>Allow multiple readers or single writer access to shared resources for better performance.</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4><i class="fas fa-sync"></i> Memory Ordering</h4>
+                                        <p>Control over how memory operations are ordered across threads for correctness and performance.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="best-practices">
+                                    <h3>Concurrency Best Practices:</h3>
+                                    <ul>
+                                        <li><strong>Minimize Shared State:</strong> Reduce the amount of data shared between threads</li>
+                                        <li><strong>Use Immutable Data:</strong> Prefer immutable objects that can be safely shared</li>
+                                        <li><strong>Avoid Data Races:</strong> Always synchronize access to shared mutable data</li>
+                                        <li><strong>Choose Right Synchronization:</strong> Use appropriate synchronization primitives for your use case</li>
+                                        <li><strong>Test Thoroughly:</strong> Concurrent bugs can be difficult to reproduce and debug</li>
+                                        <li><strong>Consider Lock-Free:</strong> For high-performance scenarios, consider lock-free algorithms</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Template Metaprogramming -->
+                <section class="content-section" id="metaprogramming">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-magic"></i> Template Metaprogramming</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Template metaprogramming is a technique where templates are used to generate code at compile-time. It allows you to perform computations, make decisions, and generate specialized code during compilation, resulting in highly optimized runtime performance with zero runtime overhead.</p>
+                                
+                                <h3>Core Concepts:</h3>
+                                <div class="concept-grid">
+                                    <div class="concept-item">
+                                        <h4>🕰️ Compile-time Computation</h4>
+                                        <p>Calculations performed during compilation, not runtime</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4>🎯 Template Specialization</h4>
+                                        <p>Different implementations for specific types or values</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4>🔄 Recursive Templates</h4>
+                                        <p>Templates that call themselves with modified parameters</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4>✨ SFINAE</h4>
+                                        <p>Substitution Failure Is Not An Error - conditional compilation</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4>🎨 Type Traits</h4>
+                                        <p>Compile-time type information and manipulation</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4>🚀 constexpr</h4>
+                                        <p>Modern compile-time evaluation with cleaner syntax</p>
+                                    </div>
+                                </div>
+
+                                <h3>Classical Template Metaprogramming:</h3>
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">classical_metaprogramming.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;type_traits&gt;
+#include &lt;chrono&gt;
+#include &lt;limits&gt;
+
+// ===== COMPILE-TIME FACTORIAL =====
+template&lt;int N&gt;
+struct Factorial {
+    static constexpr long long value = N * Factorial&lt;N - 1&gt;::value;
+};
+
+// Template specialization for base case
+template&lt;&gt;
+struct Factorial&lt;0&gt; {
+    static constexpr long long value = 1;
+};
+
+template&lt;&gt;
+struct Factorial&lt;1&gt; {
+    static constexpr long long value = 1;
+};
+
+// ===== COMPILE-TIME FIBONACCI =====
+template&lt;int N&gt;
+struct Fibonacci {
+    static constexpr long long value = Fibonacci&lt;N-1&gt;::value + Fibonacci&lt;N-2&gt;::value;
+};
+
+template&lt;&gt;
+struct Fibonacci&lt;0&gt; {
+    static constexpr long long value = 0;
+};
+
+template&lt;&gt;
+struct Fibonacci&lt;1&gt; {
+    static constexpr long long value = 1;
+};
+
+// ===== COMPILE-TIME PRIME CHECKING =====
+template&lt;int N, int Divisor = N-1&gt;
+struct IsPrime {
+    static constexpr bool value = (N % Divisor != 0) && IsPrime&lt;N, Divisor-1&gt;::value;
+};
+
+template&lt;int N&gt;
+struct IsPrime&lt;N, 1&gt; {
+    static constexpr bool value = true;
+};
+
+template&lt;&gt;
+struct IsPrime&lt;1, 0&gt; {
+    static constexpr bool value = false;
+};
+
+template&lt;&gt;
+struct IsPrime&lt;2, 1&gt; {
+    static constexpr bool value = true;
+};
+
+// ===== COMPILE-TIME POWER =====
+template&lt;int Base, int Exponent&gt;
+struct Power {
+    static constexpr long long value = Base * Power&lt;Base, Exponent-1&gt;::value;
+};
+
+template&lt;int Base&gt;
+struct Power&lt;Base, 0&gt; {
+    static constexpr long long value = 1;
+};
+
+// ===== TYPE LIST MANIPULATION =====
+// Basic type list
+template&lt;typename... Types&gt;
+struct TypeList {};
+
+// Get length of type list
+template&lt;typename List&gt;
+struct Length;
+
+template&lt;typename... Types&gt;
+struct Length&lt;TypeList&lt;Types...&gt;&gt; {
+    static constexpr size_t value = sizeof...(Types);
+};
+
+// Get type at index
+template&lt;size_t Index, typename List&gt;
+struct TypeAt;
+
+template&lt;size_t Index, typename Head, typename... Tail&gt;
+struct TypeAt&lt;Index, TypeList&lt;Head, Tail...&gt;&gt; {
+    using type = typename TypeAt&lt;Index-1, TypeList&lt;Tail...&gt;&gt;::type;
+};
+
+template&lt;typename Head, typename... Tail&gt;
+struct TypeAt&lt;0, TypeList&lt;Head, Tail...&gt;&gt; {
+    using type = Head;
+};
+
+// ===== COMPILE-TIME STRING PROCESSING =====
+template&lt;char... Chars&gt;
+struct String {
+    static constexpr size_t length = sizeof...(Chars);
+    static constexpr char data[length + 1] = {Chars..., '\0'};
+};
+
+template&lt;char... Chars&gt;
+constexpr char String&lt;Chars...&gt;::data[String&lt;Chars...&gt;::length + 1];
+
+// User-defined literal for compile-time strings
+template&lt;typename CharT, CharT... Chars&gt;
+constexpr String&lt;Chars...&gt; operator""_s() {
+    return {};
+}
+
+int main() {
+    std::cout &lt;&lt; "=== CLASSICAL TEMPLATE METAPROGRAMMING ===" &lt;&lt; std::endl;
+    
+    // Compile-time calculations
+    constexpr auto fact5 = Factorial&lt;5&gt;::value;
+    constexpr auto fact10 = Factorial&lt;10&gt;::value;
+    constexpr auto fib10 = Fibonacci&lt;10&gt;::value;
+    constexpr auto fib20 = Fibonacci&lt;20&gt;::value;
+    
+    std::cout &lt;&lt; "\n--- Compile-time Calculations ---" &lt;&lt; std::endl;
+    std::cout &lt;&lt; "5! = " &lt;&lt; fact5 &lt;&lt; std::endl;
+    std::cout &lt;&lt; "10! = " &lt;&lt; fact10 &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Fibonacci(10) = " &lt;&lt; fib10 &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Fibonacci(20) = " &lt;&lt; fib20 &lt;&lt; std::endl;
+    
+    // Prime checking
+    std::cout &lt;&lt; "\n--- Prime Checking ---" &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Is 17 prime? " &lt;&lt; std::boolalpha &lt;&lt; IsPrime&lt;17&gt;::value &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Is 18 prime? " &lt;&lt; std::boolalpha &lt;&lt; IsPrime&lt;18&gt;::value &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Is 97 prime? " &lt;&lt; std::boolalpha &lt;&lt; IsPrime&lt;97&gt;::value &lt;&lt; std::endl;
+    
+    // Power calculations
+    constexpr auto pow2_10 = Power&lt;2, 10&gt;::value;
+    constexpr auto pow3_5 = Power&lt;3, 5&gt;::value;
+    
+    std::cout &lt;&lt; "\n--- Power Calculations ---" &lt;&lt; std::endl;
+    std::cout &lt;&lt; "2^10 = " &lt;&lt; pow2_10 &lt;&lt; std::endl;
+    std::cout &lt;&lt; "3^5 = " &lt;&lt; pow3_5 &lt;&lt; std::endl;
+    
+    // Type list operations
+    using MyTypes = TypeList&lt;int, double, std::string, char&gt;;
+    constexpr auto length = Length&lt;MyTypes&gt;::value;
+    using SecondType = TypeAt&lt;1, MyTypes&gt;::type;  // double
+    
+    std::cout &lt;&lt; "\n--- Type List Operations ---" &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Type list length: " &lt;&lt; length &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Second type size: " &lt;&lt; sizeof(SecondType) &lt;&lt; " bytes" &lt;&lt; std::endl;
+    
+    return 0;
+}</code></pre>
+                                </div>
+
+                                <h3>Modern constexpr Approach (C++11/14/17):</h3>
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">modern_constexpr.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;array&gt;
+#include &lt;algorithm&gt;
+#include &lt;numeric&gt;
+#include &lt;string_view&gt;
+
+// ===== MODERN CONSTEXPR FUNCTIONS =====
+
+// Factorial using constexpr function (much cleaner than template recursion)
+constexpr long long factorial(int n) {
+    return (n &lt;= 1) ? 1 : n * factorial(n - 1);
+}
+
+// Fibonacci with memoization at compile-time
+constexpr long long fibonacci(int n) {
+    if (n &lt;= 1) return n;
+    
+    long long a = 0, b = 1;
+    for (int i = 2; i &lt;= n; ++i) {
+        long long temp = a + b;
+        a = b;
+        b = temp;
+    }
+    return b;
+}
+
+// Prime checking with optimized algorithm
+constexpr bool isPrime(int n) {
+    if (n &lt; 2) return false;
+    if (n == 2) return true;
+    if (n % 2 == 0) return false;
+    
+    for (int i = 3; i * i &lt;= n; i += 2) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+
+// Generate array of first N primes at compile-time
+template&lt;size_t N&gt;
+constexpr std::array&lt;int, N&gt; generatePrimes() {
+    std::array&lt;int, N&gt; primes{};
+    size_t count = 0;
+    int candidate = 2;
+    
+    while (count &lt; N) {
+        if (isPrime(candidate)) {
+            primes[count] = candidate;
+            ++count;
+        }
+        ++candidate;
+    }
+    return primes;
+}
+
+// Compile-time string hashing
+constexpr size_t hashString(std::string_view str) {
+    size_t hash = 5381;
+    for (char c : str) {
+        hash = ((hash &lt;&lt; 5) + hash) + static_cast&lt;size_t&gt;(c);
+    }
+    return hash;
+}
+
+// Compile-time mathematical operations on arrays
+template&lt;size_t N&gt;
+constexpr std::array&lt;int, N&gt; generateSquares() {
+    std::array&lt;int, N&gt; squares{};
+    for (size_t i = 0; i &lt; N; ++i) {
+        squares[i] = static_cast&lt;int&gt;(i * i);
+    }
+    return squares;
+}
+
+// Compile-time sorting
+template&lt;size_t N&gt;
+constexpr std::array&lt;int, N&gt; bubbleSort(std::array&lt;int, N&gt; arr) {
+    for (size_t i = 0; i &lt; N - 1; ++i) {
+        for (size_t j = 0; j &lt; N - i - 1; ++j) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+    return arr;
+}
+
+// ===== COMPILE-TIME DECISION MAKING =====
+
+// if constexpr examples (C++17)
+template&lt;typename T&gt;
+constexpr auto processValue(T value) {
+    if constexpr (std::is_integral_v&lt;T&gt;) {
+        return value * 2;  // Double integers
+    } else if constexpr (std::is_floating_point_v&lt;T&gt;) {
+        return value * 1.5;  // Multiply floats by 1.5
+    } else {
+        return value;  // Return as-is for other types
+    }
+}
+
+// Compile-time polymorphism with concepts (C++20)
+#if __cplusplus >= 202002L
+#include &lt;concepts&gt;
+
+template&lt;std::integral T&gt;
+constexpr T power(T base, unsigned int exp) {
+    T result = 1;
+    for (unsigned int i = 0; i &lt; exp; ++i) {
+        result *= base;
+    }
+    return result;
+}
+
+template&lt;std::floating_point T&gt;
+constexpr T power(T base, unsigned int exp) {
+    T result = 1.0;
+    for (unsigned int i = 0; i &lt; exp; ++i) {
+        result *= base;
+    }
+    return result;
+}
+#endif
+
+int main() {
+    std::cout &lt;&lt; "=== MODERN CONSTEXPR METAPROGRAMMING ===" &lt;&lt; std::endl;
+    
+    // Compile-time calculations with constexpr functions
+    constexpr auto fact5 = factorial(5);
+    constexpr auto fact10 = factorial(10);
+    constexpr auto fib15 = fibonacci(15);
+    constexpr auto fib25 = fibonacci(25);
+    
+    std::cout &lt;&lt; "\n--- constexpr Function Results ---" &lt;&lt; std::endl;
+    std::cout &lt;&lt; "5! = " &lt;&lt; fact5 &lt;&lt; std::endl;
+    std::cout &lt;&lt; "10! = " &lt;&lt; fact10 &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Fibonacci(15) = " &lt;&lt; fib15 &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Fibonacci(25) = " &lt;&lt; fib25 &lt;&lt; std::endl;
+    
+    // Compile-time prime generation
+    constexpr auto first10Primes = generatePrimes&lt;10&gt;();
+    std::cout &lt;&lt; "\n--- First 10 Primes (compile-time generated) ---" &lt;&lt; std::endl;
+    for (size_t i = 0; i &lt; first10Primes.size(); ++i) {
+        std::cout &lt;&lt; first10Primes[i];
+        if (i &lt; first10Primes.size() - 1) std::cout &lt;&lt; ", ";
+    }
+    std::cout &lt;&lt; std::endl;
+    
+    // Compile-time string hashing
+    constexpr auto hash1 = hashString("Hello, World!");
+    constexpr auto hash2 = hashString("Template Metaprogramming");
+    
+    std::cout &lt;&lt; "\n--- Compile-time String Hashing ---" &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Hash of 'Hello, World!': " &lt;&lt; hash1 &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Hash of 'Template Metaprogramming': " &lt;&lt; hash2 &lt;&lt; std::endl;
+    
+    // Compile-time array operations
+    constexpr auto squares = generateSquares&lt;10&gt;();
+    constexpr auto unsorted = std::array{5, 2, 8, 1, 9, 3};
+    constexpr auto sorted = bubbleSort(unsorted);
+    
+    std::cout &lt;&lt; "\n--- Compile-time Array Operations ---" &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Squares of 0-9: ";
+    for (size_t i = 0; i &lt; squares.size(); ++i) {
+        std::cout &lt;&lt; squares[i];
+        if (i &lt; squares.size() - 1) std::cout &lt;&lt; ", ";
+    }
+    std::cout &lt;&lt; std::endl;
+    
+    std::cout &lt;&lt; "Sorted array: ";
+    for (size_t i = 0; i &lt; sorted.size(); ++i) {
+        std::cout &lt;&lt; sorted[i];
+        if (i &lt; sorted.size() - 1) std::cout &lt;&lt; ", ";
+    }
+    std::cout &lt;&lt; std::endl;
+    
+    // if constexpr examples
+    std::cout &lt;&lt; "\n--- if constexpr Examples ---" &lt;&lt; std::endl;
+    constexpr auto intResult = processValue(10);      // int
+    constexpr auto floatResult = processValue(3.14);  // double
+    constexpr auto stringResult = processValue(std::string("Hello"));
+    
+    std::cout &lt;&lt; "Processed int (10): " &lt;&lt; intResult &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Processed float (3.14): " &lt;&lt; floatResult &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Processed string: " &lt;&lt; stringResult &lt;&lt; std::endl;
+    
+#if __cplusplus >= 202002L
+    // C++20 concepts
+    std::cout &lt;&lt; "\n--- C++20 Concepts ---" &lt;&lt; std::endl;
+    constexpr auto intPower = power(2, 10);
+    constexpr auto floatPower = power(2.0, 5);
+    
+    std::cout &lt;&lt; "2^10 (int): " &lt;&lt; intPower &lt;&lt; std::endl;
+    std::cout &lt;&lt; "2.0^5 (double): " &lt;&lt; floatPower &lt;&lt; std::endl;
+#endif
+    
+    return 0;
+}</code></pre>
+                                </div>
+
+                                <h3>SFINAE and Type Traits:</h3>
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">sfinae_and_traits.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;type_traits&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+
+// ===== SFINAE EXAMPLES =====
+
+// Enable function only for integral types
+template&lt;typename T&gt;
+typename std::enable_if&lt;std::is_integral&lt;T&gt;::value, T&gt;::type
+safeAdd(T a, T b) {
+    std::cout &lt;&lt; "Adding integers: ";
+    return a + b;
+}
+
+// Enable function only for floating point types
+template&lt;typename T&gt;
+typename std::enable_if&lt;std::is_floating_point&lt;T&gt;::value, T&gt;::type
+safeAdd(T a, T b) {
+    std::cout &lt;&lt; "Adding floating points: ";
+    return a + b;
+}
+
+// SFINAE to detect if a type has a specific member function
+template&lt;typename T&gt;
+class has_size_method {
+private:
+    template&lt;typename U&gt;
+    static auto test(int) -> decltype(std::declval&lt;U&gt;().size(), std::true_type{});
+    
+    template&lt;typename&gt;
+    static std::false_type test(...);
+    
+public:
+    static constexpr bool value = decltype(test&lt;T&gt;(0))::value;
+};
+
+// Function that behaves differently based on whether type has size() method
+template&lt;typename T&gt;
+auto getSize(const T& container) -> typename std::enable_if&lt;has_size_method&lt;T&gt;::value, size_t&gt;::type {
+    return container.size();
+}
+
+template&lt;typename T&gt;
+auto getSize(const T&) -> typename std::enable_if&lt;!has_size_method&lt;T&gt;::value, size_t&gt;::type {
+    return 1;  // Assume single element for types without size()
+}
+
+// ===== CUSTOM TYPE TRAITS =====
+
+// Check if type is a container-like type
+template&lt;typename T&gt;
+struct is_container : std::false_type {};
+
+template&lt;typename T&gt;
+struct is_container&lt;std::vector&lt;T&gt;&gt; : std::true_type {};
+
+template&lt;&gt;
+struct is_container&lt;std::string&gt; : std::true_type {};
+
+// Helper variable template (C++14)
+template&lt;typename T&gt;
+constexpr bool is_container_v = is_container&lt;T&gt;::value;
+
+// ===== VARIADIC TEMPLATE METAPROGRAMMING =====
+
+// Compile-time type checking for variadic templates
+template&lt;typename... Types&gt;
+struct all_integral;
+
+template&lt;&gt;
+struct all_integral&lt;&gt; : std::true_type {};
+
+template&lt;typename Head, typename... Tail&gt;
+struct all_integral&lt;Head, Tail...&gt; {
+    static constexpr bool value = std::is_integral&lt;Head&gt;::value && all_integral&lt;Tail...&gt;::value;
+};
+
+// Variadic sum that only works with integral types
+template&lt;typename... Args&gt;
+typename std::enable_if&lt;all_integral&lt;Args...&gt;::value, long long&gt;::type
+variadicSum(Args... args) {
+    return (args + ...);  // C++17 fold expression
+}
+
+// ===== TAG DISPATCHING =====
+
+struct fast_tag {};
+struct safe_tag {};
+
+// Different implementations based on tag
+template&lt;typename Iterator&gt;
+void advanceImpl(Iterator& it, size_t n, fast_tag) {
+    std::cout &lt;&lt; "Using fast advance (random access)" &lt;&lt; std::endl;
+    it += n;
+}
+
+template&lt;typename Iterator&gt;
+void advanceImpl(Iterator& it, size_t n, safe_tag) {
+    std::cout &lt;&lt; "Using safe advance (incremental)" &lt;&lt; std::endl;
+    for (size_t i = 0; i &lt; n; ++i) {
+        ++it;
+    }
+}
+
+template&lt;typename Iterator&gt;
+void smartAdvance(Iterator& it, size_t n) {
+    using category = typename std::iterator_traits&lt;Iterator&gt;::iterator_category;
+    
+    if constexpr (std::is_same_v&lt;category, std::random_access_iterator_tag&gt;) {
+        advanceImpl(it, n, fast_tag{});
+    } else {
+        advanceImpl(it, n, safe_tag{});
+    }
+}
+
+int main() {
+    std::cout &lt;&lt; "=== SFINAE AND TYPE TRAITS ===" &lt;&lt; std::endl;
+    
+    // SFINAE function overloading
+    std::cout &lt;&lt; "\n--- SFINAE Function Overloading ---" &lt;&lt; std::endl;
+    std::cout &lt;&lt; safeAdd(5, 3) &lt;&lt; std::endl;
+    std::cout &lt;&lt; safeAdd(3.14, 2.86) &lt;&lt; std::endl;
+    
+    // Has member detection
+    std::cout &lt;&lt; "\n--- Member Function Detection ---" &lt;&lt; std::endl;
+    std::vector&lt;int&gt; vec{1, 2, 3, 4, 5};
+    int number = 42;
+    
+    std::cout &lt;&lt; "Vector has size(): " &lt;&lt; std::boolalpha &lt;&lt; has_size_method&lt;std::vector&lt;int&gt;&gt;::value &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Int has size(): " &lt;&lt; std::boolalpha &lt;&lt; has_size_method&lt;int&gt;::value &lt;&lt; std::endl;
+    
+    std::cout &lt;&lt; "Size of vector: " &lt;&lt; getSize(vec) &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Size of int: " &lt;&lt; getSize(number) &lt;&lt; std::endl;
+    
+    // Custom type traits
+    std::cout &lt;&lt; "\n--- Custom Type Traits ---" &lt;&lt; std::endl;
+    std::cout &lt;&lt; "vector&lt;int&gt; is container: " &lt;&lt; std::boolalpha &lt;&lt; is_container_v&lt;std::vector&lt;int&gt;&gt; &lt;&lt; std::endl;
+    std::cout &lt;&lt; "string is container: " &lt;&lt; std::boolalpha &lt;&lt; is_container_v&lt;std::string&gt; &lt;&lt; std::endl;
+    std::cout &lt;&lt; "int is container: " &lt;&lt; std::boolalpha &lt;&lt; is_container_v&lt;int&gt; &lt;&lt; std::endl;
+    
+    // Variadic template metaprogramming
+    std::cout &lt;&lt; "\n--- Variadic Template Constraints ---" &lt;&lt; std::endl;
+    std::cout &lt;&lt; "All integral check (int, long, char): " &lt;&lt; std::boolalpha 
+              &lt;&lt; all_integral&lt;int, long, char&gt;::value &lt;&lt; std::endl;
+    std::cout &lt;&lt; "All integral check (int, double, char): " &lt;&lt; std::boolalpha 
+              &lt;&lt; all_integral&lt;int, double, char&gt;::value &lt;&lt; std::endl;
+    
+    std::cout &lt;&lt; "Sum of integers: " &lt;&lt; variadicSum(1, 2, 3, 4, 5) &lt;&lt; std::endl;
+    // variadicSum(1, 2.5, 3);  // Would cause compilation error
+    
+    // Tag dispatching
+    std::cout &lt;&lt; "\n--- Tag Dispatching ---" &lt;&lt; std::endl;
+    std::vector&lt;int&gt; numbers{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    auto vecIt = numbers.begin();
+    smartAdvance(vecIt, 3);
+    std::cout &lt;&lt; "Advanced to: " &lt;&lt; *vecIt &lt;&lt; std::endl;
+    
+    return 0;
+}</code></pre>
+                                </div>
+
+                                <h3>Metaprogramming Techniques Comparison:</h3>
+                                <div class="metaprogramming-comparison">
+                                    <table class="comparison-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Technique</th>
+                                                <th>C++ Version</th>
+                                                <th>Syntax Complexity</th>
+                                                <th>Compile Time</th>
+                                                <th>Best Use Case</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Template Recursion</strong></td>
+                                                <td>C++98</td>
+                                                <td>High</td>
+                                                <td>Slow</td>
+                                                <td>Complex type computations</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>SFINAE</strong></td>
+                                                <td>C++98</td>
+                                                <td>Very High</td>
+                                                <td>Medium</td>
+                                                <td>Conditional template instantiation</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>constexpr Functions</strong></td>
+                                                <td>C++11/14</td>
+                                                <td>Low</td>
+                                                <td>Fast</td>
+                                                <td>Compile-time calculations</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>if constexpr</strong></td>
+                                                <td>C++17</td>
+                                                <td>Very Low</td>
+                                                <td>Fast</td>
+                                                <td>Conditional compilation</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Concepts</strong></td>
+                                                <td>C++20</td>
+                                                <td>Low</td>
+                                                <td>Fast</td>
+                                                <td>Template constraints</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <h3>Best Practices for Template Metaprogramming:</h3>
+                                <div class="metaprogramming-best-practices">
+                                    <div class="practice-category do">
+                                        <h4><i class="fas fa-check-circle"></i> Modern Approaches</h4>
+                                        <ul>
+                                            <li>Prefer <code>constexpr</code> functions over template recursion</li>
+                                            <li>Use <code>if constexpr</code> instead of SFINAE when possible</li>
+                                            <li>Leverage <code>std::type_traits</code> for type checking</li>
+                                            <li>Use concepts (C++20) for cleaner template constraints</li>
+                                            <li>Prefer variable templates over struct-based traits</li>
+                                        </ul>
+                                    </div>
+                                    <div class="practice-category avoid">
+                                        <h4><i class="fas fa-times-circle"></i> Avoid</h4>
+                                        <ul>
+                                            <li>Deep template recursion (causes slow compilation)</li>
+                                            <li>Complex SFINAE when simpler alternatives exist</li>
+                                            <li>Metaprogramming for simple calculations</li>
+                                            <li>Unclear template parameter names</li>
+                                            <li>Overusing template metaprogramming</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="info-box">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <p><strong>Evolution of Metaprogramming:</strong> C++ metaprogramming has evolved from complex template tricks to elegant, readable code. Modern C++ (C++11 and later) provides much cleaner alternatives to classical template metaprogramming techniques.</p>
+                                </div>
+
+                                <div class="performance-box">
+                                    <i class="fas fa-rocket"></i>
+                                    <p><strong>Performance Benefits:</strong> Template metaprogramming moves computations from runtime to compile-time, resulting in zero runtime overhead. Your programs run faster because the work is already done when the code is compiled!</p>
+                                </div>
+
+                                <div class="warning-box">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <p><strong>Compilation Impact:</strong> While metaprogramming improves runtime performance, it can significantly increase compilation time. Use profiling tools to measure compilation impact and optimize accordingly.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Design Patterns -->
+                <section class="content-section" id="design-patterns">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-puzzle-piece"></i> Advanced Design Patterns</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Design patterns are proven solutions to common programming problems. In modern C++, many patterns can be implemented more elegantly using templates, smart pointers, and lambda expressions.</p>
+                                
+                                <h3>Modern C++ Pattern Categories:</h3>
+                                <div class="pattern-categories">
+                                    <div class="pattern-category">
+                                        <h4><i class="fas fa-cogs"></i> Creational</h4>
+                                        <p>Object creation mechanisms</p>
+                                    </div>
+                                    <div class="pattern-category">
+                                        <h4><i class="fas fa-layer-group"></i> Structural</h4>
+                                        <p>Object composition and relationships</p>
+                                    </div>
+                                    <div class="pattern-category">
+                                        <h4><i class="fas fa-sync-alt"></i> Behavioral</h4>
+                                        <p>Communication between objects</p>
+                                    </div>
+                                    <div class="pattern-category">
+                                        <h4><i class="fas fa-rocket"></i> Modern C++</h4>
+                                        <p>C++11/14/17/20 specific patterns</p>
+                                    </div>
+                                </div>
+
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">modern_design_patterns.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;memory&gt;
+#include &lt;vector&gt;
+#include &lt;functional&gt;
+#include &lt;unordered_map&gt;
+#include &lt;string&gt;
+#include &lt;any&gt;
+#include &lt;variant&gt;
+
+// ===== SINGLETON PATTERN (Modern C++11) =====
+class ModernSingleton {
+private:
+    ModernSingleton() = default;
+    
+public:
+    // Thread-safe singleton using static local variable
+    static ModernSingleton& getInstance() {
+        static ModernSingleton instance;
+        return instance;
+    }
+    
+    // Delete copy constructor and assignment operator
+    ModernSingleton(const ModernSingleton&) = delete;
+    ModernSingleton& operator=(const ModernSingleton&) = delete;
+    
+    void doSomething() {
+        std::cout &lt;&lt; "Singleton instance doing work" &lt;&lt; std::endl;
+    }
+};
+
+// ===== FACTORY PATTERN (Using Smart Pointers) =====
+class Shape {
+public:
+    virtual ~Shape() = default;
+    virtual void draw() const = 0;
+    virtual std::string getType() const = 0;
+};
+
+class Circle : public Shape {
+public:
+    void draw() const override {
+        std::cout &lt;&lt; "Drawing a Circle" &lt;&lt; std::endl;
+    }
+    std::string getType() const override { return "Circle"; }
+};
+
+class Rectangle : public Shape {
+public:
+    void draw() const override {
+        std::cout &lt;&lt; "Drawing a Rectangle" &lt;&lt; std::endl;
+    }
+    std::string getType() const override { return "Rectangle"; }
+};
+
+class ShapeFactory {
+public:
+    static std::unique_ptr&lt;Shape&gt; createShape(const std::string& type) {
+        if (type == "circle") {
+            return std::make_unique&lt;Circle&gt;();
+        } else if (type == "rectangle") {
+            return std::make_unique&lt;Rectangle&gt;();
+        }
+        return nullptr;
+    }
+};
+
+// ===== OBSERVER PATTERN (Using Function Objects) =====
+template&lt;typename... Args&gt;
+class Signal {
+private:
+    std::vector&lt;std::function&lt;void(Args...)&gt;&gt; slots;
+    
+public:
+    // Connect a slot (function/lambda) to the signal
+    void connect(std::function&lt;void(Args...)&gt; slot) {
+        slots.push_back(std::move(slot));
+    }
+    
+    // Emit signal to all connected slots
+    void emit(Args... args) {
+        for (auto& slot : slots) {
+            slot(args...);
+        }
+    }
+};
+
+class Publisher {
+private:
+    Signal&lt;const std::string&>&gt; messageSignal;
+    
+public:
+    void connectObserver(std::function&lt;void(const std::string&)&gt; observer) {
+        messageSignal.connect(std::move(observer));
+    }
+    
+    void publishMessage(const std::string& message) {
+        std::cout &lt;&lt; "Publishing: " &lt;&lt; message &lt;&lt; std::endl;
+        messageSignal.emit(message);
+    }
+};
+
+// ===== STRATEGY PATTERN (Using Lambdas) =====
+class Calculator {
+private:
+    std::function&lt;double(double, double)&gt; strategy;
+    
+public:
+    void setStrategy(std::function&lt;double(double, double)&gt; newStrategy) {
+        strategy = std::move(newStrategy);
+    }
+    
+    double execute(double a, double b) {
+        return strategy ? strategy(a, b) : 0.0;
+    }
+};
+
+// ===== VISITOR PATTERN (Using std::variant) =====
+struct AddOperation { double value; };
+struct MultiplyOperation { double value; };
+struct PrintOperation {};
+
+using Operation = std::variant&lt;AddOperation, MultiplyOperation, PrintOperation&gt;;
+
+class ModernCalculatorWithVisitor {
+private:
+    double value = 0.0;
+    
+public:
+    void process(const Operation& op) {
+        std::visit([this](const auto& operation) {
+            using T = std::decay_t&lt;decltype(operation)&gt;;
+            if constexpr (std::is_same_v&lt;T, AddOperation&gt;) {
+                value += operation.value;
+            } else if constexpr (std::is_same_v&lt;T, MultiplyOperation&gt;) {
+                value *= operation.value;
+            } else if constexpr (std::is_same_v&lt;T, PrintOperation&gt;) {
+                std::cout &lt;&lt; "Current value: " &lt;&lt; value &lt;&lt; std::endl;
+            }
+        }, op);
+    }
+    
+    double getValue() const { return value; }
+};
+
+// ===== COMMAND PATTERN (Using Function Objects) =====
+class CommandProcessor {
+private:
+    std::vector&lt;std::function&lt;void()&gt;&gt; commands;
+    std::vector&lt;std::function&lt;void()&gt;&gt; undoCommands;
+    
+public:
+    void execute(std::function&lt;void()&gt; command, std::function&lt;void()&gt; undoCommand) {
+        command();
+        commands.push_back(std::move(command));
+        undoCommands.push_back(std::move(undoCommand));
+    }
+    
+    void undo() {
+        if (!undoCommands.empty()) {
+            undoCommands.back()();
+            undoCommands.pop_back();
+            commands.pop_back();
+        }
+    }
+};
+
+// ===== PIMPL PATTERN (Pointer to Implementation) =====
+class Widget {
+private:
+    class Impl;
+    std::unique_ptr&lt;Impl&gt; pImpl;
+    
+public:
+    Widget();
+    ~Widget();
+    Widget(const Widget& other);
+    Widget& operator=(const Widget& other);
+    Widget(Widget&& other) noexcept;
+    Widget& operator=(Widget&& other) noexcept;
+    
+    void doSomething();
+    int getValue() const;
+};
+
+// Implementation would be in .cpp file
+class Widget::Impl {
+public:
+    int value = 42;
+    std::string data = "Hidden implementation";
+    
+    void doWork() {
+        std::cout &lt;&lt; "Widget implementation working with: " &lt;&lt; data &lt;&lt; std::endl;
+    }
+};
+
+Widget::Widget() : pImpl(std::make_unique&lt;Impl&gt;()) {}
+Widget::~Widget() = default;
+Widget::Widget(const Widget& other) : pImpl(std::make_unique&lt;Impl&gt;(*other.pImpl)) {}
+Widget& Widget::operator=(const Widget& other) {
+    if (this != &other) {
+        *pImpl = *other.pImpl;
+    }
+    return *this;
+}
+Widget::Widget(Widget&& other) noexcept = default;
+Widget& Widget::operator=(Widget&& other) noexcept = default;
+
+void Widget::doSomething() { pImpl-&gt;doWork(); }
+int Widget::getValue() const { return pImpl-&gt;value; }
+
+// ===== CRTP PATTERN (Curiously Recurring Template Pattern) =====
+template&lt;typename Derived&gt;
+class Printable {
+public:
+    void print() const {
+        static_cast&lt;const Derived*&gt;(this)-&gt;printImpl();
+    }
+};
+
+class Document : public Printable&lt;Document&gt; {
+private:
+    std::string content;
+    
+public:
+    Document(const std::string& text) : content(text) {}
+    
+    void printImpl() const {
+        std::cout &lt;&lt; "Document: " &lt;&lt; content &lt;&lt; std::endl;
+    }
+};
+
+class Image : public Printable&lt;Image&gt; {
+private:
+    std::string filename;
+    
+public:
+    Image(const std::string& file) : filename(file) {}
+    
+    void printImpl() const {
+        std::cout &lt;&lt; "Image: " &lt;&lt; filename &lt;&lt; std::endl;
+    }
+};
+
+int main() {
+    std::cout &lt;&lt; "=== MODERN C++ DESIGN PATTERNS ===" &lt;&lt; std::endl;
+    
+    // Singleton Pattern
+    std::cout &lt;&lt; "\n--- Singleton Pattern ---" &lt;&lt; std::endl;
+    auto& singleton = ModernSingleton::getInstance();
+    singleton.doSomething();
+    
+    // Factory Pattern
+    std::cout &lt;&lt; "\n--- Factory Pattern ---" &lt;&lt; std::endl;
+    auto circle = ShapeFactory::createShape("circle");
+    auto rectangle = ShapeFactory::createShape("rectangle");
+    if (circle) circle-&gt;draw();
+    if (rectangle) rectangle-&gt;draw();
+    
+    // Observer Pattern
+    std::cout &lt;&lt; "\n--- Observer Pattern ---" &lt;&lt; std::endl;
+    Publisher publisher;
+    
+    // Lambda observers
+    publisher.connectObserver([](const std::string& msg) {
+        std::cout &lt;&lt; "Observer 1 received: " &lt;&lt; msg &lt;&lt; std::endl;
+    });
+    
+    publisher.connectObserver([](const std::string& msg) {
+        std::cout &lt;&lt; "Observer 2 logged: " &lt;&lt; msg &lt;&lt; std::endl;
+    });
+    
+    publisher.publishMessage("Hello Observers!");
+    
+    // Strategy Pattern
+    std::cout &lt;&lt; "\n--- Strategy Pattern ---" &lt;&lt; std::endl;
+    Calculator calc;
+    
+    // Addition strategy
+    calc.setStrategy([](double a, double b) { return a + b; });
+    std::cout &lt;&lt; "5 + 3 = " &lt;&lt; calc.execute(5, 3) &lt;&lt; std::endl;
+    
+    // Multiplication strategy
+    calc.setStrategy([](double a, double b) { return a * b; });
+    std::cout &lt;&lt; "5 * 3 = " &lt;&lt; calc.execute(5, 3) &lt;&lt; std::endl;
+    
+    // Visitor Pattern with std::variant
+    std::cout &lt;&lt; "\n--- Visitor Pattern (std::variant) ---" &lt;&lt; std::endl;
+    ModernCalculatorWithVisitor calculator;
+    
+    calculator.process(AddOperation{10.0});
+    calculator.process(MultiplyOperation{2.0});
+    calculator.process(PrintOperation{});
+    calculator.process(AddOperation{5.0});
+    calculator.process(PrintOperation{});
+    
+    // Command Pattern
+    std::cout &lt;&lt; "\n--- Command Pattern ---" &lt;&lt; std::endl;
+    CommandProcessor processor;
+    int value = 0;
+    
+    // Execute command with undo capability
+    processor.execute(
+        [&value]() { value += 10; std::cout &lt;&lt; "Added 10, value: " &lt;&lt; value &lt;&lt; std::endl; },
+        [&value]() { value -= 10; std::cout &lt;&lt; "Undid add 10, value: " &lt;&lt; value &lt;&lt; std::endl; }
+    );
+    
+    processor.execute(
+        [&value]() { value *= 2; std::cout &lt;&lt; "Multiplied by 2, value: " &lt;&lt; value &lt;&lt; std::endl; },
+        [&value]() { value /= 2; std::cout &lt;&lt; "Undid multiply by 2, value: " &lt;&lt; value &lt;&lt; std::endl; }
+    );
+    
+    processor.undo();  // Undo multiply
+    processor.undo();  // Undo add
+    
+    // PIMPL Pattern
+    std::cout &lt;&lt; "\n--- PIMPL Pattern ---" &lt;&lt; std::endl;
+    Widget widget;
+    widget.doSomething();
+    std::cout &lt;&lt; "Widget value: " &lt;&lt; widget.getValue() &lt;&lt; std::endl;
+    
+    // CRTP Pattern
+    std::cout &lt;&lt; "\n--- CRTP Pattern ---" &lt;&lt; std::endl;
+    Document doc("Hello World");
+    Image img("photo.jpg");
+    
+    doc.print();
+    img.print();
+    
+    return 0;
+}</code></pre>
+                                </div>
+
+                                <h3>Pattern Selection Guide:</h3>
+                                <div class="pattern-guide">
+                                    <div class="guide-row">
+                                        <div class="use-case">Need single instance?</div>
+                                        <div class="arrow">→</div>
+                                        <div class="pattern">Singleton</div>
+                                    </div>
+                                    <div class="guide-row">
+                                        <div class="use-case">Object creation abstraction?</div>
+                                        <div class="arrow">→</div>
+                                        <div class="pattern">Factory</div>
+                                    </div>
+                                    <div class="guide-row">
+                                        <div class="use-case">Event notifications?</div>
+                                        <div class="arrow">→</div>
+                                        <div class="pattern">Observer/Signal-Slot</div>
+                                    </div>
+                                    <div class="guide-row">
+                                        <div class="use-case">Runtime algorithm selection?</div>
+                                        <div class="arrow">→</div>
+                                        <div class="pattern">Strategy</div>
+                                    </div>
+                                    <div class="guide-row">
+                                        <div class="use-case">Hide implementation details?</div>
+                                        <div class="arrow">→</div>
+                                        <div class="pattern">PIMPL</div>
+                                    </div>
+                                    <div class="guide-row">
+                                        <div class="use-case">Compile-time polymorphism?</div>
+                                        <div class="arrow">→</div>
+                                        <div class="pattern">CRTP</div>
+                                    </div>
+                                </div>
+
+                                <div class="success-box">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <p><strong>Modern C++ Advantage:</strong> Many traditional design patterns are simplified or replaced by modern C++ features like lambdas, std::function, smart pointers, and templates, resulting in cleaner and more efficient code.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Performance Optimization -->
+                <section class="content-section" id="performance">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-tachometer-alt"></i> Performance Optimization</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Performance optimization in C++ involves understanding the cost of operations, memory access patterns, compiler optimizations, and modern CPU architectures. Learn to write fast code without premature optimization.</p>
+                                
+                                <h3>Performance Optimization Principles:</h3>
+                                <div class="performance-principles">
+                                    <div class="principle-card">
+                                        <h4>📏 Measure First</h4>
+                                        <p>Always profile before optimizing</p>
+                                    </div>
+                                    <div class="principle-card">
+                                        <h4>🎯 Optimize Hotspots</h4>
+                                        <p>Focus on code that runs most frequently</p>
+                                    </div>
+                                    <div class="principle-card">
+                                        <h4>🧠 Cache-Friendly</h4>
+                                        <p>Design for modern CPU cache hierarchies</p>
+                                    </div>
+                                    <div class="principle-card">
+                                        <h4>⚡ Compile-Time</h4>
+                                        <p>Move computations from runtime to compile-time</p>
+                                    </div>
+                                </div>
+
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">performance_optimization.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;chrono&gt;
+#include &lt;numeric&gt;
+#include &lt;random&gt;
+#include &lt;memory&gt;
+#include &lt;string&gt;
+
+class PerformanceTester {
+public:
+    template&lt;typename Func&gt;
+    static double measureTime(Func&& func, const std::string& name) {
+        auto start = std::chrono::high_resolution_clock::now();
+        func();
+        auto end = std::chrono::high_resolution_clock::now();
+        
+        auto duration = std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(end - start);
+        double ms = duration.count() / 1000.0;
+        std::cout &lt;&lt; name &lt;&lt; ": " &lt;&lt; ms &lt;&lt; " ms" &lt;&lt; std::endl;
+        return ms;
+    }
+};
+
+// ===== MEMORY ACCESS PATTERNS =====
+class MemoryAccessDemo {
+public:
+    static void cacheLocalityDemo() {
+        const size_t size = 10000000;
+        std::vector&lt;int&gt; data(size);
+        std::iota(data.begin(), data.end(), 0);
+        
+        std::cout &lt;&lt; "\n=== Cache Locality Demo ===" &lt;&lt; std::endl;
+        
+        // Sequential access (cache-friendly)
+        PerformanceTester::measureTime([&]() {
+            long long sum = 0;
+            for (size_t i = 0; i &lt; size; ++i) {
+                sum += data[i];
+            }
+            volatile auto result = sum; // Prevent optimization
+        }, "Sequential access");
+        
+        // Random access (cache-unfriendly)
+        std::vector&lt;size_t&gt; indices(size);
+        std::iota(indices.begin(), indices.end(), 0);
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::shuffle(indices.begin(), indices.end(), gen);
+        
+        PerformanceTester::measureTime([&]() {
+            long long sum = 0;
+            for (size_t i = 0; i &lt; size / 100; ++i) { // Smaller subset for fairness
+                sum += data[indices[i]];
+            }
+            volatile auto result = sum;
+        }, "Random access (1/100 subset)");
+    }
+    
+    static void memoryLayoutDemo() {
+        std::cout &lt;&lt; "\n=== Memory Layout Demo ===" &lt;&lt; std::endl;
+        
+        const size_t count = 1000000;
+        
+        // Array of Structures (AoS) - poor cache usage
+        struct PointAoS {
+            double x, y, z;
+            int id;
+            char padding[100]; // Simulate larger struct
+        };
+        
+        std::vector&lt;PointAoS&gt; aos_points(count);
+        
+        // Structure of Arrays (SoA) - better cache usage
+        struct PointsSoA {
+            std::vector&lt;double&gt; x, y, z;
+            std::vector&lt;int&gt; id;
+            
+            PointsSoA(size_t size) : x(size), y(size), z(size), id(size) {}
+        };
+        
+        PointsSoA soa_points(count);
+        
+        // Initialize data
+        for (size_t i = 0; i &lt; count; ++i) {
+            aos_points[i] = {double(i), double(i*2), double(i*3), int(i)};
+            soa_points.x[i] = double(i);
+            soa_points.y[i] = double(i*2);
+            soa_points.z[i] = double(i*3);
+            soa_points.id[i] = int(i);
+        }
+        
+        // Test: sum only x coordinates
+        PerformanceTester::measureTime([&]() {
+            double sum = 0;
+            for (const auto& point : aos_points) {
+                sum += point.x;
+            }
+            volatile auto result = sum;
+        }, "AoS sum x coordinates");
+        
+        PerformanceTester::measureTime([&]() {
+            double sum = 0;
+            for (double x : soa_points.x) {
+                sum += x;
+            }
+            volatile auto result = sum;
+        }, "SoA sum x coordinates");
+    }
+};
+
+// ===== ALGORITHMIC OPTIMIZATIONS =====
+class AlgorithmicOptimizations {
+public:
+    static void containerChoiceDemo() {
+        std::cout &lt;&lt; "\n=== Container Choice Demo ===" &lt;&lt; std::endl;
+        
+        const size_t operations = 100000;
+        
+        // Vector vs List for different operations
+        std::vector&lt;int&gt; vec;
+        std::list&lt;int&gt; lst;
+        
+        // Random access (vector wins)
+        vec.resize(operations);
+        std::iota(vec.begin(), vec.end(), 0);
+        
+        for (size_t i = 0; i &lt; operations; ++i) {
+            lst.push_back(i);
+        }
+        
+        PerformanceTester::measureTime([&]() {
+            long long sum = 0;
+            for (size_t i = 0; i &lt; operations / 100; ++i) {
+                sum += vec[i * 100];
+            }
+            volatile auto result = sum;
+        }, "Vector random access");
+        
+        // Insertion at beginning (list wins)
+        std::vector&lt;int&gt; vec2;
+        std::list&lt;int&gt; lst2;
+        
+        PerformanceTester::measureTime([&]() {
+            for (size_t i = 0; i &lt; operations / 1000; ++i) {
+                vec2.insert(vec2.begin(), i);
+            }
+        }, "Vector insert at beginning");
+        
+        PerformanceTester::measureTime([&]() {
+            for (size_t i = 0; i &lt; operations / 1000; ++i) {
+                lst2.push_front(i);
+            }
+        }, "List insert at beginning");
+    }
+    
+    static void algorithmChoiceDemo() {
+        std::cout &lt;&lt; "\n=== Algorithm Choice Demo ===" &lt;&lt; std::endl;
+        
+        const size_t size = 1000000;
+        std::vector&lt;int&gt; data(size);
+        std::iota(data.begin(), data.end(), 0);
+        
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::shuffle(data.begin(), data.end(), gen);
+        
+        auto data_copy1 = data;
+        auto data_copy2 = data;
+        
+        // Sorting comparison
+        PerformanceTester::measureTime([&]() {
+            std::sort(data_copy1.begin(), data_copy1.end());
+        }, "std::sort");
+        
+        PerformanceTester::measureTime([&]() {
+            std::stable_sort(data_copy2.begin(), data_copy2.end());
+        }, "std::stable_sort");
+        
+        // Search comparison (on sorted data)
+        std::sort(data.begin(), data.end());
+        int target = data[size / 2];
+        
+        PerformanceTester::measureTime([&]() {
+            for (int i = 0; i &lt; 1000; ++i) {
+                auto it = std::find(data.begin(), data.end(), target);
+                volatile auto result = it;
+            }
+        }, "Linear search (1000x)");
+        
+        PerformanceTester::measureTime([&]() {
+            for (int i = 0; i &lt; 1000; ++i) {
+                auto it = std::lower_bound(data.begin(), data.end(), target);
+                volatile auto result = it;
+            }
+        }, "Binary search (1000x)");
+    }
+};
+
+// ===== COMPILE-TIME OPTIMIZATIONS =====
+class CompileTimeOptimizations {
+public:
+    // Compile-time factorial
+    static constexpr long long factorial(int n) {
+        return (n &lt;= 1) ? 1 : n * factorial(n - 1);
+    }
+    
+    // Template metaprogramming for compile-time computation
+    template&lt;int N&gt;
+    struct PowerOfTwo {
+        static constexpr long long value = 2 * PowerOfTwo&lt;N-1&gt;::value;
+    };
+    
+    template&lt;&gt;
+    struct PowerOfTwo&lt;0&gt; {
+        static constexpr long long value = 1;
+    };
+    
+    static void constexprDemo() {
+        std::cout &lt;&lt; "\n=== Compile-time vs Runtime Demo ===" &lt;&lt; std::endl;
+        
+        // Runtime computation
+        PerformanceTester::measureTime([&]() {
+            long long sum = 0;
+            for (int i = 0; i &lt; 1000000; ++i) {
+                long long fact = 1;
+                for (int j = 1; j &lt;= 10; ++j) {
+                    fact *= j;
+                }
+                sum += fact;
+            }
+            volatile auto result = sum;
+        }, "Runtime factorial calculation");
+        
+        // Compile-time computation
+        PerformanceTester::measureTime([&]() {
+            constexpr long long fact = factorial(10);
+            long long sum = 0;
+            for (int i = 0; i &lt; 1000000; ++i) {
+                sum += fact;
+            }
+            volatile auto result = sum;
+        }, "Compile-time factorial (constexpr)");
+        
+        std::cout &lt;&lt; "Power of 2^10: " &lt;&lt; PowerOfTwo&lt;10&gt;::value &lt;&lt; " (computed at compile-time)" &lt;&lt; std::endl;
+    }
+};
+
+// ===== MODERN C++ OPTIMIZATIONS =====
+class ModernCppOptimizations {
+public:
+    static void moveSemanticsBenefit() {
+        std::cout &lt;&lt; "\n=== Move Semantics Benefit ===" &lt;&lt; std::endl;
+        
+        const size_t size = 1000000;
+        std::vector&lt;std::string&gt; strings;
+        
+        // Prepare large strings
+        for (size_t i = 0; i &lt; 1000; ++i) {
+            strings.emplace_back(size, 'A' + (i % 26));
+        }
+        
+        // Copy semantics
+        PerformanceTester::measureTime([&]() {
+            std::vector&lt;std::string&gt; copied;
+            for (const auto& str : strings) {
+                copied.push_back(str); // Copy
+            }
+            volatile auto result = copied.size();
+        }, "Copy semantics");
+        
+        // Move semantics (simulated)
+        PerformanceTester::measureTime([&]() {
+            std::vector&lt;std::string&gt; moved;
+            auto strings_copy = strings; // Work with copy
+            for (auto& str : strings_copy) {
+                moved.push_back(std::move(str)); // Move
+            }
+            volatile auto result = moved.size();
+        }, "Move semantics");
+    }
+    
+    static void smartPointerOverhead() {
+        std::cout &lt;&lt; "\n=== Smart Pointer Overhead ===" &lt;&lt; std::endl;
+        
+        const size_t operations = 10000000;
+        
+        // Raw pointer
+        PerformanceTester::measureTime([&]() {
+            long long sum = 0;
+            for (size_t i = 0; i &lt; operations; ++i) {
+                int* ptr = new int(i);
+                sum += *ptr;
+                delete ptr;
+            }
+            volatile auto result = sum;
+        }, "Raw pointer new/delete");
+        
+        // unique_ptr
+        PerformanceTester::measureTime([&]() {
+            long long sum = 0;
+            for (size_t i = 0; i &lt; operations; ++i) {
+                auto ptr = std::make_unique&lt;int&gt;(i);
+                sum += *ptr;
+            }
+            volatile auto result = sum;
+        }, "unique_ptr");
+        
+        // shared_ptr
+        PerformanceTester::measureTime([&]() {
+            long long sum = 0;
+            for (size_t i = 0; i &lt; operations; ++i) {
+                auto ptr = std::make_shared&lt;int&gt;(i);
+                sum += *ptr;
+            }
+            volatile auto result = sum;
+        }, "shared_ptr");
+    }
+};
+
+int main() {
+    std::cout &lt;&lt; "=== C++ PERFORMANCE OPTIMIZATION DEMONSTRATION ===" &lt;&lt; std::endl;
+    
+    // Memory access patterns
+    MemoryAccessDemo::cacheLocalityDemo();
+    MemoryAccessDemo::memoryLayoutDemo();
+    
+    // Algorithmic choices
+    AlgorithmicOptimizations::containerChoiceDemo();
+    AlgorithmicOptimizations::algorithmChoiceDemo();
+    
+    // Compile-time optimizations
+    CompileTimeOptimizations::constexprDemo();
+    
+    // Modern C++ features
+    ModernCppOptimizations::moveSemanticsBenefit();
+    ModernCppOptimizations::smartPointerOverhead();
+    
+    std::cout &lt;&lt; "\n=== Performance testing complete ===" &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Note: Results may vary based on compiler, optimization flags, and hardware" &lt;&lt; std::endl;
+    
+    return 0;
+}</code></pre>
+                                </div>
+
+                                <h3>Performance Optimization Checklist:</h3>
+                                <div class="optimization-checklist">
+                                    <div class="checklist-category">
+                                        <h4><i class="fas fa-memory"></i> Memory</h4>
+                                        <ul>
+                                            <li>Use stack allocation when possible</li>
+                                            <li>Prefer std::array over C arrays</li>
+                                            <li>Consider object pooling for frequent allocations</li>
+                                            <li>Align data structures for cache efficiency</li>
+                                            <li>Use Structure of Arrays for better cache locality</li>
+                                        </ul>
+                                    </div>
+                                    <div class="checklist-category">
+                                        <h4><i class="fas fa-cogs"></i> Algorithms</h4>
+                                        <ul>
+                                            <li>Choose the right container for your use case</li>
+                                            <li>Use STL algorithms instead of hand-written loops</li>
+                                            <li>Consider parallel algorithms (C++17)</li>
+                                            <li>Profile to find algorithmic bottlenecks</li>
+                                            <li>Use Big O notation to guide choices</li>
+                                        </ul>
+                                    </div>
+                                    <div class="checklist-category">
+                                        <h4><i class="fas fa-bolt"></i> Compiler</h4>
+                                        <ul>
+                                            <li>Use constexpr for compile-time computation</li>
+                                            <li>Enable compiler optimizations (-O2, -O3)</li>
+                                            <li>Use LTO (Link Time Optimization)</li>
+                                            <li>Profile-guided optimization (PGO)</li>
+                                            <li>Understand compiler auto-vectorization</li>
+                                        </ul>
+                                    </div>
+                                    <div class="checklist-category">
+                                        <h4><i class="fas fa-rocket"></i> Modern C++</h4>
+                                        <ul>
+                                            <li>Use move semantics to avoid copies</li>
+                                            <li>Prefer in-place construction (emplace)</li>
+                                            <li>Use string_view to avoid string copies</li>
+                                            <li>Consider std::optional vs exceptions</li>
+                                            <li>Use structured bindings for readability</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="warning-box">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <p><strong>Premature Optimization Warning:</strong> "Premature optimization is the root of all evil" - Donald Knuth. Always profile first, optimize second. Focus on correctness and readability before micro-optimizations.</p>
+                                </div>
+
+                                <div class="info-box">
+                                    <i class="fas fa-tools"></i>
+                                    <p><strong>Profiling Tools:</strong> Use tools like Valgrind, Intel VTune, Google Benchmark, or built-in compiler profilers to measure actual performance before and after optimizations.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Advanced Best Practices -->
+                <section class="content-section" id="best-practices">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2><i class="fas fa-star"></i> Advanced Best Practices</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="topic-content">
+                                <p>Master the advanced techniques and patterns that separate expert C++ developers from beginners. These practices ensure your code is efficient, maintainable, and follows modern C++ idioms.</p>
+                                
+                                <div class="practices-grid">
+                                    <div class="practice-category">
+                                        <h4><i class="fas fa-rocket"></i> Performance</h4>
+                                        <ul>
+                                            <li>Use move semantics to avoid unnecessary copies</li>
+                                            <li>Prefer stack allocation over heap when possible</li>
+                                            <li>Use constexpr for compile-time computations</li>
+                                            <li>Profile before optimizing</li>
+                                            <li>Prefer algorithms over hand-written loops</li>
+                                        </ul>
+                                    </div>
+                                    <div class="practice-category">
+                                        <h4><i class="fas fa-shield-alt"></i> Safety</h4>
+                                        <ul>
+                                            <li>Always use RAII for resource management</li>
+                                            <li>Prefer smart pointers over raw pointers</li>
+                                            <li>Use const correctness everywhere</li>
+                                            <li>Handle exceptions properly</li>
+                                            <li>Avoid undefined behavior</li>
+                                        </ul>
+                                    </div>
+                                    <div class="practice-category">
+                                        <h4><i class="fas fa-code"></i> Code Quality</h4>
+                                        <ul>
+                                            <li>Follow the Rule of Zero/Three/Five</li>
+                                            <li>Use meaningful names for everything</li>
+                                            <li>Keep functions small and focused</li>
+                                            <li>Prefer composition over inheritance</li>
+                                            <li>Write self-documenting code</li>
+                                        </ul>
+                                    </div>
+                                    <div class="practice-category">
+                                        <h4><i class="fas fa-tools"></i> Modern C++</h4>
+                                        <ul>
+                                            <li>Use auto for type deduction</li>
+                                            <li>Prefer range-based for loops</li>
+                                            <li>Use lambda expressions appropriately</li>
+                                            <li>Leverage std::optional for nullable values</li>
+                                            <li>Use structured bindings (C++17)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="success-box">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <p><strong>Congratulations!</strong> You've completed the Advanced C++ tutorial! You now have the knowledge to write high-performance, modern C++ code. Continue practicing with real projects and exploring the latest C++ standards to keep improving your skills.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -910,8 +4677,51 @@ int main() {
         </main>
     </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>C++ Mastery Hub</h3>
+                    <p>Your comprehensive guide to mastering C++ programming from basics to advanced concepts.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="basics.html">Basics</a></li>
+                        <li><a href="oop.html">OOP</a></li>
+                        <li><a href="advanced.html">Advanced</a></li>
+                        <li><a href="stl.html">STL</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> info@cppmastery.com</p>
+                    <p><i class="fas fa-globe"></i> www.cppmastery.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 C++ Mastery Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
