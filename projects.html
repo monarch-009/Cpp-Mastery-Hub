@@ -1513,6 +1513,456 @@ int main() {
                                     </ul>
                                 </div>
 
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">library_management.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+#include &lt;fstream&gt;
+#include &lt;ctime&gt;
+#include &lt;iomanip&gt;
+using namespace std;
+
+class Book {
+public:
+    string isbn;
+    string title;
+    string author;
+    string genre;
+    bool isAvailable;
+    string borrowedBy;
+    string borrowDate;
+    string dueDate;
+    
+    Book() : isAvailable(true) {}
+    
+    Book(string is, string t, string a, string g) 
+        : isbn(is), title(t), author(a), genre(g), isAvailable(true) {}
+    
+    void displayBook() const {
+        cout &lt;&lt; left &lt;&lt; setw(15) &lt;&lt; isbn 
+             &lt;&lt; setw(30) &lt;&lt; title 
+             &lt;&lt; setw(20) &lt;&lt; author 
+             &lt;&lt; setw(15) &lt;&lt; genre 
+             &lt;&lt; (isAvailable ? "Available" : "Borrowed") &lt;&lt; endl;
+    }
+    
+    void borrowBook(const string& memberId) {
+        isAvailable = false;
+        borrowedBy = memberId;
+        
+        time_t now = time(0);
+        borrowDate = ctime(&now);
+        borrowDate.pop_back(); // Remove newline
+        
+        // Set due date (14 days from now)
+        time_t dueTime = now + (14 * 24 * 60 * 60);
+        dueDate = ctime(&dueTime);
+        dueDate.pop_back();
+    }
+    
+    void returnBook() {
+        isAvailable = true;
+        borrowedBy = "";
+        borrowDate = "";
+        dueDate = "";
+    }
+};
+
+class Member {
+public:
+    string memberId;
+    string name;
+    string email;
+    string phone;
+    vector&lt;string&gt; borrowedBooks;
+    double fineAmount;
+    
+    Member() : fineAmount(0.0) {}
+    
+    Member(string id, string n, string e, string p)
+        : memberId(id), name(n), email(e), phone(p), fineAmount(0.0) {}
+    
+    void displayMember() const {
+        cout &lt;&lt; left &lt;&lt; setw(12) &lt;&lt; memberId 
+             &lt;&lt; setw(25) &lt;&lt; name 
+             &lt;&lt; setw(30) &lt;&lt; email 
+             &lt;&lt; setw(15) &lt;&lt; phone 
+             &lt;&lt; borrowedBooks.size() &lt;&lt; " books, $" 
+             &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; fineAmount &lt;&lt; " fine" &lt;&lt; endl;
+    }
+    
+    void addBorrowedBook(const string& isbn) {
+        borrowedBooks.push_back(isbn);
+    }
+    
+    void removeBorrowedBook(const string& isbn) {
+        borrowedBooks.erase(remove(borrowedBooks.begin(), borrowedBooks.end(), isbn),
+                           borrowedBooks.end());
+    }
+    
+    void addFine(double amount) {
+        fineAmount += amount;
+    }
+    
+    void payFine(double amount) {
+        fineAmount = max(0.0, fineAmount - amount);
+    }
+};
+
+class LibraryManagementSystem {
+private:
+    vector&lt;Book&gt; books;
+    vector&lt;Member&gt; members;
+    const string booksFile = "books.txt";
+    const string membersFile = "members.txt";
+    
+public:
+    LibraryManagementSystem() {
+        loadData();
+    }
+    
+    ~LibraryManagementSystem() {
+        saveData();
+    }
+    
+    void displayMainMenu() {
+        cout &lt;&lt; "\n========== LIBRARY MANAGEMENT SYSTEM ==========" &lt;&lt; endl;
+        cout &lt;&lt; "1. Book Management" &lt;&lt; endl;
+        cout &lt;&lt; "2. Member Management" &lt;&lt; endl;
+        cout &lt;&lt; "3. Borrow Book" &lt;&lt; endl;
+        cout &lt;&lt; "4. Return Book" &lt;&lt; endl;
+        cout &lt;&lt; "5. Search Books" &lt;&lt; endl;
+        cout &lt;&lt; "6. View Reports" &lt;&lt; endl;
+        cout &lt;&lt; "7. Manage Fines" &lt;&lt; endl;
+        cout &lt;&lt; "8. Exit" &lt;&lt; endl;
+        cout &lt;&lt; "===============================================" &lt;&lt; endl;
+        cout &lt;&lt; "Enter your choice: ";
+    }
+    
+    void addBook() {
+        string isbn, title, author, genre;
+        
+        cout &lt;&lt; "\n========== ADD NEW BOOK ==========" &lt;&lt; endl;
+        cout &lt;&lt; "Enter ISBN: ";
+        cin &gt;&gt; isbn;
+        
+        if (findBook(isbn) != nullptr) {
+            cout &lt;&lt; "Book with ISBN " &lt;&lt; isbn &lt;&lt; " already exists!" &lt;&lt; endl;
+            return;
+        }
+        
+        cin.ignore();
+        cout &lt;&lt; "Enter Title: ";
+        getline(cin, title);
+        cout &lt;&lt; "Enter Author: ";
+        getline(cin, author);
+        cout &lt;&lt; "Enter Genre: ";
+        getline(cin, genre);
+        
+        books.emplace_back(isbn, title, author, genre);
+        cout &lt;&lt; "Book added successfully!" &lt;&lt; endl;
+    }
+    
+    void displayAllBooks() {
+        cout &lt;&lt; "\n========== ALL BOOKS ==========" &lt;&lt; endl;
+        if (books.empty()) {
+            cout &lt;&lt; "No books in the library." &lt;&lt; endl;
+            return;
+        }
+        
+        cout &lt;&lt; left &lt;&lt; setw(15) &lt;&lt; "ISBN" 
+             &lt;&lt; setw(30) &lt;&lt; "Title" 
+             &lt;&lt; setw(20) &lt;&lt; "Author" 
+             &lt;&lt; setw(15) &lt;&lt; "Genre" 
+             &lt;&lt; "Status" &lt;&lt; endl;
+        cout &lt;&lt; string(90, '-') &lt;&lt; endl;
+        
+        for (const auto& book : books) {
+            book.displayBook();
+        }
+        cout &lt;&lt; "===============================" &lt;&lt; endl;
+    }
+    
+    void addMember() {
+        string id, name, email, phone;
+        
+        cout &lt;&lt; "\n========== ADD NEW MEMBER ==========" &lt;&lt; endl;
+        cout &lt;&lt; "Enter Member ID: ";
+        cin &gt;&gt; id;
+        
+        if (findMember(id) != nullptr) {
+            cout &lt;&lt; "Member with ID " &lt;&lt; id &lt;&lt; " already exists!" &lt;&lt; endl;
+            return;
+        }
+        
+        cin.ignore();
+        cout &lt;&lt; "Enter Name: ";
+        getline(cin, name);
+        cout &lt;&lt; "Enter Email: ";
+        getline(cin, email);
+        cout &lt;&lt; "Enter Phone: ";
+        getline(cin, phone);
+        
+        members.emplace_back(id, name, email, phone);
+        cout &lt;&lt; "Member added successfully!" &lt;&lt; endl;
+    }
+    
+    Book* findBook(const string& isbn) {
+        auto it = find_if(books.begin(), books.end(),
+                         [&isbn](const Book& b) { return b.isbn == isbn; });
+        return it != books.end() ? &(*it) : nullptr;
+    }
+    
+    Member* findMember(const string& id) {
+        auto it = find_if(members.begin(), members.end(),
+                         [&id](const Member& m) { return m.memberId == id; });
+        return it != members.end() ? &(*it) : nullptr;
+    }
+    
+    void borrowBook() {
+        string isbn, memberId;
+        
+        cout &lt;&lt; "\n========== BORROW BOOK ==========" &lt;&lt; endl;
+        cout &lt;&lt; "Enter ISBN: ";
+        cin &gt;&gt; isbn;
+        cout &lt;&lt; "Enter Member ID: ";
+        cin &gt;&gt; memberId;
+        
+        Book* book = findBook(isbn);
+        Member* member = findMember(memberId);
+        
+        if (!book) {
+            cout &lt;&lt; "Book not found!" &lt;&lt; endl;
+            return;
+        }
+        
+        if (!member) {
+            cout &lt;&lt; "Member not found!" &lt;&lt; endl;
+            return;
+        }
+        
+        if (!book-&gt;isAvailable) {
+            cout &lt;&lt; "Book is already borrowed!" &lt;&lt; endl;
+            return;
+        }
+        
+        if (member-&gt;fineAmount > 0) {
+            cout &lt;&lt; "Member has outstanding fines: $" 
+                 &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; member-&gt;fineAmount 
+                 &lt;&lt; ". Please pay fines before borrowing." &lt;&lt; endl;
+            return;
+        }
+        
+        book-&gt;borrowBook(memberId);
+        member-&gt;addBorrowedBook(isbn);
+        
+        cout &lt;&lt; "Book borrowed successfully!" &lt;&lt; endl;
+        cout &lt;&lt; "Due date: " &lt;&lt; book-&gt;dueDate &lt;&lt; endl;
+    }
+    
+    void returnBook() {
+        string isbn;
+        
+        cout &lt;&lt; "\n========== RETURN BOOK ==========" &lt;&lt; endl;
+        cout &lt;&lt; "Enter ISBN: ";
+        cin &gt;&gt; isbn;
+        
+        Book* book = findBook(isbn);
+        if (!book) {
+            cout &lt;&lt; "Book not found!" &lt;&lt; endl;
+            return;
+        }
+        
+        if (book-&gt;isAvailable) {
+            cout &lt;&lt; "Book is not currently borrowed!" &lt;&lt; endl;
+            return;
+        }
+        
+        Member* member = findMember(book-&gt;borrowedBy);
+        if (member) {
+            member-&gt;removeBorrowedBook(isbn);
+        }
+        
+        book-&gt;returnBook();
+        cout &lt;&lt; "Book returned successfully!" &lt;&lt; endl;
+    }
+    
+    void searchBooks() {
+        cout &lt;&lt; "\n========== SEARCH BOOKS ==========" &lt;&lt; endl;
+        cout &lt;&lt; "1. Search by Title" &lt;&lt; endl;
+        cout &lt;&lt; "2. Search by Author" &lt;&lt; endl;
+        cout &lt;&lt; "3. Search by Genre" &lt;&lt; endl;
+        cout &lt;&lt; "4. Search by ISBN" &lt;&lt; endl;
+        cout &lt;&lt; "Enter search type: ";
+        
+        int choice;
+        cin &gt;&gt; choice;
+        cin.ignore();
+        
+        string query;
+        cout &lt;&lt; "Enter search term: ";
+        getline(cin, query);
+        
+        vector&lt;Book*&gt; results;
+        
+        for (auto& book : books) {
+            bool match = false;
+            switch (choice) {
+                case 1: match = book.title.find(query) != string::npos; break;
+                case 2: match = book.author.find(query) != string::npos; break;
+                case 3: match = book.genre.find(query) != string::npos; break;
+                case 4: match = book.isbn == query; break;
+            }
+            if (match) results.push_back(&book);
+        }
+        
+        if (results.empty()) {
+            cout &lt;&lt; "No books found matching your search." &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "\nSearch Results:" &lt;&lt; endl;
+            cout &lt;&lt; left &lt;&lt; setw(15) &lt;&lt; "ISBN" 
+                 &lt;&lt; setw(30) &lt;&lt; "Title" 
+                 &lt;&lt; setw(20) &lt;&lt; "Author" 
+                 &lt;&lt; setw(15) &lt;&lt; "Genre" 
+                 &lt;&lt; "Status" &lt;&lt; endl;
+            cout &lt;&lt; string(90, '-') &lt;&lt; endl;
+            
+            for (auto* book : results) {
+                book-&gt;displayBook();
+            }
+        }
+    }
+    
+    void viewReports() {
+        cout &lt;&lt; "\n========== LIBRARY REPORTS ==========" &lt;&lt; endl;
+        
+        int totalBooks = books.size();
+        int availableBooks = count_if(books.begin(), books.end(),
+                                     [](const Book& b) { return b.isAvailable; });
+        int borrowedBooks = totalBooks - availableBooks;
+        
+        cout &lt;&lt; "Total Books: " &lt;&lt; totalBooks &lt;&lt; endl;
+        cout &lt;&lt; "Available Books: " &lt;&lt; availableBooks &lt;&lt; endl;
+        cout &lt;&lt; "Borrowed Books: " &lt;&lt; borrowedBooks &lt;&lt; endl;
+        cout &lt;&lt; "Total Members: " &lt;&lt; members.size() &lt;&lt; endl;
+        
+        double totalFines = 0.0;
+        for (const auto& member : members) {
+            totalFines += member.fineAmount;
+        }
+        cout &lt;&lt; "Total Outstanding Fines: $" &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; totalFines &lt;&lt; endl;
+        cout &lt;&lt; "======================================" &lt;&lt; endl;
+    }
+    
+    void saveData() {
+        // Save books to file
+        ofstream bookFile(booksFile);
+        if (bookFile.is_open()) {
+            for (const auto& book : books) {
+                bookFile &lt;&lt; book.isbn &lt;&lt; "|" &lt;&lt; book.title &lt;&lt; "|" 
+                         &lt;&lt; book.author &lt;&lt; "|" &lt;&lt; book.genre &lt;&lt; "|" 
+                         &lt;&lt; book.isAvailable &lt;&lt; "|" &lt;&lt; book.borrowedBy &lt;&lt; endl;
+            }
+            bookFile.close();
+        }
+    }
+    
+    void loadData() {
+        // Load books from file
+        ifstream bookFile(booksFile);
+        if (bookFile.is_open()) {
+            string line;
+            while (getline(bookFile, line)) {
+                // Simple parsing implementation
+                size_t pos = 0;
+                vector&lt;string&gt; tokens;
+                string token;
+                
+                while ((pos = line.find('|')) != string::npos) {
+                    token = line.substr(0, pos);
+                    tokens.push_back(token);
+                    line.erase(0, pos + 1);
+                }
+                tokens.push_back(line);
+                
+                if (tokens.size() >= 4) {
+                    Book book(tokens[0], tokens[1], tokens[2], tokens[3]);
+                    if (tokens.size() >= 6) {
+                        book.isAvailable = (tokens[4] == "1");
+                        book.borrowedBy = tokens[5];
+                    }
+                    books.push_back(book);
+                }
+            }
+            bookFile.close();
+        }
+    }
+    
+    void run() {
+        cout &lt;&lt; "Welcome to Library Management System!" &lt;&lt; endl;
+        
+        int choice;
+        bool running = true;
+        
+        while (running) {
+            displayMainMenu();
+            cin &gt;&gt; choice;
+            
+            switch (choice) {
+                case 1: {
+                    cout &lt;&lt; "\n1. Add Book  2. Display Books" &lt;&lt; endl;
+                    cout &lt;&lt; "Enter choice: ";
+                    int bookChoice;
+                    cin &gt;&gt; bookChoice;
+                    if (bookChoice == 1) addBook();
+                    else if (bookChoice == 2) displayAllBooks();
+                    break;
+                }
+                case 2: {
+                    cout &lt;&lt; "\n1. Add Member  2. Display Members" &lt;&lt; endl;
+                    cout &lt;&lt; "Enter choice: ";
+                    int memberChoice;
+                    cin &gt;&gt; memberChoice;
+                    if (memberChoice == 1) addMember();
+                    // Display members implementation can be added
+                    break;
+                }
+                case 3: borrowBook(); break;
+                case 4: returnBook(); break;
+                case 5: searchBooks(); break;
+                case 6: viewReports(); break;
+                case 7: cout &lt;&lt; "Fine management feature available." &lt;&lt; endl; break;
+                case 8:
+                    cout &lt;&lt; "Thank you for using Library Management System!" &lt;&lt; endl;
+                    running = false;
+                    break;
+                default:
+                    cout &lt;&lt; "Invalid choice! Please try again." &lt;&lt; endl;
+            }
+            
+            if (running && choice != 8) {
+                cout &lt;&lt; "\nPress Enter to continue...";
+                cin.ignore();
+                cin.get();
+            }
+        }
+    }
+};
+
+int main() {
+    LibraryManagementSystem lms;
+    lms.run();
+    return 0;
+}</code></pre>
+                                </div>
+
                                 <div class="info-box">
                                     <i class="fas fa-info-circle"></i>
                                     <p><strong>Note:</strong> This is a simplified version. The complete implementation would include more advanced features like database integration, user authentication, and a graphical interface.</p>
@@ -1545,9 +1995,468 @@ int main() {
                                     </ul>
                                 </div>
 
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">file_manager.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;filesystem&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;iomanip&gt;
+#include &lt;ctime&gt;
+using namespace std;
+using namespace filesystem;
+
+class FileManager {
+private:
+    path currentDirectory;
+    
+public:
+    FileManager() {
+        currentDirectory = current_path();
+    }
+    
+    void displayMainMenu() {
+        cout &lt;&lt; "\n========== FILE MANAGER ==========" &lt;&lt; endl;
+        cout &lt;&lt; "Current Directory: " &lt;&lt; currentDirectory &lt;&lt; endl;
+        cout &lt;&lt; "1. List Files and Directories" &lt;&lt; endl;
+        cout &lt;&lt; "2. Change Directory" &lt;&lt; endl;
+        cout &lt;&lt; "3. Create File" &lt;&lt; endl;
+        cout &lt;&lt; "4. Create Directory" &lt;&lt; endl;
+        cout &lt;&lt; "5. Copy File" &lt;&lt; endl;
+        cout &lt;&lt; "6. Move/Rename File" &lt;&lt; endl;
+        cout &lt;&lt; "7. Delete File/Directory" &lt;&lt; endl;
+        cout &lt;&lt; "8. View File Content" &lt;&lt; endl;
+        cout &lt;&lt; "9. Edit File" &lt;&lt; endl;
+        cout &lt;&lt; "10. Search Files" &lt;&lt; endl;
+        cout &lt;&lt; "11. File Information" &lt;&lt; endl;
+        cout &lt;&lt; "12. Go to Parent Directory" &lt;&lt; endl;
+        cout &lt;&lt; "13. Exit" &lt;&lt; endl;
+        cout &lt;&lt; "==================================" &lt;&lt; endl;
+        cout &lt;&lt; "Enter your choice: ";
+    }
+    
+    void listDirectory() {
+        cout &lt;&lt; "\n========== DIRECTORY LISTING ==========" &lt;&lt; endl;
+        cout &lt;&lt; "Current Directory: " &lt;&lt; currentDirectory &lt;&lt; endl;
+        cout &lt;&lt; string(60, '-') &lt;&lt; endl;
+        
+        try {
+            cout &lt;&lt; left &lt;&lt; setw(30) &lt;&lt; "Name" 
+                 &lt;&lt; setw(8) &lt;&lt; "Type" 
+                 &lt;&lt; setw(12) &lt;&lt; "Size" 
+                 &lt;&lt; "Last Modified" &lt;&lt; endl;
+            cout &lt;&lt; string(60, '-') &lt;&lt; endl;
+            
+            vector&lt;directory_entry&gt; entries;
+            for (const auto& entry : directory_iterator(currentDirectory)) {
+                entries.push_back(entry);
+            }
+            
+            // Sort entries: directories first, then files
+            sort(entries.begin(), entries.end(), [](const directory_entry& a, const directory_entry& b) {
+                if (a.is_directory() != b.is_directory()) {
+                    return a.is_directory();
+                }
+                return a.path().filename() &lt; b.path().filename();
+            });
+            
+            for (const auto& entry : entries) {
+                string name = entry.path().filename().string();
+                string type = entry.is_directory() ? "DIR" : "FILE";
+                string size = entry.is_directory() ? "-" : to_string(entry.file_size()) + " B";
+                
+                auto ftime = entry.last_write_time();
+                auto sctp = time_point_cast&lt;system_clock::duration&gt;(ftime - file_time_type::clock::now() + system_clock::now());
+                auto cftime = system_clock::to_time_t(sctp);
+                
+                cout &lt;&lt; left &lt;&lt; setw(30) &lt;&lt; (name.length() > 29 ? name.substr(0, 26) + "..." : name)
+                     &lt;&lt; setw(8) &lt;&lt; type
+                     &lt;&lt; setw(12) &lt;&lt; size
+                     &lt;&lt; put_time(localtime(&cftime), "%Y-%m-%d %H:%M") &lt;&lt; endl;
+            }
+            
+        } catch (const exception& e) {
+            cout &lt;&lt; "Error accessing directory: " &lt;&lt; e.what() &lt;&lt; endl;
+        }
+        cout &lt;&lt; "=======================================" &lt;&lt; endl;
+    }
+    
+    void changeDirectory() {
+        string dirName;
+        cout &lt;&lt; "\nEnter directory name (or '..' for parent, '/' for root): ";
+        cin.ignore();
+        getline(cin, dirName);
+        
+        try {
+            path newPath;
+            if (dirName == "..") {
+                newPath = currentDirectory.parent_path();
+            } else if (dirName == "/") {
+                newPath = path("/");
+            } else if (dirName.front() == '/' || (dirName.length() > 1 && dirName[1] == ':')) {
+                // Absolute path
+                newPath = path(dirName);
+            } else {
+                // Relative path
+                newPath = currentDirectory / dirName;
+            }
+            
+            if (exists(newPath) && is_directory(newPath)) {
+                currentDirectory = newPath;
+                cout &lt;&lt; "Changed directory to: " &lt;&lt; currentDirectory &lt;&lt; endl;
+            } else {
+                cout &lt;&lt; "Directory does not exist!" &lt;&lt; endl;
+            }
+        } catch (const exception& e) {
+            cout &lt;&lt; "Error changing directory: " &lt;&lt; e.what() &lt;&lt; endl;
+        }
+    }
+    
+    void createFile() {
+        string fileName;
+        cout &lt;&lt; "\nEnter file name: ";
+        cin.ignore();
+        getline(cin, fileName);
+        
+        path filePath = currentDirectory / fileName;
+        
+        if (exists(filePath)) {
+            cout &lt;&lt; "File already exists!" &lt;&lt; endl;
+            return;
+        }
+        
+        cout &lt;&lt; "Enter file content (press Ctrl+D or Ctrl+Z to finish):" &lt;&lt; endl;
+        
+        ofstream file(filePath);
+        if (file.is_open()) {
+            string line;
+            while (getline(cin, line)) {
+                file &lt;&lt; line &lt;&lt; endl;
+            }
+            file.close();
+            cout &lt;&lt; "File created successfully!" &lt;&lt; endl;
+            cin.clear(); // Clear EOF flag
+        } else {
+            cout &lt;&lt; "Error creating file!" &lt;&lt; endl;
+        }
+    }
+    
+    void createDirectory() {
+        string dirName;
+        cout &lt;&lt; "\nEnter directory name: ";
+        cin.ignore();
+        getline(cin, dirName);
+        
+        path dirPath = currentDirectory / dirName;
+        
+        try {
+            if (create_directory(dirPath)) {
+                cout &lt;&lt; "Directory created successfully!" &lt;&lt; endl;
+            } else {
+                cout &lt;&lt; "Directory already exists or could not be created!" &lt;&lt; endl;
+            }
+        } catch (const exception& e) {
+            cout &lt;&lt; "Error creating directory: " &lt;&lt; e.what() &lt;&lt; endl;
+        }
+    }
+    
+    void copyFile() {
+        string source, destination;
+        cout &lt;&lt; "\nEnter source file name: ";
+        cin.ignore();
+        getline(cin, source);
+        cout &lt;&lt; "Enter destination file name: ";
+        getline(cin, destination);
+        
+        path sourcePath = currentDirectory / source;
+        path destPath = currentDirectory / destination;
+        
+        try {
+            if (!exists(sourcePath)) {
+                cout &lt;&lt; "Source file does not exist!" &lt;&lt; endl;
+                return;
+            }
+            
+            if (exists(destPath)) {
+                cout &lt;&lt; "Destination file already exists! Overwrite? (y/n): ";
+                char choice;
+                cin &gt;&gt; choice;
+                if (choice != 'y' && choice != 'Y') {
+                    return;
+                }
+            }
+            
+            copy_file(sourcePath, destPath, copy_options::overwrite_existing);
+            cout &lt;&lt; "File copied successfully!" &lt;&lt; endl;
+            
+        } catch (const exception& e) {
+            cout &lt;&lt; "Error copying file: " &lt;&lt; e.what() &lt;&lt; endl;
+        }
+    }
+    
+    void moveFile() {
+        string source, destination;
+        cout &lt;&lt; "\nEnter source file name: ";
+        cin.ignore();
+        getline(cin, source);
+        cout &lt;&lt; "Enter destination file name: ";
+        getline(cin, destination);
+        
+        path sourcePath = currentDirectory / source;
+        path destPath = currentDirectory / destination;
+        
+        try {
+            if (!exists(sourcePath)) {
+                cout &lt;&lt; "Source file does not exist!" &lt;&lt; endl;
+                return;
+            }
+            
+            rename(sourcePath, destPath);
+            cout &lt;&lt; "File moved/renamed successfully!" &lt;&lt; endl;
+            
+        } catch (const exception& e) {
+            cout &lt;&lt; "Error moving file: " &lt;&lt; e.what() &lt;&lt; endl;
+        }
+    }
+    
+    void deleteFileOrDirectory() {
+        string name;
+        cout &lt;&lt; "\nEnter file/directory name to delete: ";
+        cin.ignore();
+        getline(cin, name);
+        
+        path targetPath = currentDirectory / name;
+        
+        try {
+            if (!exists(targetPath)) {
+                cout &lt;&lt; "File/directory does not exist!" &lt;&lt; endl;
+                return;
+            }
+            
+            cout &lt;&lt; "Are you sure you want to delete '" &lt;&lt; name &lt;&lt; "'? (y/n): ";
+            char choice;
+            cin &gt;&gt; choice;
+            
+            if (choice == 'y' || choice == 'Y') {
+                if (is_directory(targetPath)) {
+                    remove_all(targetPath);
+                    cout &lt;&lt; "Directory deleted successfully!" &lt;&lt; endl;
+                } else {
+                    remove(targetPath);
+                    cout &lt;&lt; "File deleted successfully!" &lt;&lt; endl;
+                }
+            } else {
+                cout &lt;&lt; "Deletion cancelled." &lt;&lt; endl;
+            }
+            
+        } catch (const exception& e) {
+            cout &lt;&lt; "Error deleting: " &lt;&lt; e.what() &lt;&lt; endl;
+        }
+    }
+    
+    void viewFile() {
+        string fileName;
+        cout &lt;&lt; "\nEnter file name: ";
+        cin.ignore();
+        getline(cin, fileName);
+        
+        path filePath = currentDirectory / fileName;
+        
+        if (!exists(filePath) || is_directory(filePath)) {
+            cout &lt;&lt; "File does not exist or is a directory!" &lt;&lt; endl;
+            return;
+        }
+        
+        ifstream file(filePath);
+        if (file.is_open()) {
+            cout &lt;&lt; "\n========== FILE CONTENT ==========" &lt;&lt; endl;
+            cout &lt;&lt; "File: " &lt;&lt; fileName &lt;&lt; endl;
+            cout &lt;&lt; string(40, '-') &lt;&lt; endl;
+            
+            string line;
+            int lineNumber = 1;
+            while (getline(file, line)) {
+                cout &lt;&lt; setw(4) &lt;&lt; lineNumber++ &lt;&lt; ": " &lt;&lt; line &lt;&lt; endl;
+            }
+            file.close();
+            cout &lt;&lt; "==================================" &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "Error opening file!" &lt;&lt; endl;
+        }
+    }
+    
+    void editFile() {
+        string fileName;
+        cout &lt;&lt; "\nEnter file name: ";
+        cin.ignore();
+        getline(cin, fileName);
+        
+        path filePath = currentDirectory / fileName;
+        
+        // First, show current content if file exists
+        if (exists(filePath) && !is_directory(filePath)) {
+            cout &lt;&lt; "\nCurrent file content:" &lt;&lt; endl;
+            viewFile();
+        }
+        
+        cout &lt;&lt; "\nEnter new content (press Ctrl+D or Ctrl+Z on empty line to finish):" &lt;&lt; endl;
+        
+        ofstream file(filePath);
+        if (file.is_open()) {
+            string line;
+            while (getline(cin, line)) {
+                file &lt;&lt; line &lt;&lt; endl;
+            }
+            file.close();
+            cout &lt;&lt; "File saved successfully!" &lt;&lt; endl;
+            cin.clear(); // Clear EOF flag
+        } else {
+            cout &lt;&lt; "Error opening file for editing!" &lt;&lt; endl;
+        }
+    }
+    
+    void searchFiles() {
+        string pattern;
+        cout &lt;&lt; "\nEnter search pattern (filename): ";
+        cin.ignore();
+        getline(cin, pattern);
+        
+        cout &lt;&lt; "\nSearch results for '" &lt;&lt; pattern &lt;&lt; "':" &lt;&lt; endl;
+        cout &lt;&lt; string(50, '-') &lt;&lt; endl;
+        
+        try {
+            bool found = false;
+            for (const auto& entry : recursive_directory_iterator(currentDirectory)) {
+                string filename = entry.path().filename().string();
+                if (filename.find(pattern) != string::npos) {
+                    cout &lt;&lt; (entry.is_directory() ? "[DIR] " : "[FILE] ")
+                         &lt;&lt; entry.path() &lt;&lt; endl;
+                    found = true;
+                }
+            }
+            
+            if (!found) {
+                cout &lt;&lt; "No files found matching the pattern." &lt;&lt; endl;
+            }
+            
+        } catch (const exception& e) {
+            cout &lt;&lt; "Error during search: " &lt;&lt; e.what() &lt;&lt; endl;
+        }
+        cout &lt;&lt; string(50, '-') &lt;&lt; endl;
+    }
+    
+    void fileInfo() {
+        string fileName;
+        cout &lt;&lt; "\nEnter file/directory name: ";
+        cin.ignore();
+        getline(cin, fileName);
+        
+        path filePath = currentDirectory / fileName;
+        
+        try {
+            if (!exists(filePath)) {
+                cout &lt;&lt; "File/directory does not exist!" &lt;&lt; endl;
+                return;
+            }
+            
+            cout &lt;&lt; "\n========== FILE INFORMATION ==========" &lt;&lt; endl;
+            cout &lt;&lt; "Name: " &lt;&lt; filePath.filename() &lt;&lt; endl;
+            cout &lt;&lt; "Full Path: " &lt;&lt; absolute(filePath) &lt;&lt; endl;
+            cout &lt;&lt; "Type: " &lt;&lt; (is_directory(filePath) ? "Directory" : "File") &lt;&lt; endl;
+            
+            if (!is_directory(filePath)) {
+                cout &lt;&lt; "Size: " &lt;&lt; file_size(filePath) &lt;&lt; " bytes" &lt;&lt; endl;
+            }
+            
+            auto ftime = last_write_time(filePath);
+            auto sctp = time_point_cast&lt;system_clock::duration&gt;(ftime - file_time_type::clock::now() + system_clock::now());
+            auto cftime = system_clock::to_time_t(sctp);
+            
+            cout &lt;&lt; "Last Modified: " &lt;&lt; put_time(localtime(&cftime), "%Y-%m-%d %H:%M:%S") &lt;&lt; endl;
+            
+            // Permissions (simplified)
+            auto perms = status(filePath).permissions();
+            cout &lt;&lt; "Permissions: ";
+            cout &lt;&lt; ((perms & perms::owner_read) != perms::none ? "r" : "-");
+            cout &lt;&lt; ((perms & perms::owner_write) != perms::none ? "w" : "-");
+            cout &lt;&lt; ((perms & perms::owner_exec) != perms::none ? "x" : "-");
+            cout &lt;&lt; endl;
+            
+            cout &lt;&lt; "======================================" &lt;&lt; endl;
+            
+        } catch (const exception& e) {
+            cout &lt;&lt; "Error getting file information: " &lt;&lt; e.what() &lt;&lt; endl;
+        }
+    }
+    
+    void goToParent() {
+        path parent = currentDirectory.parent_path();
+        if (parent != currentDirectory) {
+            currentDirectory = parent;
+            cout &lt;&lt; "Moved to parent directory: " &lt;&lt; currentDirectory &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "Already at root directory!" &lt;&lt; endl;
+        }
+    }
+    
+    void run() {
+        cout &lt;&lt; "Welcome to Simple File Manager!" &lt;&lt; endl;
+        cout &lt;&lt; "Note: This program requires C++17 or later for filesystem support." &lt;&lt; endl;
+        
+        int choice;
+        bool running = true;
+        
+        while (running) {
+            displayMainMenu();
+            cin &gt;&gt; choice;
+            
+            switch (choice) {
+                case 1: listDirectory(); break;
+                case 2: changeDirectory(); break;
+                case 3: createFile(); break;
+                case 4: createDirectory(); break;
+                case 5: copyFile(); break;
+                case 6: moveFile(); break;
+                case 7: deleteFileOrDirectory(); break;
+                case 8: viewFile(); break;
+                case 9: editFile(); break;
+                case 10: searchFiles(); break;
+                case 11: fileInfo(); break;
+                case 12: goToParent(); break;
+                case 13:
+                    cout &lt;&lt; "Thank you for using File Manager!" &lt;&lt; endl;
+                    running = false;
+                    break;
+                default:
+                    cout &lt;&lt; "Invalid choice! Please try again." &lt;&lt; endl;
+            }
+            
+            if (running && choice != 13) {
+                cout &lt;&lt; "\nPress Enter to continue...";
+                cin.ignore();
+                cin.get();
+            }
+        }
+    }
+};
+
+int main() {
+    FileManager fm;
+    fm.run();
+    return 0;
+}</code></pre>
+                                </div>
+
                                 <div class="info-box">
                                     <i class="fas fa-info-circle"></i>
-                                    <p><strong>Note:</strong> This project demonstrates file I/O operations, directory manipulation, and system programming concepts in C++.</p>
+                                    <p><strong>Note:</strong> This project demonstrates file I/O operations, directory manipulation, and system programming concepts in C++. Requires C++17 or later for filesystem support.</p>
                                 </div>
                             </div>
                         </div>
