@@ -1010,15 +1010,25 @@ int main() {
   }
 
   startQuiz(topic) {
-    this.currentQuiz = this.quizData[topic]
-    this.currentQuestion = 0
-    this.answers = []
-    this.startTime = Date.now()
-    this.timeLimit = this.currentQuiz.timeLimit
+    try {
+      this.currentQuiz = this.quizData[topic]
+      if (!this.currentQuiz) {
+        console.error(`Quiz data for topic "${topic}" not found`)
+        return
+      }
+      
+      this.currentQuestion = 0
+      this.answers = []
+      this.startTime = Date.now()
+      this.timeLimit = this.currentQuiz.timeLimit
 
-    this.showQuizContent()
-    this.displayQuestion()
-    this.startTimer()
+      this.showQuizContent()
+      this.setupProgressSteps()
+      this.displayQuestion()
+      this.startTimer()
+    } catch (error) {
+      console.error('Error starting quiz:', error)
+    }
   }
 
   showQuizContent() {
@@ -1033,8 +1043,14 @@ int main() {
 
     // Update progress
     document.getElementById("questionNumber").textContent = `Question ${this.currentQuestion + 1} of ${totalQuestions}`
+    document.getElementById("questionProgress").textContent = `${this.currentQuestion + 1} / ${totalQuestions}`
+    document.getElementById("currentQuestionBadge").textContent = this.currentQuestion + 1
+    
     const progressFill = document.getElementById("quizProgressFill")
     progressFill.style.width = `${((this.currentQuestion + 1) / totalQuestions) * 100}%`
+
+    // Update progress steps
+    this.updateProgressSteps()
 
     // Display question
     document.getElementById("questionText").textContent = question.question
@@ -1122,7 +1138,17 @@ int main() {
 
   startTimer() {
     const timerElement = document.getElementById("timer")
+    if (!timerElement) {
+      console.warn('Timer element not found')
+      return
+    }
+    
     let timeRemaining = this.timeLimit
+
+    // Clear any existing timer
+    if (this.timer) {
+      clearInterval(this.timer)
+    }
 
     this.timer = setInterval(() => {
       const minutes = Math.floor(timeRemaining / 60)
@@ -1130,6 +1156,7 @@ int main() {
       timerElement.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`
 
       if (timeRemaining <= 0) {
+        clearInterval(this.timer)
         this.submitQuiz()
         return
       }
@@ -1189,14 +1216,37 @@ int main() {
     document.getElementById("quizContent").style.display = "none"
     document.getElementById("quizResults").style.display = "block"
 
-    // Update score circle
-    const scoreCircle = document.querySelector(".score-circle")
+    // Animate score circle
+    const scoreCircle = document.getElementById("scoreCircle")
     const percentage = this.results.percentage
-    const degrees = (percentage / 100) * 360
-    scoreCircle.style.background = `conic-gradient(var(--primary-color) 0deg, var(--primary-color) ${degrees}deg, var(--bg-tertiary) ${degrees}deg)`
+    const circumference = 2 * Math.PI * 54 // radius = 54
+    const offset = circumference - (percentage / 100) * circumference
+    
+    // Set up the circle
+    scoreCircle.style.strokeDasharray = circumference
+    scoreCircle.style.strokeDashoffset = circumference
+    
+    // Animate to the final value
+    setTimeout(() => {
+      scoreCircle.style.strokeDashoffset = offset
+    }, 500)
 
-    // Update score text
-    document.getElementById("scorePercentage").textContent = `${percentage}%`
+    // Update score text with animation
+    let currentScore = 0
+    const targetScore = percentage
+    const scoreText = document.getElementById("scorePercentage")
+    
+    const scoreAnimation = setInterval(() => {
+      currentScore += 2
+      if (currentScore >= targetScore) {
+        currentScore = targetScore
+        clearInterval(scoreAnimation)
+      }
+      scoreText.textContent = `${currentScore}%`
+    }, 50)
+
+    // Update accuracy display
+    document.getElementById("accuracy").textContent = `${percentage}%`
 
     // Update score message
     const scoreMessage = document.getElementById("scoreMessage")
@@ -1222,6 +1272,41 @@ int main() {
 
     // Show detailed breakdown
     this.showDetailedResults()
+  }
+
+  setupProgressSteps() {
+    const progressSteps = document.getElementById("progressSteps")
+    if (!progressSteps) {
+      console.warn('Progress steps container not found')
+      return
+    }
+    
+    if (!this.currentQuiz || !this.currentQuiz.questions) {
+      console.warn('No quiz data available for progress steps')
+      return
+    }
+    
+    progressSteps.innerHTML = ""
+    
+    for (let i = 0; i < this.currentQuiz.questions.length; i++) {
+      const step = document.createElement("div")
+      step.className = "progress-step"
+      step.setAttribute("data-question", i)
+      progressSteps.appendChild(step)
+    }
+  }
+
+  updateProgressSteps() {
+    const steps = document.querySelectorAll(".progress-step")
+    steps.forEach((step, index) => {
+      step.classList.remove("completed", "current")
+      
+      if (index === this.currentQuestion) {
+        step.classList.add("current")
+      } else if (index < this.currentQuestion || this.answers[index] !== undefined) {
+        step.classList.add("completed")
+      }
+    })
   }
 
   showDetailedResults() {
@@ -1262,6 +1347,7 @@ int main() {
 
   backToTopics() {
     document.getElementById("quizResults").style.display = "none"
+    document.getElementById("quizContent").style.display = "none"
     document.getElementById("quizSelection").style.display = "block"
 
     // Reset timer display
@@ -1354,6 +1440,35 @@ function backToTopics() {
 function shareResults() {
   if (window.quizManager) {
     window.quizManager.shareResults()
+  }
+}
+
+// New enhanced functions
+function toggleQuizMode() {
+  const quizContainer = document.querySelector('.quiz-container')
+  if (document.fullscreenElement) {
+    document.exitFullscreen()
+  } else {
+    quizContainer.requestFullscreen().catch(err => {
+      console.log('Fullscreen not supported')
+    })
+  }
+}
+
+function copyQuizCode() {
+  const codeContent = document.getElementById('codeContent')
+  if (codeContent && navigator.clipboard) {
+    navigator.clipboard.writeText(codeContent.textContent).then(() => {
+      const copyBtn = document.querySelector('.copy-code-btn')
+      const originalContent = copyBtn.innerHTML
+      copyBtn.innerHTML = '<i class="fas fa-check"></i>'
+      copyBtn.style.color = 'var(--success-color)'
+      
+      setTimeout(() => {
+        copyBtn.innerHTML = originalContent
+        copyBtn.style.color = ''
+      }, 2000)
+    })
   }
 }
 

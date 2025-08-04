@@ -51,16 +51,54 @@
 
     <div class="quiz-container">
         <div class="quiz-header">
-            <h1>C++ Knowledge Quiz</h1>
-            <p>Test your C++ programming skills with our interactive quiz</p>
+            <div class="quiz-hero">
+                <div class="hero-bg-animation">
+                    <div class="floating-shapes">
+                        <div class="shape shape-1"></div>
+                        <div class="shape shape-2"></div>
+                        <div class="shape shape-3"></div>
+                    </div>
+                </div>
+                <h1>C++ Knowledge Quiz</h1>
+                <p>Test your C++ programming skills with our interactive quiz</p>
+                <div class="quiz-stats-overview">
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-info">
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">Topics</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">❓</div>
+                        <div class="stat-info">
+                            <div class="stat-number">49</div>
+                            <div class="stat-label">Questions</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-info">
+                            <div class="stat-number">~60</div>
+                            <div class="stat-label">Minutes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="quiz-selection" id="quizSelection">
-            <h2>Choose Your Quiz Topic</h2>
+            <div class="selection-header">
+                <h2>Choose Your Quiz Topic</h2>
+                <p>Select a topic to test your knowledge and track your progress</p>
+            </div>
             <div class="quiz-topics">
-                <div class="quiz-topic-card" onclick="startQuiz('basics')">
-                    <div class="topic-icon">
-                        <i class="fas fa-play-circle"></i>
+                <div class="quiz-topic-card" onclick="startQuiz('basics')" data-difficulty="beginner">
+                    <div class="card-header">
+                        <div class="topic-icon">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="difficulty-badge beginner">Beginner</div>
                     </div>
                     <h3>C++ Basics</h3>
                     <p>Variables, data types, operators, and control structures</p>
@@ -68,11 +106,21 @@
                         <span><i class="fas fa-question-circle"></i> 10 Questions</span>
                         <span><i class="fas fa-clock"></i> 15 minutes</span>
                     </div>
+                    <div class="progress-preview">
+                        <div class="progress-bar-mini">
+                            <div class="progress-fill-mini" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0% Complete</span>
+                    </div>
+                    <div class="card-glow"></div>
                 </div>
 
-                <div class="quiz-topic-card" onclick="startQuiz('oop')">
-                    <div class="topic-icon">
-                        <i class="fas fa-cube"></i>
+                <div class="quiz-topic-card" onclick="startQuiz('oop')" data-difficulty="intermediate">
+                    <div class="card-header">
+                        <div class="topic-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div class="difficulty-badge intermediate">Intermediate</div>
                     </div>
                     <h3>Object-Oriented Programming</h3>
                     <p>Classes, objects, inheritance, and polymorphism</p>
@@ -80,11 +128,21 @@
                         <span><i class="fas fa-question-circle"></i> 12 Questions</span>
                         <span><i class="fas fa-clock"></i> 20 minutes</span>
                     </div>
+                    <div class="progress-preview">
+                        <div class="progress-bar-mini">
+                            <div class="progress-fill-mini" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0% Complete</span>
+                    </div>
+                    <div class="card-glow"></div>
                 </div>
 
-                <div class="quiz-topic-card" onclick="startQuiz('advanced')">
-                    <div class="topic-icon">
-                        <i class="fas fa-rocket"></i>
+                <div class="quiz-topic-card" onclick="startQuiz('advanced')" data-difficulty="advanced">
+                    <div class="card-header">
+                        <div class="topic-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="difficulty-badge advanced">Advanced</div>
                     </div>
                     <h3>Advanced C++</h3>
                     <p>Templates, smart pointers, and modern C++ features</p>
@@ -92,11 +150,21 @@
                         <span><i class="fas fa-question-circle"></i> 15 Questions</span>
                         <span><i class="fas fa-clock"></i> 25 minutes</span>
                     </div>
+                    <div class="progress-preview">
+                        <div class="progress-bar-mini">
+                            <div class="progress-fill-mini" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0% Complete</span>
+                    </div>
+                    <div class="card-glow"></div>
                 </div>
 
-                <div class="quiz-topic-card" onclick="startQuiz('stl')">
-                    <div class="topic-icon">
-                        <i class="fas fa-box"></i>
+                <div class="quiz-topic-card" onclick="startQuiz('stl')" data-difficulty="intermediate">
+                    <div class="card-header">
+                        <div class="topic-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="difficulty-badge intermediate">Intermediate</div>
                     </div>
                     <h3>Standard Template Library</h3>
                     <p>Containers, algorithms, and iterators</p>
@@ -104,24 +172,60 @@
                         <span><i class="fas fa-question-circle"></i> 12 Questions</span>
                         <span><i class="fas fa-clock"></i> 18 minutes</span>
                     </div>
+                    <div class="progress-preview">
+                        <div class="progress-bar-mini">
+                            <div class="progress-fill-mini" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0% Complete</span>
+                    </div>
+                    <div class="card-glow"></div>
                 </div>
             </div>
         </div>
 
         <div class="quiz-content" id="quizContent" style="display: none;">
+            <div class="quiz-header-nav">
+                <button class="back-to-topics-btn" onclick="backToTopics()">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Topics</span>
+                </button>
+                <div class="quiz-tools">
+                    <button class="tool-btn" onclick="toggleQuizMode()" title="Focus Mode">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                </div>
+            </div>
+
             <div class="quiz-progress">
                 <div class="progress-info">
                     <span id="questionNumber">Question 1 of 10</span>
-                    <span id="timer">15:00</span>
+                    <div class="timer-container">
+                        <i class="fas fa-clock"></i>
+                        <span id="timer">15:00</span>
+                    </div>
                 </div>
                 <div class="progress-bar">
                     <div class="progress-fill" id="quizProgressFill"></div>
                 </div>
+                <div class="progress-steps" id="progressSteps">
+                    <!-- Progress steps will be generated dynamically -->
+                </div>
             </div>
 
             <div class="question-container">
-                <h2 id="questionText">Loading question...</h2>
+                <div class="question-header">
+                    <div class="question-number-badge">
+                        <span id="currentQuestionBadge">1</span>
+                    </div>
+                    <h2 id="questionText">Loading question...</h2>
+                </div>
                 <div class="code-snippet" id="codeSnippet" style="display: none;">
+                    <div class="code-header">
+                        <span class="code-title">Code Example</span>
+                        <button class="copy-code-btn" onclick="copyQuizCode()">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
                     <pre><code id="codeContent"></code></pre>
                 </div>
                 <div class="options-container" id="optionsContainer">
@@ -133,6 +237,11 @@
                 <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()" disabled>
                     <i class="fas fa-arrow-left"></i> Previous
                 </button>
+                <div class="control-center">
+                    <div class="question-counter">
+                        <span id="questionProgress">1 / 10</span>
+                    </div>
+                </div>
                 <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">
                     Next <i class="fas fa-arrow-right"></i>
                 </button>
@@ -144,7 +253,17 @@
 
         <div class="quiz-results" id="quizResults" style="display: none;">
             <div class="results-header">
-                <div class="score-circle">
+                <div class="score-circle-container">
+                    <svg class="score-circle" viewBox="0 0 120 120">
+                        <defs>
+                            <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle class="score-bg" cx="60" cy="60" r="54"></circle>
+                        <circle class="score-progress" cx="60" cy="60" r="54" id="scoreCircle" stroke="url(#scoreGradient)"></circle>
+                    </svg>
                     <div class="score-text">
                         <span id="scorePercentage">0%</span>
                         <small>Score</small>
@@ -152,25 +271,48 @@
                 </div>
                 <h2>Quiz Complete!</h2>
                 <p id="scoreMessage">Great job on completing the quiz!</p>
+                <div class="performance-badge" id="performanceBadge">
+                    <i class="fas fa-trophy"></i>
+                    <span>Excellent Performance!</span>
+                </div>
             </div>
 
             <div class="results-stats">
-                <div class="stat-item">
-                    <div class="stat-number" id="correctAnswers">0</div>
-                    <div class="stat-label">Correct</div>
+                <div class="stat-card result-stat">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-info">
+                        <div class="stat-number" id="correctAnswers">0</div>
+                        <div class="stat-label">Correct</div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="incorrectAnswers">0</div>
-                    <div class="stat-label">Incorrect</div>
+                <div class="stat-card result-stat">
+                    <div class="stat-icon">❌</div>
+                    <div class="stat-info">
+                        <div class="stat-number" id="incorrectAnswers">0</div>
+                        <div class="stat-label">Incorrect</div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="timeTaken">0:00</div>
-                    <div class="stat-label">Time</div>
+                <div class="stat-card result-stat">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-info">
+                        <div class="stat-number" id="timeTaken">0:00</div>
+                        <div class="stat-label">Time</div>
+                    </div>
+                </div>
+                <div class="stat-card result-stat">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-info">
+                        <div class="stat-number" id="accuracy">0%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
                 </div>
             </div>
 
             <div class="results-breakdown" id="resultsBreakdown">
-                <!-- Detailed results will be shown here -->
+                <h3>Question Breakdown</h3>
+                <div class="breakdown-container">
+                    <!-- Detailed results will be shown here -->
+                </div>
             </div>
 
             <div class="results-actions">
