@@ -3896,17 +3896,49 @@ a:hover {
   position: relative;
 }
 
-.timeline-item:nth-child(odd) {
-  flex-direction: row-reverse;
+/* Left side items */
+.timeline-item-left {
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
-.timeline-item:nth-child(odd) .timeline-content {
+.timeline-item-left .timeline-content {
   text-align: right;
   margin-right: 2rem;
 }
 
-.timeline-item:nth-child(even) .timeline-content {
+/* Right side items */
+.timeline-item-right {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.timeline-item-right .timeline-content {
+  text-align: left;
   margin-left: 2rem;
+}
+
+/* Fallback for nth-child if classes aren't used */
+.timeline-item:nth-child(odd):not(.timeline-item-right) {
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.timeline-item:nth-child(odd):not(.timeline-item-right) .timeline-content {
+  text-align: right;
+  margin-right: 2rem;
+  margin-left: 0;
+}
+
+.timeline-item:nth-child(even):not(.timeline-item-left) {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.timeline-item:nth-child(even):not(.timeline-item-left) .timeline-content {
+  text-align: left;
+  margin-left: 2rem;
+  margin-right: 0;
 }
 
 .timeline-year {
@@ -4244,16 +4276,20 @@ a:hover {
     left: 20px;
   }
   
-  .timeline-item {
+  .timeline-item,
+  .timeline-item-left,
+  .timeline-item-right {
     flex-direction: row !important;
     margin-left: 40px;
+    justify-content: flex-start !important;
   }
   
-  .timeline-item:nth-child(odd) .timeline-content,
-  .timeline-item:nth-child(even) .timeline-content {
-    text-align: left;
-    margin-left: 1rem;
-    margin-right: 0;
+  .timeline-item .timeline-content,
+  .timeline-item-left .timeline-content,
+  .timeline-item-right .timeline-content {
+    text-align: left !important;
+    margin-left: 1rem !important;
+    margin-right: 0 !important;
   }
   
   .timeline-year {
